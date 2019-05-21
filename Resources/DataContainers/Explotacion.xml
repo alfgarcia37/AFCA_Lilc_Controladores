@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<ExplotacionData xmlns="http://tempuri.org/ExplotacionData.xsd">
+  <Explotacion>
+    <ExplotacionID>1</ExplotacionID>
+    <Nombre>Experimental Heras</Nombre>
+    <Descripcion>Explotación ganadera situada........</Descripcion>
+    <Propietario>Fernando Pérez Pla</Propietario>
+    <Pais>España</Pais>
+    <Poblacion>Santander</Poblacion>
+    <Latitud>41.00</Latitud>
+    <Longitud>-3</Longitud>
+    <FechaAlta>2011-06-05T20:07:56.137+02:00</FechaAlta>
+    <ExplotacionModelo>
+      <ExplotacionID>1</ExplotacionID>
+      <ModeloID>1</ModeloID>
+      <Nombre>Pastoreo exp</Nombre>
+      <Descripcion>Pastoreo</Descripcion>
+      <Superficie>8.2</Superficie>
+      <ReservaMaiz>1</ReservaMaiz>
+      <TipoProduccion>1</TipoProduccion>
+      <FechaUltimaEjecucion>2011-06-05T20:07:56+02:00</FechaUltimaEjecucion>
+      <FechaAlta>2011-04-01T12:00:00+02:00</FechaAlta>
+    </ExplotacionModelo>
+    <ExplotacionModelo>
+      <ExplotacionID>1</ExplotacionID>
+      <ModeloID>2</ModeloID>
+      <Nombre>Pastoreo exp. con maiz</Nombre>
+      <Descripcion>Pastoreo con reserva de maíz</Descripcion>
+      <Superficie>8.2</Superficie>
+      <ReservaMaiz>1</ReservaMaiz>
+      <TipoProduccion>1</TipoProduccion>
+      <FechaUltimaEjecucion>2011-06-05T20:07:56+02:00</FechaUltimaEjecucion>
+      <FechaAlta>2011-05-06T19:00:00+02:00</FechaAlta>
+    </ExplotacionModelo>
+  </Explotacion>
+</ExplotacionData>

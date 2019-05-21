@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Afca.Common
+{
+    public enum EstadoLectura
+    {
+        Leido=0,
+        Planificado=1,
+        EnCurso=2,
+        Replanificado=3,
+        NoLeido=4,
+        EnTerminal=5
+    }
+}

@@ -1,0 +1,9 @@
+﻿
+22.04.2019
+Ventana de propiedades de LecturaPropertiesControl:
+
+- Los tipo de control se configuran en la ventana en tiempo de diseño mediante un
+  combo editor para que Alfonso vea como se hace, mientras que el estado de las lecturas
+  lo hacemos mediante un combo cargando los valores desde la base de datos.
+
+  IMPLEMENTAR CODIGO EN LA VENTANA

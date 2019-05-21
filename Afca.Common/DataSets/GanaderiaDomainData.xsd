@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GanaderiaDomainData" targetNamespace="http://tempuri.org/GanaderiaDomainData.xsd" xmlns:mstns="http://tempuri.org/GanaderiaDomainData.xsd" xmlns="http://tempuri.org/GanaderiaDomainData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="GanaderiaDomainData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="GanaderiaDomainData" msprop:Generator_UserDSName="GanaderiaDomainData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Ganaderia" msprop:Generator_TableClassName="GanaderiaDataTable" msprop:Generator_TableVarName="tableGanaderia" msprop:Generator_TablePropName="Ganaderia" msprop:Generator_RowDeletingName="GanaderiaRowDeleting" msprop:Generator_RowChangingName="GanaderiaRowChanging" msprop:Generator_RowEvHandlerName="GanaderiaRowChangeEventHandler" msprop:Generator_RowDeletedName="GanaderiaRowDeleted" msprop:Generator_UserTableName="Ganaderia" msprop:Generator_RowChangedName="GanaderiaRowChanged" msprop:Generator_RowEvArgName="GanaderiaRowChangeEvent" msprop:Generator_RowClassName="GanaderiaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_UserColumnName="Codigo" type="xs:string" />
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Ganaderia_pk" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Ganaderia" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

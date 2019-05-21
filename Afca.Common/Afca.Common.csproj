@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCC59FCD-B2E3-407B-AD04-99AB3F89E06C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Afca.Common</RootNamespace>
+    <AssemblyName>Afca.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FrameworkForge.Common">
+      <HintPath>..\Afca\Lib\FrameworkForge.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Shared.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AfcaDataAccessorProvider.cs" />
+    <Compile Include="AfcaServiceProvider.cs" />
+    <Compile Include="DataAccessorInterfaces\IEstadoLecturaDataAccessor.cs" />
+    <Compile Include="DataAccessorInterfaces\IGanaderiaDataAccessor.cs" />
+    <Compile Include="DataSets\EstadoLecturaData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\GanaderiaDomainData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Utilities\IconMapper.cs" />
+    <Compile Include="ServicesInterfaces\IEstadoLecturaService.cs" />
+    <Compile Include="ServicesInterfaces\IGanaderiaService.cs" />
+    <Compile Include="Trees\AfcaTree.cs" />
+    <Compile Include="DataAccessorInterfaces\IControladorDataAccessor.cs" />
+    <Compile Include="DataAccessorInterfaces\ILecturaControlDataAccessor.cs" />
+    <Compile Include="DataSets\ControladorData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControladorData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\LecturaControlData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LecturaControlData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesInterfaces\IControladorService.cs" />
+    <Compile Include="ServicesInterfaces\ILecturaControlService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\explorador.ico" />
+    <EmbeddedResource Include="Icons\folder.png" />
+    <EmbeddedResource Include="Icons\folder_closed.png" />
+    <EmbeddedResource Include="Icons\folder_window.ico" />
+    <EmbeddedResource Include="Icons\folder_window.png" />
+    <EmbeddedResource Include="Icons\groupBy.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\newRow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataSets\ControladorData.xsc">
+      <DependentUpon>ControladorData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\ControladorData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ControladorData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\ControladorData.xss">
+      <DependentUpon>ControladorData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\EstadoLecturaData.xsc">
+      <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\EstadoLecturaData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EstadoLecturaData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\EstadoLecturaData.xss">
+      <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\GanaderiaDomainData.xsc">
+      <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\GanaderiaDomainData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GanaderiaDomainData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\GanaderiaDomainData.xss">
+      <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\LecturaControlData.xsc">
+      <DependentUpon>LecturaControlData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\LecturaControlData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LecturaControlData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\LecturaControlData.xss">
+      <DependentUpon>LecturaControlData.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\controller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\Properties.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\lectura_go.png" />
+    <EmbeddedResource Include="Icons\lectura_not_readed.png" />
+    <EmbeddedResource Include="Icons\lectura_read.png" />
+    <EmbeddedResource Include="Icons\lectura_rescheduled.png" />
+    <EmbeddedResource Include="Icons\lectura_scheduled.png" />
+    <EmbeddedResource Include="Icons\lectura_terminal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\deleteRow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\calendar.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"
+copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Release\Afca.Common.dll"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

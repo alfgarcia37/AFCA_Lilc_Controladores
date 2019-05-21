@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<TipoProduccionData xmlns="http://tempuri.org/TipoProduccionData.xsd">
+  <TipoProduccion>
+    <Tipo>1</Tipo>
+    <Nombre>Pastoreo</Nombre>
+    <Descripcion>Sistema en el cual el ganado se alimenta principalmente del prado propio 
+con aportes ocasionales de concentrado.</Descripcion>
+  </TipoProduccion>
+  <TipoProduccion>
+    <Tipo>2</Tipo>
+    <Nombre>Extensivo</Nombre>
+    <Descripcion>Sistema en el cual el ganado se alimenta de forma equitativa tanto del prado propio como de concentrado.</Descripcion>
+  </TipoProduccion>
+  <TipoProduccion>
+    <Tipo>3</Tipo>
+    <Nombre>Intensivo</Nombre>
+    <Descripcion>Sistema en el cual el ganado permanece estabulado y se alimenta exclusivamente de concentrado.</Descripcion>
+  </TipoProduccion>
+  <TipoProduccion>
+    <Tipo>4</Tipo>
+    <Nombre>Ecológico</Nombre>
+    <Descripcion>Sistema de bajos input</Descripcion>
+  </TipoProduccion>
+</TipoProduccionData>
