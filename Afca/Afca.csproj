@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>Afca.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FrameworkForge.UI">
