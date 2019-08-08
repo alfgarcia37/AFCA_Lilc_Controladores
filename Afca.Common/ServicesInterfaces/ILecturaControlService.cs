@@ -17,10 +17,10 @@ namespace Afca.Common.ServicesInterfaces {
     public interface ILecturaControlService : IService {
         
         LecturaControlData LoadLecturaControlData();
-        
+        LecturaControlData LoadLecturaControlDataByParent(ItemData itemParent);
+
         LecturaControlData LoadLecturaControlDataByID(string argEstablo);
-        
-        LecturaControlData LoadLecturaControlData(ItemData itemParent);
+           
         
         int DeleteLecturaControlDataByID(string argEstablo);
         

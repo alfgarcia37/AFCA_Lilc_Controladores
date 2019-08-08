@@ -35,13 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FrameworkForge.Common">
-      <HintPath>..\Lib\FrameworkForge.Common.dll</HintPath>
+      <HintPath>..\Afca\Lib\FrameworkForge.Common.dll</HintPath>
     </Reference>
     <Reference Include="FrameworkForge.UI">
       <HintPath>..\Afca\Lib\FrameworkForge.UI.dll</HintPath>
     </Reference>
     <Reference Include="FrameworkForge.WPF">
-      <HintPath>..\Lib\FrameworkForge.WPF.dll</HintPath>
+      <HintPath>..\Afca\Lib\FrameworkForge.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.Excel.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Shared.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />

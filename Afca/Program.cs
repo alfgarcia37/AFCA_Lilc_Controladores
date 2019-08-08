@@ -15,8 +15,8 @@ namespace Afca
         [STAThread]
         static void Main()
         {
-            //FrameworkForge.UI.ApplicationContext.Run();
-           Encrypt();
+            FrameworkForge.UI.ApplicationContext.Run();
+            //Encrypt();
         }
         static void Encrypt()
         {

@@ -33,7 +33,8 @@ namespace Afca.Services {
             return lecturaControlDA.LoadLecturaControlDataByID(argEstablo);
         }
         
-        public LecturaControlData LoadLecturaControlData(ItemData itemParent) {
+        public LecturaControlData LoadLecturaControlDataByParent(ItemData itemParent) {
+
             return lecturaControlDA.LoadLecturaControlData();
         }
         

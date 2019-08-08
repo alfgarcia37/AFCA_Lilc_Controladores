@@ -144,7 +144,7 @@ namespace Afca.UI
                 , "IconoControlador"
                 , new LecturaControlDataGridControl(itContainer));
         }
-        public static void ShowLecturaProperties(ItemData itLectura)
+        public static void ShowLecturaPropertiesByItem(ItemData itLectura)
         {
             string estadoId =
                 itLectura.ItemColumns["Estado"].Data.Value.ToString();

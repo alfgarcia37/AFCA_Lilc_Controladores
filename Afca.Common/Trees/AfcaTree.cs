@@ -89,7 +89,7 @@ namespace Afca.Common
             lecturaNode.IconMapper.Mapping.Add("4", "IconoLecturaNoLeida");
             lecturaNode.IconMapper.Mapping.Add("5", "IconoLecturaEnTerminal");
 
-            lecturaNode.LoadMethod = "ILecturaControlService,LoadLecturaControlData";
+            lecturaNode.LoadMethod = "ILecturaControlService,LoadLecturaControlDataByParent";
             lecturaNode.DataTable = "LecturaControl";
             lecturaNode.SortCriteria = "NumControler ASC,FechaPrevista DESC";
             lecturaNode.ItemColumns.AddItemColumn(
@@ -112,7 +112,10 @@ namespace Afca.Common
                          new ItemColumn("NumControler", "Controlador", false, true));
             lecturaNode.ItemColumns["NumControler"].DropDownClass = "Afca.UI,Afca.UI.DropDowns.ControladorDropDown";
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-                                                        "ShowLecturaProperties", "Editar lectura..."
+                                                        "ShowLecturaPropertiesByItem", "Editar lectura..."
+                                                        , ItemMethodType.Properties, "IconoPropiedades"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                        "ShowLecturaProperties1", "Planificar..."
                                                         , ItemMethodType.Properties, "IconoPropiedades"));
             //Poder cambiar el icono de color
             //Poder establecer el ancho de la columna

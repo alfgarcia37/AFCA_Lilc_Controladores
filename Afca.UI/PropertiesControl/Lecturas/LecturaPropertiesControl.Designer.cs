@@ -39,22 +39,6 @@
             Infragistics.Win.ValueListItem valueListItem7 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem8 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem9 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("EstadoLectura", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EstadoID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Observaciones");
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
@@ -66,11 +50,25 @@
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("EstadoLectura", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EstadoID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Observaciones");
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
             this.ugroupSituacion = new Infragistics.Win.Misc.UltraGroupBox();
             this.uceTipoControl = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
-            this.ucEstado = new Infragistics.Win.UltraWinGrid.UltraCombo();
-            this.estadoLecturaData = new Afca.Common.DataSets.EstadoLecturaData();
             this.udteFechaPrevista = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.uneNumLote = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
             this.uneVacasControl = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
@@ -89,6 +87,8 @@
             this.ulbEstabloNombre = new Infragistics.Win.Misc.UltraLabel();
             this.ulbEstabloCodigo = new Infragistics.Win.Misc.UltraLabel();
             this.uteEstablo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ucEstado = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.estadoLecturaData = new Afca.Common.DataSets.EstadoLecturaData();
             this.lecturaControlData = new Afca.Common.DataSets.LecturaControlData();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl)).BeginInit();
@@ -97,8 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ugroupSituacion)).BeginInit();
             this.ugroupSituacion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uceTipoControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ucEstado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estadoLecturaData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteFechaPrevista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneNumLote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneVacasControl)).BeginInit();
@@ -110,6 +108,8 @@
             this.ugroupEstablo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uteNombre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uteEstablo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ucEstado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadoLecturaData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturaControlData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -197,89 +197,6 @@
             this.uceTipoControl.Name = "uceTipoControl";
             this.uceTipoControl.Size = new System.Drawing.Size(188, 21);
             this.uceTipoControl.TabIndex = 5;
-            // 
-            // ucEstado
-            // 
-            this.ucEstado.DataMember = "EstadoLectura";
-            this.ucEstado.DataSource = this.estadoLecturaData;
-            appearance2.BackColor = System.Drawing.SystemColors.Window;
-            appearance2.BorderColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ucEstado.DisplayLayout.Appearance = appearance2;
-            ultraGridColumn1.Header.Caption = "Codigo";
-            ultraGridColumn1.Header.Editor = null;
-            ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn2.Header.Editor = null;
-            ultraGridColumn2.Header.VisiblePosition = 1;
-            ultraGridColumn3.Header.Editor = null;
-            ultraGridColumn3.Header.VisiblePosition = 2;
-            ultraGridColumn3.Hidden = true;
-            ultraGridBand1.Columns.AddRange(new object[] {
-            ultraGridColumn1,
-            ultraGridColumn2,
-            ultraGridColumn3});
-            this.ucEstado.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
-            this.ucEstado.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.ucEstado.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
-            appearance3.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance3.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance3.BorderColor = System.Drawing.SystemColors.Window;
-            this.ucEstado.DisplayLayout.GroupByBox.Appearance = appearance3;
-            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ucEstado.DisplayLayout.GroupByBox.BandLabelAppearance = appearance4;
-            this.ucEstado.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance5.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance5.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ucEstado.DisplayLayout.GroupByBox.PromptAppearance = appearance5;
-            this.ucEstado.DisplayLayout.MaxColScrollRegions = 1;
-            this.ucEstado.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance6.BackColor = System.Drawing.SystemColors.Window;
-            appearance6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ucEstado.DisplayLayout.Override.ActiveCellAppearance = appearance6;
-            appearance7.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance7.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.ucEstado.DisplayLayout.Override.ActiveRowAppearance = appearance7;
-            this.ucEstado.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
-            this.ucEstado.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
-            appearance8.BackColor = System.Drawing.SystemColors.Window;
-            this.ucEstado.DisplayLayout.Override.CardAreaAppearance = appearance8;
-            appearance9.BorderColor = System.Drawing.Color.Silver;
-            appearance9.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            this.ucEstado.DisplayLayout.Override.CellAppearance = appearance9;
-            this.ucEstado.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
-            this.ucEstado.DisplayLayout.Override.CellPadding = 0;
-            appearance10.BackColor = System.Drawing.SystemColors.Control;
-            appearance10.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance10.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance10.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance10.BorderColor = System.Drawing.SystemColors.Window;
-            this.ucEstado.DisplayLayout.Override.GroupByRowAppearance = appearance10;
-            appearance11.TextHAlignAsString = "Left";
-            this.ucEstado.DisplayLayout.Override.HeaderAppearance = appearance11;
-            this.ucEstado.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.ucEstado.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
-            appearance12.BackColor = System.Drawing.SystemColors.Window;
-            appearance12.BorderColor = System.Drawing.Color.Silver;
-            this.ucEstado.DisplayLayout.Override.RowAppearance = appearance12;
-            this.ucEstado.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
-            appearance13.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ucEstado.DisplayLayout.Override.TemplateAddRowAppearance = appearance13;
-            this.ucEstado.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.ucEstado.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ucEstado.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
-            this.ucEstado.DisplayMember = "Nombre";
-            this.ucEstado.Location = new System.Drawing.Point(91, 65);
-            this.ucEstado.Name = "ucEstado";
-            this.ucEstado.Size = new System.Drawing.Size(189, 22);
-            this.ucEstado.TabIndex = 4;
-            this.ucEstado.ValueMember = "EstadoID";
-            // 
-            // estadoLecturaData
-            // 
-            this.estadoLecturaData.DataSetName = "EstadoLecturaData";
-            this.estadoLecturaData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // udteFechaPrevista
             // 
@@ -457,6 +374,89 @@
             this.uteEstablo.Size = new System.Drawing.Size(117, 21);
             this.uteEstablo.TabIndex = 1;
             // 
+            // ucEstado
+            // 
+            this.ucEstado.DataMember = "EstadoLectura";
+            this.ucEstado.DataSource = this.estadoLecturaData;
+            appearance2.BackColor = System.Drawing.SystemColors.Window;
+            appearance2.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ucEstado.DisplayLayout.Appearance = appearance2;
+            ultraGridColumn7.Header.Caption = "Codigo";
+            ultraGridColumn7.Header.Editor = null;
+            ultraGridColumn7.Header.VisiblePosition = 0;
+            ultraGridColumn8.Header.Editor = null;
+            ultraGridColumn8.Header.VisiblePosition = 1;
+            ultraGridColumn9.Header.Editor = null;
+            ultraGridColumn9.Header.VisiblePosition = 2;
+            ultraGridColumn9.Hidden = true;
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn9});
+            this.ucEstado.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
+            this.ucEstado.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.ucEstado.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance3.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance3.BorderColor = System.Drawing.SystemColors.Window;
+            this.ucEstado.DisplayLayout.GroupByBox.Appearance = appearance3;
+            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ucEstado.DisplayLayout.GroupByBox.BandLabelAppearance = appearance4;
+            this.ucEstado.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance5.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance5.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ucEstado.DisplayLayout.GroupByBox.PromptAppearance = appearance5;
+            this.ucEstado.DisplayLayout.MaxColScrollRegions = 1;
+            this.ucEstado.DisplayLayout.MaxRowScrollRegions = 1;
+            appearance6.BackColor = System.Drawing.SystemColors.Window;
+            appearance6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ucEstado.DisplayLayout.Override.ActiveCellAppearance = appearance6;
+            appearance7.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance7.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ucEstado.DisplayLayout.Override.ActiveRowAppearance = appearance7;
+            this.ucEstado.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.ucEstado.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            this.ucEstado.DisplayLayout.Override.CardAreaAppearance = appearance8;
+            appearance9.BorderColor = System.Drawing.Color.Silver;
+            appearance9.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.ucEstado.DisplayLayout.Override.CellAppearance = appearance9;
+            this.ucEstado.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
+            this.ucEstado.DisplayLayout.Override.CellPadding = 0;
+            appearance10.BackColor = System.Drawing.SystemColors.Control;
+            appearance10.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance10.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance10.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance10.BorderColor = System.Drawing.SystemColors.Window;
+            this.ucEstado.DisplayLayout.Override.GroupByRowAppearance = appearance10;
+            appearance11.TextHAlignAsString = "Left";
+            this.ucEstado.DisplayLayout.Override.HeaderAppearance = appearance11;
+            this.ucEstado.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            this.ucEstado.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.BorderColor = System.Drawing.Color.Silver;
+            this.ucEstado.DisplayLayout.Override.RowAppearance = appearance12;
+            this.ucEstado.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            appearance13.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ucEstado.DisplayLayout.Override.TemplateAddRowAppearance = appearance13;
+            this.ucEstado.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.ucEstado.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.ucEstado.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
+            this.ucEstado.DisplayMember = "Nombre";
+            this.ucEstado.Location = new System.Drawing.Point(91, 65);
+            this.ucEstado.Name = "ucEstado";
+            this.ucEstado.Size = new System.Drawing.Size(189, 22);
+            this.ucEstado.TabIndex = 4;
+            this.ucEstado.ValueMember = "EstadoID";
+            // 
+            // estadoLecturaData
+            // 
+            this.estadoLecturaData.DataSetName = "EstadoLecturaData";
+            this.estadoLecturaData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // lecturaControlData
             // 
             this.lecturaControlData.DataSetName = "LecturaControlData";
@@ -476,8 +476,6 @@
             this.ugroupSituacion.ResumeLayout(false);
             this.ugroupSituacion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uceTipoControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ucEstado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.estadoLecturaData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udteFechaPrevista)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneNumLote)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uneVacasControl)).EndInit();
@@ -491,6 +489,8 @@
             this.ugroupEstablo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uteNombre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uteEstablo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ucEstado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.estadoLecturaData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturaControlData)).EndInit();
             this.ResumeLayout(false);
 
