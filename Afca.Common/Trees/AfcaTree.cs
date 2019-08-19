@@ -203,8 +203,14 @@ namespace Afca.Common
         }
         static ItemMetaData CreateControladoresTree()
         {
+            //agc arbol izq
             ItemMetaData controladoresFolderNode = CreateControladoresFolderNode();
-            ItemMetaData controladorNode = CreateControladorNode();
+                    //agc grid derecha
+                    ItemMetaData controladorNode = CreateControladorNode();
+                    controladoresFolderNode.Children.Add(controladorNode);
+
+            //agc otro controlador
+            ItemMetaData controladoresFolderNode2 = CreateControladoresFolderNode2();
             controladoresFolderNode.Children.Add(controladorNode);
 
             return controladoresFolderNode;
@@ -212,26 +218,37 @@ namespace Afca.Common
         static ItemMetaData CreateControladoresFolderNode()
         {
             ItemMetaData configNode = new ItemMetaData("Controladores");
-            configNode.Text = "Controladores";
+            configNode.Text = "Controlaaadores";
+            configNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            return configNode;
+        }
+        static ItemMetaData CreateControladoresFolderNode2()
+        {
+            ItemMetaData configNode = new ItemMetaData("Controladooooores");
+            configNode.Text = "Controlaaaaaadores";
             configNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
             return configNode;
         }
         static ItemMetaData CreateControladorNode()
-        {
+        {   //agc. creo que este es el nodo padre
             ItemMetaData controladorNode = new ItemMetaData("Controlador");
             controladorNode.ItemType = ItemType.Leaf;
             controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
             controladorNode.LoadMethod = "IControladorService,LoadControladorData";
             controladorNode.DataTable = "Controlador";
-            controladorNode.SortCriteria = "Id ASC";
+            controladorNode.Text = "CCCCCCCCCC";
+            controladorNode.SortCriteria = "Nombre ASC";
+            //agc ItemColumns = definicion de grid y de panel inferior derecho????
+
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("Id", "Código", true, true));
-            controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("Nombre", "Nombre", false, true,true));
-            controladorNode.ItemColumns.AddItemColumn(
-                            new ItemColumn("Cargo", "Cargo", false, true));
-               
-            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                               new ItemColumn("Id", "Código",  true, true));
+                controladorNode.ItemColumns.AddItemColumn(
+                               new ItemColumn("Nombre", "Nombre", false, true,true));
+                controladorNode.ItemColumns.AddItemColumn(
+                                new ItemColumn("Cargo", "Cargoo", false, true));
+
+            //agc definición de botón derecho ????
+            controladorNode.Methods.AddItemMethod(new ItemMethod( "Afca.UI,ControlsProvider",
                                                                "ShowControladorProperties", "Editar ficha..."
                                                                , ItemMethodType.Properties, "IconoControlador"));
             controladorNode.Methods.AddItemMethod(new ItemMethod("None", "", "", ItemMethodType.Separator));
@@ -241,6 +258,34 @@ namespace Afca.Common
 
             return controladorNode;
         }
-   
+        static ItemMetaData CreateControladorNode2()
+        {   //agc. creo que este es el nodo padre
+            ItemMetaData controladorNode = new ItemMetaData("Controladorrr");
+            controladorNode.ItemType = ItemType.Leaf;
+            controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
+            controladorNode.LoadMethod = "IControladorService,LoadControladorData";
+            controladorNode.DataTable = "Controlador";
+            controladorNode.Text = "CCCCCCCCCC";
+            controladorNode.SortCriteria = "Nombre ASC";
+            //agc ItemColumns = definicion de grid y de panel inferior derecho????
+
+            controladorNode.ItemColumns.AddItemColumn(
+                               new ItemColumn("Id", "Código", true, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("Nombre", "Nombre", false, true, true));
+            
+
+            //agc definición de botón derecho ????
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                               "ShowControladorProperties", "Editar fichaaa..."
+                                                               , ItemMethodType.Properties, "IconoControlador"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("None", "", "", ItemMethodType.Separator));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.Common,AfcaServiceProvider",
+                                                               "GetControladorService|DeletControladorDataByItem", "Eliminar ..."
+                                                               , ItemMethodType.Delete, "IconoControlador"));
+
+            return controladorNode;
+        }
+
     }
 }

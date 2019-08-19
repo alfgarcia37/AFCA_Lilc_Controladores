@@ -52,9 +52,9 @@
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("EstadoLectura", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EstadoID");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Observaciones");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EstadoID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Observaciones");
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
@@ -381,18 +381,18 @@
             appearance2.BackColor = System.Drawing.SystemColors.Window;
             appearance2.BorderColor = System.Drawing.SystemColors.InactiveCaption;
             this.ucEstado.DisplayLayout.Appearance = appearance2;
-            ultraGridColumn7.Header.Caption = "Codigo";
-            ultraGridColumn7.Header.Editor = null;
-            ultraGridColumn7.Header.VisiblePosition = 0;
-            ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 1;
-            ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 2;
-            ultraGridColumn9.Hidden = true;
+            ultraGridColumn1.Header.Caption = "Codigo";
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn3.Header.Editor = null;
+            ultraGridColumn3.Header.VisiblePosition = 2;
+            ultraGridColumn3.Hidden = true;
             ultraGridBand1.Columns.AddRange(new object[] {
-            ultraGridColumn7,
-            ultraGridColumn8,
-            ultraGridColumn9});
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn3});
             this.ucEstado.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.ucEstado.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.ucEstado.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;

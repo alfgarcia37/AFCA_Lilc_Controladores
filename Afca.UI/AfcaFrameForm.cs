@@ -164,5 +164,10 @@ namespace Afca.UI
             }
         }
         #endregion
+
+        private void ultraTabbedMdiManager_InitializeTab(object sender, MdiTabEventArgs e)
+        {
+
+        }
     }
 }
