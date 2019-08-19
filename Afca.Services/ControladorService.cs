@@ -31,7 +31,11 @@ namespace Afca.Services {
         }       
         public ControladorData LoadControladorData(ItemData itemParent) {
             return controladorDA.LoadControladorData();
-        }   
+        }
+        public ControladorProgresoData LoadControladorProgresoData(Item itemParent)
+        {
+            return controladorDA.LoadControladorProgresoData();
+        }
         public int DeleteControladorDataByID(int argId) {
             return controladorDA.DeleteControladorDataByID(argId);
         }        

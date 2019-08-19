@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ControladorProgresoData" targetNamespace="http://tempuri.org/ControladorProgresoData.xsd" xmlns:mstns="http://tempuri.org/ControladorProgresoData.xsd" xmlns="http://tempuri.org/ControladorProgresoData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ControladorProgresoData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ControladorProgresoData" msprop:Generator_UserDSName="ControladorProgresoData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Controlador" msprop:Generator_TableClassName="ControladorDataTable" msprop:Generator_TableVarName="tableControlador" msprop:Generator_TablePropName="Controlador" msprop:Generator_RowDeletingName="ControladorRowDeleting" msprop:Generator_RowChangingName="ControladorRowChanging" msprop:Generator_RowEvHandlerName="ControladorRowChangeEventHandler" msprop:Generator_RowDeletedName="ControladorRowDeleted" msprop:Generator_UserTableName="Controlador" msprop:Generator_RowChangedName="ControladorRowChanged" msprop:Generator_RowEvArgName="ControladorRowChangeEvent" msprop:Generator_RowClassName="ControladorRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoControlador" msprop:Generator_ColumnVarNameInTable="columnCodigoControlador" msprop:Generator_ColumnPropNameInRow="CodigoControlador" msprop:Generator_ColumnPropNameInTable="CodigoControladorColumn" msprop:Generator_UserColumnName="CodigoControlador" type="xs:int" />
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="EnTerminal" msprop:Generator_ColumnVarNameInTable="columnEnTerminal" msprop:Generator_ColumnPropNameInRow="EnTerminal" msprop:Generator_ColumnPropNameInTable="EnTerminalColumn" msprop:Generator_UserColumnName="EnTerminal" type="xs:int" minOccurs="0" />
+              <xs:element name="EnCurso" msprop:Generator_ColumnVarNameInTable="columnEnCurso" msprop:Generator_ColumnPropNameInRow="EnCurso" msprop:Generator_ColumnPropNameInTable="EnCursoColumn" msprop:Generator_UserColumnName="EnCurso" type="xs:int" minOccurs="0" />
+              <xs:element name="EnBuzon" msprop:Generator_ColumnVarNameInTable="columnEnBuzon" msprop:Generator_ColumnPropNameInRow="EnBuzon" msprop:Generator_ColumnPropNameInTable="EnBuzonColumn" msprop:Generator_UserColumnName="EnBuzon" type="xs:int" minOccurs="0" />
+              <xs:element name="Warning" msprop:Generator_ColumnVarNameInTable="columnWarning" msprop:Generator_ColumnPropNameInRow="Warning" msprop:Generator_ColumnPropNameInTable="WarningColumn" msprop:Generator_UserColumnName="Warning" type="xs:int" minOccurs="0" />
+              <xs:element name="Nota" msprop:Generator_ColumnVarNameInTable="columnNota" msprop:Generator_ColumnPropNameInRow="Nota" msprop:Generator_ColumnPropNameInTable="NotaColumn" msprop:Generator_UserColumnName="Nota" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Indicadores_pk" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Controlador" />
+      <xs:field xpath="mstns:CodigoControlador" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

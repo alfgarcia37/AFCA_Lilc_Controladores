@@ -21,6 +21,7 @@ namespace Afca.Common.ServicesInterfaces {
         ControladorData LoadControladorDataByID(int argId);
 
         ControladorData LoadControladorData(ItemData itemParent);
+        ControladorProgresoData LoadControladorProgresoData(Item itemParent);
         
         int DeleteControladorDataByID(int argId);
         

@@ -18,7 +18,8 @@ namespace Afca.Common.DataAccessor {
         ControladorData LoadControladorData();
 
         ControladorData LoadControladorDataByID(int argId);
-        
+        ControladorProgresoData LoadControladorProgresoData();
+
         int DeleteControladorDataByID(int argId);
         
         int UpdateControladorData(ControladorData data);

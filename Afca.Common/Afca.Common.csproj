@@ -51,6 +51,11 @@
     <Compile Include="AfcaServiceProvider.cs" />
     <Compile Include="DataAccessorInterfaces\IEstadoLecturaDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IGanaderiaDataAccessor.cs" />
+    <Compile Include="DataSets\ControladorProgresoData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControladorProgresoData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\EstadoLecturaData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,6 +109,17 @@
     </None>
     <None Include="DataSets\ControladorData.xss">
       <DependentUpon>ControladorData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\ControladorProgresoData.xsc">
+      <DependentUpon>ControladorProgresoData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\ControladorProgresoData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ControladorProgresoData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\ControladorProgresoData.xss">
+      <DependentUpon>ControladorProgresoData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\EstadoLecturaData.xsc">
       <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
@@ -167,6 +183,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\user_gray.png" />
+    <EmbeddedResource Include="Icons\user_green.png" />
+    <EmbeddedResource Include="Icons\user_orange.png" />
+    <EmbeddedResource Include="Icons\user_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\pawn_glass_blue.png" />
+    <EmbeddedResource Include="Icons\pawn_glass_green.png" />
+    <EmbeddedResource Include="Icons\pawn_glass_red.png" />
+    <EmbeddedResource Include="Icons\pawn_glass_yellow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

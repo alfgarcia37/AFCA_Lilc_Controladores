@@ -38,7 +38,14 @@ namespace Afca.Data.Access {
 }
                                 ,new string[]{"Controlador"});
         }
-        
+        public ControladorProgresoData LoadControladorProgresoData()
+        {
+            return (ControladorProgresoData)this.ExecuteDataSet(new ControladorProgresoData()
+                                 , "sp_ControladoresEnProgreso_select"
+                                 , CommandType.StoredProcedure
+                                 , null
+                                 , new string[] { "Controlador" });
+        }
         public int DeleteControladorDataByID(int argId) {
             return  this.ExecuteNonQuery(
                                 "sp_Controlador_deleteByID"                                
@@ -56,6 +63,7 @@ namespace Afca.Data.Access {
                                 ,"sp_Controlador_delete"));
             return this.UpdateDataSet(updateInfo);
         }
+
 
     }
 }
