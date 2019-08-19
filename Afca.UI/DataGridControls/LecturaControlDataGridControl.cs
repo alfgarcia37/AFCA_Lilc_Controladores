@@ -34,8 +34,10 @@ namespace Afca.UI
         protected override void InitializeAppearance()
         {
             base.InitializeAppearance();
+            ControlsThemeBuilder.GridMakeUp(this.ultraGridData,
+             ThemeColor.Verde);
             ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0],
-                ThemeColor.Azul);
+                ThemeColor.Verde);
             SetDataGridFilters();
         }
         void InitializeDropDowns()

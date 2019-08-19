@@ -35,7 +35,15 @@ namespace Afca.Services {
         
         public LecturaControlData LoadLecturaControlDataByParent(ItemData itemParent) {
 
-            return lecturaControlDA.LoadLecturaControlData();
+            switch (itemParent.Name)
+            {
+                case "EnProgresoControlador":
+                    return lecturaControlDA.LoadLecturaControlDataByControladorID(
+                            int.Parse(itemParent.ItemColumns["CodigoControlador"].Data.Value.ToString()));
+                default:
+                    return lecturaControlDA.LoadLecturaControlData();
+
+            }
         }
         
         public int DeleteLecturaControlDataByID(string argEstablo) {

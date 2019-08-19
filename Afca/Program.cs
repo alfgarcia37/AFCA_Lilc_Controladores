@@ -16,18 +16,17 @@ namespace Afca
         static void Main()
         {
             FrameworkForge.UI.ApplicationContext.Run();
-            //Encrypt();
         }
         static void Encrypt()
         {
-            string conectionString = @"Server=DELL;Database=reggen;Integrated Security=True;";
+            string conectionString = @"Server=localhost\SQL_2K12;Database=reggen;Integrated Security=True;";
             string cencrypted = Encriptador.Encrypt(conectionString, false);
             Console.WriteLine(cencrypted);
             Console.ReadLine();
         }
         static void Decrypt()
         {
-            string cdecrypted = Encriptador.Decrypt("hs3sv1dUaSDnW1bcIpOpCHMWHAgZ5n4CBhpFRV+4OsPco9wH1oLMCiWuN1TlCOGL25+kScOoOP0hl46AQ2IWPqNgz+gRNXgHY+owO7Re4P4=");
+            string cdecrypted = Encriptador.Decrypt("gZziQZqwgFz8m+jB9Y3Me5ZPqyFCdJ9zzzSE6Tq9/iWg69dVXCdbdptGR4x5PhY32J/ZPIM289BOyIhmgbeqzg=");
             Console.WriteLine(string.Format("Afca.xps15: {0}", cdecrypted));
             Console.ReadLine();
         }
