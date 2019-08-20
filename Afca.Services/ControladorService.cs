@@ -34,7 +34,16 @@ namespace Afca.Services {
         }
         public ControladorProgresoData LoadControladorProgresoData(Item itemParent)
         {
-            return controladorDA.LoadControladorProgresoData();
+            switch (itemParent.Name)
+            {
+                case "LecturasEnProgreso":
+                    return controladorDA.LoadControladorProgresoData();
+                case "LecturasFinalizadas":
+                    return controladorDA.LoadControladorProgresoData(true);
+                default:
+                    return null;
+            }
+            
         }
         public int DeleteControladorDataByID(int argId) {
             return controladorDA.DeleteControladorDataByID(argId);

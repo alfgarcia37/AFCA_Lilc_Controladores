@@ -38,7 +38,7 @@ namespace Afca.Data.Access {
 }
                                 ,new string[]{"Controlador"});
         }
-        public ControladorProgresoData LoadControladorProgresoData()
+        public ControladorProgresoData LoadControladorProgresoData(bool lecturasFinalizadas=false)
         {
             return (ControladorProgresoData)this.ExecuteDataSet(new ControladorProgresoData()
                                  , "sp_ControladoresEnProgreso_select"

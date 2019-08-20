@@ -37,7 +37,8 @@ namespace Afca.Services {
 
             switch (itemParent.Name)
             {
-                case "EnProgresoControlador":
+                case "ControladorEnProgreso":
+                case "ControladorFinalizada":
                     return lecturaControlDA.LoadLecturaControlDataByControladorID(
                             int.Parse(itemParent.ItemColumns["CodigoControlador"].Data.Value.ToString()));
                 default:

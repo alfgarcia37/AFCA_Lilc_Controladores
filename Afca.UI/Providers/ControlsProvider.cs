@@ -139,10 +139,18 @@ namespace Afca.UI
         #region Lecturas
         public static void ShowLecturaControlDataGrid(ItemData itContainer)
         {
-            ShowControlInForm(
-                "Lecturas"
-                , "IconoControlador"
-                , new LecturaControlDataGridControl(itContainer));
+            if (itContainer.MetaData.ItemType == ItemType.Leaf)
+                ShowControlInForm(
+                                "Lecturas"
+                                , "IconoControlador"
+                                , new LecturaControlDataGridControl(itContainer
+                                , int.Parse(itContainer.ItemColumns["CodigoControlador"].Data.Value.ToString())));
+            else
+
+                ShowControlInForm(
+                    "Lecturas"
+                    , "IconoControlador"
+                    , new LecturaControlDataGridControl(itContainer));
         }
         public static void ShowLecturaPropertiesByItem(ItemData itLectura)
         {
