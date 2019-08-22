@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[PROVEEDORES] (
+    [ID]        CHAR (3)  NULL,
+    [DET]       CHAR (50) NULL,
+    [CIFNIF]    CHAR (9)  NULL,
+    [DIRECCION] CHAR (50) NULL,
+    [LOCALIDAD] CHAR (35) NULL,
+    [PROVINCIA] CHAR (15) NULL
+);
+

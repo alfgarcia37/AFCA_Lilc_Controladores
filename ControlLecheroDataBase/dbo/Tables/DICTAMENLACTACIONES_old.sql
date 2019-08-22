@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[DICTAMENLACTACIONES_old] (
+    [ID]  CHAR (2)  NULL,
+    [DET] CHAR (50) NULL
+);
+

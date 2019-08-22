@@ -54,5 +54,10 @@ namespace Afca.Services {
         public int UpdateLecturaControlData(LecturaControlData data) {
             return lecturaControlDA.UpdateLecturaControlData(data);
         }
+
+        public void UpdateLecturaControlEstado(string argEstablo, int estado)
+        {
+            lecturaControlDA.UpdateLecturaControlEstado(argEstablo,estado);
+        }
     }
 }

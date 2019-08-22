@@ -51,5 +51,9 @@ namespace Afca.Services {
         public int UpdateControladorData(ControladorData data) {
             return controladorDA.UpdateControladorData(data);
         }
+        public void PrepareNextLecturasLote(int codigoControlador)
+        {
+            controladorDA.PrepareNextLecturasLote(codigoControlador);
+        }
     }
 }

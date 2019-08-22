@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[VACASMUERTAS] (
+    [ID]            CHAR (14)     NULL,
+    [DET]           CHAR (30)     NULL,
+    [ESTABLOMAES]   CHAR (7)      NULL,
+    [CONTROLADOR]   INT           NULL,
+    [ULTIMOCONTROL] SMALLDATETIME NULL,
+    [FECHABAJAAFCA] SMALLDATETIME NULL,
+    [ESTABLOREG]    CHAR (7)      NULL,
+    [ESTADO]        CHAR (1)      NULL,
+    [FECHABAJARIIA] SMALLDATETIME NULL,
+    [MOTIVOAFCA]    CHAR (7)      NULL,
+    [ESTABLORIIA]   CHAR (14)     NULL,
+    [MOTIVORIIA]    CHAR (7)      NULL
+);
+

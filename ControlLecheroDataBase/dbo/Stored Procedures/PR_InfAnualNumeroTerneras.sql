@@ -1,0 +1,255 @@
+﻿
+
+
+
+
+
+
+
+CREATE PROCEDURE PR_InfAnualNumeroTerneras
+
+ (@ESTABLO char(7),@DESDE SMALLDATETIME,@HASTA SMALLDATETIME ) 
+AS
+
+
+
+DECLARE @NUM_ESTABLOS INT
+DECLARE @NUM_VACAS REAL,@NUM_VACAS6 INT,@NUM_VACAS12 INT,@NUM_VACAS24 INT
+
+IF @ESTABLO<>' '
+BEGIN
+ 	/*===========TERNERAS ESTABLO TRAMOS=====================*/
+	/* ....CANTABRIA.........TERNERAS DE 0 A 6 MESES */	
+	DECLARE C2 CURSOR  FOR
+	SELECT count(*)
+	FROM RegGen..ANIMALES
+	WHERE 
+	GANPRO=@ESTABLO
+	AND NUMLAC=0 and AÑOBAJ=0
+	AND  SEXO='H'
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>=0
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=6
+	AND (CASE WHEN NUMERO >'01868130'    THEN CODIGOIdentif 
+	ELSE (PAIS+SEXO+PROANI+NUMERO) END) not in(select Maes_Gen from maestro where maes_estado<>'0')
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @NUM_VACAS6
+	
+	CLOSE C2
+	DEALLOCATE C2
+	/* ....CANTABRIA.........TERNERAS DE 6 A 12 MESES */	
+	DECLARE C2 CURSOR  FOR
+	SELECT count(*)
+	FROM RegGen..ANIMALES
+	WHERE 
+	GANPRO=@ESTABLO
+	AND NUMLAC=0 and AÑOBAJ=0
+	AND  Sexo='H'
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>6
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=12
+	AND (CASE WHEN NUMERO >'01868130'    THEN CODIGOIdentif 
+	ELSE (PAIS+SEXO+PROANI+NUMERO) END) not in(select Maes_Gen from maestro where maes_estado<>'0')
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @NUM_VACAS12
+	
+	CLOSE C2
+	DEALLOCATE C2
+	/* ....CANTABRIA.........TERNERAS DE  12 A 24 MESES============================== */	
+
+	DECLARE C2 CURSOR  FOR
+	SELECT count(*)
+	FROM RegGen..ANIMALES
+	WHERE 
+	GANPRO=@ESTABLO
+	AND NUMLAC=0 and AÑOBAJ=0
+	AND  Sexo='H'
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>12
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=24
+	AND (CASE WHEN NUMERO >'01868130'    THEN CODIGOIdentif 
+	ELSE (PAIS+SEXO+PROANI+NUMERO) END) not in(select Maes_Gen from maestro where maes_estado<>'0')
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @NUM_VACAS24
+	
+	CLOSE C2
+	DEALLOCATE C2
+	SELECT @NUM_VACAS6 AS VACAS6,@NUM_VACAS12 AS VACAS12,@NUM_VACAS24 AS VACAS24
+END
+ELSE
+	BEGIN
+	/*===========TERNERAS CANTABRIA TRAMOS=====================*/
+	
+	declare C1 cursor for 
+	SELECT COUNT(DISTINCT MAES_TIT) FROM MAESTRO,LECTURASCONTROL
+	WHERE FBAJA IS  NULL
+	AND MAES_TIT=ESTABLO
+	AND TAMANOESTABLO IS NOT NULL
+	OPEN  C1 
+	FETCH NEXT FROM C1 INTO @NUM_ESTABLOS
+	/* ....CANTABRIA.........TERNERAS DE 0 A 6 MESES */	
+	DECLARE C2 CURSOR  FOR
+	SELECT count(*)/@NUM_ESTABLOS
+	FROM RegGen..ANIMALES,LECTURASCONTROL
+	WHERE 
+	GANPRO=ESTABLO
+	AND FBAJA IS  NULL
+	AND TAMANOESTABLO IS NOT NULL
+	AND NUMLAC=0 and AÑOBAJ=0
+	AND  SEXO='H'
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>=0
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=6
+	AND (CASE WHEN NUMERO >'01868130'    THEN CODIGOIdentif 
+	ELSE (PAIS+SEXO+PROANI+NUMERO) END) not in(select Maes_Gen from maestro where maes_estado<>'0')
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @NUM_VACAS
+	
+		UPDATE INFORMEANUAL SET VALOR=@NUM_VACAS
+		WHERE GRUPO='CANTABRIA' 
+		AND CONCEPTO='MED TERNERAS EN EL ESTABLO(6)'
+			
+		CLOSE C2
+		DEALLOCATE C2
+	/* ....CANTABRIA.........TERNERAS DE 6 A 12 MESES */	
+	DECLARE C2 CURSOR  FOR
+	SELECT count(*)/@NUM_ESTABLOS
+	FROM RegGen..ANIMALES,LECTURASCONTROL
+	WHERE 
+	GANPRO=ESTABLO
+	AND FBAJA IS  NULL
+	AND TAMANOESTABLO IS NOT NULL
+	AND NUMLAC=0 and AÑOBAJ=0
+	AND  Sexo='H'
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>6
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=12
+	AND (CASE WHEN NUMERO >'01868130'    THEN CODIGOIdentif 
+	ELSE (PAIS+SEXO+PROANI+NUMERO) END) not in(select Maes_Gen from maestro where maes_estado<>'0')
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @NUM_VACAS
+	
+		UPDATE INFORMEANUAL SET VALOR=@NUM_VACAS
+		WHERE GRUPO='CANTABRIA' 
+		AND CONCEPTO='MED TERNERAS EN EL ESTABLO(12)'
+			
+		CLOSE C2
+		DEALLOCATE C2
+	/* ....CANTABRIA.........TERNERAS DE  12 A 24 MESES */	
+	DECLARE C2 CURSOR  FOR
+	SELECT count(*)/@NUM_ESTABLOS
+	FROM RegGen..ANIMALES,LECTURASCONTROL
+	WHERE 
+	GANPRO=ESTABLO
+	AND FBAJA IS  NULL
+	AND TAMANOESTABLO IS NOT NULL
+	AND NUMLAC=0 and AÑOBAJ=0
+	AND  Sexo='H'
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>12
+	AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=24
+	AND (CASE WHEN NUMERO >'01868130'    THEN CODIGOIdentif 
+	ELSE (PAIS+SEXO+PROANI+NUMERO) END) not in(select Maes_Gen from maestro where maes_estado<>'0')
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @NUM_VACAS
+	
+		UPDATE INFORMEANUAL SET VALOR=@NUM_VACAS
+		WHERE GRUPO='CANTABRIA' 
+		AND CONCEPTO='MED TERNERAS EN EL ESTABLO(24)'
+			
+		CLOSE C2
+		DEALLOCATE C2
+	CLOSE C1
+	DEALLOCATE C1
+	
+	/*=============TERNERAS TRAMOS==========================*/
+	
+	DECLARE @TAMANOESTABLO CHAR(1)
+	
+	declare C1 cursor for 
+	SELECT TAMANOESTABLO,COUNT(DISTINCT ESTABLO) FROM LECTURASCONTROL
+	WHERE TAMANOESTABLO>0
+	AND FBAJA IS  NULL
+	GROUP BY TAMANOESTABLO
+	
+	OPEN  C1 
+	FETCH NEXT FROM C1 INTO @TAMANOESTABLO,@NUM_ESTABLOS
+	WHILE (@@FETCH_STATUS=0)
+	BEGIN
+		/* TERNERAS DE 0 A 6 MESES */	
+		DECLARE C2 CURSOR  FOR
+		SELECT COUNT(*)/@NUM_ESTABLOS
+		FROM RegGen..ANIMALES,LECTURASCONTROL
+		Where 
+		GANPRO=ESTABLO
+		AND FBAJA IS  NULL
+		AND  TAMANOESTABLO=@TAMANOESTABLO
+		AND NUMLAC=0 and AÑOBAJ=0
+		AND Sexo='H'
+		AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>=0
+		AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=6
+		OPEN C2
+		FETCH NEXT FROM C2 INTO @NUM_VACAS
+		UPDATE INFORMEANUAL SET VALOR=@NUM_VACAS
+		WHERE GRUPO='TRAMO'  + CAST(@TAMANOESTABLO as char(1)) 
+		AND CONCEPTO='MED TERNERAS EN EL ESTABLO(6)'
+		CLOSE C2
+		DEALLOCATE C2
+	
+		/* TERNERAS DE 6 A 12 MESES */	
+		DECLARE C2 CURSOR  FOR
+		SELECT count(*)/@NUM_ESTABLOS
+		FROM RegGen..ANIMALES,LECTURASCONTROL
+		Where 
+		GANPRO=ESTABLO
+		AND FBAJA IS  NULL
+		AND  TAMANOESTABLO=@TAMANOESTABLO
+		AND NUMLAC=0 and AÑOBAJ=0
+		AND Sexo='H'
+		AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>6
+		AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=12
+		
+		OPEN C2
+		FETCH NEXT FROM C2 INTO @NUM_VACAS
+		UPDATE INFORMEANUAL SET VALOR=@NUM_VACAS
+		WHERE GRUPO='TRAMO'  + CAST(@TAMANOESTABLO as char(1)) 
+		AND CONCEPTO='MED TERNERAS EN EL ESTABLO(12)'
+			
+		CLOSE C2
+		DEALLOCATE C2
+		/* TERNERAS DE 12  A 24 MESES */	
+		DECLARE C2 CURSOR  FOR
+		SELECT count(*)/@NUM_ESTABLOS
+		FROM RegGen..ANIMALES,LECTURASCONTROL
+		Where 
+		GANPRO=ESTABLO
+		AND FBAJA IS  NULL
+		AND  TAMANOESTABLO=@TAMANOESTABLO
+		AND NUMLAC=0 and AÑOBAJ=0
+		AND Sexo='H'
+		AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())>12
+		AND DATEDIFF(month, cast(DIANA1 as char(2)) + '/' + cast(MESNA1 as char(2)) + '/'+ cast(AÑONA1 as char(4)), getdate())<=24
+		
+		OPEN C2
+		FETCH NEXT FROM C2 INTO @NUM_VACAS
+		UPDATE INFORMEANUAL SET VALOR=@NUM_VACAS
+		WHERE GRUPO='TRAMO'  + CAST(@TAMANOESTABLO as char(1)) 
+		AND CONCEPTO='MED TERNERAS EN EL ESTABLO(24)'
+			
+		CLOSE C2
+		DEALLOCATE C2
+	FETCH NEXT FROM C1 INTO @TAMANOESTABLO,@NUM_ESTABLOS
+		
+	END
+	
+	CLOSE C1
+	DEALLOCATE C1
+	
+
+END
+
+
+
+
+
+

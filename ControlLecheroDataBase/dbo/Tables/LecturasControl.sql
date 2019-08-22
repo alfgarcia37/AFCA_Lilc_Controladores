@@ -1,0 +1,47 @@
+﻿CREATE TABLE [dbo].[LecturasControl] (
+    [NumControler]              INT           NULL,
+    [Establo]                   CHAR (7)      NOT NULL,
+    [Dia]                       INT           NULL,
+    [Estados]                   CHAR (1)      NOT NULL,
+    [Orden]                     CHAR (1)      CONSTRAINT [DF_LecturasControl_Orden] DEFAULT ((0)) NULL,
+    [VacasControl]              INT           NULL,
+    [FPrevista]                 SMALLDATETIME NULL,
+    [FControlador]              SMALLDATETIME NULL,
+    [Falta]                     SMALLDATETIME NULL,
+    [Fbaja]                     SMALLDATETIME NULL,
+    [LoginID]                   CHAR (20)     NULL,
+    [FechaID]                   DATETIME      NULL,
+    [Observaciones]             CHAR (200)    NULL,
+    [TipoControl]               CHAR (2)      NULL,
+    [informe]                   CHAR (1)      NULL,
+    [usuario]                   CHAR (15)     NULL,
+    [fusuario]                  SMALLDATETIME NULL,
+    [tamanoestablo]             CHAR (1)      NULL,
+    [SUMINISTRADATOS]           CHAR (1)      CONSTRAINT [DF_LecturasControl_SUMINISTRADATOS] DEFAULT ('1') NULL,
+    [QuitarNombreVaca]          CHAR (1)      NULL,
+    [NombreVaca]                CHAR (200)    NULL,
+    [NumLote]                   INT           NULL,
+    [SMS]                       CHAR (1)      NULL,
+    [Movil]                     CHAR (9)      NULL,
+    [Mail]                      CHAR (50)     NULL,
+    [PARIMPAR]                  CHAR (1)      CONSTRAINT [DF_LecturasControl_PARIMPAR] DEFAULT ('0') NULL,
+    [QUINCENA]                  CHAR (1)      NULL,
+    [EnviarMail]                CHAR (1)      NULL,
+    [MedidoresDigitales]        VARCHAR (10)  NULL,
+    [ListadoMedidoresDigitales] CHAR (1)      NULL,
+    [Asignado]                  INT           NULL,
+    [km]                        REAL          NULL,
+    [ListadoSoloMail]           CHAR (1)      NULL,
+    [ObsMedidor]                VARCHAR (100) NULL,
+    [Reproductivo]              CHAR (1)      NULL,
+    [Suelo]                     CHAR (2)      NULL,
+    [Amarre]                    CHAR (1)      NULL,
+    [Cetosis]                   CHAR (1)      NULL,
+    [Frison]                    CHAR (1)      NULL,
+    CONSTRAINT [pk_lecturas_control] PRIMARY KEY CLUSTERED ([Establo] ASC)
+);
+
+
+GO
+EXECUTE sp_addextendedproperty @name = N'MS_Description', @value = N'PAR=2,IMPAR=1,0=NADA', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'TABLE', @level1name = N'LecturasControl', @level2type = N'COLUMN', @level2name = N'PARIMPAR';
+

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[CONFORMACIONCRIA] (
+    [ID]  CHAR (2)  NULL,
+    [DET] CHAR (30) NULL
+);
+

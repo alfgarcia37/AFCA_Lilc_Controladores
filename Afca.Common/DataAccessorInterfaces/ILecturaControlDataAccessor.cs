@@ -23,5 +23,6 @@ namespace Afca.Common.DataAccessor {
         int DeleteLecturaControlDataByID(string argEstablo);
         
         int UpdateLecturaControlData(LecturaControlData data);
+        void UpdateLecturaControlEstado(string argEstablo, int estado);
     }
 }

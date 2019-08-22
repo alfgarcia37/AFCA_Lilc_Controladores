@@ -1,0 +1,56 @@
+﻿
+
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[PR_GenerarTamanos]
+	(
+	@T1 int,
+	@T2 int
+		)
+AS
+	/* SET NOCOUNT ON  */
+
+DECLARE @MAES_TIT CHAR(7),@TamanoEstablo  INT,@TRAMO CHAR(1)
+/*DECLARE @RES_TIT CHAR(7),@RES_NP INT,@RES_NC INT,@RES_FPREV SMALLDATETIME*/
+
+declare C1 cursor for 
+SELECT MAES_TIT,COUNT(*) FROM MAESTRO
+WHERE 
+MAES_ESTADO<>'0'
+GROUP BY MAES_TIT
+
+
+OPEN  C1 
+FETCH NEXT FROM C1 INTO @MAES_TIT,@TamanoEstablo 
+WHILE (@@FETCH_STATUS=0)
+  BEGIN
+	IF @TamanoEstablo <@T1 
+		BEGIN
+			SET @TRAMO='1'
+		END
+	IF @TamanoEstablo >=@T1  AND @TamanoEstablo <=@T2 
+		BEGIN
+			SET @TRAMO='2'
+		END
+	IF @TamanoEstablo >@T2 
+		BEGIN
+			SET @TRAMO='3'
+		END
+			
+	UPDATE LECTURASCONTROL
+	SET TAMANOESTABLO=@TRAMO,
+	VACASCONTROL=@TamanoEstablo
+	WHERE ESTABLO=@MAES_TIT
+	FETCH NEXT FROM C1 INTO  @MAES_TIT,@TamanoEstablo
+
+ END
+
+CLOSE C1
+DEALLOCATE C1
+
+
+

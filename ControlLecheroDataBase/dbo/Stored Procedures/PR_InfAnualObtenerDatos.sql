@@ -1,0 +1,17 @@
+﻿
+
+
+
+
+
+
+CREATE PROCEDURE PR_InfAnualObtenerDatos AS
+
+SELECT * FROM INFORMEANUAL
+ORDER BY ORDEN
+
+
+
+
+
+

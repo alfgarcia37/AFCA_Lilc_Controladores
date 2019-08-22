@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[NUMGEN_DIB_MENOR_01868130] (
+    [ESTABLOACTUAL] CHAR (7)  NULL,
+    [NUMGEN]        CHAR (14) NULL,
+    [DIB]           CHAR (14) NULL,
+    [CONTROLADOR]   INT       NULL
+);
+

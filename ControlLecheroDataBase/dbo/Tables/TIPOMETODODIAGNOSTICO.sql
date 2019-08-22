@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TIPOMETODODIAGNOSTICO] (
+    [ID]  CHAR (1)  NULL,
+    [DET] CHAR (30) NULL
+);
+

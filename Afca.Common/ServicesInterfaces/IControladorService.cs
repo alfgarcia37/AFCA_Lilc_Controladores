@@ -26,5 +26,6 @@ namespace Afca.Common.ServicesInterfaces {
         int DeleteControladorDataByID(int argId);
         
         int UpdateControladorData(ControladorData data);
+        void PrepareNextLecturasLote(int codigoControlador);
     }
 }

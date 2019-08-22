@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[CIERRESVACAS] (
+    [FECHACIERRE]  SMALLDATETIME NULL,
+    [TIPOCONSULTA] CHAR (5)      NULL,
+    [VACA]         CHAR (14)     NULL,
+    [USUARIO]      CHAR (10)     NULL,
+    [VALOR]        CHAR (100)    NULL,
+    [ESTABLO]      CHAR (7)      NULL,
+    [CONTROLADOR]  INT           NULL,
+    [FECHAINCID]   SMALLDATETIME NULL
+);
+

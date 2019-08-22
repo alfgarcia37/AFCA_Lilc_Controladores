@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[XMLTF] (
+    [TERMINAL]           VARCHAR (15) NULL,
+    [CONTROLADOR_NOMBRE] VARCHAR (50) NULL,
+    [CONTROLADOR_NUMERO] CHAR (3)     NULL,
+    [LICENCIA]           BIT          NOT NULL
+);
+

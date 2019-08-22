@@ -9,10 +9,11 @@ namespace Afca.Common
     public enum EstadoLectura
     {
         Leido=0,
-        Planificado=1,
+        Planificar=1,
         EnCurso=2,
         Replanificado=3,
         NoLeido=4,
-        EnTerminal=5
+        EnTerminal=5,
+        EnBuzon=6
     }
 }

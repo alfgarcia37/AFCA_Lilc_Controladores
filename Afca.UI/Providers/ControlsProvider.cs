@@ -174,6 +174,63 @@ namespace Afca.UI
                     (EstadoLectura)int.Parse(estadoId))
                 , new LecturaPropertiesControl(lecturaRow["Establo"].ToString(),estadoId));
         }
+        public static void SetLecturaStateToPlanificar(ItemData itLectura)
+        {
+            try
+            {
+                SetLecturaState(itLectura.ItemColumns["Establo"].Data.Value.ToString()
+                     , (int)EstadoLectura.Planificar);
+                itLectura.UserInterface.RefreshUI();
+                DialogsManager.ShowSuccessInfo("Resultado", "Estado actualizado correctamente!");
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Resultado",
+                    e.Message);
+            }
+        }
+        public static void SetLecturaStateToEnCurso(ItemData itLectura)
+        {
+            try
+            { 
+            SetLecturaState(itLectura.ItemColumns["Establo"].Data.Value.ToString()
+                 , (int)EstadoLectura.EnCurso);
+            itLectura.UserInterface.RefreshUI();
+            DialogsManager.ShowSuccessInfo("Resultado", "Estado actualizado correctamente!");
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Resultado",
+                    e.Message);
+            }
+        }
+        public static void SetLecturasSiguienteLote(ItemData item)
+        {
+            try
+            { 
+            int codigoControlador = -1;
+
+            if (item.ItemColumns.ContainsKey("NumControler"))
+                codigoControlador = int.Parse(item.ItemColumns["NumControler"].Data.Value.ToString());
+            else if (((ItemData)item.Parent).ItemColumns.ContainsKey("CodigoControlador"))
+                codigoControlador =
+                    int.Parse(((ItemData)item.Parent).ItemColumns["CodigoControlador"].Data.Value.ToString());
+
+            IControladorService controladorSrv = AfcaServiceProvider.GetControladorService();
+            controladorSrv.PrepareNextLecturasLote(codigoControlador);
+            DialogsManager.ShowSuccessInfo("Resultado", "Lote generado correctamente!");
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Resultado",
+                    e.Message);
+            }
+        }
+        public static void SetLecturaState(string argEstablo,int estado)
+        {
+            ILecturaControlService lecturaControlSrv= AfcaServiceProvider.GetLecturaControlService();
+            lecturaControlSrv.UpdateLecturaControlEstado(argEstablo, estado);
+        }
         #endregion
 
     }

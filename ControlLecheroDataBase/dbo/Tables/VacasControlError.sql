@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[VacasControlError] (
+    [VACA]                  CHAR (14)     NULL,
+    [ESTABLO]               CHAR (7)      NULL,
+    [CONTROLADOR]           INT           NULL,
+    [FPREVISTA]             SMALLDATETIME NULL,
+    [FCONTROL]              SMALLDATETIME NULL,
+    [FBAJAAFCA]             SMALLDATETIME NULL,
+    [FBAJARIIA]             SMALLDATETIME NULL,
+    [FIMPRESIONCARTA]       SMALLDATETIME NULL,
+    [FRESPUESTACONTROLADOR] SMALLDATETIME NULL,
+    [RESPUESTACONTROLADOR]  VARCHAR (500) NULL,
+    [NOTASAFCA]             VARCHAR (500) NULL,
+    [USUARIOELIMINACION]    VARCHAR (50)  NULL,
+    [USUARIORESPUESTA]      VARCHAR (50)  NULL,
+    [CONFORME]              CHAR (1)      NULL,
+    [NOMBRE]                VARCHAR (50)  NULL
+);
+

@@ -104,6 +104,9 @@ namespace Afca.Common
             controladorNode.IconMapper.Mapping.Add("1", "IconoControladorWarning");
 
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                      "SetLecturasSiguienteLote", "Siguiente Lote..."
+                                      , ItemMethodType.Properties, "IconoNext"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
 
@@ -150,14 +153,14 @@ namespace Afca.Common
 
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                   "SetLecturaStateToPlanificar", "Planificar..."
-                                                  , ItemMethodType.Logic, "IconoPropiedades"));
+                                                  , ItemMethodType.Logic, "IconoLecturaPlanificada"));
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                   "SetLecturaStateToEnCurso", "En Curso..."
-                                                  , ItemMethodType.Properties, "IconoPropiedades"));
+                                                  , ItemMethodType.Properties, "IconoLecturaEnCurso"));
             lecturaNode.Methods.AddItemMethod(new ItemMethod(null,null,null,ItemMethodType.Separator,null));
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                   "SetLecturasSiguienteLote", "Siguiente Lote..."
-                                                  , ItemMethodType.Properties, "IconoPropiedades"));
+                                                  , ItemMethodType.Properties, "IconoNext"));
             lecturaNode.Methods.AddItemMethod(new ItemMethod(null, null, null, ItemMethodType.Separator, null));
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                             "ShowLecturaPropertiesByItem", "Editar lectura..."
@@ -189,7 +192,7 @@ namespace Afca.Common
             ItemMetaData controladorNode = new ItemMetaData("ControladorFinalizada");
             controladorNode.ItemType = ItemType.Leaf;
             controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
-            controladorNode.LoadMethod = "IControladorService,LoadControladorFinalizadaData";
+            controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
             controladorNode.DataTable = "Controlador";
             controladorNode.SortCriteria = "EnCurso ASC";
             controladorNode.ItemColumns.AddItemColumn(
@@ -211,6 +214,9 @@ namespace Afca.Common
             controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
             controladorNode.IconMapper.Mapping.Add("1", "IconoControladorWarning");
 
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                      "SetLecturasSiguienteLote", "Siguiente Lote..."
+                                      , ItemMethodType.Properties, "IconoNext"));
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                            "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                            , ItemMethodType.GridEdit, "IconoPropiedades"));
@@ -257,15 +263,15 @@ namespace Afca.Common
 
 
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-                                                  "SetLecturaStateToPlanificar", "Planificar..."
-                                                  , ItemMethodType.Logic, "IconoPropiedades"));
+                                       "SetLecturaStateToPlanificar", "Planificar..."
+                                       , ItemMethodType.Logic, "IconoLecturaPlanificada"));
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                   "SetLecturaStateToEnCurso", "En Curso..."
-                                                  , ItemMethodType.Properties, "IconoPropiedades"));
+                                                  , ItemMethodType.Properties, "IconoLecturaEnCurso"));
             lecturaNode.Methods.AddItemMethod(new ItemMethod(null, null, null, ItemMethodType.Separator, null));
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                   "SetLecturasSiguienteLote", "Siguiente Lote..."
-                                                  , ItemMethodType.Properties, "IconoPropiedades"));
+                                                  , ItemMethodType.Properties, "IconoNext"));
             lecturaNode.Methods.AddItemMethod(new ItemMethod(null, null, null, ItemMethodType.Separator, null));
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                             "ShowLecturaPropertiesByItem", "Editar lectura..."

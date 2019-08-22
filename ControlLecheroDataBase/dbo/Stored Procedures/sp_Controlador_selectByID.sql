@@ -1,0 +1,45 @@
+﻿CREATE PROCEDURE [dbo].[sp_Controlador_selectByID]
+(
+@Id int 
+)
+AS
+--Stored procedure created by FrameworkForge generator tool at 15/04/2019 13:30:25. Copyright : Fernando Pérez Pla.
+select 
+[NUCLEO] [Nucleo] 
+,[ID] [Id] 
+,[DET] [Nombre] 
+,[PROVINCIA] [Provincia] 
+,[LOCALIDAD] [Localidad] 
+,[DIRECCION] [Direccion] 
+,[CP] [CodigoPostal] 
+,[DNINIF] [NIF] 
+,[TELEFONO1] [Telefono1] 
+,[TELEFONO2] [Telefono2] 
+,[FAlta] [FechaAlta] 
+,[FBaja] [FechaBaja] 
+,[ZONA] [Zona] 
+,[FNACTO] [FechaNacimiento] 
+,[MAIL] [Mail] 
+,[OBSERVACIONES] [Observaciones] 
+,[LoginID] [LoginID] 
+,[FechaID] [FechaID] 
+,[NumTerminal] [NumTerminal] 
+,[Cargo] [Cargo] 
+,[NumTerminalGral] [NumTerminalGral] 
+,[Empresa] [Empresa] 
+,[Numcuna] [NumCuna] 
+,[Entidad] [Entidad] 
+,[Oficina] [Oficina] 
+,[DC] [DC] 
+,[Cuenta] [Cuenta] 
+,[PrecioEstablo] [PrecioEstablo] 
+,[SeguridadSocial] [SeguridadSocial] 
+,[Sueldoglobal] [SueldoGlobal] 
+,[Medidores] [Medidores] 
+,[PuntoEntrega] [PuntoEntrega] 
+,[ParImpar] [ParImpar] 
+,[JORNADA] [Jornada] 
+,[KmPtoEntrega] [KmPtoEntrega] 
+from dbo.[CONTROLADORES]
+WHERE [ID]=@Id  
+
