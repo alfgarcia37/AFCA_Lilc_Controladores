@@ -6,7 +6,7 @@ CREATE PROCEDURE [dbo].[sp_LecturaControl_update_state]
    ,@Estado char(1) 
 )
 AS
---version 1 2019.08.22
+--version 1 2019.08.22 14:30
 
 update [dbo].[LecturasControl]
 SET [Estados]=@Estado

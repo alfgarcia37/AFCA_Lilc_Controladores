@@ -4,7 +4,7 @@ CREATE PROCEDURE  [dbo].[sp_ControladoresEnProgreso_select]
   @finalizadas tinyint=0
 )
 AS
---version 3 2019.08.22
+--version 3 2019.08.22 14:30
 
 declare @hoy datetime
 set @hoy=getdate()
