@@ -62,7 +62,7 @@ namespace Afca.Common
             ItemMetaData enProgresoNode = new ItemMetaData("EnProgreso");
             enProgresoNode.Text = "En Progreso";
             enProgresoNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
-            enProgresoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+            enProgresoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider", 
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
 

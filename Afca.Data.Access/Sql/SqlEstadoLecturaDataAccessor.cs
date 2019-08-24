@@ -54,6 +54,9 @@ namespace Afca.Data.Access {
                                 ,"sp_EstadoLectura_insert"
                                 ,"sp_EstadoLectura_update"
                                 ,"sp_EstadoLectura_delete"));
+
+
+
             return this.UpdateDataSet(updateInfo);
         }
     }

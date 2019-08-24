@@ -47,6 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\ClsGenerar.cs" />
+    <Compile Include="Clases\Helpers\ClsControl.cs" />
+    <Compile Include="Clases\Helpers\ClsInseminaciones.cs" />
+    <Compile Include="Clases\Helpers\ClsLecturasControl.cs" />
+    <Compile Include="Clases\Helpers\ClsMaestro.cs" />
+    <Compile Include="Clases\Helpers\ClsRCS.cs" />
+    <Compile Include="Clases\XMLs\ClsDatosXML.cs" />
+    <Compile Include="GenerarService.cs" />
     <Compile Include="ControladorService.cs" />
     <Compile Include="EstadoLecturaService.cs" />
     <Compile Include="GanaderiaService.cs" />
@@ -58,6 +66,10 @@
       <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
       <Name>Afca.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clases\DOWN\" />
+    <Folder Include="Clases\UP\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

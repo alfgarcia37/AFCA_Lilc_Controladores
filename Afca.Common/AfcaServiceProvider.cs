@@ -56,5 +56,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IGenerarService GetGenerarService()
+        {
+            try
+            {
+                return (IGenerarService)ServiceProvider.GetServiceInstance("IGenerarService");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

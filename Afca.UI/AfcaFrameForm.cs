@@ -13,15 +13,20 @@ using FrameworkForge.Common.DataStructures;
 using Infragistics.Win.UltraWinTabbedMdi;
 using Infragistics.Win.UltraWinDock;
 using FrameworkForge.UI.Interfaces;
+using Afca.Common;
+using Afca.Common.ServicesInterfaces;
+
 //using DairyCan.UI.SplashScreens;
 
 namespace Afca.UI
 {
     public partial class AfcaFrameForm : FrameForm
     {
+        private IGenerarService iSvrGenerar;
         #region Constructor & métodos de inicio
         public AfcaFrameForm()
         {
+            iSvrGenerar=  AfcaServiceProvider.GetGenerarService();
             InitializeComponent();
             dockGroupLeftExplorer = new DockableGroupPane();
             dockGroupLeftExplorer.ChildPaneStyle = ChildPaneStyle.TabGroup;
@@ -157,9 +162,13 @@ namespace Afca.UI
         {
             switch (e.Tool.Key)
             {
+                case "Generar":
+                    iSvrGenerar.GenerarXMLs();
+                    break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":
                     ControlsProvider.ShowAfcaExplorer();
+              
                     break;
             }
         }
@@ -169,5 +178,11 @@ namespace Afca.UI
         {
 
         }
+
+        #region variables
+        
+       
+        #endregion
     }
+    
 }

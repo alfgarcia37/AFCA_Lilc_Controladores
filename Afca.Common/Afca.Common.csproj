@@ -49,12 +49,24 @@
   <ItemGroup>
     <Compile Include="AfcaDataAccessorProvider.cs" />
     <Compile Include="AfcaServiceProvider.cs" />
+    <Compile Include="DataAccessorInterfaces\IXMLsDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IEstadoLecturaDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IGanaderiaDataAccessor.cs" />
     <Compile Include="DataSets\ControladorProgresoData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ControladorProgresoData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\EstadoLecturaData.cs">
+      <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\XmlData.cs">
+      <DependentUpon>XmlData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\XmlData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XmlData.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\EstadoLecturaData.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -67,6 +79,12 @@
       <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
     </Compile>
     <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ServicesInterfaces\IGenerarService.cs" />
     <Compile Include="Utilities\IconMapper.cs" />
     <Compile Include="ServicesInterfaces\IEstadoLecturaService.cs" />
     <Compile Include="ServicesInterfaces\IGanaderiaService.cs" />
@@ -99,6 +117,7 @@
     <EmbeddedResource Include="Icons\newRow.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="DataSets\ControladorData.xsc">
       <DependentUpon>ControladorData.xsd</DependentUpon>
     </None>
@@ -120,6 +139,17 @@
     </None>
     <None Include="DataSets\ControladorProgresoData.xss">
       <DependentUpon>ControladorProgresoData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\XmlData.xsc">
+      <DependentUpon>XmlData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\XmlData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>XmlData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\XmlData.xss">
+      <DependentUpon>XmlData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\EstadoLecturaData.xsc">
       <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
@@ -153,6 +183,10 @@
     </None>
     <None Include="DataSets\LecturaControlData.xss">
       <DependentUpon>LecturaControlData.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +230,7 @@
     <EmbeddedResource Include="Icons\pawn_glass_red.png" />
     <EmbeddedResource Include="Icons\pawn_glass_yellow.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"

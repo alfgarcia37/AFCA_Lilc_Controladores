@@ -58,5 +58,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IXmlDataAccessor GetXmlDataAccessor()
+        {
+            try
+            {
+                return (IXmlDataAccessor)DataAccessorProvider.GetDataAccessorInstance("IXmlsDataAccessor");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

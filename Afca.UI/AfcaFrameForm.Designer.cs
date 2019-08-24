@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar4 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("toolBarPrincipal");
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar2 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("toolBarPrincipal");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorer");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorerDetails");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Generar");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorer");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorerDetails");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Generar");
             this.appStylistRuntime = new Infragistics.Win.AppStyling.Runtime.AppStylistRuntime(this.components);
             this.ultraTabbedMdiManager = new Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ultraDockManager)).BeginInit();
@@ -55,36 +57,40 @@
             // 
             // _FrameFormUnpinnedTabAreaTop
             // 
-            this._FrameFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 27);
+            this._FrameFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 52);
             this._FrameFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1008, 0);
             // 
             // _FrameFormUnpinnedTabAreaRight
             // 
-            this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1008, 27);
-            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 679);
+            this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1008, 52);
+            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 654);
             // 
             // _FrameFormUnpinnedTabAreaLeft
             // 
-            this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 679);
+            this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 52);
+            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 654);
             // 
             // ultraToolbarsManager
             // 
             this.ultraToolbarsManager.MenuSettings.ForceSerialization = true;
-            ultraToolbar4.DockedColumn = 0;
-            ultraToolbar4.DockedRow = 0;
-            ultraToolbar4.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ultraToolbar2.DockedColumn = 0;
+            ultraToolbar2.DockedRow = 0;
+            ultraToolbar2.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool3,
-            buttonTool4});
-            ultraToolbar4.Text = "Barra principal";
+            buttonTool4,
+            buttonTool5});
+            ultraToolbar2.Text = "Barra principal";
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar4});
+            ultraToolbar2});
             this.ultraToolbarsManager.ToolbarSettings.ToolOrientation = Infragistics.Win.UltraWinToolbars.ToolOrientation.Horizontal;
             buttonTool1.SharedPropsInternal.Caption = "Ver explorador";
             buttonTool2.SharedPropsInternal.Caption = "Ver detalles del explorador";
+            buttonTool6.SharedPropsInternal.Caption = "Generar";
+            buttonTool6.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             this.ultraToolbarsManager.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool1,
-            buttonTool2});
+            buttonTool2,
+            buttonTool6});
             this.ultraToolbarsManager.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager_ToolClick);
             // 
             // ultraTabbedMdiManager
