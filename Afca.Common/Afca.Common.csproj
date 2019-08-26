@@ -231,7 +231,9 @@
     <EmbeddedResource Include="Icons\pawn_glass_red.png" />
     <EmbeddedResource Include="Icons\pawn_glass_yellow.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\entrada.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"

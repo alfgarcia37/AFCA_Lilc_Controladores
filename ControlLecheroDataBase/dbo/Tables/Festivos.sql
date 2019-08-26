@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Festivos] (
+    [ID]  SMALLDATETIME NULL,
+    [DET] NVARCHAR (30) NULL
+);
+

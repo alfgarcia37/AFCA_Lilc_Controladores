@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[ESTADOSVACA] (
+    [ID]  CHAR (1)  NULL,
+    [DET] CHAR (25) NULL
+);
+

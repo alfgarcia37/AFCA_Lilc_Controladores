@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[ControlAud] (
+    [EXPEDIENTE]        CHAR (10)     NULL,
+    [AUD_GEN]           CHAR (14)     NULL,
+    [AUD_DET]           CHAR (30)     NULL,
+    [AUD_KL]            REAL          NULL,
+    [AUD_TGR]           REAL          NULL,
+    [AUD_TPR]           REAL          NULL,
+    [AUD_TLA]           REAL          NULL,
+    [AUD_TRC]           REAL          NULL,
+    [AUD_TIT]           CHAR (7)      NULL,
+    [AUD_FCTR]          SMALLDATETIME NULL,
+    [AUD_FPREV]         SMALLDATETIME NULL,
+    [AUD_INC]           CHAR (2)      NULL,
+    [usuario]           CHAR (15)     NULL,
+    [fusuario]          SMALLDATETIME NULL,
+    [AUD_Observaciones] VARCHAR (200) NULL,
+    [CL_KL]             REAL          NULL,
+    [CL_TGR]            REAL          NULL,
+    [CL_TPR]            REAL          NULL,
+    [CL_TLA]            REAL          NULL,
+    [CL_TRC]            REAL          NULL,
+    [CL_INC]            CHAR (2)      NULL,
+    [ACTUALIZADOCL]     CHAR (1)      NULL,
+    [CL_FP]             SMALLDATETIME NULL
+);
+

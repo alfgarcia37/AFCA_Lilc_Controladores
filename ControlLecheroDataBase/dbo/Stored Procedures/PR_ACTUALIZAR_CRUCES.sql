@@ -1,0 +1,116 @@
+﻿-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[PR_ACTUALIZAR_CRUCES] 
+AS
+BEGIN
+	DECLARE @CODIGO CHAR(14),@FMUERTE SMALLDATETIME,@CEARIIA CHAR(14),@CEACRUCE CHAR(14),@numero smallint
+	DECLARE C1 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+	SELECT CIB   FROM [reggen].[dbo].[CRUCES_HEMBRAS]
+	WHERE  LEFT(GANPRO,1)='J' 
+	
+	
+	OPEN C1 
+	FETCH NEXT FROM C1 INTO @CODIGO
+	WHILE (@@FETCH_STATUS=0)
+	BEGIN
+		DECLARE C2 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+		SELECT an_fc_muerte
+		FROM v_sitranc.riia.dbo.t_animales
+		where an_id= @CODIGO
+		OPEN C2
+		FETCH NEXT FROM C2 INTO @FMUERTE
+		
+		IF @FMUERTE is not null
+		BEGIN
+		PRINT 'MUERTE ' + @CODIGO
+			UPDATE [reggen].[dbo].[CRUCES_HEMBRAS]
+			SET GANPRO='M300000',
+			ORIGEN=CONVERT(VarChar(17), GETDATE(), 103)
+			WHERE CIB=@CODIGO
+			
+		END
+		CLOSE C2
+		DEALLOCATE C2
+		FETCH NEXT FROM C1 INTO @CODIGO
+	END
+	CLOSE C1
+	DEALLOCATE C1
+END
+--SACO LAS FECHAS DE MUERTE PARA OVI
+--SELECT an_id,an_fc_muerte
+--		FROM v_sitranc.riia.dbo.t_animales
+--		where an_id IN (SELECT CIB COLLATE Modern_Spanish_CI_AS  FROM [reggen].[dbo].[CRUCES_HEMBRAS]
+--	WHERE  LEFT(GANPRO,1)='M'  AND ORIGEN='19/08/2016')
+
+
+
+--vacas que han salido de una explotacion a otra de cantabria
+	DECLARE C1 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+	SELECT  ea_id,ea_explotacion
+	FROM [V_SITRANC].[riia].[dbo].[t_explot_animal]
+	WHERE  ea_id  in  (select CIB COLLATE Modern_Spanish_CI_AS FROM [reggen].[dbo].[CRUCES_HEMBRAS] where origen='')
+	and (an_fc_salida IS NULL)
+	OPEN C1 
+	FETCH NEXT FROM C1 INTO @CODIGO,@CEARIIA
+	WHILE (@@FETCH_STATUS=0)
+	BEGIN
+		DECLARE C2 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+		SELECT NUMSANITARIO
+		FROM [reggen].[dbo].[CRUCES_HEMBRAS],[reggen].[dbo].[GANADERIAS_MAESTRO]
+		where CIB= @CODIGO
+		AND GANPRO=CODGAN
+		OPEN C2
+		FETCH NEXT FROM C2 INTO @CEACRUCE
+		
+		IF @CEACRUCE<>@CEARIIA
+		BEGIN
+			PRINT 'ESTA MAL ' + @CODIGO
+			UPDATE [reggen].[dbo].[CRUCES_HEMBRAS]
+			SET GANPRO='V010000',
+			ORIGEN=CONVERT(VarChar(17), GETDATE(), 103)
+			WHERE CIB=@CODIGO
+		END
+		CLOSE C2
+		DEALLOCATE C2
+		FETCH NEXT FROM C1 INTO @CODIGO,@CEARIIA
+	END
+	CLOSE C1
+	DEALLOCATE C1
+	
+	--vacas uqe han salido de la explotacion a cualquier lugar
+	DECLARE C1 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+	SELECT CIB,NUMSANITARIO
+	FROM [reggen].[dbo].[CRUCES_HEMBRAS],[reggen].[dbo].[GANADERIAS_MAESTRO]
+	where GANPRO=CODGAN AND LEFT(GANPRO,1)='J' AND origen=''
+	ORDER BY CIB
+	
+	OPEN C1 
+	FETCH NEXT FROM C1 INTO @CODIGO,@CEACRUCE
+	WHILE (@@FETCH_STATUS=0)
+	BEGIN
+		DECLARE C2 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+		SELECT  COUNT(*)
+		FROM [V_SITRANC].[riia].[dbo].[t_explot_animal]
+		WHERE  ea_id=@CODIGO
+		AND ea_explotacion=@CEACRUCE
+		and (an_fc_salida IS NULL)
+		OPEN C2
+		FETCH NEXT FROM C2 INTO @numero
+		
+		IF @numero=0 --No esta en esa explotacion actualmente
+		BEGIN
+			PRINT 'no ESTA en establo hoy ' + @CODIGO
+			UPDATE [reggen].[dbo].[CRUCES_HEMBRAS]
+			SET GANPRO='V020000',
+			ORIGEN=CONVERT(VarChar(17), GETDATE(), 103)
+			WHERE CIB=@CODIGO
+		END
+		CLOSE C2
+		DEALLOCATE C2
+		FETCH NEXT FROM C1 INTO @CODIGO,@CEACRUCE
+	END
+	CLOSE C1
+	DEALLOCATE C1

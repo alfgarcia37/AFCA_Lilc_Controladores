@@ -1,0 +1,2 @@
+﻿CREATE USER [AFCADOM\Luzgar];
+

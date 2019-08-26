@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TIPOPARIMPAR] (
+    [ID]  CHAR (1)  NULL,
+    [DET] CHAR (10) NULL
+);
+

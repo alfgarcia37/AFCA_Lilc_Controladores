@@ -55,11 +55,16 @@ namespace Afca.Common
             ItemMetaData enProgresoNode = CreateLecturasEnProgresoTree();
             lecturasNode.Children.Add(enProgresoNode);
 
+            ItemMetaData finalizadasNode = CreateLecturasFinalizadasTree();
+            lecturasNode.Children.Add(finalizadasNode);
+
             return lecturasNode;
         }
+
+        #region Lecturas en progreso
         static ItemMetaData CreateLecturasEnProgresoTree()
         {
-            ItemMetaData enProgresoNode = new ItemMetaData("EnProgreso");
+            ItemMetaData enProgresoNode = new ItemMetaData("LecturasEnProgreso");
             enProgresoNode.Text = "En Progreso";
             enProgresoNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
             enProgresoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider", 
@@ -73,7 +78,7 @@ namespace Afca.Common
         }
         static ItemMetaData CreateEnProgresoControladoresNode()
         {
-            ItemMetaData controladorNode = new ItemMetaData("EnProgresoControlador");
+            ItemMetaData controladorNode = new ItemMetaData("ControladorEnProgreso");
             controladorNode.ItemType = ItemType.Leaf;
             controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
             controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
@@ -98,6 +103,13 @@ namespace Afca.Common
             controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
             controladorNode.IconMapper.Mapping.Add("1", "IconoControladorWarning");
 
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                      "SetLecturasSiguienteLote", "Siguiente Lote..."
+                                      , ItemMethodType.Properties, "IconoNext"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "ShowLecturaControlDataGrid", "Editar lecturas..."
+                                                            , ItemMethodType.GridEdit, "IconoPropiedades"));
+
             ItemMetaData lecturasControladorNode = CreateLecturasEnProgresoControladorNode();
             controladorNode.Children.Add(lecturasControladorNode);
 
@@ -105,7 +117,7 @@ namespace Afca.Common
         }
         static ItemMetaData CreateLecturasEnProgresoControladorNode()
         {
-            ItemMetaData lecturaNode = new ItemMetaData("LecturaControlador");
+            ItemMetaData lecturaNode = new ItemMetaData("LecturaEnProgreso");
             lecturaNode.ItemType = ItemType.Leaf;
             lecturaNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
             lecturaNode.IconMapper = new ItemIconMapper("Estado");
@@ -138,13 +150,138 @@ namespace Afca.Common
             lecturaNode.ItemColumns.AddItemColumn(
                          new ItemColumn("NumControler", "Controlador", false, false));
 
+
             lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-                                                        "ShowLecturaPropertiesByItem", "Editar lectura..."
-                                                        , ItemMethodType.Properties, "IconoPropiedades"));
+                                                  "SetLecturaStateToPlanificar", "Planificar..."
+                                                  , ItemMethodType.Logic, "IconoLecturaPlanificada"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                  "SetLecturaStateToEnCurso", "En Curso..."
+                                                  , ItemMethodType.Properties, "IconoLecturaEnCurso"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod(null,null,null,ItemMethodType.Separator,null));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                  "SetLecturasSiguienteLote", "Siguiente Lote..."
+                                                  , ItemMethodType.Properties, "IconoNext"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod(null, null, null, ItemMethodType.Separator, null));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                            "ShowLecturaPropertiesByItem", "Editar lectura..."
+                                            , ItemMethodType.Properties, "IconoPropiedades"));
+
             //Poder establecer el ancho de la columna
 
             return lecturaNode;
         }
+        #endregion
+
+        #region Lecturas finalizadas
+        static ItemMetaData CreateLecturasFinalizadasTree()
+        {
+            ItemMetaData finalizadasNode = new ItemMetaData("LecturasFinalizadas");
+            finalizadasNode.Text = "Finalizadas";
+            finalizadasNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            finalizadasNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "ShowLecturaControlDataGrid", "Editar lecturas..."
+                                                            , ItemMethodType.GridEdit, "IconoPropiedades"));
+
+            ItemMetaData detalleControladoresNode = CreateFinalizadasControladoresNode();
+            finalizadasNode.Children.Add(detalleControladoresNode);
+
+            return finalizadasNode;
+        }
+        static ItemMetaData CreateFinalizadasControladoresNode()
+        {
+            ItemMetaData controladorNode = new ItemMetaData("ControladorFinalizada");
+            controladorNode.ItemType = ItemType.Leaf;
+            controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
+            controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
+            controladorNode.DataTable = "Controlador";
+            controladorNode.SortCriteria = "EnCurso ASC";
+            controladorNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("CodigoControlador", "Código", true, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("Nombre", "Nombre", false, false, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("EnCurso", "En curso", false, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("EnTerminal", "En terminal", false, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("EnBuzon", "En buzón", false, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                    new ItemColumn("Warning", "Warning", false, false));
+            controladorNode.ItemColumns.AddItemColumn(
+                  new ItemColumn("Nota", "Nota", false, true));
+
+            controladorNode.IconMapper = new ItemIconMapper("Warning");
+            controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
+            controladorNode.IconMapper.Mapping.Add("1", "IconoControladorWarning");
+
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                      "SetLecturasSiguienteLote", "Siguiente Lote..."
+                                      , ItemMethodType.Properties, "IconoNext"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "ShowLecturaControlDataGrid", "Editar lecturas..."
+                                                           , ItemMethodType.GridEdit, "IconoPropiedades"));
+
+            ItemMetaData lecturasControladorNode = CreateLecturasFinalizadasControladorNode();
+            controladorNode.Children.Add(lecturasControladorNode);
+
+            return controladorNode;
+        }
+        static ItemMetaData CreateLecturasFinalizadasControladorNode()
+        {
+            ItemMetaData lecturaNode = new ItemMetaData("LecturaFinalizada");
+            lecturaNode.ItemType = ItemType.Leaf;
+            lecturaNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+            lecturaNode.IconMapper = new ItemIconMapper("Estado");
+            lecturaNode.IconMapper.Mapping.Add("0", "IconoLecturaLeida");
+            lecturaNode.IconMapper.Mapping.Add("1", "IconoLecturaPlanificada");
+            lecturaNode.IconMapper.Mapping.Add("2", "IconoLecturaEnCurso");
+            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaReplanificada");
+            lecturaNode.IconMapper.Mapping.Add("4", "IconoLecturaNoLeida");
+            lecturaNode.IconMapper.Mapping.Add("5", "IconoLecturaEnTerminal");
+
+            lecturaNode.LoadMethod = "ILecturaControlService,LoadLecturaControlDataByParent";
+            lecturaNode.DataTable = "LecturaControl";
+            lecturaNode.SortCriteria = "Estado DESC";
+            lecturaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("Establo", "Establo", true, false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("EstabloNombre", "Establo", false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Estado", "Estados", false, false));
+            lecturaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("EstadoNombre", "Estado", false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("FechaPrevista", "Fecha prevista", false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                         new ItemColumn("NumLote", "Lote", false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("TipoControl", "Tipo", false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                      new ItemColumn("VacasControl", "Numero", false, true));
+            lecturaNode.ItemColumns.AddItemColumn(
+                         new ItemColumn("NumControler", "Controlador", false, false));
+
+
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                       "SetLecturaStateToPlanificar", "Planificar..."
+                                       , ItemMethodType.Logic, "IconoLecturaPlanificada"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                  "SetLecturaStateToEnCurso", "En Curso..."
+                                                  , ItemMethodType.Properties, "IconoLecturaEnCurso"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod(null, null, null, ItemMethodType.Separator, null));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                  "SetLecturasSiguienteLote", "Siguiente Lote..."
+                                                  , ItemMethodType.Properties, "IconoNext"));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod(null, null, null, ItemMethodType.Separator, null));
+            lecturaNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                            "ShowLecturaPropertiesByItem", "Editar lectura..."
+                                            , ItemMethodType.Properties, "IconoPropiedades"));
+
+            return lecturaNode;
+        }
+        #endregion
+
+
         static ItemMetaData CreateLecturasTodasNode()
         {
             ItemMetaData todasNode = new ItemMetaData("Todas");

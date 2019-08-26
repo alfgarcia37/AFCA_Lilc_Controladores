@@ -1,0 +1,73 @@
+﻿-- Create date:14/05/2013
+CREATE PROCEDURE [dbo].[PR_HISTORICO_GANADERIAS]
+	
+AS
+DECLARE @wEstablo char(7),@wEstablo2 char(7),@FPrevista as smalldatetime,@FPrevista2 as smalldatetime,@FP_Actu as smalldatetime
+SET NOCOUNT ON;
+DELETE FROM HISTORICOGANADERIAS
+
+SET @wEstablo2='';SET @FPrevista2=NULL
+DECLARE C1 cursor  FOR
+SELECT ESTABLO,FPREVISTA FROM LECTURASFINALIZADAS
+--WHERE ESTABLO='J391694'
+ORDER BY ESTABLO,FPREVISTA
+OPEN C1
+FETCH NEXT FROM C1 INTO @wEstablo,@FPrevista
+SET @FPrevista2=@FPrevista
+--ESCRIBO EL PRIMER REG
+WHILE (@@FETCH_STATUS=0)
+BEGIN
+	IF @wEstablo2<>@wEstablo  ---- IF 1
+		BEGIN--ESCRIBO FALTA
+		  INSERT INTO HISTORICOGANADERIAS (ESTABLO,FALTA) VALUES (@wEstablo,@FPrevista)
+		  SET @wEstablo2=@wEstablo
+		  set @FP_Actu=@FPrevista --para poder actualizar
+		END
+	ELSE
+		BEGIN 
+		 IF @wEstablo2=@wEstablo AND DATEDIFF(MONTH,@FPrevista2,@FPrevista)>2
+			BEGIN--ESCRIBO FBAJA
+			  update HISTORICOGANADERIAS set FBAJA= @FPrevista2 where establo =@wEstablo and falta=@FP_Actu
+			  INSERT INTO HISTORICOGANADERIAS (ESTABLO,FALTA) VALUES (@wEstablo,@FPrevista)
+			  set @FP_Actu=@FPrevista
+			END
+		END  -- FIN IF 1
+	SET @FPrevista2=@FPrevista	
+	FETCH NEXT FROM C1 INTO @wEstablo,@FPrevista	
+END-----del begin
+CLOSE C1
+DEALLOCATE C1
+
+
+DECLARE C1 cursor  FOR
+SELECT ESTABLO FROM HISTORICOGANADERIAS
+WHERE FBAJA IS NULL
+OPEN C1
+FETCH NEXT FROM C1 INTO @wEstablo
+
+WHILE (@@FETCH_STATUS=0)
+BEGIN
+	DECLARE C2 cursor  FOR
+	SELECT MAX(FPREVISTA) FROM LECTURASFINALIZADAS
+	WHERE ESTABLO=@wEstablo
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @FPrevista
+	
+	IF DATEDIFF(MONTH,@FPrevista,GETDATE())>2
+		BEGIN--ESCRIBO FALTA
+			update HISTORICOGANADERIAS set FBAJA= @FPrevista 
+			where establo =@wEstablo and FBAJA IS NULL
+		END	
+	CLOSE C2
+	DEALLOCATE C2
+	FETCH NEXT FROM C1 INTO @wEstablo
+END-----del begin
+CLOSE C1
+DEALLOCATE C1
+
+update HISTORICOGANADERIAS  
+set HISTORICOGANADERIAS.FBAJA=  LC.FBAJA  
+from lecturascontrol  LC
+where LC.fbaja is not  null
+and HISTORICOGANADERIAS.establo=lc.establo
+and HISTORICOGANADERIAS.fbaja is null

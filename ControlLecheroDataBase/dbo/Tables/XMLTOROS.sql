@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[XMLTOROS] (
+    [TOR_GEN] CHAR (14) NOT NULL,
+    [TOR_NOM] CHAR (30) NULL,
+    [TOR_GAN] CHAR (7)  NULL,
+    [TOR_MAR] CHAR (10) NULL
+);
+

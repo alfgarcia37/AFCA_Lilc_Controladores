@@ -1,0 +1,3 @@
+﻿CREATE USER [ana]
+    WITH DEFAULT_SCHEMA = [ana];
+

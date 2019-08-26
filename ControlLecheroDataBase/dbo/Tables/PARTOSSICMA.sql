@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[PARTOSSICMA] (
+    [ID]          CHAR (14)     NOT NULL,
+    [FpartoSicma] SMALLDATETIME NOT NULL,
+    [Fichero]     CHAR (100)    NULL,
+    [Fmarca]      SMALLDATETIME NULL,
+    CONSTRAINT [PK_PARTOSSICMA] PRIMARY KEY CLUSTERED ([ID] ASC, [FpartoSicma] ASC) WITH (FILLFACTOR = 90)
+);
+

@@ -1,0 +1,31 @@
+﻿
+
+
+
+
+
+
+
+
+CREATE PROCEDURE [DBO].[InfToCalve] 
+(
+	@Establo char(14)
+	
+	)
+AS
+
+select MAX(ID),MAX(NINS),MAX(FINSEMINACION)
+FROM INSEMINACIONES
+WHERE 
+ESTABLO=@Establo
+AND NP=0
+AND DATEDIFF(DAY,FINSEMINACION,GETDATE())<300
+GROUP BY ID
+
+
+
+
+
+
+
+

@@ -78,7 +78,14 @@ namespace Afca.Data.Access {
                                 ,"sp_LecturaControl_delete"));
             return this.UpdateDataSet(updateInfo);
         }
-
+        public void UpdateLecturaControlEstado(string argEstablo, int estado)
+        {
+             this.ExecuteNonQuery(
+                                "sp_LecturaControl_update_state"
+                                , new SqlParameter[]{
+                                 new SqlParameter("@Establo",argEstablo)
+                                ,new SqlParameter("@Estado",estado.ToString())});
+       }
 
     }
 }

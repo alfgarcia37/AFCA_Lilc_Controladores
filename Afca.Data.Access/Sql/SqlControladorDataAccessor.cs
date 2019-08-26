@@ -38,12 +38,13 @@ namespace Afca.Data.Access {
 }
                                 ,new string[]{"Controlador"});
         }
-        public ControladorProgresoData LoadControladorProgresoData()
+        public ControladorProgresoData LoadControladorProgresoData(bool lecturasFinalizadas=false)
         {
             return (ControladorProgresoData)this.ExecuteDataSet(new ControladorProgresoData()
                                  , "sp_ControladoresEnProgreso_select"
                                  , CommandType.StoredProcedure
-                                 , null
+                                 , lecturasFinalizadas?new SqlParameter[] {new SqlParameter("@finalizadas",1) }
+                                   :null
                                  , new string[] { "Controlador" });
         }
         public int DeleteControladorDataByID(int argId) {
@@ -64,6 +65,12 @@ namespace Afca.Data.Access {
             return this.UpdateDataSet(updateInfo);
         }
 
-
+        public void PrepareNextLecturasLote(int codigoControlador)
+        {
+            this.ExecuteNonQuery(
+                                "sp_Controlador_create_nextLote"
+                                , new SqlParameter[]{
+                                        new SqlParameter("@Id",codigoControlador)});
+        }
     }
 }

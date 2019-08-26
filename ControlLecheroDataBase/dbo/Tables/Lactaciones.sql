@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[Lactaciones] (
+    [ESTABLO]        CHAR (7)      NOT NULL,
+    [RES]            CHAR (14)     NOT NULL,
+    [NP]             INT           NOT NULL,
+    [FPARTO]         SMALLDATETIME NOT NULL,
+    [DIASLAC]        INT           NULL,
+    [KILOS]          INT           NULL,
+    [GRASA]          REAL          NULL,
+    [PROTEINA]       REAL          NULL,
+    [KILOS305]       REAL          NULL,
+    [GRASA305]       REAL          NULL,
+    [PROTEINA305]    REAL          NULL,
+    [FSECADO]        SMALLDATETIME NULL,
+    [CAUSASECADO]    CHAR (2)      NULL,
+    [FINALIZADA]     CHAR (1)      NULL,
+    [FECHACALCULADA] CHAR (1)      NULL,
+    [RCS]            REAL          NULL,
+    [DICTAMEN]       CHAR (2)      NULL,
+    [COLLAR]         CHAR (5)      NULL,
+    [RAZA]           CHAR (2)      NULL,
+    [PUREZA]         CHAR (1)      NULL,
+    [NUMCONAFE]      CHAR (14)     NULL,
+    [NUMSANITARIO]   CHAR (14)     NULL
+);
+

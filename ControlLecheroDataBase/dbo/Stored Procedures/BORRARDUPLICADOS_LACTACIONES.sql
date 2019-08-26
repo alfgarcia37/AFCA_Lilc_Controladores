@@ -1,0 +1,48 @@
+﻿CREATE PROCEDURE [dbo].[BORRARDUPLICADOS_LACTACIONES]  
+(@RES char(14))
+AS
+
+DECLARE @ID CHAR(14),@WID CHAR(14),@CONTADOR INT,@FP CHAR(10),@WFP CHAR(10),@ESTABLO CHAR(7),@WESTABLO CHAR(7),@NP INT,@WNP INT,@wdiaslac int
+
+
+IF @RES='*'
+    BEGIN
+	DECLARE C1 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+	select max(res),max(np) from lactaciones
+	where fsecado>='01/01/2000'
+	group by res,np
+	having count(*)>1
+	OPEN C1 
+   END
+ELSE
+   BEGIN
+	DECLARE C1 CURSOR LOCAL SCROLL OPTIMISTIC FOR
+	select max(res),max(np) from lactaciones
+	WHERE RES=@RES
+	group by res,np
+	having count(*)>1
+	OPEN C1 
+  END
+FETCH NEXT FROM C1 INTO @ID,@NP
+WHILE (@@FETCH_STATUS=0)
+BEGIN
+
+	DECLARE C2 CURSOR LOCAL SCROLL  OPTIMISTIC  FOR
+	SELECT RES,NP,diaslac
+	FROM LACTACIONES
+	WHERE RES= @ID  AND NP=@NP
+	ORDER BY  FSECADO
+	
+	OPEN C2
+	FETCH NEXT FROM C2 INTO @WID,@WNP,@wdiaslac
+	IF @@FETCH_STATUS=0  
+		BEGIN
+			DELETE LACTACIONES
+			WHERE RES= @ID  AND NP=@NP and diaslac=@wdiaslac  -- me quedo con las que termina lactación = que conafe
+		END
+	CLOSE C2
+	DEALLOCATE C2
+	FETCH NEXT FROM C1 INTO @ID,@NP
+END
+CLOSE C1
+DEALLOCATE C1

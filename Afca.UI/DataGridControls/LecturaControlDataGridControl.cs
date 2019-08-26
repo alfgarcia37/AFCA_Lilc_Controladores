@@ -18,6 +18,8 @@ namespace Afca.UI
     public partial class LecturaControlDataGridControl : DataGridControl
     {
         ItemData itemContainer;
+        int? codigoControlador; 
+
         public LecturaControlDataGridControl()
         {
             InitializeComponent();
@@ -28,17 +30,34 @@ namespace Afca.UI
         {
             InitializeComponent();
             itemContainer = argItemContainer;
+            InitializeDropDowns();           
+            LoadData();
+        }
+        public LecturaControlDataGridControl(ItemData argItemContainer,int argCodigoControlador)
+        {
+            InitializeComponent();
+            itemContainer = argItemContainer;
+            codigoControlador = argCodigoControlador;
             InitializeDropDowns();
             LoadData();
         }
         protected override void InitializeAppearance()
         {
             base.InitializeAppearance();
-            ControlsThemeBuilder.GridMakeUp(this.ultraGridData,
-             ThemeColor.Verde);
-            ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0],
-                ThemeColor.Verde);
+
+            ControlsThemeBuilder.GridMakeUp(this.ultraGridData,ThemeColor.Verde);
+            ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0],ThemeColor.Verde);
             SetDataGridFilters();
+
+            if (codigoControlador.HasValue)
+            {
+                if(Parent!=null && Parent is Form &&
+                    itemContainer!=null && itemContainer.ItemColumns.ContainsKey("Nombre"))
+                {
+                    ((Form)Parent).Text = itemContainer.ItemColumns["Nombre"].Data.Value.ToString();
+                    ultraGridData.DisplayLayout.Bands[0].Columns["NumControler"].Hidden = true;
+                }
+            }
         }
         void InitializeDropDowns()
         {
@@ -49,6 +68,20 @@ namespace Afca.UI
             UltraDropDown uddControlador = DropDownsProvider.GetControladorDropwDown().DropDown;
             this.ultraGridData.DisplayLayout.Bands[0].Columns["NumControler"].ValueList = uddControlador;
             ControlsThemeBuilder.DropDownMakeUp(uddControlador, ThemeColor.Amarillo);
+        }
+        protected override void LoadData()
+        {
+            if(!codigoControlador.HasValue)
+                base.LoadData();
+            else
+            {
+                ILecturaControlService srvLecturaControl = AfcaServiceProvider.GetLecturaControlService();
+                LecturaControlData loadedData= srvLecturaControl.LoadLecturaControlDataByParent(itemContainer);
+                lecturaControlData.Clear();
+                lecturaControlData.Merge(loadedData);
+                ultraGridData.DataSource = DataSource;
+                ultraGridData.DataMember = DataMember;
+            }
         }
         protected override void UpdateData()
         {

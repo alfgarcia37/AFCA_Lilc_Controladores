@@ -263,7 +263,9 @@
             this.ultraGridData.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGridData.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.ultraGridData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
+            this.ultraGridData.Location = new System.Drawing.Point(0, 27);
+            this.ultraGridData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ultraGridData.Size = new System.Drawing.Size(1512, 787);
             // 
             // ultraToolbarsManager
             // 
@@ -288,14 +290,15 @@
             // 
             // LecturaControlDataGridControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.DataMember = "LecturaControl";
             this.DataSource = this.lecturaControlData;
             this.LoadMethod = "LoadLecturaControlData";
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LecturaControlDataGridControl";
             this.ServiceProvider = "ILecturaControlService";
-            this.Size = new System.Drawing.Size(1008, 554);
+            this.Size = new System.Drawing.Size(1512, 852);
             this.ThemColor = FrameworkForge.Common.ThemeColor.Azul;
             this.UpdateMethod = "UpdateLecturaControlData";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).EndInit();

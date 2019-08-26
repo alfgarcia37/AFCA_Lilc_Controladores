@@ -20,8 +20,8 @@ namespace Afca.Common.ServicesInterfaces {
         LecturaControlData LoadLecturaControlDataByParent(ItemData itemParent);
 
         LecturaControlData LoadLecturaControlDataByID(string argEstablo);
-           
-        
+
+        void UpdateLecturaControlEstado(string argEstablo,int estado);
         int DeleteLecturaControlDataByID(string argEstablo);
         
         int UpdateLecturaControlData(LecturaControlData data);

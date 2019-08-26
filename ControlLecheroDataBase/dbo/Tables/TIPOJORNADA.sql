@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TIPOJORNADA] (
+    [ID]  CHAR (10) NULL,
+    [DET] CHAR (50) NULL
+);
+

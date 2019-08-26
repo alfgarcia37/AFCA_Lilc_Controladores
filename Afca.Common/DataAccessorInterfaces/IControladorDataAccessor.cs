@@ -16,12 +16,10 @@ namespace Afca.Common.DataAccessor {
     public interface IControladorDataAccessor : IDataAccessor {
         
         ControladorData LoadControladorData();
-
         ControladorData LoadControladorDataByID(int argId);
-        ControladorProgresoData LoadControladorProgresoData();
-
-        int DeleteControladorDataByID(int argId);
-        
+        ControladorProgresoData LoadControladorProgresoData(bool finalizadas=false);
+        int DeleteControladorDataByID(int argId);        
         int UpdateControladorData(ControladorData data);
+        void PrepareNextLecturasLote(int codigoControlador);
     }
 }

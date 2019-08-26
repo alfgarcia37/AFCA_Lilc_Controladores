@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ControlLecheroDataBase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{f2405ef2-1e92-4756-ba0e-96f7e2347a42}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>ControlLecheroDataBase</RootNamespace>
+    <AssemblyName>ControlLecheroDataBase</AssemblyName>
+    <ModelCollation>3082,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Modern_Spanish_CI_AI</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="AFCADOM_pc05\" />
+    <Folder Include="AFCADOM_pc05\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\XMLRegistradosALL_old.sql" />
+    <Build Include="dbo\Tables\ESTADO.sql" />
+    <Build Include="dbo\Tables\ESTADOS.sql" />
+    <Build Include="dbo\Tables\ControlSICMA.sql" />
+    <Build Include="dbo\Tables\ESTADOSVACA.sql" />
+    <Build Include="dbo\Tables\InformeAnual.sql" />
+    <Build Include="dbo\Tables\IncidenciasTerminal.sql" />
+    <Build Include="dbo\Tables\EXPLOTA_old.sql" />
+    <Build Include="dbo\Tables\XMLRCS.sql" />
+    <Build Include="dbo\Tables\Festivos.sql" />
+    <Build Include="dbo\Tables\VacasJovenes.sql" />
+    <Build Include="dbo\Tables\RCS.sql" />
+    <Build Include="dbo\Tables\IncidenciasControl.sql" />
+    <Build Include="dbo\Tables\IntervaloHorario.sql" />
+    <Build Include="dbo\Tables\TipoBIC.sql" />
+    <Build Include="dbo\Tables\MarcaSemen.sql" />
+    <Build Include="dbo\Tables\NUCLEOS.sql" />
+    <Build Include="dbo\Tables\ControladoresKM.sql" />
+    <Build Include="dbo\Tables\ParametrosControl.sql" />
+    <Build Include="dbo\Tables\ParametrosGenerales.sql" />
+    <Build Include="dbo\Tables\CONTROLTXT.sql" />
+    <Build Include="dbo\Tables\LecturasFinalizadas.sql" />
+    <Build Include="dbo\Tables\ParametrosParto.sql" />
+    <Build Include="dbo\Tables\Perfiles.sql" />
+    <Build Include="dbo\Tables\ControlDBFduplicados.sql" />
+    <Build Include="dbo\Tables\Personal.sql" />
+    <Build Include="dbo\Tables\Personalformacion.sql" />
+    <Build Include="dbo\Tables\PersonalTareas.sql" />
+    <Build Include="dbo\Tables\TipoCorregido.sql" />
+    <Build Include="dbo\Tables\TamanoTernero.sql" />
+    <Build Include="dbo\Tables\Tareas.sql" />
+    <Build Include="dbo\Tables\TIPOINCIDENCIA.sql" />
+    <Build Include="dbo\Tables\TipoInseminacion.sql" />
+    <Build Include="dbo\Tables\HojaAudit.sql" />
+    <Build Include="dbo\Tables\TipoInspeccion.sql" />
+    <Build Include="dbo\Tables\COOPERATIVAS.sql" />
+    <Build Include="dbo\Tables\TipoParto.sql" />
+    <Build Include="dbo\Tables\Orden.sql" />
+    <Build Include="dbo\Tables\VACASMUERTAS.sql" />
+    <Build Include="dbo\Tables\TiposTarea.sql" />
+    <Build Include="dbo\Tables\Rutinas.sql" />
+    <Build Include="dbo\Tables\MedidoresHistorico.sql" />
+    <Build Include="dbo\Tables\Vacaciones.sql" />
+    <Build Include="dbo\Tables\VelocidadOrdeno.sql" />
+    <Build Include="dbo\Tables\ZONAS.sql" />
+    <Build Include="dbo\Tables\TipoPatologias.sql" />
+    <Build Include="dbo\Tables\Razas.sql" />
+    <Build Include="dbo\Tables\PATOLOGIAS.sql" />
+    <Build Include="dbo\Tables\Celos.sql" />
+    <Build Include="dbo\Tables\LecturasUrea.sql" />
+    <Build Include="dbo\Tables\TipoDictamenLactaciones.sql" />
+    <Build Include="dbo\Tables\TipoMedidores.sql" />
+    <Build Include="dbo\Tables\XMLPATOLOGIAS.sql" />
+    <Build Include="dbo\Tables\IncidenciasGenerales.sql" />
+    <Build Include="dbo\Tables\LecturasControl.sql" />
+    <Build Include="dbo\Tables\BuzonLaboratorio.sql" />
+    <Build Include="dbo\Tables\CooperativaEstablos.sql" />
+    <Build Include="dbo\Tables\TIPOPARIMPAR.sql" />
+    <Build Include="dbo\Tables\View_MaxPartos.sql" />
+    <Build Include="dbo\Tables\MedidoresCalibraciones.sql" />
+    <Build Include="dbo\Tables\XMLCELOS.sql" />
+    <Build Include="dbo\Tables\TIPOCONTROL.sql" />
+    <Build Include="dbo\Tables\TIPODIAGNOSTICO.sql" />
+    <Build Include="dbo\Tables\XMLINSEM.sql" />
+    <Build Include="dbo\Tables\control.sql" />
+    <Build Include="dbo\Tables\LactacionesTEMP.sql" />
+    <Build Include="dbo\Tables\TIPOMETODODIAGNOSTICO.sql" />
+    <Build Include="dbo\Tables\Partos.sql" />
+    <Build Include="dbo\Tables\EtiquetasHojaEstablo.sql" />
+    <Build Include="dbo\Tables\XMLTOROS.sql" />
+    <Build Include="dbo\Tables\XMLDATOS.sql" />
+    <Build Include="dbo\Tables\PuntosEntrega.sql" />
+    <Build Include="dbo\Tables\XMLTF.sql" />
+    <Build Include="dbo\Tables\MESES.sql" />
+    <Build Include="dbo\Tables\TERCEROS.sql" />
+    <Build Include="dbo\Tables\ANOS.sql" />
+    <Build Include="dbo\Tables\VACASMAESTROCONTROL.sql" />
+    <Build Include="dbo\Tables\TMP_CensoAfca.sql" />
+    <Build Include="dbo\Tables\TMP_CensoRIIA.sql" />
+    <Build Include="dbo\Tables\TMP_ACETONA.sql" />
+    <Build Include="dbo\Tables\Tmp_CensoVacas80.sql" />
+    <Build Include="dbo\Tables\LecturasTanque.sql" />
+    <Build Include="dbo\Tables\Tmp_Partos80.sql" />
+    <Build Include="dbo\Tables\MedidoresExpediente.sql" />
+    <Build Include="dbo\Tables\TIPOMAESTRO.sql" />
+    <Build Include="dbo\Tables\RutasRobots.sql" />
+    <Build Include="dbo\Tables\Tmp_TOTALES80.sql" />
+    <Build Include="dbo\Tables\Cunas.sql" />
+    <Build Include="dbo\Tables\CONTROL_TEMPORAL.sql" />
+    <Build Include="dbo\Tables\NUMGEN_DIB_MENOR_01868130.sql" />
+    <Build Include="dbo\Tables\VacasControlError.sql" />
+    <Build Include="dbo\Tables\NUMGEN_MAYOR_01868130.sql" />
+    <Build Include="dbo\Tables\CLIENTES_old.sql" />
+    <Build Include="dbo\Tables\INstemp_old.sql" />
+    <Build Include="dbo\Tables\CausaBaja.sql" />
+    <Build Include="dbo\Tables\VacasNoRIIA.sql" />
+    <Build Include="dbo\Tables\PROVEEDORES.sql" />
+    <Build Include="dbo\Tables\InseminacionesEstadisticas_old.sql" />
+    <Build Include="dbo\Tables\Terminales.sql" />
+    <Build Include="dbo\Tables\XMLCONTROL.sql" />
+    <Build Include="dbo\Tables\GanaderiasCONAFE_old.sql" />
+    <Build Include="dbo\Tables\MailFicheros.sql" />
+    <Build Include="dbo\Tables\CONTROLADORES.sql" />
+    <Build Include="dbo\Tables\Collares_old.sql" />
+    <Build Include="dbo\Tables\MailG.sql" />
+    <Build Include="dbo\Tables\MaestroTemp.sql" />
+    <Build Include="dbo\Tables\Maestro.sql" />
+    <Build Include="dbo\Tables\GANADERIA_ICO_2017.sql" />
+    <Build Include="dbo\Tables\MailsExpdteFiltro.sql" />
+    <Build Include="dbo\Tables\MailTipoCliente.sql" />
+    <Build Include="dbo\Tables\CIERRESVACAS.sql" />
+    <Build Include="dbo\Tables\Conceptos.sql" />
+    <Build Include="dbo\Tables\MailD.sql" />
+    <Build Include="dbo\Tables\ConafeTipoError.sql" />
+    <Build Include="dbo\Tables\MailsDirecciones.sql" />
+    <Build Include="dbo\Tables\DICTAMENLACTACIONES_old.sql" />
+    <Build Include="dbo\Tables\TIPOJORNADA.sql" />
+    <Build Include="dbo\Tables\Ingresos_old.sql" />
+    <Build Include="dbo\Tables\FALTANTES.sql" />
+    <Build Include="dbo\Tables\AuditoriasCalendario.sql" />
+    <Build Include="dbo\Tables\Toros.sql" />
+    <Build Include="dbo\Tables\LecturasFinalizadasAUD.sql" />
+    <Build Include="dbo\Tables\RegistradasConafe_old.sql" />
+    <Build Include="dbo\Tables\ControlAud.sql" />
+    <Build Include="dbo\Tables\TipoAmarre.sql" />
+    <Build Include="dbo\Tables\tipoGan_old.sql" />
+    <Build Include="dbo\Tables\Avisos.sql" />
+    <Build Include="dbo\Tables\TipoSuelo.sql" />
+    <Build Include="dbo\Tables\Autorizaciones.sql" />
+    <Build Include="dbo\Tables\AuditoriasTEMP_old.sql" />
+    <Build Include="dbo\Tables\Partos_tmp.sql" />
+    <Build Include="dbo\Tables\CONTROLTEMP.sql" />
+    <Build Include="dbo\Tables\hijasaberekin.sql" />
+    <Build Include="dbo\Tables\TMP_PruebaAfca.sql" />
+    <Build Include="dbo\Tables\TBLINSEMINACIONES_old.sql" />
+    <Build Include="dbo\Tables\Resultados.sql" />
+    <Build Include="dbo\Tables\ConafeLacAutoB_old.sql" />
+    <Build Include="dbo\Tables\ConafeDevoluciones.sql" />
+    <Build Include="dbo\Tables\EtiquetasControlador.sql" />
+    <Build Include="dbo\Tables\VIEW_MAXiNSEMINACIONES.sql" />
+    <Build Include="dbo\Tables\LastQuery.sql" />
+    <Build Include="dbo\Tables\EstadosRemesa.sql" />
+    <Build Include="dbo\Tables\EstadosRemesaFormaPago.sql" />
+    <Build Include="dbo\Tables\TIPOFICHERO.sql" />
+    <Build Include="dbo\Tables\PARTOSSICMA.sql" />
+    <Build Include="dbo\Tables\ControladoresTipoInc_old.sql" />
+    <Build Include="dbo\Tables\ControladoresInc_old.sql" />
+    <Build Include="dbo\Tables\ControlDBF.sql" />
+    <Build Include="dbo\Tables\VACASTEMP.sql" />
+    <Build Include="dbo\Tables\Ingresos.sql" />
+    <Build Include="dbo\Tables\Gastos.sql" />
+    <Build Include="dbo\Tables\RemesasD.sql" />
+    <Build Include="dbo\Tables\XMLFIRMAS.sql" />
+    <Build Include="dbo\Tables\XMLNACIMIENTOS.sql" />
+    <Build Include="dbo\Tables\RemesasG.sql" />
+    <Build Include="dbo\Tables\Lactaciones.sql" />
+    <Build Include="dbo\Tables\GANADERIA_ICO.sql" />
+    <Build Include="dbo\Tables\TIPOREPLANIFICADAS.sql" />
+    <Build Include="dbo\Tables\LecturasMail.sql" />
+    <Build Include="dbo\Tables\Tmp_25Establos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Tables\Inseminaciones.sql" />
+    <Build Include="dbo\Tables\Medidores.sql" />
+    <Build Include="dbo\Tables\TernerasAFCA_RIIA.sql" />
+    <Build Include="dbo\Tables\Calendario.sql" />
+    <Build Include="dbo\Tables\XMLRegistrados.sql" />
+    <Build Include="dbo\Tables\Cargos.sql" />
+    <Build Include="dbo\Tables\CONFORMACIONCRIA.sql" />
+    <Build Include="dbo\Tables\ControlFaltante.sql" />
+    <Build Include="dbo\Tables\HistoricoGanaderias.sql" />
+    <Build Include="dbo\Tables\AuditConsejeria.sql" />
+    <Build Include="dbo\Tables\DificultadParto.sql" />
+    <Build Include="dbo\Tables\Empresas.sql" />
+    <Build Include="dbo\Views\cont_temp.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Views\cont_tempTXT.sql" />
+    <Build Include="dbo\Views\Vista_Partos_FBA.sql" />
+    <Build Include="dbo\Views\VbAJAS.sql" />
+    <Build Include="dbo\Views\VistaPartos.sql" />
+    <Build Include="dbo\Views\VistaPartosControlNoTXT.sql" />
+    <Build Include="dbo\Views\VistaPartosControlTXT.sql" />
+    <Build Include="AFCADOM_pc05\Views\VistaPartos_OLD.sql" />
+    <Build Include="dbo\Views\VISTA_LABORATORIO.sql" />
+    <Build Include="dbo\Views\ViewAud.sql" />
+    <Build Include="dbo\Views\V_TOROS_FNCTO.sql" />
+    <Build Include="dbo\Views\V_LECTURASCONTROL.sql" />
+    <Build Include="dbo\Views\ControlVelocidad.sql" />
+    <Build Include="Security\funcionmia.sql" />
+    <Build Include="Security\AFCADOM_Luzgar.sql" />
+    <Build Include="Security\ana.sql" />
+    <Build Include="Security\abelardo.sql" />
+    <Build Include="Security\AFCADOM_pc05.sql" />
+    <Build Include="Security\BUILTIN_Administradores.sql" />
+    <Build Include="Security\BUILTIN_Administradores_1.sql" />
+    <Build Include="Security\portatil.sql" />
+    <Build Include="Security\bexec.sql" />
+    <Build Include="Security\alfonso.sql" />
+    <Build Include="Security\conchi.sql" />
+    <Build Include="Security\carlos.sql" />
+    <Build Include="Security\laboratorio.sql" />
+    <Build Include="Security\AFCADOM_Fernarui.sql" />
+    <Build Include="Security\Carolcan.sql" />
+    <Build Include="Security\eugenio.sql" />
+    <Build Include="Security\AFCADOM_GrupoControlLechero.sql" />
+    <Build Include="Security\AFCADOM_Abelacal.sql" />
+    <Build Include="Security\AFCADOM_Eugenlie.sql" />
+    <Build Include="Security\alfongar.sql" />
+    <Build Include="Security\NT AUTHORITY_Usuarios autentificados.sql" />
+    <Build Include="Security\DOMINIOAFCA_grupocl.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Functions\fn_getControladorLectura_byEstado.sql" />
+    <Build Include="dbo\Stored Procedures\dt_getobjwithprop_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_getpropertiesbyid.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_getpropertiesbyid_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ACTU_NOMBRESTOROS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_getpropertiesbyid_vcs.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_getpropertiesbyid_vcs_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_isundersourcecontrol.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_isundersourcecontrol_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_removefromsourcecontrol.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_setpropertybyid.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_setpropertybyid_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_validateloginparams.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_validateloginparams_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GETNUMTERNERAS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_vcsenabled.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_verstamp006.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_verstamp007.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_whocheckedout.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ConversionUEa14Digitos.sql" />
+    <Build Include="dbo\Stored Procedures\dt_whocheckedout_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_Controlador_select.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CENSO_RIIA.sql" />
+    <Build Include="dbo\Stored Procedures\inf_1Servicio.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Controlador_selectByID.sql" />
+    <Build Include="dbo\Stored Procedures\inf_3Servicio.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_Controlador_insert.sql" />
+    <Build Include="dbo\Stored Procedures\inf_TodosLosServicios.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_Controlador_update.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CENSO_AFCA.sql" />
+    <Build Include="dbo\Stored Procedures\infAvgAgeCAlving.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Controlador_delete.sql" />
+    <Build Include="dbo\Stored Procedures\infDays1Insem.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_Controlador_deleteByID.sql" />
+    <Build Include="dbo\Stored Procedures\infDays3Insem.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\infDaysOpen.sql" />
+    <Build Include="dbo\Stored Procedures\BORRARDUPLICADOS_ID_DET.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\infObtenerDatosControlador.sql" />
+    <Build Include="dbo\Stored Procedures\infObtenerEdadMediaVacasAbandono.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\infObtenerResHerd.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\infObtenerVacasAbandono.sql" />
+    <Build Include="dbo\Stored Procedures\infRTObtener13Controles.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\infRTObtenerControlVaca.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\infRTObtenerControlesDIM.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_select.sql" />
+    <Build Include="dbo\Stored Procedures\infRTObtenerControlesDetalle.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_selectByID.sql" />
+    <Build Include="dbo\Stored Procedures\infRTObtenerNumeroVacasEnControlEstado.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_insert.sql" />
+    <Build Include="dbo\Stored Procedures\infRTObtenerNumeroVacasMaestro.sql" />
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_update.sql" />
+    <Build Include="dbo\Stored Procedures\infRTObtenerNumeroVacasMaestroPartos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_delete.sql" />
+    <Build Include="dbo\Stored Procedures\infRTObtenerVacasBmaestro.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_deleteByID.sql" />
+    <Build Include="dbo\Stored Procedures\IM_Dim.sql" />
+    <Build Include="dbo\Stored Procedures\infVacasToDry.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GetConversionUEaRIIA.sql" />
+    <Build Include="dbo\Stored Procedures\IM_Producciones.sql" />
+    <Build Include="dbo\Stored Procedures\sp_EstadoLectura_select.sql" />
+    <Build Include="dbo\Stored Procedures\IM_RCS.sql" />
+    <Build Include="dbo\Stored Procedures\sp_EstadoLectura_selectByID.sql" />
+    <Build Include="dbo\Stored Procedures\IM_NumeroAnimales24meses.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_EstadoLectura_insert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_EstadoLectura_update.sql" />
+    <Build Include="dbo\Stored Procedures\sp_EstadoLectura_delete.sql" />
+    <Build Include="dbo\Stored Procedures\sp_EstadoLectura_deleteByID.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONTROLLECHERO_UREA.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACTU_COLLAR.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_ControladoresEnProgreso_select.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACTU_COLLAR_VIEJO.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GenerarLactaciones_Conafe.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CENSO_MAESTRO_AFCA.sql" />
+    <Build Include="dbo\Stored Procedures\BORRARDUPLICADOS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\BORRARDUPLICADOS_PATOLOGIAS.sql" />
+    <Build Include="dbo\Stored Procedures\CambiarParto.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\CENSO_PARTOS_CALDERON.sql" />
+    <Build Include="dbo\Stored Procedures\InfIntervaloPartos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\InfObtenerIndicesG.sql" />
+    <Build Include="dbo\Stored Procedures\InfToCalve.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_RIIA_PARTOS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_GENERAR_PARDAS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ObtenerLecturasInformes.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ACTUALIZA_VACAS_DIB_MENOR_01868130.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_PRODUCCIONCONTROLES.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACTUALIZA_VACAS_MAYOR_01868130.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_IntervaloPartos.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ACTU_SMS_TELEFONO_ARSYS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\sp_LecturaControl_update_state.sql" />
+    <Build Include="dbo\Stored Procedures\PR_BORRAR_DUPLICADOSSICMA.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GET_INC_PATOLOGIAS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GENERARLACTACIONES_LISTADOS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CALCULARPARTOS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CAMBIARFECHAPARTO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CHECK_DATOS_FALTANTES_CONTROL.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_VacasMuertas_Actualizar.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_DictamenLactacionesTEMP.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CHK_FALTANTES_UPDATE.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_INSERT_INCCONTROL_PATOLOGIAS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CONTROL_FALTANTE.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ACTUALIZA_CBA_A_09.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CheckLactaciones.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Check_Control_Diferente_FP.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Check_Control_Igual_NC.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\BORRARDUPLICADOS_LACTACIONES_CONAFE.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Check_Maestro_Control.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Check_VACAS_DIB_MENOR_01868130.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Check_VACAS_MAYOR_01868130.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CHECK_SECADO_SGTE_PARTO.sql" />
+    <Build Include="dbo\Stored Procedures\PR_ControlesIncidencias.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CAMBIO_CROTAL.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ACTUALIZA_ANALITICA_0.sql" />
+    <Build Include="dbo\Stored Procedures\PR_DictamenLactaciones.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_DuplicadosBD_DBF.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_DuplicadosPartos_DBF.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_FPARTODUPLICADA.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GENLACT_DUPLICADOS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GET_ANIMAL.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GenerarLactaciones.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GenerarTamanos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_INSEMINACIONES_ESTADISTICA.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnual1Insem.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_HistoricoCensoEstablos.sql" />
+    <Build Include="dbo\Stored Procedures\PR_InfAnualAbiertas.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualDEL.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_REMESASANIMALESJ.sql" />
+    <Build Include="dbo\Stored Procedures\PR_InfAnualIntervaloPartos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualLanzadera.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualNumeroAnimales.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_REMESASANIMALESK.sql" />
+    <Build Include="dbo\Stored Procedures\PR_InfAnualNumeroAnimalesControlados.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GENERAR_MENSAJES.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualNumeroTerneras.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualObtenerDatos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualPartos.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ActualizaMarcaSicma.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualPico.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualProduccion.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualSecas.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfAnualServiciosConcepcion.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InfanualICO.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_InformeImpreso.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_MAESTRO_ULT_LECTURA.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_MAESTRO_ULT_LECTURA_BAJAS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Check_Control_Diferente_FP_NP.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PRIMERAINSEMINACION.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GET25Establos_Emision.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ANIMALES_A_CALIFICAR.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GET_INC_CONTROL.sql" />
+    <Build Include="dbo\Stored Procedures\PR_PartoSecadoMal.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\GetAnimalesNoRegistradosRIIA.sql" />
+    <Build Include="dbo\Stored Procedures\RCSDIPU.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_RES_FCTR_NULL.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CHECK_FPARTO_FPARTO.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_RenumeraInsNP.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_CONTROL_FALTANTE_KILOS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_VacasJovenes.sql" />
+    <Build Include="dbo\Stored Procedures\PR_CONTROL_FALTANTE_ANALITICA.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_VacasMaestroControl.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_VacasMuertas.sql" />
+    <Build Include="dbo\Stored Procedures\BORRARDUPLICADOS_VELORD.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Vacas_A_SinControlarse.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ACTUALIZAR_CRUCES.sql" />
+    <Build Include="dbo\Stored Procedures\PR_VinculoInseminacionParto.sql" />
+    <Build Include="dbo\Stored Procedures\TEST.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_addtosourcecontrol.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_addtosourcecontrol_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_adduserobject.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_adduserobject_vcs.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_checkinobject.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Corrige_Inseminacion_CL_REG.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_checkinobject_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_GET_ANIMAL_CRUCE.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_checkoutobject.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_checkoutobject_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ANIMALES_CALIFICADOS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_displayoaerror.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_displayoaerror_u.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_HISTORICO_GANADERIAS.sql" />
+    <Build Include="dbo\Stored Procedures\PR_REORDENA_INSEMINACION_PARTO.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_droppropertiesbyid.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_Inseminacion_CL_REG.sql">
+      <AnsiNulls>Off</AnsiNulls>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_dropuserobjectbyid.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_ACTU_MAESTRO_CENSO.sql" />
+    <Build Include="dbo\Stored Procedures\BORRARDUPLICADOS_LACTACIONES.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_generateansiname.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\PR_NUMERO_TERNERAS.sql">
+      <AnsiNulls>Off</AnsiNulls>
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\dt_getobjwithprop.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="Security\abelardo_1.sql" />
+    <Build Include="Security\AFCADOM_pc05_1.sql" />
+    <Build Include="Security\alfonso_1.sql" />
+    <Build Include="Security\ana_1.sql" />
+    <Build Include="Security\bexec_1.sql" />
+    <Build Include="Security\BUILTIN_Administradores_2.sql" />
+    <Build Include="Security\carlos_1.sql" />
+    <Build Include="Security\conchi_1.sql" />
+    <Build Include="Security\eugenio_1.sql" />
+    <Build Include="Security\funcionmia_1.sql" />
+    <Build Include="Security\laboratorio_1.sql" />
+    <Build Include="Security\portatil_1.sql" />
+  </ItemGroup>
+</Project>

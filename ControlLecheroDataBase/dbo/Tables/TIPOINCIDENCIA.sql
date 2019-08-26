@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[TIPOINCIDENCIA] (
+    [ID]  CHAR (4)      NULL,
+    [DET] VARCHAR (200) NULL
+);
+
