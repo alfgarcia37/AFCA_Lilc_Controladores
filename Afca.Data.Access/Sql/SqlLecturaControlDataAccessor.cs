@@ -57,6 +57,18 @@ namespace Afca.Data.Access {
                                , new string[] { "LecturaControl" });
         }
 
+        //agc 
+        public LecturaControlData LoadLecturaControlDataByControladorEstado(int argControladorID, string argEstado)
+        {
+            return (LecturaControlData)this.ExecuteDataSet(new LecturaControlData()
+                               , "sp_LecturaControl_selectByID"
+                               , CommandType.StoredProcedure
+                               , new SqlParameter[]{
+                                        new SqlParameter("@CodigoControlador",argControladorID)
+}
+                               , new string[] { "LecturaControl" });
+        }
+
         public int UpdateLecturaControlData(LecturaControlData data) {
             DataUpdateInfo updateInfo = new DataUpdateInfo(data);
             updateInfo.UpdateTable.Add(

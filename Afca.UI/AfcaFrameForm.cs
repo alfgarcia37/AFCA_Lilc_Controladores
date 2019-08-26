@@ -163,7 +163,7 @@ namespace Afca.UI
             switch (e.Tool.Key)
             {
                 case "Generar":
-                    iSvrGenerar.GenerarXMLs();
+                    iSvrGenerar.GenerarXMLs(6);
                     break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":

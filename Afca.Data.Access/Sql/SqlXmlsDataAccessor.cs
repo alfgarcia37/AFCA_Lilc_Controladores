@@ -9,17 +9,43 @@ namespace Afca.Data.Access
 {
     using FrameworkForge.Common;
     using FrameworkForge.Data;
-    using Afca.Common.DataSets;
+    using Afca.Common;
     using Afca.Common.DataAccessor;
     using System;
     using System.Data;
-    using System.Data.Common;
+  
     using System.Data.SqlClient;
+    using Afca.Common.DataSets;
 
-
-    public class SqlXmlGanaderiasDataAccessor : SqlDataAccessor, IXmlDataAccessor
+    public class SqlXmlsDataAccessor : SqlDataAccessor, IXmlsDataAccessor
     {
         //GANADERIAS
+        public int SetXmlGanaderiasByControlador(int argControlador)
+        {
+
+
+             int regs = this.ExecuteNonQuery(
+                                "sp_GanaderiasToXMLByControlador"
+                                , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)});
+            return regs;
+        }
+        //CONTROLES
+        public int SetXmlControlesByGanaderia(string argGanaderia)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_ControlesToXMLByEstablo"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia)});
+            return regs;
+        }
+
+
+
+
+
         public XmlData GetXmlGanaderiasByID(int controlador)
         {
             return (XmlData)this.ExecuteDataSet(new XmlData()
@@ -28,16 +54,7 @@ namespace Afca.Data.Access
                                 , null
                                 , new string[] { "LecturaControl" });
         }
-        public XmlData SetXmlGanaderiasByControladorID(int argControlador)
-        {
-            return (XmlData)this.ExecuteDataSet(new XmlData()
-                                , "sp_Carga_desede_LecturasControl_a_XmlGanaderias_ByID"
-                                , CommandType.StoredProcedure
-                                , new SqlParameter[]{
-                                        new SqlParameter("@Controlador",argControlador)
-}
-                                , new string[] { "LecturaControl" });
-        }
+       
         public int UpdateXmlData(XmlData data)
         {
             DataUpdateInfo updateInfo = new DataUpdateInfo(data);
@@ -58,34 +75,34 @@ namespace Afca.Data.Access
         }
 
         //CONTROLES
-        public XmlData GetXmlControlesByEstablo(string argEstablo)
-        {
-            return (XmlData)this.ExecuteDataSet(new XmlData()
-                               , "sp_LecturaControl_selectByID"
-                               , CommandType.StoredProcedure
-                               , new SqlParameter[]{
-                                        new SqlParameter("@CodigoControlador",argEstablo)
-}
-                               , new string[] { "LecturaControl" });
-        }
-        public XmlData SetXmlControlesByEstablo(string argEstablo)
-        {
-            return (XmlData)this.ExecuteDataSet(new XmlData()
-                                , "sp_LecturaControl_selectByID"
-                                , CommandType.StoredProcedure
-                                , new SqlParameter[]{
-                                        new SqlParameter("@Establo",argEstablo)
-}
-                                , new string[] { "LecturaControl" });
-        }
-        public int DeleteXmlControlByEstablo(string argEstablo)
-        {
-            return this.ExecuteNonQuery(
-                                "sp_LecturaControl_deleteByID"
-                                , new SqlParameter[]{
-                                        new SqlParameter("@Establo",argEstablo)
-});
-        }
+//        public XmlData GetXmlControlesByEstablo(string argEstablo)
+//        {
+//            return (XmlData)this.ExecuteDataSet(new XmlData()
+//                               , "sp_LecturaControl_selectByID"
+//                               , CommandType.StoredProcedure
+//                               , new SqlParameter[]{
+//                                        new SqlParameter("@CodigoControlador",argEstablo)
+//}
+//                               , new string[] { "LecturaControl" });
+//        }
+//        public XmlData SetXmlControlesByEstablo(string argEstablo)
+//        {
+//            return (XmlData)this.ExecuteDataSet(new XmlData()
+//                                , "sp_LecturaControl_selectByID"
+//                                , CommandType.StoredProcedure
+//                                , new SqlParameter[]{
+//                                        new SqlParameter("@Establo",argEstablo)
+//}
+//                                , new string[] { "LecturaControl" });
+//        }
+//        public int DeleteXmlControlByEstablo(string argEstablo)
+//        {
+//            return this.ExecuteNonQuery(
+//                                "sp_LecturaControl_deleteByID"
+//                                , new SqlParameter[]{
+//                                        new SqlParameter("@Establo",argEstablo)
+//});
+//        }
 
     }
 }

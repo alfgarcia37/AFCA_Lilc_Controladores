@@ -19,7 +19,9 @@ namespace Afca.Common.DataAccessor {
         
         LecturaControlData LoadLecturaControlDataByID(string argEstablo);
         LecturaControlData LoadLecturaControlDataByControladorID(int argControladorID);
-        
+        //agc
+        LecturaControlData LoadLecturaControlDataByControladorEstado(int argControladorID,string argEstado);
+
         int DeleteLecturaControlDataByID(string argEstablo);
         
         int UpdateLecturaControlData(LecturaControlData data);

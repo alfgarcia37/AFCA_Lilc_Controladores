@@ -5,19 +5,20 @@ namespace Afca.Common.DataAccessor
     using Afca.Common.DataSets;
 
 
-    public interface IXmlDataAccessor : IDataAccessor
+    public interface IXmlsDataAccessor : IDataAccessor
     {
         //XMLDATOS (GANADERIAS)
-        //XmlData LoadXmlDatos();//       ---->>>> No lo Pongo porque en mi caso no tiene sentido
-        XmlData GetXmlGanaderiasByID(int controlador);
-        XmlData SetXmlGanaderiasByControladorID(int argControladorID);
-        int DeleteXmlGanaderiasByID(int argControlador);
-        
+        int SetXmlGanaderiasByControlador(int argControlador);
+        int SetXmlControlesByGanaderia(string argGanaderia);
+        //XmlData GetXmlGanaderiasByID(int controlador);
+        //XmlData SetXmlGanaderiasByControladorID(int argControladorID);
+        //int DeleteXmlGanaderiasByID(int argControlador);
 
-        //XMLCONTROL (Controles)
-        XmlData GetXmlControlesByEstablo(string argEstablo);
-        XmlData SetXmlControlesByEstablo(string argEstablo);
-        int DeleteXmlControlByEstablo(string argEstablo);
+
+        ////XMLCONTROL (Controles)
+        //XmlData GetXmlControlesByEstablo(string argEstablo);
+        //XmlData SetXmlControlesByEstablo(string argEstablo);
+        //int DeleteXmlControlByEstablo(string argEstablo);
 
 
         // Este me valdría para todos los xmls ???????????????????????????????

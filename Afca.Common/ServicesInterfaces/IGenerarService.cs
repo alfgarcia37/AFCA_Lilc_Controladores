@@ -2,18 +2,18 @@
 {
     using FrameworkForge.Common.Interfaces;
     using FrameworkForge.Common.DataStructures;
-    using Afca.Common.DataSets;
+    //using Afca.Common.DataSets;
 
-
+    using Afca.Common;
     public interface IGenerarService : IService
     {
-        bool GenerarXMLs();
-        
-        XmlData GetXmlGanaderiasData(int controlador);
-        XmlData GetXmlControlesData(string ganaderia);
+        bool GenerarXMLs(int controlador);
+        Result SetXmlGanaderiasData(int controlador);
+        //XmlData GetXmlGanaderiasData(int controlador);
+        //XmlData GetXmlControlesData(string ganaderia);
 
-        XmlData SetXmlGanaderiasData(int controlador);
-        XmlData SetXmlControlesData(string ganaderia);
+
+        // Result SetXmlControlesData(string ganaderia);
 
 
 

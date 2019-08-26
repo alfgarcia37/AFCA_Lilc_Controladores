@@ -68,8 +68,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clases\DOWN\" />
-    <Folder Include="Clases\UP\" />
+    <Folder Include="Clases\Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Clases\Documentacion\AfcaTree.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Clases\Documentacion\ControladoresEnprogreso.sql" />
+    <Content Include="Clases\Documentacion\controllechero_procedures_20190605.sql" />
+    <Content Include="Clases\Documentacion\sp_GanaderiastoXMLByControlador.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

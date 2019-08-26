@@ -15,7 +15,8 @@ namespace Afca.Services.Clases
 {
     public class ClsGenerar
     {
-        private IXmlDataAccessor iXmlDA;
+         IXmlsDataAccessor iXmlDA;
+        private Result result=new Result();
         ILecturaControlService iSrvLecturasControl;
         //IGenerarService iSrvGenerar;
         ClsGanaderiasXML ObjDatosXML;
@@ -23,8 +24,31 @@ namespace Afca.Services.Clases
         {
             InitializeServices();
         }
-       
-        public XmlData SetGanaderiasToXMLganaderias(int argControlador)
+        public Result SetXmlGanaderiasData(IXmlsDataAccessor Ixmlda,int argControlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value= iXmlDA.SetXmlGanaderiasByControlador(argControlador).ToString();
+            if (Convert.ToInt32(result.value) >0)
+                result.success = true;
+            result.value = "Exportada Tabla de Ganaderias";
+
+            return result;
+        }
+
+        public Result SetXmlControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.SetXmlControlesByGanaderia(argGanaderia).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Controles";
+
+            return result;
+        }
+
+
+
+        public bool Modelo_de_Ejemplo(int argControlador)
         {//aqui pongo la lógica. Los servicios sólo me devuelven datos. No tienen porqué conocer la interrelación entre ellos.
 
             XmlData xmlData = new XmlData();
@@ -50,44 +74,13 @@ namespace Afca.Services.Clases
 
                 xmlData.XmlDatos.Rows.Add(xmlDatosRow);
             }
-            return iXmlDA.SetXmlGanaderiasByControladorID(argControlador);
+            return true;
+            //return iXmlDA.SetXmlGanaderiasByControladorID(argControlador);
 
             //bool result = IGenerarService;
 
-            //GANADERIAS
-            //a) --lo ideal
-            //var dataLecturascontrol(solo lectura) = iSrvGenerar.SetXmlGanaderiasData(controlador);//cargo de Lecturascontrol a XMLGanaderias
-            ////dataset.Fill lo hace el Framework???????
-            ////duda ... A mi no me hace falta un DataSet de LecturasControl. Me vale con un DataReader.????. En este caso lo que tengo que hacer es rellenar la
-            ////tabla xmlDatos y después ir actualizando lo que considere (hago una select de las filas que me interese y "updateo" el XmlData("XmlDatos")
-            //    //
-            // foreach (DataRow pRow in dataLecturascontrol.Tables["LecturasControl"].Rows)
-            //    pRow.Moroso=FuncMoroso(nod.ganaderia)
-            // next 
-            //Insert dataLecturascontrol into xmlGanaderias
-            //b)--lo cuasi real (pseudocodigo)
+           
 
-            //ClsControl Objcontrol=new ClsControl ();
-            //ObjDatosXML = new ClsGanaderiasXML();
-
-            //var xmldata2 = iSrvLecturasControl.LoadLecturaControlData(controlador) ...cojo las ganaderias
-            //for each nodo in xmldata2
-            //var colection=Objcontrol.GetControles(xmldata2.Tables("LecturasControl").Fields("CodigoGanaderia"); ..cojo los controles de esa ganaderia
-            //for each nodo in collection
-            //    insert (nodo -> xml)
-            //next
-            //next
-
-
-            //fer.... paso el data,lo mnipulo si fuera preciso y relleno el datatable DatosXML(ganaderias)
-
-
-            //CONTROLES
-
-
-            //...
-
-            // Insert XML's INTO CLM_Down's
 
 
         }
