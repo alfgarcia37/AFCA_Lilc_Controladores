@@ -1,7 +1,9 @@
-﻿namespace Afca.Common.ServicesInterfaces
+﻿using FrameworkForge.Common.Interfaces;
+using FrameworkForge.Common.DataStructures;
+
+namespace Afca.Common.ServicesInterfaces
 {
-    using FrameworkForge.Common.Interfaces;
-    using FrameworkForge.Common.DataStructures;
+ 
     //using Afca.Common.DataSets;
 
     using Afca.Common;
@@ -9,6 +11,9 @@
     {
         bool GenerarXMLs(int controlador);
         Result SetXmlGanaderiasData(int controlador);
+        Result SetXmlControlesData(string ganaderia,int controlador);
+        Result SetXmlTorosData(string ganaderia, int controlador);
+        Result SetXmlInseminacionesData(string ganaderia, int controlador);
         //XmlData GetXmlGanaderiasData(int controlador);
         //XmlData GetXmlControlesData(string ganaderia);
 

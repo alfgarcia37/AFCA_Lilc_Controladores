@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace Afca.Data.Access
+﻿namespace Afca.Data.Access
 {
+    using Afca.Common.DataAccessor;
+    using Afca.Common.DataSets;
     using FrameworkForge.Common;
     using FrameworkForge.Data;
-    using Afca.Common;
-    using Afca.Common.DataAccessor;
     using System;
     using System.Data;
-  
     using System.Data.SqlClient;
-    using Afca.Common.DataSets;
 
     public class SqlXmlsDataAccessor : SqlDataAccessor, IXmlsDataAccessor
     {
@@ -31,14 +22,40 @@ namespace Afca.Data.Access
             return regs;
         }
         //CONTROLES
-        public int SetXmlControlesByGanaderia(string argGanaderia)
+        public int SetXmlControlesByGanaderia(string argGanaderia,int argControlador )
         {
 
 
             int regs = this.ExecuteNonQuery(
                                "sp_ControlesToXMLByEstablo"
                                , new SqlParameter[]{
-                                        new SqlParameter("@Establo",argGanaderia)});
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
+        public int SetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_InseminacionesToXMLByEstablo"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
+        public int SetXmlTorosByGanaderia(string argGanaderia, int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_TorosToXMLByEstablo"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
             return regs;
         }
 
@@ -74,35 +91,7 @@ namespace Afca.Data.Access
 });
         }
 
-        //CONTROLES
-//        public XmlData GetXmlControlesByEstablo(string argEstablo)
-//        {
-//            return (XmlData)this.ExecuteDataSet(new XmlData()
-//                               , "sp_LecturaControl_selectByID"
-//                               , CommandType.StoredProcedure
-//                               , new SqlParameter[]{
-//                                        new SqlParameter("@CodigoControlador",argEstablo)
-//}
-//                               , new string[] { "LecturaControl" });
-//        }
-//        public XmlData SetXmlControlesByEstablo(string argEstablo)
-//        {
-//            return (XmlData)this.ExecuteDataSet(new XmlData()
-//                                , "sp_LecturaControl_selectByID"
-//                                , CommandType.StoredProcedure
-//                                , new SqlParameter[]{
-//                                        new SqlParameter("@Establo",argEstablo)
-//}
-//                                , new string[] { "LecturaControl" });
-//        }
-//        public int DeleteXmlControlByEstablo(string argEstablo)
-//        {
-//            return this.ExecuteNonQuery(
-//                                "sp_LecturaControl_deleteByID"
-//                                , new SqlParameter[]{
-//                                        new SqlParameter("@Establo",argEstablo)
-//});
-//        }
+       
 
     }
 }

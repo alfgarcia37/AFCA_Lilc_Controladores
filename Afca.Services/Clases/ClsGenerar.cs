@@ -35,10 +35,30 @@ namespace Afca.Services.Clases
             return result;
         }
 
-        public Result SetXmlControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia)
+        public Result SetXmlControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia,int controlador)
         {
             iXmlDA = Ixmlda;
-            result.value = iXmlDA.SetXmlControlesByGanaderia(argGanaderia).ToString();
+            result.value = iXmlDA.SetXmlControlesByGanaderia(argGanaderia, controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Controles";
+
+            return result;
+        }
+        public Result SetXmlInseminacionesData(IXmlsDataAccessor Ixmlda, string argGanaderia, int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.SetXmlTorosByGanaderia(argGanaderia, controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Controles";
+
+            return result;
+        }
+        public Result SetXmlTorosData(IXmlsDataAccessor Ixmlda, string argGanaderia, int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.SetXmlTorosByGanaderia(argGanaderia, controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "Exportada Tabla de Controles";

@@ -4,12 +4,14 @@ namespace Afca.Common.DataAccessor
     using FrameworkForge.Common.Interfaces;
     using Afca.Common.DataSets;
 
-
+    using System;
     public interface IXmlsDataAccessor : IDataAccessor
     {
         //XMLDATOS (GANADERIAS)
         int SetXmlGanaderiasByControlador(int argControlador);
-        int SetXmlControlesByGanaderia(string argGanaderia);
+        int SetXmlControlesByGanaderia(string argGanaderia, int argControlador);
+        int SetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
+        int SetXmlTorosByGanaderia(string argGanaderia, int argControlador);
         //XmlData GetXmlGanaderiasByID(int controlador);
         //XmlData SetXmlGanaderiasByControladorID(int argControladorID);
         //int DeleteXmlGanaderiasByID(int argControlador);
