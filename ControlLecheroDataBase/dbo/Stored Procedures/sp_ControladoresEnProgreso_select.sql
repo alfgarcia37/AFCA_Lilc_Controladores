@@ -1,27 +1,44 @@
-﻿--execute dbo.sp_ControladoresEnProgreso_select @finalizadas=1
-CREATE PROCEDURE  [dbo].[sp_ControladoresEnProgreso_select]
+﻿USE [controllechero]
+GO
+/****** Object:  StoredProcedure [dbo].[sp_ControladoresEnProgreso_select]    Script Date: 30/08/2019 17:24:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+--execute dbo.sp_ControladoresEnProgreso_select @finalizadas=0
+ALTER PROCEDURE  [dbo].[sp_ControladoresEnProgreso_select]
 (
   @finalizadas tinyint=0
 )
 AS
---version 3 2019.08.22 14:30
+--version 3 2019.08.22
 
 declare @hoy datetime
 set @hoy=getdate()
 
-;with ec(cid) AS
+
+;with el(cid,pendientes) as
 (
-	select  NumControler
-	from dbo.LecturasControl lc
-			inner join dbo.CONTROLADORES c
-				on lc.NumControler = c.ID 
-	where c.FBaja is null and lc.Fbaja is null and 
-			(
-			 	   (@finalizadas=0 and ESTADOS in(2,5,6))
-				   or
-				   (@finalizadas=1 and ESTADOS not in(2,5) and FPrevista>eomonth(@hoy))		
-			)
-	group by NumControler
+	 select lec.ID,sum(pendiente)
+	 from dbo.CONTROLADORES c	
+		inner join 
+	 (select NumControler ID, case when FPrevista>eomonth(@hoy) then 0 else 1 end	pendiente				
+	 from dbo.LecturasControl lc
+				inner join dbo.CONTROLADORES c
+					on lc.NumControler = c.ID 
+	 where c.FBaja is null and lc.Fbaja is null) lec
+		on c.ID = lec.ID
+	group by lec.ID
+)
+,ec(cid) AS
+(
+	select ID
+	from dbo.CONTROLADORES c
+				inner join el
+						on c.ID = el.cid
+		where (@finalizadas=0 and pendientes>0)
+					   or
+			  (@finalizadas=1 and pendientes=0)
 )
 ,et(cid,enbuzon,enterminal,encurso) AS
 (
