@@ -65,7 +65,16 @@ namespace Afca.Services.Clases
 
             return result;
         }
+        public Result SetXmlActualizacionesGlobalData(IXmlsDataAccessor Ixmlda,  int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.SetXmlActualizacionesGlobales(controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Controles";
 
+            return result;
+        }
 
 
         public bool Modelo_de_Ejemplo(int argControlador)

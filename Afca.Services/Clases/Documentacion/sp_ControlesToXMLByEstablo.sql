@@ -105,4 +105,13 @@ Begin
     Delete #Temp Where RES_GEN = @Id
 End
 GO
-
+--.======== VACAS MUERTAS O VENDIDAS QUE ESTAN EN MAESTRO ACTIVAS TODO
+ update controllechero..xmlControl
+ Set Res_Muerta='1'
+ where res_gen in (
+Select maes_gen from maestro
+ where Maes_Tit=@Establo and Maes_estado<>'0'
+ and maes_gen not in
+	(select vaca From [RIIAREMO].[dbo].[RIIA_EXPLOTACION] 
+     where  EstabloConafe=@Establo
+     and ((getdate() BETWEEN FENTRADA AND DATEADD(DAY,5,FSALIDA)) OR (FENTRADA<getdate() AND FSALIDA IS NULL))))

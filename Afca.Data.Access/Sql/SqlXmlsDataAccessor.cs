@@ -58,7 +58,18 @@
                                         });
             return regs;
         }
+        public int SetXmlActualizacionesGlobales( int argControlador)
+        {
 
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_ActualizacionesglobalesToXMLBycontrolador"
+                               , new SqlParameter[]{
+                                        
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
 
 
 

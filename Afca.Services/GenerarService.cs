@@ -34,20 +34,21 @@ namespace Afca.Services
             foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
             {
                 //CONTROLES
-                resultControles = SetXmlControlesData(drLectura["ID"].ToString(), argControlador);
+                resultControles = SetXmlControlesData(drLectura["Establo"].ToString(), argControlador);
                 if (resultControles.value == "0") resultControles.success = false;
                 //INSEMINACIONES
-                resultControles = SetXmlInseminacionesData(drLectura["ID"].ToString(), argControlador);
+                resultControles = SetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
                 if (resultControles.value == "0") resultControles.success = false;
-                //TOROS
-                resultControles = SetXmlTorosData(drLectura["ID"].ToString(), argControlador);
+                //TOROS y REGISTRADAS
+                resultControles = SetXmlTorosData(drLectura["Establo"].ToString(), argControlador);
                 if (resultControles.value == "0") resultControles.success = false;
-               
+                
                 //ObjGenerar.SetGanaderiasToXmlGanaderias(argControlador);
                 //REGISTRADAS
                 //ObjGenerar.SetGanaderiasToXmlGanaderias(argControlador);
             }
-
+            //TABLAS GLOBAL (Independiente del Establo)
+            resultControles = SetXmlActualizacionesGlobalData(argControlador);
 
 
 
@@ -69,7 +70,10 @@ namespace Afca.Services
         {
             return ObjGenerar.SetXmlTorosData(iXmlDA, argGanaderia, argcontrolador);
         }
-
+        public Result SetXmlActualizacionesGlobalData( int argcontrolador)
+        {
+            return ObjGenerar.SetXmlActualizacionesGlobalData(iXmlDA,  argcontrolador);
+        }
 
 
 

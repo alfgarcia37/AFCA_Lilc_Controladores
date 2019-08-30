@@ -70,10 +70,13 @@
   <ItemGroup>
     <Content Include="Clases\Documentacion\ControladoresEnprogreso.sql" />
     <Content Include="Clases\Documentacion\controllechero_procedures_20190605.sql" />
+    <Content Include="Clases\Documentacion\sp_ActualizacionesGlobalesToXMLByControlador.sql" />
     <Content Include="Clases\Documentacion\sp_ControlesToXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_GanaderiastoXMLByControlador.sql" />
+    <Content Include="Clases\Documentacion\sp_InseminacionesToXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_ReemplazarNombresVacas.sql" />
     <Content Include="Clases\Documentacion\sp_TorosToXMLByEstablo.sql" />
+    <Content Include="Clases\Documentacion\ViewInseminacionesEstabloIDFinseminacion.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
