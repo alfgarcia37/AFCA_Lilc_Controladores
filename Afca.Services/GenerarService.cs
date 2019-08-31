@@ -6,6 +6,7 @@ using FrameworkForge.Common;
 using FrameworkForge.Common.DataStructures;
 using Afca.Common;
 using Afca.Services.Clases;
+
 using dO = FrameworkForge.Common.DataOperations;
 
 namespace Afca.Services
@@ -15,34 +16,54 @@ namespace Afca.Services
     {
         private Result resultGanaderias;
         private Result resultControles;
+        private Result resultToros;
+        private Result resultInseminaciones;
 
         private ClsGenerar ObjGenerar = new ClsGenerar();
         private IXmlsDataAccessor iXmlDA;
         private ILecturaControlDataAccessor ilecturasDA;
+        private LecturaControlData lecturaControlData;
        public GenerarService()
         {
             iXmlDA = Afca.Common.AfcaDataAccessorProvider.GetXmlDataAccessor();
             ilecturasDA = Afca.Common.AfcaDataAccessorProvider.GetLecturaControlDataAccessor();
+            //lo pongo aqui porque lo suo en 2 sitios
+            
         }
-        public bool GenerarXMLs(int argControlador)
 
+        public Result CheckXmlMaestroControlesData(int argControlador)
         {
-            //GANADERIAS.... Podría poner directamente las func de más abajo pero prefiero así hasta que haga todo en procdtos.
-            resultGanaderias= SetXmlGanaderiasData(argControlador);
-            //Recorro GANADERIAS para Generar Tablas
-            LecturaControlData lecturaControlData = ilecturasDA.LoadLecturaControlDataByControladorEstado(argControlador, EstadoLectura.Planificar.ToString());
+            LecturaControlData lecturaControlData = ilecturasDA.LoadLecturaControlDataByControladorEstado(argControlador, EstadoLectura.Planificar);
+            Result result=null ;
             foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
             {
+                result = SetXmlCheckControlesData(drLectura["Establo"].ToString());
+            }
+            return result;
+         }
+
+         public Result GenerarXMLs(int argControlador)
+
+        {
+          
+            //Recorro GANADERIAS para Generar Tablas
+            LecturaControlData lecturaControlData = ilecturasDA.LoadLecturaControlDataByControladorEstado(argControlador, EstadoLectura.Planificar);
+
+            foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
+            {
+                //GANADERIAS.... 
+                resultGanaderias = SetXmlGanaderiasData(argControlador);
+                if (resultGanaderias.value == "0") { resultGanaderias.success = false; break; }
                 //CONTROLES
                 resultControles = SetXmlControlesData(drLectura["Establo"].ToString(), argControlador);
-                if (resultControles.value == "0") resultControles.success = false;
+                if (resultControles.value == "0") { resultControles.success = false; break; }
                 //INSEMINACIONES
                 resultControles = SetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
-                if (resultControles.value == "0") resultControles.success = false;
+                if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
                 //TOROS y REGISTRADAS
-                resultControles = SetXmlTorosData(drLectura["Establo"].ToString(), argControlador);
-                if (resultControles.value == "0") resultControles.success = false;
-                
+                resultToros = SetXmlTorosData(drLectura["Establo"].ToString(), argControlador);
+                if (resultToros.value == "0") { resultToros.success = false; break; }
+
                 //ObjGenerar.SetGanaderiasToXmlGanaderias(argControlador);
                 //REGISTRADAS
                 //ObjGenerar.SetGanaderiasToXmlGanaderias(argControlador);
@@ -52,7 +73,12 @@ namespace Afca.Services
 
 
 
-            return true;
+            return resultControles;
+        }
+
+        public Result SetXmlCheckControlesData(string argControlador)
+        {
+            return ObjGenerar.SetXmlCheckMaestroControlesData(iXmlDA, argControlador);
         }
         public Result SetXmlGanaderiasData(int argControlador)
         {

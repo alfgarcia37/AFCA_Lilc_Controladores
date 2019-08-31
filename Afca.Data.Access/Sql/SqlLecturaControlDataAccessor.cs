@@ -13,6 +13,7 @@ namespace Afca.Data.Access {
     using FrameworkForge.Data;
     using Afca.Common.DataSets;
     using Afca.Common.DataAccessor;
+    using Afca.Common;
     using System;
     using System.Data;
     using System.Data.Common;
@@ -58,13 +59,15 @@ namespace Afca.Data.Access {
         }
 
         //agc 
-        public LecturaControlData LoadLecturaControlDataByControladorEstado(int argControladorID, string argEstado)
+        public LecturaControlData LoadLecturaControlDataByControladorEstado(int argControladorID,EstadoLectura estadolectura)
         {
+            var a = (int)estadolectura;
             return (LecturaControlData)this.ExecuteDataSet(new LecturaControlData()
-                               , "sp_LecturaControl_selectByID"
+                               , "sp_LecturaControl_selectByControladorEstado"
                                , CommandType.StoredProcedure
                                , new SqlParameter[]{
-                                        new SqlParameter("@CodigoControlador",argControladorID)
+                                        new SqlParameter("@CodigoControlador",argControladorID),
+                                        new SqlParameter("@Estado",((int)estadolectura).ToString() )
 }
                                , new string[] { "LecturaControl" });
         }

@@ -9,7 +9,8 @@ namespace Afca.Common.ServicesInterfaces
     using Afca.Common;
     public interface IGenerarService : IService
     {
-        bool GenerarXMLs(int controlador);
+        Result  GenerarXMLs(int controlador);
+        Result CheckXmlMaestroControlesData(int controlador);
         Result SetXmlGanaderiasData(int controlador);
         Result SetXmlControlesData(string ganaderia,int controlador);
         Result SetXmlTorosData(string ganaderia, int controlador);

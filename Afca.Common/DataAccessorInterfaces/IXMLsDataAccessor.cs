@@ -8,7 +8,8 @@ namespace Afca.Common.DataAccessor
     public interface IXmlsDataAccessor : IDataAccessor
     {
         //XMLDATOS (GANADERIAS)
-        int SetXmlGanaderiasByControlador(int argControlador);
+        string CheckMaestroControlesData(string argEstablo);
+        int SetXmlGanaderiasByControlador(int argcontrolador);
         int SetXmlControlesByGanaderia(string argGanaderia, int argControlador);
         int SetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int SetXmlTorosByGanaderia(string argGanaderia, int argControlador);

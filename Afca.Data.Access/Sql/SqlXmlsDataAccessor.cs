@@ -10,7 +10,18 @@
 
     public class SqlXmlsDataAccessor : SqlDataAccessor, IXmlsDataAccessor
     {
-        //GANADERIAS
+        
+        public string CheckMaestroControlesData(string argGanaderia)
+        {
+
+
+            var regs = this.ExecuteScalar(
+                               "sp_CheckMaestroControlesToXML"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia)});
+            return regs.ToString();
+        }
+
         public int SetXmlGanaderiasByControlador(int argControlador)
         {
 
@@ -21,7 +32,6 @@
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;
         }
-        //CONTROLES
         public int SetXmlControlesByGanaderia(string argGanaderia,int argControlador )
         {
 

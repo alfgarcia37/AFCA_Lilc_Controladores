@@ -24,6 +24,17 @@ namespace Afca.Services.Clases
         {
             InitializeServices();
         }
+        
+        public Result SetXmlCheckMaestroControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.CheckMaestroControlesData(argGanaderia).ToString();
+            if (result.value.Length > 0)
+                result.success = false;
+            else result.success = true;
+            
+             return result;
+        }
         public Result SetXmlGanaderiasData(IXmlsDataAccessor Ixmlda,int argControlador)
         {
             iXmlDA = Ixmlda;
@@ -34,7 +45,6 @@ namespace Afca.Services.Clases
 
             return result;
         }
-
         public Result SetXmlControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia,int controlador)
         {
             iXmlDA = Ixmlda;
@@ -51,7 +61,7 @@ namespace Afca.Services.Clases
             result.value = iXmlDA.SetXmlTorosByGanaderia(argGanaderia, controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
-            result.value = "Exportada Tabla de Controles";
+            result.value = "Exportada Tabla de Inseminaciones";
 
             return result;
         }
@@ -61,7 +71,7 @@ namespace Afca.Services.Clases
             result.value = iXmlDA.SetXmlTorosByGanaderia(argGanaderia, controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
-            result.value = "Exportada Tabla de Controles";
+            result.value = "Exportada Tabla de Toros";
 
             return result;
         }
@@ -71,7 +81,7 @@ namespace Afca.Services.Clases
             result.value = iXmlDA.SetXmlActualizacionesGlobales(controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
-            result.value = "Exportada Tabla de Controles";
+            result.value = "Actualizaciones globales";
 
             return result;
         }

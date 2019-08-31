@@ -26,7 +26,8 @@ namespace Afca.UI
         #region Constructor & métodos de inicio
         public AfcaFrameForm()
         {
-            iSvrGenerar=  AfcaServiceProvider.GetGenerarService();
+            
+               iSvrGenerar =  AfcaServiceProvider.GetGenerarService();
             InitializeComponent();
             dockGroupLeftExplorer = new DockableGroupPane();
             dockGroupLeftExplorer.ChildPaneStyle = ChildPaneStyle.TabGroup;
@@ -163,7 +164,13 @@ namespace Afca.UI
             switch (e.Tool.Key)
             {
                 case "Generar":
-                    iSvrGenerar.GenerarXMLs(6);
+                    Result result = iSvrGenerar.CheckXmlMaestroControlesData(6);
+                    if (result.success == false)
+                        { DialogResult dr = MessageBox.Show(result.value + "\n" + "kkkkkkkk" , "No coinciden Maestro y Control", MessageBoxButtons.YesNo);
+                                                if (dr == DialogResult.No) break;
+                    }
+                   
+                    Result resultado= iSvrGenerar.GenerarXMLs(6);
                     break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":
