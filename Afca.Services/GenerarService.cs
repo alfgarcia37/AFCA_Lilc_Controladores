@@ -30,7 +30,7 @@ namespace Afca.Services
             //lo pongo aqui porque lo suo en 2 sitios
             
         }
-
+        //check...comprobaciones...............................
         public Result CheckXmlMaestroControlesData(int argControlador)
         {
             LecturaControlData lecturaControlData = ilecturasDA.LoadLecturaControlDataByControladorEstado(argControlador, EstadoLectura.Planificar);
@@ -80,6 +80,7 @@ namespace Afca.Services
         {
             return ObjGenerar.SetXmlCheckMaestroControlesData(iXmlDA, argControlador);
         }
+        //GNERACION..................
         public Result SetXmlGanaderiasData(int argControlador)
         {
             return ObjGenerar.SetXmlGanaderiasData( iXmlDA, argControlador);

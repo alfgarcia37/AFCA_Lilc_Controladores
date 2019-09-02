@@ -86,50 +86,50 @@ namespace Afca.Services.Clases
             return result;
         }
 
-
-        public bool Modelo_de_Ejemplo(int argControlador)
-        {//aqui pongo la lógica. Los servicios sólo me devuelven datos. No tienen porqué conocer la interrelación entre ellos.
-
-            XmlData xmlData = new XmlData();
-
-            LecturaControlData lecturaControlData = iSrvLecturasControl.LoadLecturaControlDataByID("");
-
-
-            foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
-            {
-
-                DataRow xmlDatosRow = xmlData.XmlDatos.NewRow();
-
-                xmlDatosRow["ID"] = drLectura["ID"];
-                DateTime fecha= (DateTime) dO.cls(drLectura, "FechaPrevista", DateTime.Now.AddMonths(1));
-                dO.EsNulo(drLectura, "FechaPrevista");
-                dO.GetMaximo(drLectura, new string[] { "LecturaAnterior", "LecturaActual" });
-                dO.HasRows(lecturaControlData, "LecturaControl");
-
-                ArrayList exceptions = new ArrayList();
-                dO.ImportValues(drLectura, xmlDatosRow, exceptions);
-                
-                //..... CLsControl.GenrarRegis
-
-                xmlData.XmlDatos.Rows.Add(xmlDatosRow);
-            }
-            return true;
-            //return iXmlDA.SetXmlGanaderiasByControladorID(argControlador);
-
-            //bool result = IGenerarService;
-
-           
-
-
-
-        }
-        public  void InitializeServices()
+        public void InitializeServices()
         {
-            
-           
-        }
 
-            
-       
+
+        }
+        //public bool Modelo_de_Ejemplo(int argControlador)
+        //{//aqui pongo la lógica. Los servicios sólo me devuelven datos. No tienen porqué conocer la interrelación entre ellos.
+
+        //    XmlData xmlData = new XmlData();
+
+        //    LecturaControlData lecturaControlData = iSrvLecturasControl.LoadLecturaControlDataByID("");
+
+
+        //    foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
+        //    {
+
+        //        DataRow xmlDatosRow = xmlData.XmlDatos.NewRow();
+
+        //        xmlDatosRow["ID"] = drLectura["ID"];
+        //        DateTime fecha= (DateTime) dO.cls(drLectura, "FechaPrevista", DateTime.Now.AddMonths(1));
+        //        dO.EsNulo(drLectura, "FechaPrevista");
+        //        dO.GetMaximo(drLectura, new string[] { "LecturaAnterior", "LecturaActual" });
+        //        dO.HasRows(lecturaControlData, "LecturaControl");
+
+        //        ArrayList exceptions = new ArrayList();
+        //        dO.ImportValues(drLectura, xmlDatosRow, exceptions);
+
+        //        //..... CLsControl.GenrarRegis
+
+        //        xmlData.XmlDatos.Rows.Add(xmlDatosRow);
+        //    }
+        //    return true;
+        //return iXmlDA.SetXmlGanaderiasByControladorID(argControlador);
+
+        //bool result = IGenerarService;
+
+
+
+
+
+
+
+
+
+
     }
 }

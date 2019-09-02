@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\ClsImportar.cs" />
     <Compile Include="Clases\ClsGenerar.cs" />
+    <Compile Include="ImportarService.cs" />
     <Compile Include="Clases\Helpers\ClsControl.cs" />
     <Compile Include="Clases\Helpers\ClsInseminaciones.cs" />
     <Compile Include="Clases\Helpers\ClsLecturasControl.cs" />

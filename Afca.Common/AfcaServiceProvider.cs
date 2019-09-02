@@ -67,5 +67,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IImportarService GetImportarService()
+        {
+            try
+            {
+                return (IImportarService)ServiceProvider.GetServiceInstance("IImportarService");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

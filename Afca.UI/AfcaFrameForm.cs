@@ -23,11 +23,15 @@ namespace Afca.UI
     public partial class AfcaFrameForm : FrameForm
     {
         private IGenerarService iSvrGenerar;
+        private IImportarService iSvrImportar;
         #region Constructor & métodos de inicio
         public AfcaFrameForm()
         {
-            
-               iSvrGenerar =  AfcaServiceProvider.GetGenerarService();
+            iSvrGenerar = AfcaServiceProvider.GetGenerarService();
+            iSvrImportar = AfcaServiceProvider.GetImportarService();
+           
+           
+
             InitializeComponent();
             dockGroupLeftExplorer = new DockableGroupPane();
             dockGroupLeftExplorer.ChildPaneStyle = ChildPaneStyle.TabGroup;
@@ -164,13 +168,33 @@ namespace Afca.UI
             switch (e.Tool.Key)
             {
                 case "Generar":
+                    var et = Afca.Common.Trees.ExplorerTree;
+                    var s= sender;
                     Result result = iSvrGenerar.CheckXmlMaestroControlesData(6);
                     if (result.success == false)
-                        { DialogResult dr = MessageBox.Show(result.value + "\n" + "kkkkkkkk" , "No coinciden Maestro y Control", MessageBoxButtons.YesNo);
+                        { DialogResult dr = MessageBox.Show(result.value + "\n" + "No coinciden Maestro y Control", "CHECK Maestro y Control", MessageBoxButtons.YesNo);
                                                 if (dr == DialogResult.No) break;
                     }
                    
                     Result resultado= iSvrGenerar.GenerarXMLs(6);
+                    break;
+                case "Importar":
+                   // Result result1 = iSvrImportar.CheckXmlEstablosDuplicadosData(6);
+                    Result result1 = iSvrImportar.CheckXmlControlesData(6);
+                    if (result1.success == false)
+                    {
+                        DialogResult dr1 = MessageBox.Show(result1.value + "\n" + "Existen Registros duplicados", "CHECK Controles", MessageBoxButtons.YesNo);
+                        if (dr1 == DialogResult.No) break;
+                    }
+                    Result result3 = iSvrImportar.CheckXmlPartosData(6);
+                    if (result3.success == false)
+                    {
+                        DialogResult dr1 = MessageBox.Show(result3.value + "\n" + "Existen Paratos Duplicados", "CHECK Partos", MessageBoxButtons.YesNo);
+                        if (dr1 == DialogResult.No) break;
+                    }
+
+
+                    Result resultado1 = iSvrImportar.ImportarXMLs(6);
                     break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":

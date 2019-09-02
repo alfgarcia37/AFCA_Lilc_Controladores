@@ -28,9 +28,7 @@ namespace Afca.Common.DataSets {
         
         private XMLRegistradosDataTable tableXMLRegistrados;
         
-        private XmlDatosDataTable tableXmlDatos;
-        
-        private XMLCONTROLDataTable tableXMLCONTROL;
+        private XMLDATOSDataTable tableXMLDATOS;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -66,11 +64,8 @@ namespace Afca.Common.DataSets {
                 if ((ds.Tables["XMLRegistrados"] != null)) {
                     base.Tables.Add(new XMLRegistradosDataTable(ds.Tables["XMLRegistrados"]));
                 }
-                if ((ds.Tables["XmlDatos"] != null)) {
-                    base.Tables.Add(new XmlDatosDataTable(ds.Tables["XmlDatos"]));
-                }
-                if ((ds.Tables["XMLCONTROL"] != null)) {
-                    base.Tables.Add(new XMLCONTROLDataTable(ds.Tables["XMLCONTROL"]));
+                if ((ds.Tables["XMLDATOS"] != null)) {
+                    base.Tables.Add(new XMLDATOSDataTable(ds.Tables["XMLDATOS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -114,19 +109,9 @@ namespace Afca.Common.DataSets {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public XmlDatosDataTable XmlDatos {
+        public XMLDATOSDataTable XMLDATOS {
             get {
-                return this.tableXmlDatos;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public XMLCONTROLDataTable XMLCONTROL {
-            get {
-                return this.tableXMLCONTROL;
+                return this.tableXMLDATOS;
             }
         }
         
@@ -203,11 +188,8 @@ namespace Afca.Common.DataSets {
                 if ((ds.Tables["XMLRegistrados"] != null)) {
                     base.Tables.Add(new XMLRegistradosDataTable(ds.Tables["XMLRegistrados"]));
                 }
-                if ((ds.Tables["XmlDatos"] != null)) {
-                    base.Tables.Add(new XmlDatosDataTable(ds.Tables["XmlDatos"]));
-                }
-                if ((ds.Tables["XMLCONTROL"] != null)) {
-                    base.Tables.Add(new XMLCONTROLDataTable(ds.Tables["XMLCONTROL"]));
+                if ((ds.Tables["XMLDATOS"] != null)) {
+                    base.Tables.Add(new XMLDATOSDataTable(ds.Tables["XMLDATOS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -254,16 +236,10 @@ namespace Afca.Common.DataSets {
                     this.tableXMLRegistrados.InitVars();
                 }
             }
-            this.tableXmlDatos = ((XmlDatosDataTable)(base.Tables["XmlDatos"]));
+            this.tableXMLDATOS = ((XMLDATOSDataTable)(base.Tables["XMLDATOS"]));
             if ((initTable == true)) {
-                if ((this.tableXmlDatos != null)) {
-                    this.tableXmlDatos.InitVars();
-                }
-            }
-            this.tableXMLCONTROL = ((XMLCONTROLDataTable)(base.Tables["XMLCONTROL"]));
-            if ((initTable == true)) {
-                if ((this.tableXMLCONTROL != null)) {
-                    this.tableXMLCONTROL.InitVars();
+                if ((this.tableXMLDATOS != null)) {
+                    this.tableXMLDATOS.InitVars();
                 }
             }
         }
@@ -280,10 +256,8 @@ namespace Afca.Common.DataSets {
             base.Tables.Add(this.tableXMLRCS);
             this.tableXMLRegistrados = new XMLRegistradosDataTable();
             base.Tables.Add(this.tableXMLRegistrados);
-            this.tableXmlDatos = new XmlDatosDataTable();
-            base.Tables.Add(this.tableXmlDatos);
-            this.tableXMLCONTROL = new XMLCONTROLDataTable();
-            base.Tables.Add(this.tableXMLCONTROL);
+            this.tableXMLDATOS = new XMLDATOSDataTable();
+            base.Tables.Add(this.tableXMLDATOS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -300,13 +274,7 @@ namespace Afca.Common.DataSets {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeXmlDatos() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeXMLCONTROL() {
+        private bool ShouldSerializeXMLDATOS() {
             return false;
         }
         
@@ -372,10 +340,7 @@ namespace Afca.Common.DataSets {
         public delegate void XMLRegistradosRowChangeEventHandler(object sender, XMLRegistradosRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void XmlDatosRowChangeEventHandler(object sender, XmlDatosRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void XMLCONTROLRowChangeEventHandler(object sender, XMLCONTROLRowChangeEvent e);
+        public delegate void XMLDATOSRowChangeEventHandler(object sender, XMLDATOSRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1068,11 +1033,11 @@ namespace Afca.Common.DataSets {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class XmlDatosDataTable : global::System.Data.TypedTableBase<XmlDatosRow> {
+        public partial class XMLDATOSDataTable : global::System.Data.TypedTableBase<XMLDATOSRow> {
             
             private global::System.Data.DataColumn columnGanaderiaCodigo;
             
-            private global::System.Data.DataColumn columnAct;
+            private global::System.Data.DataColumn columnACT;
             
             private global::System.Data.DataColumn columnFechaCarga;
             
@@ -1080,33 +1045,33 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnFechaControl;
             
-            private global::System.Data.DataColumn columnHoraOrdenoAnterior;
+            private global::System.Data.DataColumn columnANTORD_HH;
             
-            private global::System.Data.DataColumn columnMinutoOrdenoAnterior;
+            private global::System.Data.DataColumn columnANTORD_MM;
             
-            private global::System.Data.DataColumn columnGanaderiaNombre;
+            private global::System.Data.DataColumn columnRAZON;
             
             private global::System.Data.DataColumn columnTipoControl;
             
-            private global::System.Data.DataColumn columnGanaderiaTelefono;
+            private global::System.Data.DataColumn columnTELEF;
             
-            private global::System.Data.DataColumn columnRutinas;
+            private global::System.Data.DataColumn columnRUTINAS;
             
-            private global::System.Data.DataColumn columnMensaje;
+            private global::System.Data.DataColumn columnMENSAJE;
             
-            private global::System.Data.DataColumn columnRespuesta;
+            private global::System.Data.DataColumn columnRESPUESTA;
             
-            private global::System.Data.DataColumn columnTanque;
+            private global::System.Data.DataColumn columnTANQUE;
             
-            private global::System.Data.DataColumn columnCodigoControlador;
+            private global::System.Data.DataColumn columnCONTROLADOR;
             
-            private global::System.Data.DataColumn columnNotas;
+            private global::System.Data.DataColumn columnNOTAS;
             
-            private global::System.Data.DataColumn columnTanqueLitros;
+            private global::System.Data.DataColumn columnLITROS_TANQUE;
             
-            private global::System.Data.DataColumn columnFechaComienzoControl;
+            private global::System.Data.DataColumn columnFCOMCONTROL;
             
-            private global::System.Data.DataColumn columnMoroso;
+            private global::System.Data.DataColumn columnMOROSO;
             
             private global::System.Data.DataColumn columnCetosis;
             
@@ -1114,8 +1079,8 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosDataTable() {
-                this.TableName = "XmlDatos";
+            public XMLDATOSDataTable() {
+                this.TableName = "XMLDATOS";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1123,7 +1088,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal XmlDatosDataTable(global::System.Data.DataTable table) {
+            internal XMLDATOSDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1140,7 +1105,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected XmlDatosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected XMLDATOSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1155,9 +1120,9 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ActColumn {
+            public global::System.Data.DataColumn ACTColumn {
                 get {
-                    return this.columnAct;
+                    return this.columnACT;
                 }
             }
             
@@ -1187,25 +1152,25 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn HoraOrdenoAnteriorColumn {
+            public global::System.Data.DataColumn ANTORD_HHColumn {
                 get {
-                    return this.columnHoraOrdenoAnterior;
+                    return this.columnANTORD_HH;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MinutoOrdenoAnteriorColumn {
+            public global::System.Data.DataColumn ANTORD_MMColumn {
                 get {
-                    return this.columnMinutoOrdenoAnterior;
+                    return this.columnANTORD_MM;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn GanaderiaNombreColumn {
+            public global::System.Data.DataColumn RAZONColumn {
                 get {
-                    return this.columnGanaderiaNombre;
+                    return this.columnRAZON;
                 }
             }
             
@@ -1219,81 +1184,81 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn GanaderiaTelefonoColumn {
+            public global::System.Data.DataColumn TELEFColumn {
                 get {
-                    return this.columnGanaderiaTelefono;
+                    return this.columnTELEF;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RutinasColumn {
+            public global::System.Data.DataColumn RUTINASColumn {
                 get {
-                    return this.columnRutinas;
+                    return this.columnRUTINAS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MensajeColumn {
+            public global::System.Data.DataColumn MENSAJEColumn {
                 get {
-                    return this.columnMensaje;
+                    return this.columnMENSAJE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RespuestaColumn {
+            public global::System.Data.DataColumn RESPUESTAColumn {
                 get {
-                    return this.columnRespuesta;
+                    return this.columnRESPUESTA;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TanqueColumn {
+            public global::System.Data.DataColumn TANQUEColumn {
                 get {
-                    return this.columnTanque;
+                    return this.columnTANQUE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CodigoControladorColumn {
+            public global::System.Data.DataColumn CONTROLADORColumn {
                 get {
-                    return this.columnCodigoControlador;
+                    return this.columnCONTROLADOR;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn NotasColumn {
+            public global::System.Data.DataColumn NOTASColumn {
                 get {
-                    return this.columnNotas;
+                    return this.columnNOTAS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn TanqueLitrosColumn {
+            public global::System.Data.DataColumn LITROS_TANQUEColumn {
                 get {
-                    return this.columnTanqueLitros;
+                    return this.columnLITROS_TANQUE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn FechaComienzoControlColumn {
+            public global::System.Data.DataColumn FCOMCONTROLColumn {
                 get {
-                    return this.columnFechaComienzoControl;
+                    return this.columnFCOMCONTROL;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn MorosoColumn {
+            public global::System.Data.DataColumn MOROSOColumn {
                 get {
-                    return this.columnMoroso;
+                    return this.columnMOROSO;
                 }
             }
             
@@ -1324,93 +1289,93 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosRow this[int index] {
+            public XMLDATOSRow this[int index] {
                 get {
-                    return ((XmlDatosRow)(this.Rows[index]));
+                    return ((XMLDATOSRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XmlDatosRowChangeEventHandler XmlDatosRowChanging;
+            public event XMLDATOSRowChangeEventHandler XMLDATOSRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XmlDatosRowChangeEventHandler XmlDatosRowChanged;
+            public event XMLDATOSRowChangeEventHandler XMLDATOSRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XmlDatosRowChangeEventHandler XmlDatosRowDeleting;
+            public event XMLDATOSRowChangeEventHandler XMLDATOSRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XmlDatosRowChangeEventHandler XmlDatosRowDeleted;
+            public event XMLDATOSRowChangeEventHandler XMLDATOSRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddXmlDatosRow(XmlDatosRow row) {
+            public void AddXMLDATOSRow(XMLDATOSRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosRow AddXmlDatosRow(
+            public XMLDATOSRow AddXMLDATOSRow(
                         string GanaderiaCodigo, 
-                        string Act, 
+                        string ACT, 
                         System.DateTime FechaCarga, 
                         System.DateTime FechaPrevista, 
                         System.DateTime FechaControl, 
-                        string HoraOrdenoAnterior, 
-                        string MinutoOrdenoAnterior, 
-                        string GanaderiaNombre, 
+                        string ANTORD_HH, 
+                        string ANTORD_MM, 
+                        string RAZON, 
                         string TipoControl, 
-                        string GanaderiaTelefono, 
-                        string Rutinas, 
-                        string Mensaje, 
-                        string Respuesta, 
-                        string Tanque, 
-                        string CodigoControlador, 
-                        string Notas, 
-                        string TanqueLitros, 
-                        System.DateTime FechaComienzoControl, 
-                        string Moroso, 
+                        string TELEF, 
+                        string RUTINAS, 
+                        string MENSAJE, 
+                        string RESPUESTA, 
+                        string TANQUE, 
+                        string CONTROLADOR, 
+                        string NOTAS, 
+                        string LITROS_TANQUE, 
+                        System.DateTime FCOMCONTROL, 
+                        string MOROSO, 
                         string Cetosis, 
                         byte[] Firma) {
-                XmlDatosRow rowXmlDatosRow = ((XmlDatosRow)(this.NewRow()));
+                XMLDATOSRow rowXMLDATOSRow = ((XMLDATOSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GanaderiaCodigo,
-                        Act,
+                        ACT,
                         FechaCarga,
                         FechaPrevista,
                         FechaControl,
-                        HoraOrdenoAnterior,
-                        MinutoOrdenoAnterior,
-                        GanaderiaNombre,
+                        ANTORD_HH,
+                        ANTORD_MM,
+                        RAZON,
                         TipoControl,
-                        GanaderiaTelefono,
-                        Rutinas,
-                        Mensaje,
-                        Respuesta,
-                        Tanque,
-                        CodigoControlador,
-                        Notas,
-                        TanqueLitros,
-                        FechaComienzoControl,
-                        Moroso,
+                        TELEF,
+                        RUTINAS,
+                        MENSAJE,
+                        RESPUESTA,
+                        TANQUE,
+                        CONTROLADOR,
+                        NOTAS,
+                        LITROS_TANQUE,
+                        FCOMCONTROL,
+                        MOROSO,
                         Cetosis,
                         Firma};
-                rowXmlDatosRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowXmlDatosRow);
-                return rowXmlDatosRow;
+                rowXMLDATOSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowXMLDATOSRow);
+                return rowXMLDATOSRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosRow FindByGanaderiaCodigo(string GanaderiaCodigo) {
-                return ((XmlDatosRow)(this.Rows.Find(new object[] {
+            public XMLDATOSRow FindByGanaderiaCodigo(string GanaderiaCodigo) {
+                return ((XMLDATOSRow)(this.Rows.Find(new object[] {
                             GanaderiaCodigo})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                XmlDatosDataTable cln = ((XmlDatosDataTable)(base.Clone()));
+                XMLDATOSDataTable cln = ((XMLDATOSDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1418,31 +1383,31 @@ namespace Afca.Common.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new XmlDatosDataTable();
+                return new XMLDATOSDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
                 this.columnGanaderiaCodigo = base.Columns["GanaderiaCodigo"];
-                this.columnAct = base.Columns["Act"];
+                this.columnACT = base.Columns["ACT"];
                 this.columnFechaCarga = base.Columns["FechaCarga"];
                 this.columnFechaPrevista = base.Columns["FechaPrevista"];
                 this.columnFechaControl = base.Columns["FechaControl"];
-                this.columnHoraOrdenoAnterior = base.Columns["HoraOrdenoAnterior"];
-                this.columnMinutoOrdenoAnterior = base.Columns["MinutoOrdenoAnterior"];
-                this.columnGanaderiaNombre = base.Columns["GanaderiaNombre"];
+                this.columnANTORD_HH = base.Columns["ANTORD_HH"];
+                this.columnANTORD_MM = base.Columns["ANTORD_MM"];
+                this.columnRAZON = base.Columns["RAZON"];
                 this.columnTipoControl = base.Columns["TipoControl"];
-                this.columnGanaderiaTelefono = base.Columns["GanaderiaTelefono"];
-                this.columnRutinas = base.Columns["Rutinas"];
-                this.columnMensaje = base.Columns["Mensaje"];
-                this.columnRespuesta = base.Columns["Respuesta"];
-                this.columnTanque = base.Columns["Tanque"];
-                this.columnCodigoControlador = base.Columns["CodigoControlador"];
-                this.columnNotas = base.Columns["Notas"];
-                this.columnTanqueLitros = base.Columns["TanqueLitros"];
-                this.columnFechaComienzoControl = base.Columns["FechaComienzoControl"];
-                this.columnMoroso = base.Columns["Moroso"];
+                this.columnTELEF = base.Columns["TELEF"];
+                this.columnRUTINAS = base.Columns["RUTINAS"];
+                this.columnMENSAJE = base.Columns["MENSAJE"];
+                this.columnRESPUESTA = base.Columns["RESPUESTA"];
+                this.columnTANQUE = base.Columns["TANQUE"];
+                this.columnCONTROLADOR = base.Columns["CONTROLADOR"];
+                this.columnNOTAS = base.Columns["NOTAS"];
+                this.columnLITROS_TANQUE = base.Columns["LITROS_TANQUE"];
+                this.columnFCOMCONTROL = base.Columns["FCOMCONTROL"];
+                this.columnMOROSO = base.Columns["MOROSO"];
                 this.columnCetosis = base.Columns["Cetosis"];
                 this.columnFirma = base.Columns["Firma"];
             }
@@ -1452,47 +1417,47 @@ namespace Afca.Common.DataSets {
             private void InitClass() {
                 this.columnGanaderiaCodigo = new global::System.Data.DataColumn("GanaderiaCodigo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGanaderiaCodigo);
-                this.columnAct = new global::System.Data.DataColumn("Act", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAct);
+                this.columnACT = new global::System.Data.DataColumn("ACT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACT);
                 this.columnFechaCarga = new global::System.Data.DataColumn("FechaCarga", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaCarga);
                 this.columnFechaPrevista = new global::System.Data.DataColumn("FechaPrevista", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaPrevista);
                 this.columnFechaControl = new global::System.Data.DataColumn("FechaControl", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaControl);
-                this.columnHoraOrdenoAnterior = new global::System.Data.DataColumn("HoraOrdenoAnterior", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHoraOrdenoAnterior);
-                this.columnMinutoOrdenoAnterior = new global::System.Data.DataColumn("MinutoOrdenoAnterior", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMinutoOrdenoAnterior);
-                this.columnGanaderiaNombre = new global::System.Data.DataColumn("GanaderiaNombre", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGanaderiaNombre);
+                this.columnANTORD_HH = new global::System.Data.DataColumn("ANTORD_HH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANTORD_HH);
+                this.columnANTORD_MM = new global::System.Data.DataColumn("ANTORD_MM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnANTORD_MM);
+                this.columnRAZON = new global::System.Data.DataColumn("RAZON", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRAZON);
                 this.columnTipoControl = new global::System.Data.DataColumn("TipoControl", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTipoControl);
-                this.columnGanaderiaTelefono = new global::System.Data.DataColumn("GanaderiaTelefono", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGanaderiaTelefono);
-                this.columnRutinas = new global::System.Data.DataColumn("Rutinas", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRutinas);
-                this.columnMensaje = new global::System.Data.DataColumn("Mensaje", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMensaje);
-                this.columnRespuesta = new global::System.Data.DataColumn("Respuesta", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRespuesta);
-                this.columnTanque = new global::System.Data.DataColumn("Tanque", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTanque);
-                this.columnCodigoControlador = new global::System.Data.DataColumn("CodigoControlador", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodigoControlador);
-                this.columnNotas = new global::System.Data.DataColumn("Notas", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNotas);
-                this.columnTanqueLitros = new global::System.Data.DataColumn("TanqueLitros", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTanqueLitros);
-                this.columnFechaComienzoControl = new global::System.Data.DataColumn("FechaComienzoControl", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaComienzoControl);
-                this.columnMoroso = new global::System.Data.DataColumn("Moroso", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMoroso);
+                this.columnTELEF = new global::System.Data.DataColumn("TELEF", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTELEF);
+                this.columnRUTINAS = new global::System.Data.DataColumn("RUTINAS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRUTINAS);
+                this.columnMENSAJE = new global::System.Data.DataColumn("MENSAJE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMENSAJE);
+                this.columnRESPUESTA = new global::System.Data.DataColumn("RESPUESTA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRESPUESTA);
+                this.columnTANQUE = new global::System.Data.DataColumn("TANQUE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTANQUE);
+                this.columnCONTROLADOR = new global::System.Data.DataColumn("CONTROLADOR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCONTROLADOR);
+                this.columnNOTAS = new global::System.Data.DataColumn("NOTAS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOTAS);
+                this.columnLITROS_TANQUE = new global::System.Data.DataColumn("LITROS_TANQUE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLITROS_TANQUE);
+                this.columnFCOMCONTROL = new global::System.Data.DataColumn("FCOMCONTROL", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFCOMCONTROL);
+                this.columnMOROSO = new global::System.Data.DataColumn("MOROSO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMOROSO);
                 this.columnCetosis = new global::System.Data.DataColumn("Cetosis", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCetosis);
                 this.columnFirma = new global::System.Data.DataColumn("Firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirma);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Datos_pk", new global::System.Data.DataColumn[] {
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("XMLDATOS_pk", new global::System.Data.DataColumn[] {
                                 this.columnGanaderiaCodigo}, true));
                 this.columnGanaderiaCodigo.AllowDBNull = false;
                 this.columnGanaderiaCodigo.Unique = true;
@@ -1500,28 +1465,28 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosRow NewXmlDatosRow() {
-                return ((XmlDatosRow)(this.NewRow()));
+            public XMLDATOSRow NewXMLDATOSRow() {
+                return ((XMLDATOSRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new XmlDatosRow(builder);
+                return new XMLDATOSRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(XmlDatosRow);
+                return typeof(XMLDATOSRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.XmlDatosRowChanged != null)) {
-                    this.XmlDatosRowChanged(this, new XmlDatosRowChangeEvent(((XmlDatosRow)(e.Row)), e.Action));
+                if ((this.XMLDATOSRowChanged != null)) {
+                    this.XMLDATOSRowChanged(this, new XMLDATOSRowChangeEvent(((XMLDATOSRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1529,8 +1494,8 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.XmlDatosRowChanging != null)) {
-                    this.XmlDatosRowChanging(this, new XmlDatosRowChangeEvent(((XmlDatosRow)(e.Row)), e.Action));
+                if ((this.XMLDATOSRowChanging != null)) {
+                    this.XMLDATOSRowChanging(this, new XMLDATOSRowChangeEvent(((XMLDATOSRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1538,8 +1503,8 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.XmlDatosRowDeleted != null)) {
-                    this.XmlDatosRowDeleted(this, new XmlDatosRowChangeEvent(((XmlDatosRow)(e.Row)), e.Action));
+                if ((this.XMLDATOSRowDeleted != null)) {
+                    this.XMLDATOSRowDeleted(this, new XMLDATOSRowChangeEvent(((XMLDATOSRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1547,14 +1512,14 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.XmlDatosRowDeleting != null)) {
-                    this.XmlDatosRowDeleting(this, new XmlDatosRowChangeEvent(((XmlDatosRow)(e.Row)), e.Action));
+                if ((this.XMLDATOSRowDeleting != null)) {
+                    this.XMLDATOSRowDeleting(this, new XMLDATOSRowChangeEvent(((XMLDATOSRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveXmlDatosRow(XmlDatosRow row) {
+            public void RemoveXMLDATOSRow(XMLDATOSRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1581,1110 +1546,7 @@ namespace Afca.Common.DataSets {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "XmlDatosDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class XMLCONTROLDataTable : global::System.Data.TypedTableBase<XMLCONTROLRow> {
-            
-            private global::System.Data.DataColumn columnRES_GEN;
-            
-            private global::System.Data.DataColumn columnRES_ORD;
-            
-            private global::System.Data.DataColumn columnRES_NOM;
-            
-            private global::System.Data.DataColumn columnRES_FN;
-            
-            private global::System.Data.DataColumn columnRES_COL;
-            
-            private global::System.Data.DataColumn columnRES_FP;
-            
-            private global::System.Data.DataColumn columnRES_NP;
-            
-            private global::System.Data.DataColumn columnRES_NC;
-            
-            private global::System.Data.DataColumn columnRES_PAD;
-            
-            private global::System.Data.DataColumn columnRES_MAD;
-            
-            private global::System.Data.DataColumn columnRES_AB;
-            
-            private global::System.Data.DataColumn columnRES_FBA;
-            
-            private global::System.Data.DataColumn columnRES_CBA;
-            
-            private global::System.Data.DataColumn columnRES_KLE;
-            
-            private global::System.Data.DataColumn columnRES_KGR;
-            
-            private global::System.Data.DataColumn columnRES_TGR;
-            
-            private global::System.Data.DataColumn columnRES_TPR;
-            
-            private global::System.Data.DataColumn columnRES_TLA;
-            
-            private global::System.Data.DataColumn columnRES_TRC;
-            
-            private global::System.Data.DataColumn columnRES_TIP;
-            
-            private global::System.Data.DataColumn columnRES_HOR;
-            
-            private global::System.Data.DataColumn columnRES_INT;
-            
-            private global::System.Data.DataColumn columnRES_VEL;
-            
-            private global::System.Data.DataColumn columnRES_TIT;
-            
-            private global::System.Data.DataColumn columnRES_FIN;
-            
-            private global::System.Data.DataColumn columnRES_NIN;
-            
-            private global::System.Data.DataColumn columnRES_SEM;
-            
-            private global::System.Data.DataColumn columnRES_TIN;
-            
-            private global::System.Data.DataColumn columnRES_LAM;
-            
-            private global::System.Data.DataColumn columnRES_LPM;
-            
-            private global::System.Data.DataColumn columnRES_LTO;
-            
-            private global::System.Data.DataColumn columnRES_NEO;
-            
-            private global::System.Data.DataColumn columnRES_XAB;
-            
-            private global::System.Data.DataColumn columnRES_XFBA;
-            
-            private global::System.Data.DataColumn columnRES_XCBA;
-            
-            private global::System.Data.DataColumn columnRES_FAE;
-            
-            private global::System.Data.DataColumn columnRES_FCTR;
-            
-            private global::System.Data.DataColumn columnRES_HCTR;
-            
-            private global::System.Data.DataColumn columnRES_CLA;
-            
-            private global::System.Data.DataColumn columnRES_FACP;
-            
-            private global::System.Data.DataColumn columnRES_VELORD;
-            
-            private global::System.Data.DataColumn columnRES_INC;
-            
-            private global::System.Data.DataColumn columnRES_SEXT;
-            
-            private global::System.Data.DataColumn columnRES_TAMT;
-            
-            private global::System.Data.DataColumn columnRES_COMT;
-            
-            private global::System.Data.DataColumn columnRES_RETP;
-            
-            private global::System.Data.DataColumn columnRES_FCTR1;
-            
-            private global::System.Data.DataColumn columnRES_HCTR1;
-            
-            private global::System.Data.DataColumn columnRES_KANT;
-            
-            private global::System.Data.DataColumn columnRES_SAN;
-            
-            private global::System.Data.DataColumn columnfechaultins;
-            
-            private global::System.Data.DataColumn columnRES_RIIA;
-            
-            private global::System.Data.DataColumn columnRes_Controlador;
-            
-            private global::System.Data.DataColumn columnRes_Temperamento;
-            
-            private global::System.Data.DataColumn columnRes_Muerta;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLDataTable() {
-                this.TableName = "XMLCONTROL";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal XMLCONTROLDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected XMLCONTROLDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_GENColumn {
-                get {
-                    return this.columnRES_GEN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_ORDColumn {
-                get {
-                    return this.columnRES_ORD;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_NOMColumn {
-                get {
-                    return this.columnRES_NOM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FNColumn {
-                get {
-                    return this.columnRES_FN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_COLColumn {
-                get {
-                    return this.columnRES_COL;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FPColumn {
-                get {
-                    return this.columnRES_FP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_NPColumn {
-                get {
-                    return this.columnRES_NP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_NCColumn {
-                get {
-                    return this.columnRES_NC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_PADColumn {
-                get {
-                    return this.columnRES_PAD;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_MADColumn {
-                get {
-                    return this.columnRES_MAD;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_ABColumn {
-                get {
-                    return this.columnRES_AB;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FBAColumn {
-                get {
-                    return this.columnRES_FBA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_CBAColumn {
-                get {
-                    return this.columnRES_CBA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_KLEColumn {
-                get {
-                    return this.columnRES_KLE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_KGRColumn {
-                get {
-                    return this.columnRES_KGR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TGRColumn {
-                get {
-                    return this.columnRES_TGR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TPRColumn {
-                get {
-                    return this.columnRES_TPR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TLAColumn {
-                get {
-                    return this.columnRES_TLA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TRCColumn {
-                get {
-                    return this.columnRES_TRC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TIPColumn {
-                get {
-                    return this.columnRES_TIP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_HORColumn {
-                get {
-                    return this.columnRES_HOR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_INTColumn {
-                get {
-                    return this.columnRES_INT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_VELColumn {
-                get {
-                    return this.columnRES_VEL;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TITColumn {
-                get {
-                    return this.columnRES_TIT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FINColumn {
-                get {
-                    return this.columnRES_FIN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_NINColumn {
-                get {
-                    return this.columnRES_NIN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_SEMColumn {
-                get {
-                    return this.columnRES_SEM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TINColumn {
-                get {
-                    return this.columnRES_TIN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_LAMColumn {
-                get {
-                    return this.columnRES_LAM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_LPMColumn {
-                get {
-                    return this.columnRES_LPM;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_LTOColumn {
-                get {
-                    return this.columnRES_LTO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_NEOColumn {
-                get {
-                    return this.columnRES_NEO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_XABColumn {
-                get {
-                    return this.columnRES_XAB;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_XFBAColumn {
-                get {
-                    return this.columnRES_XFBA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_XCBAColumn {
-                get {
-                    return this.columnRES_XCBA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FAEColumn {
-                get {
-                    return this.columnRES_FAE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FCTRColumn {
-                get {
-                    return this.columnRES_FCTR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_HCTRColumn {
-                get {
-                    return this.columnRES_HCTR;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_CLAColumn {
-                get {
-                    return this.columnRES_CLA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FACPColumn {
-                get {
-                    return this.columnRES_FACP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_VELORDColumn {
-                get {
-                    return this.columnRES_VELORD;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_INCColumn {
-                get {
-                    return this.columnRES_INC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_SEXTColumn {
-                get {
-                    return this.columnRES_SEXT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_TAMTColumn {
-                get {
-                    return this.columnRES_TAMT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_COMTColumn {
-                get {
-                    return this.columnRES_COMT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_RETPColumn {
-                get {
-                    return this.columnRES_RETP;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_FCTR1Column {
-                get {
-                    return this.columnRES_FCTR1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_HCTR1Column {
-                get {
-                    return this.columnRES_HCTR1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_KANTColumn {
-                get {
-                    return this.columnRES_KANT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_SANColumn {
-                get {
-                    return this.columnRES_SAN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn fechaultinsColumn {
-                get {
-                    return this.columnfechaultins;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn RES_RIIAColumn {
-                get {
-                    return this.columnRES_RIIA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Res_ControladorColumn {
-                get {
-                    return this.columnRes_Controlador;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Res_TemperamentoColumn {
-                get {
-                    return this.columnRes_Temperamento;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Res_MuertaColumn {
-                get {
-                    return this.columnRes_Muerta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLRow this[int index] {
-                get {
-                    return ((XMLCONTROLRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XMLCONTROLRowChangeEventHandler XMLCONTROLRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XMLCONTROLRowChangeEventHandler XMLCONTROLRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XMLCONTROLRowChangeEventHandler XMLCONTROLRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event XMLCONTROLRowChangeEventHandler XMLCONTROLRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddXMLCONTROLRow(XMLCONTROLRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLRow AddXMLCONTROLRow(
-                        string RES_GEN, 
-                        string RES_ORD, 
-                        string RES_NOM, 
-                        System.DateTime RES_FN, 
-                        string RES_COL, 
-                        System.DateTime RES_FP, 
-                        string RES_NP, 
-                        string RES_NC, 
-                        string RES_PAD, 
-                        string RES_MAD, 
-                        string RES_AB, 
-                        System.DateTime RES_FBA, 
-                        string RES_CBA, 
-                        double RES_KLE, 
-                        double RES_KGR, 
-                        double RES_TGR, 
-                        double RES_TPR, 
-                        double RES_TLA, 
-                        double RES_TRC, 
-                        string RES_TIP, 
-                        string RES_HOR, 
-                        string RES_INT, 
-                        string RES_VEL, 
-                        string RES_TIT, 
-                        System.DateTime RES_FIN, 
-                        double RES_NIN, 
-                        string RES_SEM, 
-                        string RES_TIN, 
-                        double RES_LAM, 
-                        double RES_LPM, 
-                        double RES_LTO, 
-                        string RES_NEO, 
-                        string RES_XAB, 
-                        System.DateTime RES_XFBA, 
-                        string RES_XCBA, 
-                        System.DateTime RES_FAE, 
-                        System.DateTime RES_FCTR, 
-                        string RES_HCTR, 
-                        string RES_CLA, 
-                        string RES_FACP, 
-                        string RES_VELORD, 
-                        string RES_INC, 
-                        string RES_SEXT, 
-                        string RES_TAMT, 
-                        string RES_COMT, 
-                        string RES_RETP, 
-                        System.DateTime RES_FCTR1, 
-                        string RES_HCTR1, 
-                        double RES_KANT, 
-                        string RES_SAN, 
-                        System.DateTime fechaultins, 
-                        bool RES_RIIA, 
-                        int Res_Controlador, 
-                        string Res_Temperamento, 
-                        bool Res_Muerta) {
-                XMLCONTROLRow rowXMLCONTROLRow = ((XMLCONTROLRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        RES_GEN,
-                        RES_ORD,
-                        RES_NOM,
-                        RES_FN,
-                        RES_COL,
-                        RES_FP,
-                        RES_NP,
-                        RES_NC,
-                        RES_PAD,
-                        RES_MAD,
-                        RES_AB,
-                        RES_FBA,
-                        RES_CBA,
-                        RES_KLE,
-                        RES_KGR,
-                        RES_TGR,
-                        RES_TPR,
-                        RES_TLA,
-                        RES_TRC,
-                        RES_TIP,
-                        RES_HOR,
-                        RES_INT,
-                        RES_VEL,
-                        RES_TIT,
-                        RES_FIN,
-                        RES_NIN,
-                        RES_SEM,
-                        RES_TIN,
-                        RES_LAM,
-                        RES_LPM,
-                        RES_LTO,
-                        RES_NEO,
-                        RES_XAB,
-                        RES_XFBA,
-                        RES_XCBA,
-                        RES_FAE,
-                        RES_FCTR,
-                        RES_HCTR,
-                        RES_CLA,
-                        RES_FACP,
-                        RES_VELORD,
-                        RES_INC,
-                        RES_SEXT,
-                        RES_TAMT,
-                        RES_COMT,
-                        RES_RETP,
-                        RES_FCTR1,
-                        RES_HCTR1,
-                        RES_KANT,
-                        RES_SAN,
-                        fechaultins,
-                        RES_RIIA,
-                        Res_Controlador,
-                        Res_Temperamento,
-                        Res_Muerta};
-                rowXMLCONTROLRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowXMLCONTROLRow);
-                return rowXMLCONTROLRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLRow FindByRES_GENRES_AB(string RES_GEN, string RES_AB) {
-                return ((XMLCONTROLRow)(this.Rows.Find(new object[] {
-                            RES_GEN,
-                            RES_AB})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                XMLCONTROLDataTable cln = ((XMLCONTROLDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new XMLCONTROLDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal void InitVars() {
-                this.columnRES_GEN = base.Columns["RES_GEN"];
-                this.columnRES_ORD = base.Columns["RES_ORD"];
-                this.columnRES_NOM = base.Columns["RES_NOM"];
-                this.columnRES_FN = base.Columns["RES_FN"];
-                this.columnRES_COL = base.Columns["RES_COL"];
-                this.columnRES_FP = base.Columns["RES_FP"];
-                this.columnRES_NP = base.Columns["RES_NP"];
-                this.columnRES_NC = base.Columns["RES_NC"];
-                this.columnRES_PAD = base.Columns["RES_PAD"];
-                this.columnRES_MAD = base.Columns["RES_MAD"];
-                this.columnRES_AB = base.Columns["RES_AB"];
-                this.columnRES_FBA = base.Columns["RES_FBA"];
-                this.columnRES_CBA = base.Columns["RES_CBA"];
-                this.columnRES_KLE = base.Columns["RES_KLE"];
-                this.columnRES_KGR = base.Columns["RES_KGR"];
-                this.columnRES_TGR = base.Columns["RES_TGR"];
-                this.columnRES_TPR = base.Columns["RES_TPR"];
-                this.columnRES_TLA = base.Columns["RES_TLA"];
-                this.columnRES_TRC = base.Columns["RES_TRC"];
-                this.columnRES_TIP = base.Columns["RES_TIP"];
-                this.columnRES_HOR = base.Columns["RES_HOR"];
-                this.columnRES_INT = base.Columns["RES_INT"];
-                this.columnRES_VEL = base.Columns["RES_VEL"];
-                this.columnRES_TIT = base.Columns["RES_TIT"];
-                this.columnRES_FIN = base.Columns["RES_FIN"];
-                this.columnRES_NIN = base.Columns["RES_NIN"];
-                this.columnRES_SEM = base.Columns["RES_SEM"];
-                this.columnRES_TIN = base.Columns["RES_TIN"];
-                this.columnRES_LAM = base.Columns["RES_LAM"];
-                this.columnRES_LPM = base.Columns["RES_LPM"];
-                this.columnRES_LTO = base.Columns["RES_LTO"];
-                this.columnRES_NEO = base.Columns["RES_NEO"];
-                this.columnRES_XAB = base.Columns["RES_XAB"];
-                this.columnRES_XFBA = base.Columns["RES_XFBA"];
-                this.columnRES_XCBA = base.Columns["RES_XCBA"];
-                this.columnRES_FAE = base.Columns["RES_FAE"];
-                this.columnRES_FCTR = base.Columns["RES_FCTR"];
-                this.columnRES_HCTR = base.Columns["RES_HCTR"];
-                this.columnRES_CLA = base.Columns["RES_CLA"];
-                this.columnRES_FACP = base.Columns["RES_FACP"];
-                this.columnRES_VELORD = base.Columns["RES_VELORD"];
-                this.columnRES_INC = base.Columns["RES_INC"];
-                this.columnRES_SEXT = base.Columns["RES_SEXT"];
-                this.columnRES_TAMT = base.Columns["RES_TAMT"];
-                this.columnRES_COMT = base.Columns["RES_COMT"];
-                this.columnRES_RETP = base.Columns["RES_RETP"];
-                this.columnRES_FCTR1 = base.Columns["RES_FCTR1"];
-                this.columnRES_HCTR1 = base.Columns["RES_HCTR1"];
-                this.columnRES_KANT = base.Columns["RES_KANT"];
-                this.columnRES_SAN = base.Columns["RES_SAN"];
-                this.columnfechaultins = base.Columns["fechaultins"];
-                this.columnRES_RIIA = base.Columns["RES_RIIA"];
-                this.columnRes_Controlador = base.Columns["Res_Controlador"];
-                this.columnRes_Temperamento = base.Columns["Res_Temperamento"];
-                this.columnRes_Muerta = base.Columns["Res_Muerta"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            private void InitClass() {
-                this.columnRES_GEN = new global::System.Data.DataColumn("RES_GEN", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_GEN);
-                this.columnRES_ORD = new global::System.Data.DataColumn("RES_ORD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_ORD);
-                this.columnRES_NOM = new global::System.Data.DataColumn("RES_NOM", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_NOM);
-                this.columnRES_FN = new global::System.Data.DataColumn("RES_FN", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FN);
-                this.columnRES_COL = new global::System.Data.DataColumn("RES_COL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_COL);
-                this.columnRES_FP = new global::System.Data.DataColumn("RES_FP", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FP);
-                this.columnRES_NP = new global::System.Data.DataColumn("RES_NP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_NP);
-                this.columnRES_NC = new global::System.Data.DataColumn("RES_NC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_NC);
-                this.columnRES_PAD = new global::System.Data.DataColumn("RES_PAD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_PAD);
-                this.columnRES_MAD = new global::System.Data.DataColumn("RES_MAD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_MAD);
-                this.columnRES_AB = new global::System.Data.DataColumn("RES_AB", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_AB);
-                this.columnRES_FBA = new global::System.Data.DataColumn("RES_FBA", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FBA);
-                this.columnRES_CBA = new global::System.Data.DataColumn("RES_CBA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_CBA);
-                this.columnRES_KLE = new global::System.Data.DataColumn("RES_KLE", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_KLE);
-                this.columnRES_KGR = new global::System.Data.DataColumn("RES_KGR", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_KGR);
-                this.columnRES_TGR = new global::System.Data.DataColumn("RES_TGR", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TGR);
-                this.columnRES_TPR = new global::System.Data.DataColumn("RES_TPR", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TPR);
-                this.columnRES_TLA = new global::System.Data.DataColumn("RES_TLA", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TLA);
-                this.columnRES_TRC = new global::System.Data.DataColumn("RES_TRC", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TRC);
-                this.columnRES_TIP = new global::System.Data.DataColumn("RES_TIP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TIP);
-                this.columnRES_HOR = new global::System.Data.DataColumn("RES_HOR", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_HOR);
-                this.columnRES_INT = new global::System.Data.DataColumn("RES_INT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_INT);
-                this.columnRES_VEL = new global::System.Data.DataColumn("RES_VEL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_VEL);
-                this.columnRES_TIT = new global::System.Data.DataColumn("RES_TIT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TIT);
-                this.columnRES_FIN = new global::System.Data.DataColumn("RES_FIN", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FIN);
-                this.columnRES_NIN = new global::System.Data.DataColumn("RES_NIN", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_NIN);
-                this.columnRES_SEM = new global::System.Data.DataColumn("RES_SEM", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_SEM);
-                this.columnRES_TIN = new global::System.Data.DataColumn("RES_TIN", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TIN);
-                this.columnRES_LAM = new global::System.Data.DataColumn("RES_LAM", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_LAM);
-                this.columnRES_LPM = new global::System.Data.DataColumn("RES_LPM", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_LPM);
-                this.columnRES_LTO = new global::System.Data.DataColumn("RES_LTO", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_LTO);
-                this.columnRES_NEO = new global::System.Data.DataColumn("RES_NEO", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_NEO);
-                this.columnRES_XAB = new global::System.Data.DataColumn("RES_XAB", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_XAB);
-                this.columnRES_XFBA = new global::System.Data.DataColumn("RES_XFBA", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_XFBA);
-                this.columnRES_XCBA = new global::System.Data.DataColumn("RES_XCBA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_XCBA);
-                this.columnRES_FAE = new global::System.Data.DataColumn("RES_FAE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FAE);
-                this.columnRES_FCTR = new global::System.Data.DataColumn("RES_FCTR", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FCTR);
-                this.columnRES_HCTR = new global::System.Data.DataColumn("RES_HCTR", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_HCTR);
-                this.columnRES_CLA = new global::System.Data.DataColumn("RES_CLA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_CLA);
-                this.columnRES_FACP = new global::System.Data.DataColumn("RES_FACP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FACP);
-                this.columnRES_VELORD = new global::System.Data.DataColumn("RES_VELORD", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_VELORD);
-                this.columnRES_INC = new global::System.Data.DataColumn("RES_INC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_INC);
-                this.columnRES_SEXT = new global::System.Data.DataColumn("RES_SEXT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_SEXT);
-                this.columnRES_TAMT = new global::System.Data.DataColumn("RES_TAMT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_TAMT);
-                this.columnRES_COMT = new global::System.Data.DataColumn("RES_COMT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_COMT);
-                this.columnRES_RETP = new global::System.Data.DataColumn("RES_RETP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_RETP);
-                this.columnRES_FCTR1 = new global::System.Data.DataColumn("RES_FCTR1", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_FCTR1);
-                this.columnRES_HCTR1 = new global::System.Data.DataColumn("RES_HCTR1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_HCTR1);
-                this.columnRES_KANT = new global::System.Data.DataColumn("RES_KANT", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_KANT);
-                this.columnRES_SAN = new global::System.Data.DataColumn("RES_SAN", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_SAN);
-                this.columnfechaultins = new global::System.Data.DataColumn("fechaultins", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfechaultins);
-                this.columnRES_RIIA = new global::System.Data.DataColumn("RES_RIIA", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRES_RIIA);
-                this.columnRes_Controlador = new global::System.Data.DataColumn("Res_Controlador", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRes_Controlador);
-                this.columnRes_Temperamento = new global::System.Data.DataColumn("Res_Temperamento", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRes_Temperamento);
-                this.columnRes_Muerta = new global::System.Data.DataColumn("Res_Muerta", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRes_Muerta);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnRES_GEN,
-                                this.columnRES_AB}, true));
-                this.columnRES_GEN.AllowDBNull = false;
-                this.columnRES_GEN.MaxLength = 14;
-                this.columnRES_ORD.MaxLength = 14;
-                this.columnRES_NOM.MaxLength = 30;
-                this.columnRES_COL.MaxLength = 4;
-                this.columnRES_NP.MaxLength = 2;
-                this.columnRES_NC.MaxLength = 2;
-                this.columnRES_PAD.MaxLength = 14;
-                this.columnRES_MAD.MaxLength = 14;
-                this.columnRES_AB.AllowDBNull = false;
-                this.columnRES_AB.MaxLength = 1;
-                this.columnRES_CBA.MaxLength = 2;
-                this.columnRES_TIP.MaxLength = 2;
-                this.columnRES_HOR.MaxLength = 4;
-                this.columnRES_INT.MaxLength = 1;
-                this.columnRES_VEL.MaxLength = 1;
-                this.columnRES_TIT.MaxLength = 7;
-                this.columnRES_SEM.MaxLength = 14;
-                this.columnRES_TIN.MaxLength = 1;
-                this.columnRES_NEO.MaxLength = 1;
-                this.columnRES_XAB.MaxLength = 1;
-                this.columnRES_XCBA.MaxLength = 2;
-                this.columnRES_HCTR.MaxLength = 5;
-                this.columnRES_CLA.MaxLength = 3;
-                this.columnRES_FACP.MaxLength = 1;
-                this.columnRES_VELORD.MaxLength = 1;
-                this.columnRES_INC.MaxLength = 2;
-                this.columnRES_SEXT.MaxLength = 1;
-                this.columnRES_TAMT.MaxLength = 1;
-                this.columnRES_COMT.MaxLength = 1;
-                this.columnRES_RETP.MaxLength = 1;
-                this.columnRES_HCTR1.MaxLength = 5;
-                this.columnRES_SAN.MaxLength = 14;
-                this.columnRes_Temperamento.MaxLength = 1;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLRow NewXMLCONTROLRow() {
-                return ((XMLCONTROLRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new XMLCONTROLRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(XMLCONTROLRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.XMLCONTROLRowChanged != null)) {
-                    this.XMLCONTROLRowChanged(this, new XMLCONTROLRowChangeEvent(((XMLCONTROLRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.XMLCONTROLRowChanging != null)) {
-                    this.XMLCONTROLRowChanging(this, new XMLCONTROLRowChangeEvent(((XMLCONTROLRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.XMLCONTROLRowDeleted != null)) {
-                    this.XMLCONTROLRowDeleted(this, new XMLCONTROLRowChangeEvent(((XMLCONTROLRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.XMLCONTROLRowDeleting != null)) {
-                    this.XMLCONTROLRowDeleting(this, new XMLCONTROLRowChangeEvent(((XMLCONTROLRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveXMLCONTROLRow(XMLCONTROLRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                XmlData ds = new XmlData();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "XMLCONTROLDataTable";
+                attribute2.FixedValue = "XMLDATOSDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3178,41 +2040,41 @@ namespace Afca.Common.DataSets {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class XmlDatosRow : global::System.Data.DataRow {
+        public partial class XMLDATOSRow : global::System.Data.DataRow {
             
-            private XmlDatosDataTable tableXmlDatos;
+            private XMLDATOSDataTable tableXMLDATOS;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal XmlDatosRow(global::System.Data.DataRowBuilder rb) : 
+            internal XMLDATOSRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableXmlDatos = ((XmlDatosDataTable)(this.Table));
+                this.tableXMLDATOS = ((XMLDATOSDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string GanaderiaCodigo {
                 get {
-                    return ((string)(this[this.tableXmlDatos.GanaderiaCodigoColumn]));
+                    return ((string)(this[this.tableXMLDATOS.GanaderiaCodigoColumn]));
                 }
                 set {
-                    this[this.tableXmlDatos.GanaderiaCodigoColumn] = value;
+                    this[this.tableXMLDATOS.GanaderiaCodigoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Act {
+            public string ACT {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.ActColumn]));
+                        return ((string)(this[this.tableXMLDATOS.ACTColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Act\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ACT\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.ActColumn] = value;
+                    this[this.tableXMLDATOS.ACTColumn] = value;
                 }
             }
             
@@ -3221,14 +2083,14 @@ namespace Afca.Common.DataSets {
             public System.DateTime FechaCarga {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableXmlDatos.FechaCargaColumn]));
+                        return ((global::System.DateTime)(this[this.tableXMLDATOS.FechaCargaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaCarga\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaCarga\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.FechaCargaColumn] = value;
+                    this[this.tableXMLDATOS.FechaCargaColumn] = value;
                 }
             }
             
@@ -3237,14 +2099,14 @@ namespace Afca.Common.DataSets {
             public System.DateTime FechaPrevista {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableXmlDatos.FechaPrevistaColumn]));
+                        return ((global::System.DateTime)(this[this.tableXMLDATOS.FechaPrevistaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaPrevista\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaPrevista\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.FechaPrevistaColumn] = value;
+                    this[this.tableXMLDATOS.FechaPrevistaColumn] = value;
                 }
             }
             
@@ -3253,62 +2115,62 @@ namespace Afca.Common.DataSets {
             public System.DateTime FechaControl {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableXmlDatos.FechaControlColumn]));
+                        return ((global::System.DateTime)(this[this.tableXMLDATOS.FechaControlColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaControl\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaControl\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.FechaControlColumn] = value;
+                    this[this.tableXMLDATOS.FechaControlColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string HoraOrdenoAnterior {
+            public string ANTORD_HH {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.HoraOrdenoAnteriorColumn]));
+                        return ((string)(this[this.tableXMLDATOS.ANTORD_HHColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HoraOrdenoAnterior\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ANTORD_HH\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.HoraOrdenoAnteriorColumn] = value;
+                    this[this.tableXMLDATOS.ANTORD_HHColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string MinutoOrdenoAnterior {
+            public string ANTORD_MM {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.MinutoOrdenoAnteriorColumn]));
+                        return ((string)(this[this.tableXMLDATOS.ANTORD_MMColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MinutoOrdenoAnterior\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ANTORD_MM\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.MinutoOrdenoAnteriorColumn] = value;
+                    this[this.tableXMLDATOS.ANTORD_MMColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string GanaderiaNombre {
+            public string RAZON {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.GanaderiaNombreColumn]));
+                        return ((string)(this[this.tableXMLDATOS.RAZONColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'GanaderiaNombre\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RAZON\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.GanaderiaNombreColumn] = value;
+                    this[this.tableXMLDATOS.RAZONColumn] = value;
                 }
             }
             
@@ -3317,174 +2179,174 @@ namespace Afca.Common.DataSets {
             public string TipoControl {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.TipoControlColumn]));
+                        return ((string)(this[this.tableXMLDATOS.TipoControlColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoControl\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TipoControl\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.TipoControlColumn] = value;
+                    this[this.tableXMLDATOS.TipoControlColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string GanaderiaTelefono {
+            public string TELEF {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.GanaderiaTelefonoColumn]));
+                        return ((string)(this[this.tableXMLDATOS.TELEFColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'GanaderiaTelefono\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TELEF\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.GanaderiaTelefonoColumn] = value;
+                    this[this.tableXMLDATOS.TELEFColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Rutinas {
+            public string RUTINAS {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.RutinasColumn]));
+                        return ((string)(this[this.tableXMLDATOS.RUTINASColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Rutinas\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RUTINAS\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.RutinasColumn] = value;
+                    this[this.tableXMLDATOS.RUTINASColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Mensaje {
+            public string MENSAJE {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.MensajeColumn]));
+                        return ((string)(this[this.tableXMLDATOS.MENSAJEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Mensaje\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MENSAJE\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.MensajeColumn] = value;
+                    this[this.tableXMLDATOS.MENSAJEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Respuesta {
+            public string RESPUESTA {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.RespuestaColumn]));
+                        return ((string)(this[this.tableXMLDATOS.RESPUESTAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Respuesta\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RESPUESTA\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.RespuestaColumn] = value;
+                    this[this.tableXMLDATOS.RESPUESTAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Tanque {
+            public string TANQUE {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.TanqueColumn]));
+                        return ((string)(this[this.tableXMLDATOS.TANQUEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Tanque\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TANQUE\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.TanqueColumn] = value;
+                    this[this.tableXMLDATOS.TANQUEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string CodigoControlador {
+            public string CONTROLADOR {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.CodigoControladorColumn]));
+                        return ((string)(this[this.tableXMLDATOS.CONTROLADORColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CodigoControlador\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CONTROLADOR\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.CodigoControladorColumn] = value;
+                    this[this.tableXMLDATOS.CONTROLADORColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Notas {
+            public string NOTAS {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.NotasColumn]));
+                        return ((string)(this[this.tableXMLDATOS.NOTASColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Notas\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOTAS\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.NotasColumn] = value;
+                    this[this.tableXMLDATOS.NOTASColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string TanqueLitros {
+            public string LITROS_TANQUE {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.TanqueLitrosColumn]));
+                        return ((string)(this[this.tableXMLDATOS.LITROS_TANQUEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'TanqueLitros\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LITROS_TANQUE\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.TanqueLitrosColumn] = value;
+                    this[this.tableXMLDATOS.LITROS_TANQUEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime FechaComienzoControl {
+            public System.DateTime FCOMCONTROL {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableXmlDatos.FechaComienzoControlColumn]));
+                        return ((global::System.DateTime)(this[this.tableXMLDATOS.FCOMCONTROLColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaComienzoControl\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FCOMCONTROL\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.FechaComienzoControlColumn] = value;
+                    this[this.tableXMLDATOS.FCOMCONTROLColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Moroso {
+            public string MOROSO {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.MorosoColumn]));
+                        return ((string)(this[this.tableXMLDATOS.MOROSOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Moroso\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MOROSO\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.MorosoColumn] = value;
+                    this[this.tableXMLDATOS.MOROSOColumn] = value;
                 }
             }
             
@@ -3493,14 +2355,14 @@ namespace Afca.Common.DataSets {
             public string Cetosis {
                 get {
                     try {
-                        return ((string)(this[this.tableXmlDatos.CetosisColumn]));
+                        return ((string)(this[this.tableXMLDATOS.CetosisColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cetosis\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cetosis\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.CetosisColumn] = value;
+                    this[this.tableXMLDATOS.CetosisColumn] = value;
                 }
             }
             
@@ -3509,1776 +2371,255 @@ namespace Afca.Common.DataSets {
             public byte[] Firma {
                 get {
                     try {
-                        return ((byte[])(this[this.tableXmlDatos.FirmaColumn]));
+                        return ((byte[])(this[this.tableXMLDATOS.FirmaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Firma\' de la tabla \'XmlDatos\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Firma\' de la tabla \'XMLDATOS\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableXmlDatos.FirmaColumn] = value;
+                    this[this.tableXMLDATOS.FirmaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsActNull() {
-                return this.IsNull(this.tableXmlDatos.ActColumn);
+            public bool IsACTNull() {
+                return this.IsNull(this.tableXMLDATOS.ACTColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetActNull() {
-                this[this.tableXmlDatos.ActColumn] = global::System.Convert.DBNull;
+            public void SetACTNull() {
+                this[this.tableXMLDATOS.ACTColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsFechaCargaNull() {
-                return this.IsNull(this.tableXmlDatos.FechaCargaColumn);
+                return this.IsNull(this.tableXMLDATOS.FechaCargaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFechaCargaNull() {
-                this[this.tableXmlDatos.FechaCargaColumn] = global::System.Convert.DBNull;
+                this[this.tableXMLDATOS.FechaCargaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsFechaPrevistaNull() {
-                return this.IsNull(this.tableXmlDatos.FechaPrevistaColumn);
+                return this.IsNull(this.tableXMLDATOS.FechaPrevistaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFechaPrevistaNull() {
-                this[this.tableXmlDatos.FechaPrevistaColumn] = global::System.Convert.DBNull;
+                this[this.tableXMLDATOS.FechaPrevistaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsFechaControlNull() {
-                return this.IsNull(this.tableXmlDatos.FechaControlColumn);
+                return this.IsNull(this.tableXMLDATOS.FechaControlColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFechaControlNull() {
-                this[this.tableXmlDatos.FechaControlColumn] = global::System.Convert.DBNull;
+                this[this.tableXMLDATOS.FechaControlColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsHoraOrdenoAnteriorNull() {
-                return this.IsNull(this.tableXmlDatos.HoraOrdenoAnteriorColumn);
+            public bool IsANTORD_HHNull() {
+                return this.IsNull(this.tableXMLDATOS.ANTORD_HHColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetHoraOrdenoAnteriorNull() {
-                this[this.tableXmlDatos.HoraOrdenoAnteriorColumn] = global::System.Convert.DBNull;
+            public void SetANTORD_HHNull() {
+                this[this.tableXMLDATOS.ANTORD_HHColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMinutoOrdenoAnteriorNull() {
-                return this.IsNull(this.tableXmlDatos.MinutoOrdenoAnteriorColumn);
+            public bool IsANTORD_MMNull() {
+                return this.IsNull(this.tableXMLDATOS.ANTORD_MMColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMinutoOrdenoAnteriorNull() {
-                this[this.tableXmlDatos.MinutoOrdenoAnteriorColumn] = global::System.Convert.DBNull;
+            public void SetANTORD_MMNull() {
+                this[this.tableXMLDATOS.ANTORD_MMColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsGanaderiaNombreNull() {
-                return this.IsNull(this.tableXmlDatos.GanaderiaNombreColumn);
+            public bool IsRAZONNull() {
+                return this.IsNull(this.tableXMLDATOS.RAZONColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetGanaderiaNombreNull() {
-                this[this.tableXmlDatos.GanaderiaNombreColumn] = global::System.Convert.DBNull;
+            public void SetRAZONNull() {
+                this[this.tableXMLDATOS.RAZONColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsTipoControlNull() {
-                return this.IsNull(this.tableXmlDatos.TipoControlColumn);
+                return this.IsNull(this.tableXMLDATOS.TipoControlColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetTipoControlNull() {
-                this[this.tableXmlDatos.TipoControlColumn] = global::System.Convert.DBNull;
+                this[this.tableXMLDATOS.TipoControlColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsGanaderiaTelefonoNull() {
-                return this.IsNull(this.tableXmlDatos.GanaderiaTelefonoColumn);
+            public bool IsTELEFNull() {
+                return this.IsNull(this.tableXMLDATOS.TELEFColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetGanaderiaTelefonoNull() {
-                this[this.tableXmlDatos.GanaderiaTelefonoColumn] = global::System.Convert.DBNull;
+            public void SetTELEFNull() {
+                this[this.tableXMLDATOS.TELEFColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRutinasNull() {
-                return this.IsNull(this.tableXmlDatos.RutinasColumn);
+            public bool IsRUTINASNull() {
+                return this.IsNull(this.tableXMLDATOS.RUTINASColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRutinasNull() {
-                this[this.tableXmlDatos.RutinasColumn] = global::System.Convert.DBNull;
+            public void SetRUTINASNull() {
+                this[this.tableXMLDATOS.RUTINASColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMensajeNull() {
-                return this.IsNull(this.tableXmlDatos.MensajeColumn);
+            public bool IsMENSAJENull() {
+                return this.IsNull(this.tableXMLDATOS.MENSAJEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMensajeNull() {
-                this[this.tableXmlDatos.MensajeColumn] = global::System.Convert.DBNull;
+            public void SetMENSAJENull() {
+                this[this.tableXMLDATOS.MENSAJEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRespuestaNull() {
-                return this.IsNull(this.tableXmlDatos.RespuestaColumn);
+            public bool IsRESPUESTANull() {
+                return this.IsNull(this.tableXMLDATOS.RESPUESTAColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRespuestaNull() {
-                this[this.tableXmlDatos.RespuestaColumn] = global::System.Convert.DBNull;
+            public void SetRESPUESTANull() {
+                this[this.tableXMLDATOS.RESPUESTAColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTanqueNull() {
-                return this.IsNull(this.tableXmlDatos.TanqueColumn);
+            public bool IsTANQUENull() {
+                return this.IsNull(this.tableXMLDATOS.TANQUEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTanqueNull() {
-                this[this.tableXmlDatos.TanqueColumn] = global::System.Convert.DBNull;
+            public void SetTANQUENull() {
+                this[this.tableXMLDATOS.TANQUEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsCodigoControladorNull() {
-                return this.IsNull(this.tableXmlDatos.CodigoControladorColumn);
+            public bool IsCONTROLADORNull() {
+                return this.IsNull(this.tableXMLDATOS.CONTROLADORColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetCodigoControladorNull() {
-                this[this.tableXmlDatos.CodigoControladorColumn] = global::System.Convert.DBNull;
+            public void SetCONTROLADORNull() {
+                this[this.tableXMLDATOS.CONTROLADORColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsNotasNull() {
-                return this.IsNull(this.tableXmlDatos.NotasColumn);
+            public bool IsNOTASNull() {
+                return this.IsNull(this.tableXMLDATOS.NOTASColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetNotasNull() {
-                this[this.tableXmlDatos.NotasColumn] = global::System.Convert.DBNull;
+            public void SetNOTASNull() {
+                this[this.tableXMLDATOS.NOTASColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTanqueLitrosNull() {
-                return this.IsNull(this.tableXmlDatos.TanqueLitrosColumn);
+            public bool IsLITROS_TANQUENull() {
+                return this.IsNull(this.tableXMLDATOS.LITROS_TANQUEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTanqueLitrosNull() {
-                this[this.tableXmlDatos.TanqueLitrosColumn] = global::System.Convert.DBNull;
+            public void SetLITROS_TANQUENull() {
+                this[this.tableXMLDATOS.LITROS_TANQUEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsFechaComienzoControlNull() {
-                return this.IsNull(this.tableXmlDatos.FechaComienzoControlColumn);
+            public bool IsFCOMCONTROLNull() {
+                return this.IsNull(this.tableXMLDATOS.FCOMCONTROLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetFechaComienzoControlNull() {
-                this[this.tableXmlDatos.FechaComienzoControlColumn] = global::System.Convert.DBNull;
+            public void SetFCOMCONTROLNull() {
+                this[this.tableXMLDATOS.FCOMCONTROLColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsMorosoNull() {
-                return this.IsNull(this.tableXmlDatos.MorosoColumn);
+            public bool IsMOROSONull() {
+                return this.IsNull(this.tableXMLDATOS.MOROSOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetMorosoNull() {
-                this[this.tableXmlDatos.MorosoColumn] = global::System.Convert.DBNull;
+            public void SetMOROSONull() {
+                this[this.tableXMLDATOS.MOROSOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCetosisNull() {
-                return this.IsNull(this.tableXmlDatos.CetosisColumn);
+                return this.IsNull(this.tableXMLDATOS.CetosisColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetCetosisNull() {
-                this[this.tableXmlDatos.CetosisColumn] = global::System.Convert.DBNull;
+                this[this.tableXMLDATOS.CetosisColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsFirmaNull() {
-                return this.IsNull(this.tableXmlDatos.FirmaColumn);
+                return this.IsNull(this.tableXMLDATOS.FirmaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFirmaNull() {
-                this[this.tableXmlDatos.FirmaColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class XMLCONTROLRow : global::System.Data.DataRow {
-            
-            private XMLCONTROLDataTable tableXMLCONTROL;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal XMLCONTROLRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableXMLCONTROL = ((XMLCONTROLDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_GEN {
-                get {
-                    return ((string)(this[this.tableXMLCONTROL.RES_GENColumn]));
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_GENColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_ORD {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_ORDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_ORD\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_ORDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_NOM {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_NOMColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_NOM\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_NOMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FN {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FNColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FN\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FNColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_COL {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_COLColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_COL\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_COLColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FP {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FP\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_NP {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_NPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_NP\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_NPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_NC {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_NCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_NC\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_NCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_PAD {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_PADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_PAD\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_PADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_MAD {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_MADColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_MAD\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_MADColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_AB {
-                get {
-                    return ((string)(this[this.tableXMLCONTROL.RES_ABColumn]));
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_ABColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FBA {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FBAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FBA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FBAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_CBA {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_CBAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_CBA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_CBAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_KLE {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_KLEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_KLE\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_KLEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_KGR {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_KGRColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_KGR\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_KGRColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_TGR {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_TGRColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TGR\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TGRColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_TPR {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_TPRColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TPR\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TPRColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_TLA {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_TLAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TLA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TLAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_TRC {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_TRCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TRC\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TRCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_TIP {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_TIPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TIP\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TIPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_HOR {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_HORColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_HOR\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_HORColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_INT {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_INTColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_INT\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_INTColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_VEL {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_VELColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_VEL\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_VELColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_TIT {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_TITColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TIT\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TITColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FIN {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FINColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FIN\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FINColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_NIN {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_NINColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_NIN\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_NINColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_SEM {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_SEMColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_SEM\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_SEMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_TIN {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_TINColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TIN\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TINColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_LAM {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_LAMColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_LAM\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_LAMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_LPM {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_LPMColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_LPM\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_LPMColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_LTO {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_LTOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_LTO\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_LTOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_NEO {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_NEOColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_NEO\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_NEOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_XAB {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_XABColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_XAB\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_XABColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_XFBA {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_XFBAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_XFBA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_XFBAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_XCBA {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_XCBAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_XCBA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_XCBAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FAE {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FAEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FAE\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FAEColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FCTR {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FCTRColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FCTR\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FCTRColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_HCTR {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_HCTRColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_HCTR\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_HCTRColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_CLA {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_CLAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_CLA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_CLAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_FACP {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_FACPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FACP\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FACPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_VELORD {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_VELORDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_VELORD\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_VELORDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_INC {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_INCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_INC\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_INCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_SEXT {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_SEXTColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_SEXT\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_SEXTColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_TAMT {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_TAMTColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_TAMT\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_TAMTColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_COMT {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_COMTColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_COMT\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_COMTColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_RETP {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_RETPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_RETP\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_RETPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime RES_FCTR1 {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.RES_FCTR1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_FCTR1\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_FCTR1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_HCTR1 {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_HCTR1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_HCTR1\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_HCTR1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double RES_KANT {
-                get {
-                    try {
-                        return ((double)(this[this.tableXMLCONTROL.RES_KANTColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_KANT\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_KANTColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string RES_SAN {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.RES_SANColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_SAN\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_SANColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime fechaultins {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableXMLCONTROL.fechaultinsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fechaultins\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.fechaultinsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool RES_RIIA {
-                get {
-                    try {
-                        return ((bool)(this[this.tableXMLCONTROL.RES_RIIAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RES_RIIA\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.RES_RIIAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Res_Controlador {
-                get {
-                    try {
-                        return ((int)(this[this.tableXMLCONTROL.Res_ControladorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Res_Controlador\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.Res_ControladorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Res_Temperamento {
-                get {
-                    try {
-                        return ((string)(this[this.tableXMLCONTROL.Res_TemperamentoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Res_Temperamento\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.Res_TemperamentoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Res_Muerta {
-                get {
-                    try {
-                        return ((bool)(this[this.tableXMLCONTROL.Res_MuertaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Res_Muerta\' de la tabla \'XMLCONTROL\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableXMLCONTROL.Res_MuertaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_ORDNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_ORDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_ORDNull() {
-                this[this.tableXMLCONTROL.RES_ORDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_NOMNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_NOMColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_NOMNull() {
-                this[this.tableXMLCONTROL.RES_NOMColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FNNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FNColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FNNull() {
-                this[this.tableXMLCONTROL.RES_FNColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_COLNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_COLColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_COLNull() {
-                this[this.tableXMLCONTROL.RES_COLColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FPNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FPNull() {
-                this[this.tableXMLCONTROL.RES_FPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_NPNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_NPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_NPNull() {
-                this[this.tableXMLCONTROL.RES_NPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_NCNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_NCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_NCNull() {
-                this[this.tableXMLCONTROL.RES_NCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_PADNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_PADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_PADNull() {
-                this[this.tableXMLCONTROL.RES_PADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_MADNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_MADColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_MADNull() {
-                this[this.tableXMLCONTROL.RES_MADColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FBANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FBAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FBANull() {
-                this[this.tableXMLCONTROL.RES_FBAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_CBANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_CBAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_CBANull() {
-                this[this.tableXMLCONTROL.RES_CBAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_KLENull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_KLEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_KLENull() {
-                this[this.tableXMLCONTROL.RES_KLEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_KGRNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_KGRColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_KGRNull() {
-                this[this.tableXMLCONTROL.RES_KGRColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TGRNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TGRColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TGRNull() {
-                this[this.tableXMLCONTROL.RES_TGRColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TPRNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TPRColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TPRNull() {
-                this[this.tableXMLCONTROL.RES_TPRColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TLANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TLAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TLANull() {
-                this[this.tableXMLCONTROL.RES_TLAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TRCNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TRCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TRCNull() {
-                this[this.tableXMLCONTROL.RES_TRCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TIPNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TIPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TIPNull() {
-                this[this.tableXMLCONTROL.RES_TIPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_HORNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_HORColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_HORNull() {
-                this[this.tableXMLCONTROL.RES_HORColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_INTNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_INTColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_INTNull() {
-                this[this.tableXMLCONTROL.RES_INTColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_VELNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_VELColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_VELNull() {
-                this[this.tableXMLCONTROL.RES_VELColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TITNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TITColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TITNull() {
-                this[this.tableXMLCONTROL.RES_TITColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FINNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FINColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FINNull() {
-                this[this.tableXMLCONTROL.RES_FINColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_NINNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_NINColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_NINNull() {
-                this[this.tableXMLCONTROL.RES_NINColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_SEMNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_SEMColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_SEMNull() {
-                this[this.tableXMLCONTROL.RES_SEMColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TINNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TINColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TINNull() {
-                this[this.tableXMLCONTROL.RES_TINColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_LAMNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_LAMColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_LAMNull() {
-                this[this.tableXMLCONTROL.RES_LAMColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_LPMNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_LPMColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_LPMNull() {
-                this[this.tableXMLCONTROL.RES_LPMColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_LTONull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_LTOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_LTONull() {
-                this[this.tableXMLCONTROL.RES_LTOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_NEONull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_NEOColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_NEONull() {
-                this[this.tableXMLCONTROL.RES_NEOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_XABNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_XABColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_XABNull() {
-                this[this.tableXMLCONTROL.RES_XABColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_XFBANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_XFBAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_XFBANull() {
-                this[this.tableXMLCONTROL.RES_XFBAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_XCBANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_XCBAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_XCBANull() {
-                this[this.tableXMLCONTROL.RES_XCBAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FAENull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FAEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FAENull() {
-                this[this.tableXMLCONTROL.RES_FAEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FCTRNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FCTRColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FCTRNull() {
-                this[this.tableXMLCONTROL.RES_FCTRColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_HCTRNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_HCTRColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_HCTRNull() {
-                this[this.tableXMLCONTROL.RES_HCTRColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_CLANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_CLAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_CLANull() {
-                this[this.tableXMLCONTROL.RES_CLAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FACPNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FACPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FACPNull() {
-                this[this.tableXMLCONTROL.RES_FACPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_VELORDNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_VELORDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_VELORDNull() {
-                this[this.tableXMLCONTROL.RES_VELORDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_INCNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_INCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_INCNull() {
-                this[this.tableXMLCONTROL.RES_INCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_SEXTNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_SEXTColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_SEXTNull() {
-                this[this.tableXMLCONTROL.RES_SEXTColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_TAMTNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_TAMTColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_TAMTNull() {
-                this[this.tableXMLCONTROL.RES_TAMTColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_COMTNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_COMTColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_COMTNull() {
-                this[this.tableXMLCONTROL.RES_COMTColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_RETPNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_RETPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_RETPNull() {
-                this[this.tableXMLCONTROL.RES_RETPColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_FCTR1Null() {
-                return this.IsNull(this.tableXMLCONTROL.RES_FCTR1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_FCTR1Null() {
-                this[this.tableXMLCONTROL.RES_FCTR1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_HCTR1Null() {
-                return this.IsNull(this.tableXMLCONTROL.RES_HCTR1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_HCTR1Null() {
-                this[this.tableXMLCONTROL.RES_HCTR1Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_KANTNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_KANTColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_KANTNull() {
-                this[this.tableXMLCONTROL.RES_KANTColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_SANNull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_SANColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_SANNull() {
-                this[this.tableXMLCONTROL.RES_SANColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsfechaultinsNull() {
-                return this.IsNull(this.tableXMLCONTROL.fechaultinsColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetfechaultinsNull() {
-                this[this.tableXMLCONTROL.fechaultinsColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRES_RIIANull() {
-                return this.IsNull(this.tableXMLCONTROL.RES_RIIAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRES_RIIANull() {
-                this[this.tableXMLCONTROL.RES_RIIAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRes_ControladorNull() {
-                return this.IsNull(this.tableXMLCONTROL.Res_ControladorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRes_ControladorNull() {
-                this[this.tableXMLCONTROL.Res_ControladorColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRes_TemperamentoNull() {
-                return this.IsNull(this.tableXMLCONTROL.Res_TemperamentoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRes_TemperamentoNull() {
-                this[this.tableXMLCONTROL.Res_TemperamentoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRes_MuertaNull() {
-                return this.IsNull(this.tableXMLCONTROL.Res_MuertaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRes_MuertaNull() {
-                this[this.tableXMLCONTROL.Res_MuertaColumn] = global::System.Convert.DBNull;
+                this[this.tableXMLDATOS.FirmaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5354,56 +2695,22 @@ namespace Afca.Common.DataSets {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class XmlDatosRowChangeEvent : global::System.EventArgs {
+        public class XMLDATOSRowChangeEvent : global::System.EventArgs {
             
-            private XmlDatosRow eventRow;
+            private XMLDATOSRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosRowChangeEvent(XmlDatosRow row, global::System.Data.DataRowAction action) {
+            public XMLDATOSRowChangeEvent(XMLDATOSRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XmlDatosRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class XMLCONTROLRowChangeEvent : global::System.EventArgs {
-            
-            private XMLCONTROLRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLRowChangeEvent(XMLCONTROLRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public XMLCONTROLRow Row {
+            public XMLDATOSRow Row {
                 get {
                     return this.eventRow;
                 }

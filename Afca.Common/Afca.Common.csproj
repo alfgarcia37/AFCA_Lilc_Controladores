@@ -84,6 +84,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ServicesInterfaces\IImportarService.cs" />
     <Compile Include="ServicesInterfaces\IGenerarService.cs" />
     <Compile Include="Utilities\ClsResult.cs" />
     <Compile Include="Utilities\IconMapper.cs" />
