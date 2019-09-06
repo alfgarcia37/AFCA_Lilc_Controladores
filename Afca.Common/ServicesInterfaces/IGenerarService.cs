@@ -17,6 +17,8 @@ namespace Afca.Common.ServicesInterfaces
         Result SetXmlInseminacionesData(string ganaderia, int controlador);
         Result SetXmlActualizacionesGlobalData( int controlador);
 
+        Result PasarXmlToUP(int controlador);
+
         //XmlData GetXmlGanaderiasData(int controlador);
         //XmlData GetXmlControlesData(string ganaderia);
 

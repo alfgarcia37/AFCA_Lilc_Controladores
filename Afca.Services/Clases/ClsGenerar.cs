@@ -85,7 +85,16 @@ namespace Afca.Services.Clases
 
             return result;
         }
+        public Result PasarXmlToUP(IXmlsDataAccessor Ixmlda, int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.PasarXmlToUPData(controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "pasar de XML a UP";
 
+            return result;
+        }
         public void InitializeServices()
         {
 

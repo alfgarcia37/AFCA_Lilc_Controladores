@@ -10,7 +10,7 @@
 
     public class SqlXmlsDataAccessor : SqlDataAccessor, IXmlsDataAccessor
     {
-        //GET XML's
+        //SET XML's
         public string CheckMaestroControlesData(string argGanaderia)
         {
 
@@ -80,8 +80,29 @@
                                         });
             return regs;
         }
+        public int PasarXmlToUPData(int argControlador)
+        {
 
-        //SET XML's.=========================================================================================================
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_SP_PasarXMLToUP"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)});
+            return regs;
+        }
+
+
+        //GET XML's.=========================================================================================================
+        public int PasarDownToXmlData(int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "SP_PasarDownToXML"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)});
+            return regs;
+        }
         public XmlData LoadXMLDatosDataByControlador(int argControlador)
         {
             return (XmlData)this.ExecuteDataSet(new XmlData()
@@ -115,20 +136,19 @@
 
 
             var regs = this.ExecuteScalar(
-                               "sp_GanaderiasToXMLByControlador"
+                               "[SP_CheckDuplicadosXMLPartos]"
                                , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)});
             return regs.ToString();
         }
 
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero
-
         public int GetXmlGanaderiasByControlador(int argControlador)
         {
 
 
             int regs = this.ExecuteNonQuery(
-                                "sp_GanaderiasToXMLByControlador"
+                                "sp_GanaderiasFromXMLByControlador"
                                 , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;
@@ -138,7 +158,7 @@
 
 
             int regs = this.ExecuteNonQuery(
-                                "sp_ControlesToXMLByEstablo"
+                                "sp_ControlesFromXMLByEstablo"
                                 , new SqlParameter[]{
                                         new SqlParameter("@Establo",argGanaderia),
                                         new SqlParameter("@controlador",argControlador)
@@ -199,6 +219,7 @@
         }
 
        
+
 
     }
 }

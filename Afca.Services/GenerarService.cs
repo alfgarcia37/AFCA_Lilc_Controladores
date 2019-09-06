@@ -80,7 +80,7 @@ namespace Afca.Services
         {
             return ObjGenerar.SetXmlCheckMaestroControlesData(iXmlDA, argControlador);
         }
-        //GNERACION..................
+        //GENERACION..................
         public Result SetXmlGanaderiasData(int argControlador)
         {
             return ObjGenerar.SetXmlGanaderiasData( iXmlDA, argControlador);
@@ -101,7 +101,10 @@ namespace Afca.Services
         {
             return ObjGenerar.SetXmlActualizacionesGlobalData(iXmlDA,  argcontrolador);
         }
-
+        public Result PasarXmlToUP(int argcontrolador)
+        {
+            return ObjGenerar.PasarXmlToUP(iXmlDA, argcontrolador);
+        }
 
 
     }

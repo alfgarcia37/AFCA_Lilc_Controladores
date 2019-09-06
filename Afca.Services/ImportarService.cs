@@ -62,8 +62,8 @@ namespace Afca.Services
                 resultGanaderias = GetXmlGanaderiasData(argControlador);
                 if (resultGanaderias.value == "0") { resultGanaderias.success = false; break; }
                 ////CONTROLES
-                //resultControles = GetXmlControlesData(drLectura["Establo"].ToString(), argControlador);
-                //if (resultControles.value == "0") { resultControles.success = false; break; }
+                resultControles = GetXmlControlesData(drGanaderias["Establo"].ToString(), argControlador);
+                if (resultControles.value == "0") { resultControles.success = false; break; }
                 ////INSEMINACIONES
                 //resultControles = GetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
                 //if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
@@ -80,7 +80,7 @@ namespace Afca.Services
             return resultControles;
         }
 
-
+        #region Chequeos
         //...hago los chequeos....................
         public Result GetXmlCheckGanaderiasData(int argcontrolador)
         {
@@ -94,7 +94,7 @@ namespace Afca.Services
         {
             return ObjImportar.GetXmlCheckPartosData(iXmlDA, argcontrolador);
         }
-
+        #endregion
 
 
 
@@ -121,8 +121,11 @@ namespace Afca.Services
             return ObjImportar.GetXmlActualizacionesGlobalData(iXmlDA, argcontrolador);
         }
 
-
-
+        
+        public Result PasarDownToXml(int argcontrolador)
+        {
+            return ObjImportar.PasarDownToXml(iXmlDA, argcontrolador);
+        }
     }
 }
 

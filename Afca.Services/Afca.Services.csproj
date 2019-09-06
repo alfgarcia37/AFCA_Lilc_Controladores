@@ -72,10 +72,18 @@
   <ItemGroup>
     <Content Include="Clases\Documentacion\ControladoresEnprogreso.sql" />
     <Content Include="Clases\Documentacion\controllechero_procedures_20190605.sql" />
+    <Content Include="Clases\Documentacion\PruebaNombres.sql" />
     <Content Include="Clases\Documentacion\sp_ActualizacionesGlobalesToXMLByControlador.sql" />
+    <Content Include="Clases\Documentacion\sp_CheckDuplicadosXMLPartos.sql" />
+    <Content Include="Clases\Documentacion\sp_CheckMaestrocontrol.sql" />
+    <Content Include="Clases\Documentacion\sp_ControlesFromXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_ControlesToXMLByEstablo.sql" />
+    <Content Include="Clases\Documentacion\sp_GanaderiasFromXMLByControlador.sql" />
     <Content Include="Clases\Documentacion\sp_GanaderiastoXMLByControlador.sql" />
     <Content Include="Clases\Documentacion\sp_InseminacionesToXMLByEstablo.sql" />
+    <Content Include="Clases\Documentacion\sp_LecturaControl_selectByByControladorEstado.sql" />
+    <Content Include="Clases\Documentacion\sp_PasarDownToXML.sql" />
+    <Content Include="Clases\Documentacion\sp_PasarXMLToUP.sql" />
     <Content Include="Clases\Documentacion\sp_ReemplazarNombresVacas.sql" />
     <Content Include="Clases\Documentacion\sp_TorosToXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\ViewInseminacionesEstabloIDFinseminacion.sql" />

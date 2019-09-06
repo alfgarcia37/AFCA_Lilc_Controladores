@@ -16,7 +16,7 @@ namespace Afca.Common.ServicesInterfaces
         Result CheckXmlEstablosDuplicadosData(int controlador);
         Result CheckXmlControlesData(int controlador);
         Result CheckXmlPartosData(int controlador);
-
+        Result PasarDownToXml(int controlador);
 
         Result GetXmlGanaderiasData(int controlador);
         Result GetXmlControlesData(string ganaderia,int controlador);

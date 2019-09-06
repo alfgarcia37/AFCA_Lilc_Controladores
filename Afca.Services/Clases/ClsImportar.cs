@@ -63,7 +63,7 @@ namespace Afca.Services.Clases
             result.value= iXmlDA.SetXmlGanaderiasByControlador(argControlador).ToString();
             if (Convert.ToInt32(result.value) >0)
                 result.success = true;
-            result.value = "Exportada Tabla de Ganaderias";
+            result.value = "Importada a XML Tabla de GanaderiasDown";
 
             return result;
         }
@@ -73,7 +73,7 @@ namespace Afca.Services.Clases
             result.value = iXmlDA.SetXmlControlesByGanaderia(argGanaderia, controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
-            result.value = "Exportada Tabla de Controles";
+            result.value = "Importada a XML Tabla de ControlesDown";
 
             return result;
         }
@@ -108,8 +108,17 @@ namespace Afca.Services.Clases
             return result;
         }
 
+        public Result PasarDownToXml(IXmlsDataAccessor Ixmlda, int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.PasarDownToXmlData(controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "pasar de Down a XML";
 
-       
+            return result;
+        }
+
         public  void InitializeServices()
         {
            
