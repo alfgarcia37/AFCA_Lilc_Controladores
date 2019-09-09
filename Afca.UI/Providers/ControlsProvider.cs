@@ -73,7 +73,7 @@ namespace Afca.UI
 
             if (ControlsProvider.Controls["Explorer"] == null)
             {
-                treeView = new TreeViewControl(Afca.Common.Trees.ExplorerTree, ThemeColor.Azul);
+                treeView = new TreeViewControl(Afca.Common.Trees.ExplorerTree, ThemeColor.Naranja);
                 ControlsProvider.Controls.Add("Explorer", treeView);
             }
             else
@@ -113,7 +113,7 @@ namespace Afca.UI
         {
             if (ControlsProvider.Controls["ExplorerDetails"] == null)
             {
-                TreeDetailsViewGridControl treeDetailView = new TreeDetailsViewGridControl(ThemeColor.Azul);
+                TreeDetailsViewGridControl treeDetailView = new TreeDetailsViewGridControl(ThemeColor.Verde);
 
                 Form newForm = ShowControlInForm(
                     "Detalles del explorador de objetos"

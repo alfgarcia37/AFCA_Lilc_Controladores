@@ -120,12 +120,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
-      <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
-      <Name>Afca.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="AfcaFrameForm.resx">
       <DependentUpon>AfcaFrameForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +139,12 @@
       <DependentUpon>LecturaPropertiesControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
+      <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
+      <Name>Afca.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

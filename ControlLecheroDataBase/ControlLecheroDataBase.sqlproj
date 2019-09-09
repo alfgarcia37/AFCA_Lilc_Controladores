@@ -807,5 +807,6 @@
     <Build Include="Security\funcionmia_1.sql" />
     <Build Include="Security\laboratorio_1.sql" />
     <Build Include="Security\portatil_1.sql" />
+    <Build Include="20190909_newsp_GenerrarImportar.sql" />
   </ItemGroup>
 </Project>
