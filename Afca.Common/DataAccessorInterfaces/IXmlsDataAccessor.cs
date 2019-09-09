@@ -15,6 +15,7 @@ namespace Afca.Common.DataAccessor
         int SetXmlControlesByGanaderia(string argGanaderia, int argControlador);
         int SetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int SetXmlTorosByGanaderia(string argGanaderia, int argControlador);
+        int SetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
         int SetXmlActualizacionesGlobales( int argControlador);
         int PasarXmlToUPData(int argControlador);
 
@@ -29,8 +30,8 @@ namespace Afca.Common.DataAccessor
         int GetXmlGanaderiasByControlador(int argcontrolador);
         int GetXmlControlesByGanaderia(string argGanaderia, int argControlador);
         int GetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
-
-        
+        int GetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
+        int GetXmlRcsByControlador( int argControlador);
 
         ////XMLCONTROL (Controles)
         //XmlData GetXmlControlesByEstablo(string argEstablo);
