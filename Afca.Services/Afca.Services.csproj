@@ -70,16 +70,19 @@
     <None Include="Clases\Documentacion\AfcaTree.xlsx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Clases\Documentacion\script_201909_sps_GenerarImportar.sql" />
     <Content Include="Clases\Documentacion\ControladoresEnprogreso.sql" />
     <Content Include="Clases\Documentacion\controllechero_procedures_20190605.sql" />
     <Content Include="Clases\Documentacion\PruebaNombres.sql" />
     <Content Include="Clases\Documentacion\sp_ActualizacionesGlobalesToXMLByControlador.sql" />
+    <Content Include="Clases\Documentacion\sp_asigna_inseminacion_parto.sql" />
     <Content Include="Clases\Documentacion\sp_CheckDuplicadosXMLPartos.sql" />
     <Content Include="Clases\Documentacion\sp_CheckMaestrocontrol.sql" />
     <Content Include="Clases\Documentacion\sp_ControlesFromXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_ControlesToXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_GanaderiasFromXMLByControlador.sql" />
     <Content Include="Clases\Documentacion\sp_GanaderiastoXMLByControlador.sql" />
+    <Content Include="Clases\Documentacion\sp_InseminacionesFromXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_InseminacionesToXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_LecturaControl_selectByByControladorEstado.sql" />
     <Content Include="Clases\Documentacion\sp_PasarDownToXML.sql" />

@@ -54,7 +54,7 @@
             // 
             // _FrameFormUnpinnedTabAreaBottom
             // 
-            this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 706);
+            this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 615);
             this._FrameFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1008, 0);
             // 
             // _FrameFormUnpinnedTabAreaTop
@@ -65,12 +65,12 @@
             // _FrameFormUnpinnedTabAreaRight
             // 
             this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1008, 27);
-            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 679);
+            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 588);
             // 
             // _FrameFormUnpinnedTabAreaLeft
             // 
             this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 679);
+            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 588);
             // 
             // ultraToolbarsManager
             // 
@@ -110,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1008, 638);
             this.Name = "AfcaFrameForm";
             this.Text = "AFCA";
             this.Load += new System.EventHandler(this.AfcaFrameForm_Load);

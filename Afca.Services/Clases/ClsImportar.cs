@@ -80,7 +80,7 @@ namespace Afca.Services.Clases
         public Result GetXmlInseminacionesData(IXmlsDataAccessor Ixmlda, string argGanaderia, int controlador)
         {
             iXmlDA = Ixmlda;
-            result.value = iXmlDA.SetXmlTorosByGanaderia(argGanaderia, controlador).ToString();
+            result.value = iXmlDA.SetXmlInseminacionesByGanaderia(argGanaderia, controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "Exportada Tabla de Inseminaciones";
@@ -94,6 +94,16 @@ namespace Afca.Services.Clases
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "Exportada Tabla de Toros";
+
+            return result;
+        }
+        public Result GetXmlRcsData(IXmlsDataAccessor Ixmlda,  int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.GetXmlRcsByControlador( controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de RCS";
 
             return result;
         }

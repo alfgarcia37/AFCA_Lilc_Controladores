@@ -75,6 +75,16 @@ namespace Afca.Services.Clases
 
             return result;
         }
+        public Result SetXmlnacimientosData(IXmlsDataAccessor Ixmlda, string argGanaderia, int controlador)
+        {
+            iXmlDA = Ixmlda;
+            result.value = iXmlDA.SetXmlNacimientosByGanaderia(argGanaderia, controlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Nacimientos";
+
+            return result;
+        }
         public Result SetXmlActualizacionesGlobalData(IXmlsDataAccessor Ixmlda,  int controlador)
         {
             iXmlDA = Ixmlda;

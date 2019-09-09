@@ -18,6 +18,7 @@ namespace Afca.Services
         private Result resultControles;
         private Result resultToros;
         private Result resultInseminaciones;
+        private Result resultNacimientos;
 
         private ClsGenerar ObjGenerar = new ClsGenerar();
         private IXmlsDataAccessor iXmlDA;
@@ -60,8 +61,11 @@ namespace Afca.Services
                 //INSEMINACIONES
                 resultControles = SetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
                 if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
-                //TOROS y REGISTRADAS
+                //TOROS 
                 resultToros = SetXmlTorosData(drLectura["Establo"].ToString(), argControlador);
+                if (resultToros.value == "0") { resultToros.success = false; break; }
+                //NACIMIENTOS
+                resultToros = SetXmlNacimientosData(drLectura["Establo"].ToString(), argControlador);
                 if (resultToros.value == "0") { resultToros.success = false; break; }
 
                 //ObjGenerar.SetGanaderiasToXmlGanaderias(argControlador);
@@ -96,6 +100,10 @@ namespace Afca.Services
         public Result SetXmlTorosData(string argGanaderia, int argcontrolador)
         {
             return ObjGenerar.SetXmlTorosData(iXmlDA, argGanaderia, argcontrolador);
+        }
+        public Result SetXmlNacimientosData(string argGanaderia, int argcontrolador)
+        {
+            return ObjGenerar.SetXmlNacimientosData(iXmlDA, argGanaderia, argcontrolador);
         }
         public Result SetXmlActualizacionesGlobalData( int argcontrolador)
         {

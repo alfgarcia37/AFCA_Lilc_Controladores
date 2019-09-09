@@ -68,6 +68,18 @@
                                         });
             return regs;
         }
+        public int SetXmlNacimientosByGanaderia(string argGanaderia, int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_NacimientosToXMLByEstablo"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
         public int SetXmlActualizacionesGlobales( int argControlador)
         {
 
@@ -90,8 +102,6 @@
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;
         }
-
-
         //GET XML's.=========================================================================================================
         public int PasarDownToXmlData(int argControlador)
         {
@@ -141,7 +151,6 @@
                                         new SqlParameter("@Controlador",argControlador)});
             return regs.ToString();
         }
-
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero
         public int GetXmlGanaderiasByControlador(int argControlador)
         {
@@ -170,14 +179,34 @@
 
 
             int regs = this.ExecuteNonQuery(
-                                "sp_InseminacionesToXMLByEstablo"
+                                "sp_InseminacionesFromXMLByEstablo"
                                 , new SqlParameter[]{
                                         new SqlParameter("@Establo",argGanaderia),
                                         new SqlParameter("@controlador",argControlador)
                                         });
             return regs;
         }
-       
+        public int GetXmlNacimientosByGanaderia(string argGanaderia, int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                                "sp_NacimientosFromXMLByEstablo"
+                                , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
+        public int GetXmlRcsByControlador(int argControlador)
+        {
+            int regs = this.ExecuteNonQuery(
+                                "sp_RcsFromXMLByControlador"
+                                , new SqlParameter[]{
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
         //public int GetXmlActualizacionesGlobales(int argControlador)
         //{
 

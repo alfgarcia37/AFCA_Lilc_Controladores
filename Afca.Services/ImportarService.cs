@@ -19,6 +19,7 @@ namespace Afca.Services
         private Result resultControles;
         private Result resultInseminaciones;
         private Result resultNacimientos;
+        private Result resultRcs;
 
         private ClsImportar ObjImportar = new ClsImportar();
         private IXmlsDataAccessor iXmlDA;
@@ -65,8 +66,8 @@ namespace Afca.Services
                 resultControles = GetXmlControlesData(drGanaderias["Establo"].ToString(), argControlador);
                 if (resultControles.value == "0") { resultControles.success = false; break; }
                 ////INSEMINACIONES
-                //resultControles = GetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
-                //if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
+                resultInseminaciones = GetXmlInseminacionesData(drGanaderias["Establo"].ToString(), argControlador);
+                if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
                 ////NACIMIENTOS....
                 //resultNacimientos = GetXmlNacimientosData(drLectura["Establo"].ToString(), argControlador);
                 //if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
@@ -116,11 +117,14 @@ namespace Afca.Services
         {
             return ObjImportar.GetXmlNacimientosData(iXmlDA, argGanaderia, argcontrolador);
         }
+        public Result GetXmlRcsData(int argcontrolador)
+        {
+            return ObjImportar.GetXmlRcsData(iXmlDA, argcontrolador);
+        }
         public Result GetXmlActualizacionesGlobalData(int argcontrolador)
         {
             return ObjImportar.GetXmlActualizacionesGlobalData(iXmlDA, argcontrolador);
         }
-
         
         public Result PasarDownToXml(int argcontrolador)
         {
