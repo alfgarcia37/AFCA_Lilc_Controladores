@@ -70,6 +70,7 @@
     <None Include="Clases\Documentacion\AfcaTree.xlsx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Clases\Documentacion\ALL_SCRIPTS.sql" />
     <Content Include="Clases\Documentacion\script_201909_sps_GenerarImportar.sql" />
     <Content Include="Clases\Documentacion\ControladoresEnprogreso.sql" />
     <Content Include="Clases\Documentacion\controllechero_procedures_20190605.sql" />
@@ -85,11 +86,17 @@
     <Content Include="Clases\Documentacion\sp_InseminacionesFromXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_InseminacionesToXMLByEstablo.sql" />
     <Content Include="Clases\Documentacion\sp_LecturaControl_selectByByControladorEstado.sql" />
+    <Content Include="Clases\Documentacion\sp_NacimientosFromXMLByControlador.sql" />
+    <Content Include="Clases\Documentacion\sp_NacimientosToXMLByEstablo.sql" />
+    <Content Include="Clases\Documentacion\SP_PasarDownToAudit.sql" />
     <Content Include="Clases\Documentacion\sp_PasarDownToXML.sql" />
     <Content Include="Clases\Documentacion\sp_PasarXMLToUP.sql" />
+    <Content Include="Clases\Documentacion\sp_RcsFromXMLByControlador.sql" />
     <Content Include="Clases\Documentacion\sp_ReemplazarNombresVacas.sql" />
     <Content Include="Clases\Documentacion\sp_TorosToXMLByEstablo.sql" />
+    <Content Include="Clases\Documentacion\SQLQuery141.sql" />
     <Content Include="Clases\Documentacion\ViewInseminacionesEstabloIDFinseminacion.sql" />
+    <Content Include="Clases\Documentacion\ViewInseminacionesEstabloNPIdFinseminacion.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
