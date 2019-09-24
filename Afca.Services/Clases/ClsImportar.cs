@@ -49,7 +49,7 @@ namespace Afca.Services.Clases
         {
             iXmlDA = Ixmlda;
             result.value = iXmlDA.CheckPartosDuplicadosData(controlador);
-            if (result.value.Length > 0)
+            if (result.value.ToString()!= "0")
                 result.success = false;
             else result.success = true;
 

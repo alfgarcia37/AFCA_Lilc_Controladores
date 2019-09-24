@@ -97,7 +97,7 @@
 
 
             int regs = this.ExecuteNonQuery(
-                               "sp_SP_PasarXMLToUP"
+                               "SP_PasarXMLToUP"
                                , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;

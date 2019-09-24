@@ -59,14 +59,14 @@ namespace Afca.Services
                 resultControles = SetXmlControlesData(drLectura["Establo"].ToString(), argControlador);
                 if (resultControles.value == "0") { resultControles.success = false; break; }
                 //INSEMINACIONES
-                resultControles = SetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
+                resultInseminaciones = SetXmlInseminacionesData(drLectura["Establo"].ToString(), argControlador);
                 if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
                 //TOROS 
                 resultToros = SetXmlTorosData(drLectura["Establo"].ToString(), argControlador);
                 if (resultToros.value == "0") { resultToros.success = false; break; }
                 //NACIMIENTOS
-                resultToros = SetXmlNacimientosData(drLectura["Establo"].ToString(), argControlador);
-                if (resultToros.value == "0") { resultToros.success = false; break; }
+                resultNacimientos = SetXmlNacimientosData(drLectura["Establo"].ToString(), argControlador);
+                if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
 
                 //ObjGenerar.SetGanaderiasToXmlGanaderias(argControlador);
                 //REGISTRADAS
