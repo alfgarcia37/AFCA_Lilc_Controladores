@@ -116,7 +116,7 @@
         public XmlData LoadXMLDatosDataByControlador(int argControlador)
         {
             return (XmlData)this.ExecuteDataSet(new XmlData()
-                                , "sp_LecturaControl_selectByID"
+                                , "[sp_XMLDATOS_selectByControlador]"
                                 , CommandType.StoredProcedure
                                 , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador) }
@@ -125,11 +125,11 @@
         public string CheckEstablosDuplicadosData(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
         {
             var regs = this.ExecuteScalar(
-                               "[SP_CheckDuplicadosXMLDatos]"
+                               "SP_CheckDuplicadosXMLDatos"
                                , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador) });
-                                       
-            return regs.ToString();
+            
+                return (regs == null ? "" : regs.ToString());
         }
         public string CheckControlesDuplicadosData(int argControlador)
         {
@@ -139,7 +139,7 @@
                                "[SP_CheckDuplicadosXMLControl]"
                                , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)});
-            return regs.ToString();
+            return (regs == null ? "" : regs.ToString());
         }
         public string CheckPartosDuplicadosData(int argControlador)
         {

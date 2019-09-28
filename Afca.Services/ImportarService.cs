@@ -51,10 +51,10 @@ namespace Afca.Services
 
         {
             //Result resul = new Result { success = true, value = "999" };
-            resultGanaderias = GetXmlCheckGanaderiasData(argControlador);
+           // resultGanaderias = GetXmlCheckGanaderiasData(argControlador);
 
              //Recorro GANADERIAS para Generar Tablas
-             XmlData xmldatosData = ixmlsDA.LoadXMLDatosDataByControlador(argControlador);
+             XmlData xmldatosData = iXmlDA.LoadXMLDatosDataByControlador(argControlador);
 
             Result result = null;
             foreach (DataRow drGanaderias in xmldatosData.XMLDATOS.Rows)
@@ -63,21 +63,18 @@ namespace Afca.Services
                 resultGanaderias = GetXmlGanaderiasData(argControlador);
                 if (resultGanaderias.value == "0") { resultGanaderias.success = false; break; }
                 ////CONTROLES
-                resultControles = GetXmlControlesData(drGanaderias["Establo"].ToString(), argControlador);
+                resultControles = GetXmlControlesData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
                 if (resultControles.value == "0") { resultControles.success = false; break; }
                 ////INSEMINACIONES
-                resultInseminaciones = GetXmlInseminacionesData(drGanaderias["Establo"].ToString(), argControlador);
+                resultInseminaciones = GetXmlInseminacionesData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
                 if (resultInseminaciones.value == "0") { resultInseminaciones.success = false; break; }
                 ////NACIMIENTOS....
-                //resultNacimientos = GetXmlNacimientosData(drLectura["Establo"].ToString(), argControlador);
-                //if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
+                resultNacimientos = GetXmlNacimientosData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
+                if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
 
             }
             //TABLAS GLOBAL (Independiente del Establo)
-            resultControles = GetXmlActualizacionesGlobalData(argControlador);
-
-
-
+            //resultControles = GetXmlActualizacionesGlobalData(argControlador);
             return resultControles;
         }
 
@@ -121,10 +118,10 @@ namespace Afca.Services
         {
             return ObjImportar.GetXmlRcsData(iXmlDA, argcontrolador);
         }
-        public Result GetXmlActualizacionesGlobalData(int argcontrolador)
-        {
-            return ObjImportar.GetXmlActualizacionesGlobalData(iXmlDA, argcontrolador);
-        }
+        //public Result GetXmlActualizacionesGlobalData(int argcontrolador)
+        //{
+        //    return ObjImportar.GetXmlActualizacionesGlobalData(iXmlDA, argcontrolador);
+        //}
         
         public Result PasarDownToXml(int argcontrolador)
         {
