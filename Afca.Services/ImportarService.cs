@@ -63,7 +63,7 @@ namespace Afca.Services
                 resultGanaderias = GetXmlGanaderiasData(argControlador);
                 if (resultGanaderias.value == "0") { resultGanaderias.success = false; break; }
                 ////CONTROLES
-                resultControles = GetXmlControlesData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
+                resultControles = GetXmlControlesData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador,Convert.ToDateTime( drGanaderias["FechaPrevista"]), drGanaderias["TipoControl"].ToString());
                 if (resultControles.value == "0") { resultControles.success = false; break; }
                 ////INSEMINACIONES
                 resultInseminaciones = GetXmlInseminacionesData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
@@ -102,9 +102,9 @@ namespace Afca.Services
         {
             return ObjImportar.GetXmlGanaderiasData( iXmlDA, argControlador);
         }
-        public Result GetXmlControlesData(string argGanaderia,int argcontrolador)
+        public Result GetXmlControlesData(string argGanaderia,int argcontrolador,DateTime FPrevista,string TipoControl)
         {
-            return ObjImportar.GetXmlControlesData(iXmlDA, argGanaderia, argcontrolador);
+            return ObjImportar.GetXmlControlesData(iXmlDA, argGanaderia, argcontrolador, FPrevista, TipoControl);
         }
         public Result GetXmlInseminacionesData(string argGanaderia, int argcontrolador)
         {

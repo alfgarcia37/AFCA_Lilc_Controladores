@@ -28,7 +28,7 @@ namespace Afca.Common.DataAccessor
         string CheckPartosDuplicadosData(int argControlador);
         //.2...Importar GET's de Xmls......................................................
         int GetXmlGanaderiasByControlador(int argcontrolador);
-        int GetXmlControlesByGanaderia(string argGanaderia, int argControlador);
+        int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipoControl);
         int GetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int GetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
         int GetXmlRcsByControlador( int argControlador);

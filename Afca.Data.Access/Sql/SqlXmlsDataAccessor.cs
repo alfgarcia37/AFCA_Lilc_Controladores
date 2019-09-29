@@ -149,7 +149,7 @@
                                "[SP_CheckDuplicadosXMLPartos]"
                                , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)});
-            return regs.ToString();
+            return (regs == null ? "" : regs.ToString());
         }
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero
         public int GetXmlGanaderiasByControlador(int argControlador)
@@ -162,7 +162,7 @@
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;
         }
-        public int GetXmlControlesByGanaderia(string argGanaderia, int argControlador)
+        public int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipocontrol)
         {
 
 
@@ -170,7 +170,9 @@
                                 "sp_ControlesFromXMLByEstablo"
                                 , new SqlParameter[]{
                                         new SqlParameter("@Establo",argGanaderia),
-                                        new SqlParameter("@controlador",argControlador)
+                                        new SqlParameter("@controlador",argControlador),
+                                        new SqlParameter("@FPrevista",argFPrevista),
+                                        new SqlParameter("@TipoControl",argTipocontrol)
                                         });
             return regs;
         }

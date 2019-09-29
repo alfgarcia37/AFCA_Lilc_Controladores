@@ -19,7 +19,7 @@ namespace Afca.Common.ServicesInterfaces
         Result PasarDownToXml(int controlador);
 
         Result GetXmlGanaderiasData(int controlador);
-        Result GetXmlControlesData(string ganaderia,int controlador);
+        Result GetXmlControlesData(string ganaderia,int controlador,System.DateTime FPrevista,string TipoControl);
         Result GetXmlInseminacionesData(string ganaderia, int controlador);
         Result GetXmlNacimientosData(string ganaderia, int controlador);
         Result GetXmlRcsData(int controlador);

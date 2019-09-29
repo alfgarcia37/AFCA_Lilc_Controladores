@@ -49,7 +49,7 @@ namespace Afca.Services.Clases
         {
             iXmlDA = Ixmlda;
             result.value = iXmlDA.CheckPartosDuplicadosData(controlador);
-            if (result.value.ToString()!= "0")
+            if (result.value.Length > 0)
                 result.success = false;
             else result.success = true;
 
@@ -67,10 +67,10 @@ namespace Afca.Services.Clases
 
             return result;
         }
-        public Result GetXmlControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia,int controlador)
+        public Result GetXmlControlesData(IXmlsDataAccessor Ixmlda, string argGanaderia,int controlador,DateTime argFPrevista,string argTipoControl)
         {
             iXmlDA = Ixmlda;
-            result.value = iXmlDA.GetXmlControlesByGanaderia(argGanaderia, controlador).ToString();
+            result.value = iXmlDA.GetXmlControlesByGanaderia(argGanaderia, controlador, argFPrevista, argTipoControl).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "Importada  Tabla de Controles";

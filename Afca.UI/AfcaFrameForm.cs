@@ -165,7 +165,7 @@ namespace Afca.UI
         #region Toolbar Manager
         private void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
-            int controlador = 26;
+            int controlador = 35;
             switch (e.Tool.Key)
             {
                 case "Generar":
@@ -211,7 +211,6 @@ namespace Afca.UI
                 case "tbbExplorer":
                 case "tbbExplorerDetails":
                     ControlsProvider.ShowAfcaExplorer();
-              
                     break;
             }
         }
