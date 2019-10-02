@@ -20,8 +20,9 @@ namespace Afca.Services
         private Result resultInseminaciones;
         private Result resultNacimientos;
         private Result resultRcs;
+        private Result result = new Result();
 
-        private ClsImportar ObjImportar = new ClsImportar();
+       // private ClsImportar ObjImportar = new ClsImportar();
         private IXmlsDataAccessor iXmlDA;
         //private ILecturaControlDataAccessor ilecturasDA;
         private IXmlsDataAccessor ixmlsDA;
@@ -82,15 +83,33 @@ namespace Afca.Services
         //...hago los chequeos....................
         public Result GetXmlCheckGanaderiasData(int argcontrolador)
         {
-            return ObjImportar.GetXmlCheckGanaderiasData(iXmlDA, argcontrolador);
+            //return ObjImportar.GetXmlCheckGanaderiasData(iXmlDA, argcontrolador);
+            result.value = iXmlDA.CheckEstablosDuplicadosData(argcontrolador);
+            if (result.value.Length > 0)
+                result.success = false;
+            else result.success = true;
+
+            return result;
         }
         public Result GetXmlCheckControlesData(int argcontrolador)
         {
-            return ObjImportar.GetXmlCheckControlesData(iXmlDA, argcontrolador);
+            //return ObjImportar.GetXmlCheckControlesData(iXmlDA, argcontrolador);
+            result.value = iXmlDA.CheckControlesDuplicadosData(argcontrolador);
+            if (result.value.Length > 0)
+                result.success = false;
+            else result.success = true;
+
+            return result;
         }
         public Result GetXmlCheckPartosData(int argcontrolador)
         {
-            return ObjImportar.GetXmlCheckPartosData(iXmlDA, argcontrolador);
+            // return ObjImportar.GetXmlCheckPartosData(iXmlDA, argcontrolador);
+            result.value = iXmlDA.CheckPartosDuplicadosData(argcontrolador);
+            if (result.value.Length > 0)
+                result.success = false;
+            else result.success = true;
+
+            return result;
         }
         #endregion
 
@@ -100,23 +119,49 @@ namespace Afca.Services
         //Una vez Chequeado.. -> Importo las tablas
         public Result GetXmlGanaderiasData(int argControlador)
         {
-            return ObjImportar.GetXmlGanaderiasData( iXmlDA, argControlador);
+            //return ObjImportar.GetXmlGanaderiasData( iXmlDA, argControlador);
+            result.value = iXmlDA.GetXmlGanaderiasByControlador(argControlador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Importada Tabla de Ganaderias";
+            return result;
         }
-        public Result GetXmlControlesData(string argGanaderia,int argcontrolador,DateTime FPrevista,string TipoControl)
+        public Result GetXmlControlesData(string argGanaderia,int argcontrolador,DateTime argFPrevista,string argTipoControl)
         {
-            return ObjImportar.GetXmlControlesData(iXmlDA, argGanaderia, argcontrolador, FPrevista, TipoControl);
+            //return ObjImportar.GetXmlControlesData(iXmlDA, argGanaderia, argcontrolador, FPrevista, TipoControl);
+            result.value = iXmlDA.GetXmlControlesByGanaderia(argGanaderia, argcontrolador, argFPrevista, argTipoControl).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Importada  Tabla de Controles";
+
+            return result;
         }
         public Result GetXmlInseminacionesData(string argGanaderia, int argcontrolador)
         {
-            return ObjImportar.GetXmlInseminacionesData(iXmlDA, argGanaderia, argcontrolador);
+            //return ObjImportar.GetXmlInseminacionesData(iXmlDA, argGanaderia, argcontrolador);
+            result.value = iXmlDA.GetXmlInseminacionesByGanaderia(argGanaderia, argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Inseminaciones";
+            return result;
         }
         public Result GetXmlNacimientosData(string argGanaderia, int argcontrolador)
         {
-            return ObjImportar.GetXmlNacimientosData(iXmlDA, argGanaderia, argcontrolador);
+            //return ObjImportar.GetXmlNacimientosData(iXmlDA, argGanaderia, argcontrolador);
+            result.value = iXmlDA.GetXmlNacimientosByGanaderia(argGanaderia, argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "IMportados Tabla de Nacimientos";
+            return result;
         }
         public Result GetXmlRcsData(int argcontrolador)
         {
-            return ObjImportar.GetXmlRcsData(iXmlDA, argcontrolador);
+            //return ObjImportar.GetXmlRcsData(iXmlDA, argcontrolador);
+            result.value = iXmlDA.GetXmlRcsByControlador(argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de RCS";
+            return result;
         }
         //public Result GetXmlActualizacionesGlobalData(int argcontrolador)
         //{
@@ -125,7 +170,13 @@ namespace Afca.Services
         
         public Result PasarDownToXml(int argcontrolador)
         {
-            return ObjImportar.PasarDownToXml(iXmlDA, argcontrolador);
+            //return ObjImportar.PasarDownToXml(iXmlDA, argcontrolador);
+            result.value = iXmlDA.PasarDownToXmlData(argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "pasar de Down a XML";
+
+            return result;
         }
     }
 }

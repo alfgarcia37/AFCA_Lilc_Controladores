@@ -165,7 +165,7 @@ namespace Afca.UI
         #region Toolbar Manager
         private void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
-            int controlador = 35;
+            int controlador = 36;
             switch (e.Tool.Key)
             {
                 case "Generar":
@@ -177,11 +177,15 @@ namespace Afca.UI
                         { DialogResult dr = MessageBox.Show(result.value + "\n" + "No coinciden Maestro y Control", "CHECK Maestro y Control", MessageBoxButtons.YesNo);
                                                 if (dr == DialogResult.No) break;
                     }
-                   
                     Result resultado= iSvrGenerar.GenerarXMLs(controlador);
                     if (resultado.success==true)
                     {
                         iSvrGenerar.PasarXmlToUP(controlador);
+                    }
+                    if (resultado.success == true)
+                    {
+                        DialogResult dr3 = MessageBox.Show(resultado.value + "\n" + "Exportación OK", "proceso Exportación", MessageBoxButtons.OK);
+
                     }
                     break;
                 case "Importar":
@@ -207,6 +211,11 @@ namespace Afca.UI
                     //si paso los check's cargo las tablas
 
                     Result resultado1 = iSvrImportar.ImportarXMLs(controlador);
+                    if (resultado1.success == false)
+                    {
+                        DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
+                       
+                    }
                     break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":
