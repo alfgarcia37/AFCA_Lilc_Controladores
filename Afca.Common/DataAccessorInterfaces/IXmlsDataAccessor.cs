@@ -8,9 +8,8 @@ namespace Afca.Common.DataAccessor
     public interface IXmlsDataAccessor : IDataAccessor
     {
         //XMLDATOS EXPORTAR========================================================
-        //.1.Exportar Chequeos....................................
-        string CheckMaestroControlesData(string argEstablo);
-        //.2.Exportar Set's de XML........................................................
+        // Chequeos -> Exportar -> ActGlobales -> Pasar To XML ....................................
+        string CheckToXMLData(string argEstablo);
         int SetXmlGanaderiasByControlador(int argcontrolador);
         int SetXmlControlesByGanaderia(string argGanaderia, int argControlador);
         int SetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
@@ -20,24 +19,18 @@ namespace Afca.Common.DataAccessor
         int PasarXmlToUPData(int argControlador);
 
         //XMLDATOS IMPORTAR=========================================================
-        //.1.Importar Chequeos.........
+        // Pasar From XML -> Chequeos -> ActGlobales -> Importar Chequeos -> Auditoría .........
         int PasarDownToXmlData(int argControlador);
         XmlData LoadXMLDatosDataByControlador(int argcontrolador);
-        string CheckEstablosDuplicadosData(int argControlador);//establos ya leidos
-        string CheckControlesDuplicadosData(int argControlador);
-        string CheckPartosDuplicadosData(int argControlador);
-        //.2...Importar GET's de Xmls......................................................
+        string CheckFromXMLData(int argControlador);//establos ya leidos
+        
         int GetXmlGanaderiasByControlador(int argcontrolador);
         int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipoControl);
         int GetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int GetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
         int GetXmlRcsByControlador( int argControlador);
-
-        ////XMLCONTROL (Controles)
-        //XmlData GetXmlControlesByEstablo(string argEstablo);
-        //XmlData SetXmlControlesByEstablo(string argEstablo);
-        //int DeleteXmlControlByEstablo(string argEstablo);
-
+        int GetXmlActualizacionesGlobales(int argControlador);
+     
 
         // Este me valdría para todos los xmls ???????????????????????????????
         int UpdateXmlData(XmlData data);
