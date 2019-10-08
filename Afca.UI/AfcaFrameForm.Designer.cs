@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("toolBarPrincipal");
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar3 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("toolBarPrincipal");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorer");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorerDetails");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Generar");
@@ -75,16 +75,16 @@
             // ultraToolbarsManager
             // 
             this.ultraToolbarsManager.MenuSettings.ForceSerialization = true;
-            ultraToolbar1.DockedColumn = 0;
-            ultraToolbar1.DockedRow = 0;
-            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ultraToolbar3.DockedColumn = 0;
+            ultraToolbar3.DockedRow = 0;
+            ultraToolbar3.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool3,
             buttonTool4,
             buttonTool5,
             stateButtonTool1});
-            ultraToolbar1.Text = "Barra principal";
+            ultraToolbar3.Text = "Barra principal";
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
+            ultraToolbar3});
             this.ultraToolbarsManager.ToolbarSettings.ToolOrientation = Infragistics.Win.UltraWinToolbars.ToolOrientation.Horizontal;
             buttonTool1.SharedPropsInternal.Caption = "Ver explorador";
             buttonTool2.SharedPropsInternal.Caption = "Ver detalles del explorador";

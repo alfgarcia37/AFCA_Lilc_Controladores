@@ -25,7 +25,7 @@ namespace Afca.Services
        // private ClsImportar ObjImportar = new ClsImportar();
         private IXmlsDataAccessor iXmlDA;
         //private ILecturaControlDataAccessor ilecturasDA;
-        private IXmlsDataAccessor ixmlsDA;
+       
         //private LecturaControlData lecturaControlData;
         private XmlData xmldatosData;
        public ImportarService()
@@ -33,21 +33,12 @@ namespace Afca.Services
             iXmlDA = Afca.Common.AfcaDataAccessorProvider.GetXmlDataAccessor();
         }
         //..CHECKS........................................................................
-        public Result CheckXmlEstablosDuplicadosData(int argControlador)
+        public Result CheckFromXmlData(int argControlador)
         {
-            var result = GetXmlCheckGanaderiasData(argControlador);
+            var result = GetXmlCheckData(argControlador);
             return result;
          }
-        public Result CheckXmlControlesData(int argControlador)
-         {
-            var result = GetXmlCheckControlesData(argControlador);
-            return result;
-         }
-        public Result CheckXmlPartosData(int argControlador)
-        {
-            var result = GetXmlCheckPartosData(argControlador);
-            return result;
-        }
+       
         public Result ImportarXMLs(int argControlador)
 
         {
@@ -75,45 +66,27 @@ namespace Afca.Services
 
             }
             //TABLAS GLOBAL (Independiente del Establo)
-            //resultControles = GetXmlActualizacionesGlobalData(argControlador);
+            //if resultControles = GetXmlActualizacionesGlobalData(argControlador);
             return resultControles;
         }
 
         #region Chequeos
         //...hago los chequeos....................
-        public Result GetXmlCheckGanaderiasData(int argcontrolador)
+        public Result GetXmlCheckData(int argcontrolador)
         {
             //return ObjImportar.GetXmlCheckGanaderiasData(iXmlDA, argcontrolador);
-            result.value = iXmlDA.CheckEstablosDuplicadosData(argcontrolador);
+            result.value = iXmlDA.CheckFromXMLData(argcontrolador);
             if (result.value.Length > 0)
                 result.success = false;
             else result.success = true;
 
             return result;
         }
-        public Result GetXmlCheckControlesData(int argcontrolador)
-        {
-            //return ObjImportar.GetXmlCheckControlesData(iXmlDA, argcontrolador);
-            result.value = iXmlDA.CheckControlesDuplicadosData(argcontrolador);
-            if (result.value.Length > 0)
-                result.success = false;
-            else result.success = true;
-
-            return result;
-        }
-        public Result GetXmlCheckPartosData(int argcontrolador)
-        {
-            // return ObjImportar.GetXmlCheckPartosData(iXmlDA, argcontrolador);
-            result.value = iXmlDA.CheckPartosDuplicadosData(argcontrolador);
-            if (result.value.Length > 0)
-                result.success = false;
-            else result.success = true;
-
-            return result;
-        }
+       
+       
         #endregion
 
-
+        #region GETs
 
         //...cuando paso los chequeos hago las iimportaciones desde XML a CL ...........
         //Una vez Chequeado.. -> Importo las tablas
@@ -163,11 +136,15 @@ namespace Afca.Services
             result.value = "Exportada Tabla de RCS";
             return result;
         }
-        //public Result GetXmlActualizacionesGlobalData(int argcontrolador)
-        //{
-        //    return ObjImportar.GetXmlActualizacionesGlobalData(iXmlDA, argcontrolador);
-        //}
-        
+        public Result GetXmlActualizacionesGlobalData(int argcontrolador)
+        {
+            result.value = iXmlDA.GetXmlActualizacionesGlobales(argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Actualizaciones Globales";
+            return result;
+        }
+        #endregion
         public Result PasarDownToXml(int argcontrolador)
         {
             //return ObjImportar.PasarDownToXml(iXmlDA, argcontrolador);

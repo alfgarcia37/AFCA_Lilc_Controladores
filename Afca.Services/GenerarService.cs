@@ -34,13 +34,13 @@ namespace Afca.Services
             
         }
         //check...comprobaciones...............................
-        public Result CheckXmlMaestroControlesData(int argControlador)
+        public Result CheckToXmlData(int argControlador)
         {
             LecturaControlData lecturaControlData = ilecturasDA.LoadLecturaControlDataByControladorEstado(argControlador, EstadoLectura.Planificar);
             Result result=null ;
             foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
             {
-                result = SetXmlCheckControlesData(drLectura["Establo"].ToString());
+                result = SetXmlCheckData(drLectura["Establo"].ToString());
             }
             return result;
          }
@@ -73,10 +73,10 @@ namespace Afca.Services
             return resultControles;
         }
 
-        public Result SetXmlCheckControlesData(string argGanaderia)
+        public Result SetXmlCheckData(string argGanaderia)
         {
             //return ObjGenerar.SetXmlCheckMaestroControlesData(iXmlDA, argControlador);
-            result.value = iXmlDA.CheckMaestroControlesData( argGanaderia).ToString();
+            result.value = iXmlDA.CheckToXMLData( argGanaderia).ToString();
             if (result.value.Length > 0)
                 result.success = false;
             else result.success = true;

@@ -13,9 +13,8 @@ namespace Afca.Common.ServicesInterfaces
 
         //XmlData LoadXMLDatosDataByControlador(int argControlador);... realmente no me hace aqui, pq se usa para DA
 
-        Result CheckXmlEstablosDuplicadosData(int controlador);
-        Result CheckXmlControlesData(int controlador);
-        Result CheckXmlPartosData(int controlador);
+        Result CheckFromXmlData(int controlador);
+       
         Result PasarDownToXml(int controlador);
 
         Result GetXmlGanaderiasData(int controlador);
@@ -23,7 +22,7 @@ namespace Afca.Common.ServicesInterfaces
         Result GetXmlInseminacionesData(string ganaderia, int controlador);
         Result GetXmlNacimientosData(string ganaderia, int controlador);
         Result GetXmlRcsData(int controlador);
-        //Result GetXmlActualizacionesGlobalData( int controlador);
+       Result GetXmlActualizacionesGlobalData( int controlador);
 
         
 
