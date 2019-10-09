@@ -7,11 +7,11 @@ GO
 EXEC sys.sp_dropextendedproperty @name=N'MS_DiagramPane1' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'VIEW',@level1name=N'ViewInseminacionesEstabloNPIdFinseminacion'
 GO
 
-/****** Object:  View [dbo].[ViewInseminacionesEstabloNPIdFinseminacion]    Script Date: 30/08/2019 11:19:08 ******/
+/****** Object:  View [dbo].[ViewInseminacionesEstabloNPIdFinseminacion]    Script Date: 08/10/2019 10:40:56 ******/
 DROP VIEW [dbo].[ViewInseminacionesEstabloNPIdFinseminacion]
 GO
 
-/****** Object:  View [dbo].[ViewInseminacionesEstabloNPIdFinseminacion]    Script Date: 30/08/2019 11:19:08 ******/
+/****** Object:  View [dbo].[ViewInseminacionesEstabloNPIdFinseminacion]    Script Date: 08/10/2019 10:40:56 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -20,8 +20,9 @@ GO
 
 CREATE VIEW [dbo].[ViewInseminacionesEstabloNPIdFinseminacion]
 AS
-SELECT        MAX(Establo) AS Establo, MAX(ID) AS Vaca, MAX(NP) AS NP, MAX(FInseminacion) AS FInseminacion
+SELECT        MAX(Establo) AS Establo, MAX(ID) AS Vaca, MAX(FInseminacion) AS FInseminacion
 FROM            dbo.Inseminaciones
+WHERE        (NP = 0)
 GROUP BY Establo, ID
 GO
 

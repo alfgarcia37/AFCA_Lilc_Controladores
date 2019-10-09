@@ -22,6 +22,7 @@ namespace Afca.Services.Clases
         ClsGanaderiasXML ObjDatosXML;
         public ClsGenerar()
         {
+           // iXmlDA = new IXmlsDataAccessor();
             InitializeServices();
         }
         
@@ -58,7 +59,7 @@ namespace Afca.Services.Clases
         public Result SetXmlInseminacionesData(IXmlsDataAccessor Ixmlda, string argGanaderia, int controlador)
         {
             iXmlDA = Ixmlda;
-            result.value = iXmlDA.SetXmlTorosByGanaderia(argGanaderia, controlador).ToString();
+            result.value = iXmlDA.SetXmlInseminacionesByGanaderia(argGanaderia, controlador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "Exportada Tabla de Inseminaciones";
@@ -110,37 +111,7 @@ namespace Afca.Services.Clases
 
 
         }
-        //public bool Modelo_de_Ejemplo(int argControlador)
-        //{//aqui pongo la lógica. Los servicios sólo me devuelven datos. No tienen porqué conocer la interrelación entre ellos.
-
-        //    XmlData xmlData = new XmlData();
-
-        //    LecturaControlData lecturaControlData = iSrvLecturasControl.LoadLecturaControlDataByID("");
-
-
-        //    foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
-        //    {
-
-        //        DataRow xmlDatosRow = xmlData.XmlDatos.NewRow();
-
-        //        xmlDatosRow["ID"] = drLectura["ID"];
-        //        DateTime fecha= (DateTime) dO.cls(drLectura, "FechaPrevista", DateTime.Now.AddMonths(1));
-        //        dO.EsNulo(drLectura, "FechaPrevista");
-        //        dO.GetMaximo(drLectura, new string[] { "LecturaAnterior", "LecturaActual" });
-        //        dO.HasRows(lecturaControlData, "LecturaControl");
-
-        //        ArrayList exceptions = new ArrayList();
-        //        dO.ImportValues(drLectura, xmlDatosRow, exceptions);
-
-        //        //..... CLsControl.GenrarRegis
-
-        //        xmlData.XmlDatos.Rows.Add(xmlDatosRow);
-        //    }
-        //    return true;
-        //return iXmlDA.SetXmlGanaderiasByControladorID(argControlador);
-
-        //bool result = IGenerarService;
-
+       
 
 
 

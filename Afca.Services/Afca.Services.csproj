@@ -47,15 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\ClsImportar.cs" />
-    <Compile Include="Clases\ClsGenerar.cs" />
     <Compile Include="ImportarService.cs" />
     <Compile Include="Clases\Helpers\ClsControl.cs" />
     <Compile Include="Clases\Helpers\ClsInseminaciones.cs" />
     <Compile Include="Clases\Helpers\ClsLecturasControl.cs" />
     <Compile Include="Clases\Helpers\ClsMaestro.cs" />
     <Compile Include="Clases\Helpers\ClsRCS.cs" />
-    <Compile Include="Clases\XMLs\ClsDatosXML.cs" />
     <Compile Include="GenerarService.cs" />
     <Compile Include="ControladorService.cs" />
     <Compile Include="EstadoLecturaService.cs" />
@@ -64,45 +61,51 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clases\Utils\" />
+    <Folder Include="Documentacion\Generar\Funciones\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Clases\Documentacion\AfcaTree.xlsx" />
+    <None Include="Documentacion\AfcaTree.xlsx" />
+    <None Include="Documentacion\Flujo1.pptx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Clases\Documentacion\ALL_SCRIPTS.sql" />
-    <Content Include="Clases\Documentacion\script_201909_sps_GenerarImportar.sql" />
-    <Content Include="Clases\Documentacion\ControladoresEnprogreso.sql" />
-    <Content Include="Clases\Documentacion\controllechero_procedures_20190605.sql" />
-    <Content Include="Clases\Documentacion\PruebaNombres.sql" />
-    <Content Include="Clases\Documentacion\sp_ActualizacionesGlobalesToXMLByControlador.sql" />
-    <Content Include="Clases\Documentacion\sp_asigna_inseminacion_parto.sql" />
-    <Content Include="Clases\Documentacion\sp_CheckDuplicadosXMLPartos.sql" />
-    <Content Include="Clases\Documentacion\sp_CheckMaestrocontrol.sql" />
-    <Content Include="Clases\Documentacion\sp_ControlesFromXMLByEstablo.sql" />
-    <Content Include="Clases\Documentacion\sp_ControlesToXMLByEstablo.sql" />
-    <Content Include="Clases\Documentacion\sp_GanaderiasFromXMLByControlador.sql" />
-    <Content Include="Clases\Documentacion\sp_GanaderiastoXMLByControlador.sql" />
-    <Content Include="Clases\Documentacion\sp_InseminacionesFromXMLByEstablo.sql" />
-    <Content Include="Clases\Documentacion\sp_InseminacionesToXMLByEstablo.sql" />
-    <Content Include="Clases\Documentacion\sp_LecturaControl_selectByByControladorEstado.sql" />
-    <Content Include="Clases\Documentacion\sp_NacimientosFromXMLByControlador.sql" />
-    <Content Include="Clases\Documentacion\sp_NacimientosToXMLByEstablo.sql" />
-    <Content Include="Clases\Documentacion\SP_PasarDownToAudit.sql" />
-    <Content Include="Clases\Documentacion\sp_PasarDownToXML.sql" />
-    <Content Include="Clases\Documentacion\sp_PasarXMLToUP.sql" />
-    <Content Include="Clases\Documentacion\sp_RcsFromXMLByControlador.sql" />
-    <Content Include="Clases\Documentacion\sp_ReemplazarNombresVacas.sql" />
-    <Content Include="Clases\Documentacion\sp_TorosToXMLByEstablo.sql" />
-    <Content Include="Clases\Documentacion\SQLQuery141.sql" />
-    <Content Include="Clases\Documentacion\ViewInseminacionesEstabloIDFinseminacion.sql" />
-    <Content Include="Clases\Documentacion\ViewInseminacionesEstabloNPIdFinseminacion.sql" />
+    <Content Include="Documentacion\ALL_SCRIPTS.sql" />
+    <Content Include="Documentacion\Funciones_y_mas\fn_ReemplazarNombresVacas.sql" />
+    <Content Include="Documentacion\Funciones_y_mas\func_ConversionUEa14Digitos.sql" />
+    <Content Include="Documentacion\Funciones_y_mas\func_ExisteVelocidad.sql" />
+    <Content Include="Documentacion\Funciones_y_mas\func_GetCausaBaja.sql" />
+    <Content Include="Documentacion\Funciones_y_mas\func_KmLecturasFinalizadas.sql" />
+    <Content Include="Documentacion\Funciones_y_mas\ViewInseminacionesEstabloNPIdFinseminacion.sql" />
+    <Content Include="Documentacion\Importar\dbo.sp_ActualizacionesGlobalesFromXMLByControlador.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_ActualizacionesGlobalesToXMLByControlador.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.SP_CheckFromXML.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_CheckToXML.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.SP_Controlador_create_nextLote.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.sp_ControlesFromXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_ControlesToXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.sp_GanaderiasFromXMLByControlador.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_GanaderiasToXMLByControlador.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.SP_GetAnimalesNoRegistradosRIIA.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.sp_InseminacionesFromXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_InseminacionesToXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.sp_NacimientosFromXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_NacimientosToXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.SP_PasarDownToAudit.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.SP_PasarDownToXML.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.SP_PasarXMLToUP.StoredProcedure.sql" />
+    <Content Include="Documentacion\Importar\dbo.sp_RcsFromXMLByControlador.StoredProcedure.sql" />
+    <Content Include="Documentacion\Generar\dbo.sp_TorosToXMLByEstablo.StoredProcedure.sql" />
+    <Content Include="Documentacion\SPs_Utilizados.txt" />
+    <Content Include="Documentacion\Importar\sp_CheckDuplicadosXMLDatos.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
       <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
       <Name>Afca.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
