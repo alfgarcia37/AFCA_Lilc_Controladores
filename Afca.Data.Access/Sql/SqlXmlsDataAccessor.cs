@@ -27,7 +27,7 @@
 
 
              int regs = this.ExecuteNonQuery(
-                                "sp_GanaderiasToTempLByControlador"
+                                "sp_GanaderiasToXMLByControlador"
                                 , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;
