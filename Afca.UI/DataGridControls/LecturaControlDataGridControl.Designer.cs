@@ -72,7 +72,12 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Frison");
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("Barra lecturas");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbVerLectura");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbChangeEstado");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbVerLectura");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbChangeEstado");
+            Infragistics.Win.UltraWinToolbars.ListTool listTool1 = new Infragistics.Win.UltraWinToolbars.ListTool("lstChangeEstado");
+            Infragistics.Win.UltraWinToolbars.ListToolItem listToolItem1 = new Infragistics.Win.UltraWinToolbars.ListToolItem("item1");
+            Infragistics.Win.UltraWinToolbars.ListToolItem listToolItem2 = new Infragistics.Win.UltraWinToolbars.ListToolItem("item2");
             this.lecturaControlData = new Afca.Common.DataSets.LecturaControlData();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
@@ -111,7 +116,6 @@
             ultraGridColumn8.Header.Caption = "Numero";
             ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 7;
-            ultraGridColumn9.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn9.Header.Caption = "Fecha Prevista";
             ultraGridColumn9.Header.Editor = null;
             ultraGridColumn9.Header.VisiblePosition = 4;
@@ -159,7 +163,6 @@
             ultraGridColumn23.Header.Editor = null;
             ultraGridColumn23.Header.VisiblePosition = 8;
             ultraGridColumn23.Hidden = true;
-            ultraGridColumn24.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn24.Header.Caption = "Lote";
             ultraGridColumn24.Header.Editor = null;
             ultraGridColumn24.Header.VisiblePosition = 5;
@@ -263,9 +266,8 @@
             this.ultraGridData.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGridData.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.ultraGridData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.ultraGridData.Location = new System.Drawing.Point(0, 27);
-            this.ultraGridData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ultraGridData.Size = new System.Drawing.Size(1512, 787);
+            this.ultraGridData.Margin = new System.Windows.Forms.Padding(3);
+            this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
             // 
             // ultraToolbarsManager
             // 
@@ -273,14 +275,25 @@
             ultraToolbar1.DockedColumn = 1;
             ultraToolbar1.DockedRow = 0;
             ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool2});
+            buttonTool2,
+            buttonTool4});
             ultraToolbar1.Text = "Barra lecturas";
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
             ultraToolbar1});
             this.ultraToolbarsManager.ToolbarSettings.ForceSerialization = true;
             buttonTool1.SharedPropsInternal.Caption = "Ver lectura seleccionada";
+            buttonTool3.SharedPropsInternal.Caption = "Cambiar ESTADO de los establos seleccionados ";
+            listToolItem1.Key = "item1";
+            listToolItem1.Text = "Item 1";
+            listToolItem2.Key = "item2";
+            listToolItem2.Text = "Item 2";
+            listTool1.ListToolItemsInternal.Add(listToolItem1);
+            listTool1.ListToolItemsInternal.Add(listToolItem2);
+            listTool1.SharedPropsInternal.Caption = "Cambiar ESTADO de los establos seleccionados";
             this.ultraToolbarsManager.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool1});
+            buttonTool1,
+            buttonTool3,
+            listTool1});
             this.ultraToolbarsManager.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager_ToolClick);
             // 
             // lecturaControlData
@@ -290,15 +303,15 @@
             // 
             // LecturaControlDataGridControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.DataMember = "LecturaControl";
             this.DataSource = this.lecturaControlData;
             this.LoadMethod = "LoadLecturaControlData";
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "LecturaControlDataGridControl";
             this.ServiceProvider = "ILecturaControlService";
-            this.Size = new System.Drawing.Size(1512, 852);
+            this.Size = new System.Drawing.Size(1008, 554);
             this.ThemColor = FrameworkForge.Common.ThemeColor.Azul;
             this.UpdateMethod = "UpdateLecturaControlData";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).EndInit();

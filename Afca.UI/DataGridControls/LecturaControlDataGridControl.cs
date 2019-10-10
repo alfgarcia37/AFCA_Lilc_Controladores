@@ -44,6 +44,8 @@ namespace Afca.UI
         protected override void InitializeAppearance()
         {
             base.InitializeAppearance();
+            ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "tbbVerLectura", "IconoPropiedades");
+            ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "tbbChangeEstado", "IconoChange");
 
             ControlsThemeBuilder.GridMakeUp(this.ultraGridData,ThemeColor.Verde);
             ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0],ThemeColor.Verde);
@@ -61,9 +63,7 @@ namespace Afca.UI
         }
         void InitializeDropDowns()
         {
-            UltraDropDown uddEstado = DropDownsProvider.GetEstadoLecturaDropwDown().DropDown;
-            this.ultraGridData.DisplayLayout.Bands[0].Columns["Estado"].ValueList = uddEstado;             
-            ControlsThemeBuilder.DropDownMakeUp(uddEstado,ThemeColor.Amarillo);
+            this.ultraGridData.DisplayLayout.Bands[0].Columns["Estado"].ValueList = DataMapper.GetAfcaEstadoIconValueList();
 
             UltraDropDown uddControlador = DropDownsProvider.GetControladorDropwDown().DropDown;
             this.ultraGridData.DisplayLayout.Bands[0].Columns["NumControler"].ValueList = uddControlador;
@@ -95,9 +95,27 @@ namespace Afca.UI
             switch (e.Tool.Key)
             {
                 case "tbbVerLectura":
+                    Cursor = Cursors.WaitCursor;
                     ControlsProvider.ShowLecturaProperties(
                       (((DataRowView)  ultraGridData.Selected.Rows[0].ListObject).Row));
+                    Cursor = Cursors.Default;
                     break;
+                case "tbbChangeEstado":
+                    ChangeEstado();
+                    break;
+            }
+        }
+        void ChangeEstado()
+        {
+            if (ultraGridData.Selected.Rows.Count > 0)
+            {
+                string estadoSelected = "1";
+
+                foreach (UltraGridRow ugrow in ultraGridData.Selected.Rows)
+                {
+                    ugrow.Cells["Estado"].Value = estadoSelected;
+                    ugrow.Update();
+                }
             }
         }
     }

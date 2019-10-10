@@ -39,6 +39,7 @@
     <Reference Include="Infragistics4.Win.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +88,7 @@
     <Compile Include="ServicesInterfaces\IImportarService.cs" />
     <Compile Include="ServicesInterfaces\IGenerarService.cs" />
     <Compile Include="Utilities\ClsResult.cs" />
+    <Compile Include="Utilities\DataMapper.cs" />
     <Compile Include="Utilities\IconMapper.cs" />
     <Compile Include="ServicesInterfaces\IEstadoLecturaService.cs" />
     <Compile Include="ServicesInterfaces\IGanaderiaService.cs" />
@@ -234,6 +236,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\entrada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\change.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
