@@ -28,6 +28,57 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Afca\Lib\Microsoft.Practices.Unity.Interception.dll = Afca\Lib\Microsoft.Practices.Unity.Interception.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentacion", "Documentacion", "{63F6CAB4-8A13-4FAE-BCB5-C192FBB45E12}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\AfcaTree.xlsx = Resources\Documentacion\AfcaTree.xlsx
+		Resources\Documentacion\ALL_SCRIPTS.sql = Resources\Documentacion\ALL_SCRIPTS.sql
+		Resources\Documentacion\Flujo1.pptx = Resources\Documentacion\Flujo1.pptx
+		Resources\Documentacion\SPs_Utilizados.txt = Resources\Documentacion\SPs_Utilizados.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generar", "Generar", "{9184FDA4-E5F7-4C13-A586-AB32CAB64F1E}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\Generar\dbo.sp_ActualizacionesGlobalesToXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_ActualizacionesGlobalesToXMLByControlador.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.sp_CheckToXML.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_CheckToXML.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.sp_ControlesToXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_ControlesToXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.sp_GanaderiasToXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_GanaderiasToXMLByControlador.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.SP_GetAnimalesNoRegistradosRIIA.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.SP_GetAnimalesNoRegistradosRIIA.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.sp_InseminacionesToXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_InseminacionesToXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.sp_NacimientosToXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_NacimientosToXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.SP_PasarDownToXML.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.SP_PasarDownToXML.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.SP_PasarXMLToUP.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.SP_PasarXMLToUP.StoredProcedure.sql
+		Resources\Documentacion\Generar\dbo.sp_TorosToXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_TorosToXMLByEstablo.StoredProcedure.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Importar", "Importar", "{A5DB4E6E-954D-412D-8105-F2B04188DCDC}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\Importar\dbo.sp_ActualizacionesGlobalesFromXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_ActualizacionesGlobalesFromXMLByControlador.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.SP_CheckFromXML.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.SP_CheckFromXML.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_ControlesFromXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_ControlesFromXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_GanaderiasFromXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_GanaderiasFromXMLByControlador.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_InseminacionesFromXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_InseminacionesFromXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_NacimientosFromXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_NacimientosFromXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.SP_PasarDownToAudit.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.SP_PasarDownToAudit.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_RcsFromXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_RcsFromXMLByControlador.StoredProcedure.sql
+		Resources\Documentacion\Importar\sp_CheckDuplicadosXMLDatos.sql = Resources\Documentacion\Importar\sp_CheckDuplicadosXMLDatos.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Otros", "Otros", "{35DBBFF4-4B65-48FD-894F-450E3BC09C49}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\Generar\Otros\dbo.SP_Controlador_create_nextLote.StoredProcedure.sql = Resources\Documentacion\Generar\Otros\dbo.SP_Controlador_create_nextLote.StoredProcedure.sql
+		Resources\Documentacion\Generar\Otros\fn_ReemplazarNombresVacas.sql = Resources\Documentacion\Generar\Otros\fn_ReemplazarNombresVacas.sql
+		Resources\Documentacion\Generar\Otros\func_ConversionUEa14Digitos.sql = Resources\Documentacion\Generar\Otros\func_ConversionUEa14Digitos.sql
+		Resources\Documentacion\Generar\Otros\func_ExisteVelocidad.sql = Resources\Documentacion\Generar\Otros\func_ExisteVelocidad.sql
+		Resources\Documentacion\Generar\Otros\func_GetCausaBaja.sql = Resources\Documentacion\Generar\Otros\func_GetCausaBaja.sql
+		Resources\Documentacion\Generar\Otros\ViewInseminacionesEstabloNPIdFinseminacion.sql = Resources\Documentacion\Generar\Otros\ViewInseminacionesEstabloNPIdFinseminacion.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Otros", "Otros", "{793C1839-9F2B-457A-ADB7-7C3C086CA93F}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\Importar\Otros\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql = Resources\Documentacion\Importar\Otros\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql
+		Resources\Documentacion\Importar\Otros\func_KmLecturasFinalizadas.sql = Resources\Documentacion\Importar\Otros\func_KmLecturasFinalizadas.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +108,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{63F6CAB4-8A13-4FAE-BCB5-C192FBB45E12} = {60DA0F43-6832-4BFB-939D-21EEABB21912}
+		{9184FDA4-E5F7-4C13-A586-AB32CAB64F1E} = {63F6CAB4-8A13-4FAE-BCB5-C192FBB45E12}
+		{A5DB4E6E-954D-412D-8105-F2B04188DCDC} = {63F6CAB4-8A13-4FAE-BCB5-C192FBB45E12}
+		{35DBBFF4-4B65-48FD-894F-450E3BC09C49} = {9184FDA4-E5F7-4C13-A586-AB32CAB64F1E}
+		{793C1839-9F2B-457A-ADB7-7C3C086CA93F} = {A5DB4E6E-954D-412D-8105-F2B04188DCDC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2ED2DE7-C0C9-432E-940C-1109E0BB6470}
