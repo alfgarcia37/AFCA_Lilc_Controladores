@@ -11,12 +11,12 @@
     public class SqlXmlsDataAccessor : SqlDataAccessor, IXmlsDataAccessor
     {
         //SET XML's
-        public string CheckMaestroControlesData(string argGanaderia)
+        public string CheckToXMLData(string argGanaderia)
         {
 
 
             var regs = this.ExecuteScalar(
-                               "sp_CheckMaestroControlesToXML"
+                               "sp_CheckToXML"
                                , new SqlParameter[]{
                                         new SqlParameter("@Establo",argGanaderia)});
             return regs.ToString();
@@ -116,41 +116,22 @@
         public XmlData LoadXMLDatosDataByControlador(int argControlador)
         {
             return (XmlData)this.ExecuteDataSet(new XmlData()
-                                , "sp_LecturaControl_selectByID"
+                                , "[sp_XMLDATOS_selectByControlador]"
                                 , CommandType.StoredProcedure
                                 , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador) }
                                 , new string[] { "XMLDatos" });
         }
-        public string CheckEstablosDuplicadosData(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
+        public string CheckFromXMLData(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
         {
             var regs = this.ExecuteScalar(
-                               "[SP_CheckDuplicadosXMLDatos]"
+                               "SP_CheckFromXML"
                                , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador) });
-                                       
-            return regs.ToString();
+            
+                return (regs == null ? "" : regs.ToString());
         }
-        public string CheckControlesDuplicadosData(int argControlador)
-        {
-
-
-            var regs = this.ExecuteScalar(
-                               "[SP_CheckDuplicadosXMLControl]"
-                               , new SqlParameter[]{
-                                        new SqlParameter("@Controlador",argControlador)});
-            return regs.ToString();
-        }
-        public string CheckPartosDuplicadosData(int argControlador)
-        {
-
-
-            var regs = this.ExecuteScalar(
-                               "[SP_CheckDuplicadosXMLPartos]"
-                               , new SqlParameter[]{
-                                        new SqlParameter("@Controlador",argControlador)});
-            return regs.ToString();
-        }
+       
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero
         public int GetXmlGanaderiasByControlador(int argControlador)
         {
@@ -162,7 +143,7 @@
                                         new SqlParameter("@Controlador",argControlador)});
             return regs;
         }
-        public int GetXmlControlesByGanaderia(string argGanaderia, int argControlador)
+        public int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipocontrol)
         {
 
 
@@ -170,7 +151,9 @@
                                 "sp_ControlesFromXMLByEstablo"
                                 , new SqlParameter[]{
                                         new SqlParameter("@Establo",argGanaderia),
-                                        new SqlParameter("@controlador",argControlador)
+                                        new SqlParameter("@controlador",argControlador),
+                                        new SqlParameter("@FPrevista",argFPrevista),
+                                        new SqlParameter("@TipoControl",argTipocontrol)
                                         });
             return regs;
         }
@@ -207,18 +190,18 @@
                                         });
             return regs;
         }
-        //public int GetXmlActualizacionesGlobales(int argControlador)
-        //{
+        public int GetXmlActualizacionesGlobales(int argControlador)
+        {
 
 
-        //    int regs = this.ExecuteNonQuery(
-        //                       "sp_ActualizacionesglobalesToXMLBycontrolador"
-        //                       , new SqlParameter[]{
+            int regs = this.ExecuteNonQuery(
+                               "sp_ActualizacionesglobalesFromXMLBycontrolador"
+                               , new SqlParameter[]{
 
-        //                                new SqlParameter("@controlador",argControlador)
-        //                                });
-        //    return regs;
-        //}
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
 
         public XmlData GetXmlGanaderiasByID(int controlador)
         {

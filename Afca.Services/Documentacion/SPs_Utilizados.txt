@@ -1,0 +1,39 @@
+﻿GENERAR *********************************************************
+
+sp_LecturaControl_selectByControladorEstado -> Selecciono establos a generar por controlador
+
+....Chequeos
+sp_CheckMaestroControlesToXML -> Coincidencias en NP y NC Maestro y Control
+
+....Exportación de Tablas de CL a XML
+sp_GanaderiasToXMLByControlador
+sp_ControlesToXMLByEstablo
+sp_InseminacionesToXMLByEstablo
+sp_TorosToXMLByEstablo
+sp_NacimientosToXMLByEstablo
+
+sp_ActualizacionesglobalesToXMLBycontrolador
+
+SP_PasarXMLToUP -> Paso tablas de XML a UP
+
+
+IMPORTAR **********************************************************
+
+SP_PasarDownToXML -> Paso tablas de DOWN a XML
+
+....Chequeos
+SP_CheckDuplicadosXMLDatos -> Establos ya leídos
+SP_CheckDuplicadosXMLControl -> Controles duplicados en el servidor
+SP_CheckDuplicadosXMLPartos -> Partos duplicados en el servidor
+
+....Importación de Tablas de XML a CL
+sp_GanaderiasFromXMLByControlador
+sp_ControlesFromXMLByEstablo
+sp_InseminacionesFromXMLByEstablo
+sp_NacimientosFromXMLByEstablo
+sp_RcsFromXMLByControlador
+
+sp_ActualizacionesGlobalesFromXMLByControlador
+
+
+

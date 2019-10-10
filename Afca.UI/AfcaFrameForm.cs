@@ -165,45 +165,48 @@ namespace Afca.UI
         #region Toolbar Manager
         private void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
+            int controlador = 6;
             switch (e.Tool.Key)
             {
                 case "Generar":
                     var et = Afca.Common.Trees.ExplorerTree;
                     var s= sender;
-                    Result result = iSvrGenerar.CheckXmlMaestroControlesData(6);
+                    //--APROVECHO EL PRIMER CHECK PARA Borrar XML's y METER LAS DOWN A XML    
+                    Result result = iSvrGenerar.CheckToXmlData(controlador);
                     if (result.success == false)
                         { DialogResult dr = MessageBox.Show(result.value + "\n" + "No coinciden Maestro y Control", "CHECK Maestro y Control", MessageBoxButtons.YesNo);
                                                 if (dr == DialogResult.No) break;
                     }
-                   
-                    Result resultado= iSvrGenerar.GenerarXMLs(6);
+                    Result resultado= iSvrGenerar.GenerarXMLs(controlador);
                     if (resultado.success==true)
                     {
-                        iSvrGenerar.PasarXmlToUP(6);
+                        iSvrGenerar.PasarXmlToUP(controlador);
+                    }
+                    if (resultado.success == true)
+                    {
+                        DialogResult dr3 = MessageBox.Show(resultado.value + "\n" + "Exportación OK", "proceso Exportación", MessageBoxButtons.OK);
+
                     }
                     break;
                 case "Importar":
-                   // Result result1 = iSvrImportar.CheckXmlEstablosDuplicadosData(6);
-                    //Result result1 = iSvrImportar.CheckXmlControlesData(6);
-                    //if (result1.success == false)
-                    //{
-                    //    DialogResult dr1 = MessageBox.Show(result1.value + "\n" + "Existen Registros duplicados", "CHECK Controles", MessageBoxButtons.YesNo);
-                    //    if (dr1 == DialogResult.No) break;
-                    //}
-                    Result result3 = iSvrImportar.CheckXmlPartosData(6);
-                    if (result3.success == false)
+                    iSvrImportar.PasarDownToXml(controlador);
+                    Result result1 = iSvrImportar.CheckFromXmlData(controlador);
+                    if (result1.success == false)
                     {
-                        DialogResult dr1 = MessageBox.Show(result3.value + "\n" + "Existen Partos Duplicados", "CHECK Partos", MessageBoxButtons.YesNo);
+                        DialogResult dr1 = MessageBox.Show(result1.value + "\n" + "Existen Establos ya Controlados", "CHECK Establos", MessageBoxButtons.YesNo);
                         if (dr1 == DialogResult.No) break;
                     }
                     //si paso los check's cargo las tablas
-
-                    Result resultado1 = iSvrImportar.ImportarXMLs(6);
+                    Result resultado1 = iSvrImportar.ImportarXMLs(controlador);
+                    if (resultado1.success == true)
+                    {
+                        DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
+                        resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(controlador);
+                    }
                     break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":
                     ControlsProvider.ShowAfcaExplorer();
-              
                     break;
             }
         }
