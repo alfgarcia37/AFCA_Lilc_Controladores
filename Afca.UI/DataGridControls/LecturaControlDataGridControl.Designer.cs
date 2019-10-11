@@ -44,7 +44,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LoginID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Observaciones");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoControl");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TipoControl", -1, 6038126);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Informe");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Usuario");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaUsuario");
@@ -70,15 +70,37 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Amarre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cetosis");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Frison");
+            Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(6038126);
+            Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem5 = new Infragistics.Win.ValueListItem();
+            Infragistics.Win.ValueListItem valueListItem6 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("Barra lecturas");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbVerLectura");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbChangeEstado");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popMenuEstados");
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar2 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("Barra estado");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool22 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbVerLectura");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool19 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbNextLote");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool20 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbGenerar");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool21 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbImportar");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbVerLectura");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbChangeEstado");
-            Infragistics.Win.UltraWinToolbars.ListTool listTool1 = new Infragistics.Win.UltraWinToolbars.ListTool("lstChangeEstado");
-            Infragistics.Win.UltraWinToolbars.ListToolItem listToolItem1 = new Infragistics.Win.UltraWinToolbars.ListToolItem("item1");
-            Infragistics.Win.UltraWinToolbars.ListToolItem listToolItem2 = new Infragistics.Win.UltraWinToolbars.ListToolItem("item2");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool1 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("popMenuEstados");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool7 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuPlanificado");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool5 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuEnCurso");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool11 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuEnTerminal");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool9 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuLeido");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool13 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuEnBuzon");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuEnCurso");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool12 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuEnTerminal");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool14 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuEnBuzon");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuPlanificado");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool10 = new Infragistics.Win.UltraWinToolbars.ButtonTool("menuLeido");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbGenerar");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbImportar");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool17 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbNextLote");
             this.lecturaControlData = new Afca.Common.DataSets.LecturaControlData();
+            this.olapDataSelector1 = new Infragistics.Win.UltraWinPivotGrid.DataSelector.OlapDataSelector();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturaControlData)).BeginInit();
@@ -137,7 +159,6 @@
             ultraGridColumn15.Header.Editor = null;
             ultraGridColumn15.Header.VisiblePosition = 17;
             ultraGridColumn15.Hidden = true;
-            ultraGridColumn16.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn16.Header.Caption = "Tipo";
             ultraGridColumn16.Header.Editor = null;
             ultraGridColumn16.Header.VisiblePosition = 6;
@@ -266,8 +287,31 @@
             this.ultraGridData.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGridData.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.ultraGridData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            valueList1.Key = "vlTipos";
+            valueListItem1.DataValue = "1M";
+            valueListItem1.DisplayText = "1M";
+            valueListItem2.DataValue = "1T";
+            valueListItem2.DisplayText = "1T";
+            valueListItem3.DataValue = "RX";
+            valueListItem3.DisplayText = "RX";
+            valueListItem4.DataValue = "31";
+            valueListItem4.DisplayText = "31";
+            valueListItem5.DataValue = "32";
+            valueListItem5.DisplayText = "32";
+            valueListItem6.DataValue = "33";
+            valueListItem6.DisplayText = "33";
+            valueList1.ValueListItems.AddRange(new Infragistics.Win.ValueListItem[] {
+            valueListItem1,
+            valueListItem2,
+            valueListItem3,
+            valueListItem4,
+            valueListItem5,
+            valueListItem6});
+            this.ultraGridData.DisplayLayout.ValueLists.AddRange(new Infragistics.Win.ValueList[] {
+            valueList1});
             this.ultraGridData.Margin = new System.Windows.Forms.Padding(3);
             this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
+            this.ultraGridData.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGridData_DoubleClickRow);
             // 
             // ultraToolbarsManager
             // 
@@ -275,31 +319,72 @@
             ultraToolbar1.DockedColumn = 1;
             ultraToolbar1.DockedRow = 0;
             ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool2,
-            buttonTool4});
+            popupMenuTool2});
             ultraToolbar1.Text = "Barra lecturas";
+            ultraToolbar2.DockedColumn = 2;
+            ultraToolbar2.DockedRow = 0;
+            ultraToolbar2.FloatingSize = new System.Drawing.Size(107, 24);
+            ultraToolbar2.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool22,
+            buttonTool19,
+            buttonTool20,
+            buttonTool21});
+            ultraToolbar2.Text = "Barra estado";
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
+            ultraToolbar1,
+            ultraToolbar2});
             this.ultraToolbarsManager.ToolbarSettings.ForceSerialization = true;
             buttonTool1.SharedPropsInternal.Caption = "Ver lectura seleccionada";
-            buttonTool3.SharedPropsInternal.Caption = "Cambiar ESTADO de los establos seleccionados ";
-            listToolItem1.Key = "item1";
-            listToolItem1.Text = "Item 1";
-            listToolItem2.Key = "item2";
-            listToolItem2.Text = "Item 2";
-            listTool1.ListToolItemsInternal.Add(listToolItem1);
-            listTool1.ListToolItemsInternal.Add(listToolItem2);
-            listTool1.SharedPropsInternal.Caption = "Cambiar ESTADO de los establos seleccionados";
+            popupMenuTool1.DropDownArrowStyle = Infragistics.Win.UltraWinToolbars.DropDownArrowStyle.Default;
+            popupMenuTool1.Settings.PopupStyle = Infragistics.Win.UltraWinToolbars.PopupStyle.Menu;
+            popupMenuTool1.SharedPropsInternal.Caption = "Modificar Estado";
+            popupMenuTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            popupMenuTool1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool7,
+            buttonTool5,
+            buttonTool11,
+            buttonTool9,
+            buttonTool13});
+            buttonTool6.SharedPropsInternal.Caption = "En Curso";
+            buttonTool6.Tag = "2";
+            buttonTool12.SharedPropsInternal.Caption = "En Terminal";
+            buttonTool12.Tag = "5";
+            buttonTool14.SharedPropsInternal.Caption = "En Buzón";
+            buttonTool14.Tag = "6";
+            buttonTool8.SharedPropsInternal.Caption = "Planificado";
+            buttonTool8.Tag = "1";
+            buttonTool10.SharedPropsInternal.Caption = "Leido";
+            buttonTool10.Tag = "0";
+            buttonTool3.SharedPropsInternal.Caption = "Generar";
+            buttonTool4.SharedPropsInternal.Caption = "Importar";
+            buttonTool17.SharedPropsInternal.Caption = "Siguiente Lote";
             this.ultraToolbarsManager.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool1,
+            popupMenuTool1,
+            buttonTool6,
+            buttonTool12,
+            buttonTool14,
+            buttonTool8,
+            buttonTool10,
             buttonTool3,
-            listTool1});
+            buttonTool4,
+            buttonTool17});
             this.ultraToolbarsManager.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager_ToolClick);
             // 
             // lecturaControlData
             // 
             this.lecturaControlData.DataSetName = "LecturaControlData";
             this.lecturaControlData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // olapDataSelector1
+            // 
+            this.olapDataSelector1.DataSource = null;
+            this.olapDataSelector1.Location = new System.Drawing.Point(0, 0);
+            this.olapDataSelector1.Name = "olapDataSelector1";
+            this.olapDataSelector1.ShowDimensions = true;
+            this.olapDataSelector1.ShowMeasures = true;
+            this.olapDataSelector1.Size = new System.Drawing.Size(200, 300);
+            this.olapDataSelector1.TabIndex = 0;
             // 
             // LecturaControlDataGridControl
             // 
@@ -324,5 +409,6 @@
         #endregion
 
         private Common.DataSets.LecturaControlData lecturaControlData;
+        private Infragistics.Win.UltraWinPivotGrid.DataSelector.OlapDataSelector olapDataSelector1;
     }
 }

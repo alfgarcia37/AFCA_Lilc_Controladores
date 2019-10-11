@@ -34,7 +34,7 @@ namespace Afca.Common
                     iconName = "IconoLecturaEnTerminal";
                     break;
                 case EstadoLectura.EnBuzon:
-                    iconName = "IconoLecturaEnTerminal";
+                    iconName = "IconoLecturaEnBuzon";
                     break;
                 default:
                     return "";

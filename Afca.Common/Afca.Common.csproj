@@ -240,6 +240,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\change.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\lectura_buzon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\export.png" />
+    <EmbeddedResource Include="Icons\import.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"

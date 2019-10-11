@@ -33,6 +33,9 @@ namespace Afca.Common
                 case EstadoLectura.EnTerminal:
                     name = "En Terminal";
                     break;
+                case EstadoLectura.EnBuzon:
+                    name = "En Buzón";
+                    break;
                 default:
                     return "";
             }
