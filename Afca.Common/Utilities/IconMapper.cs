@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infragistics.Win;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,9 @@ namespace Afca.Common
                     break;
                 case EstadoLectura.EnTerminal:
                     iconName = "IconoLecturaEnTerminal";
+                    break;
+                case EstadoLectura.EnBuzon:
+                    iconName = "IconoLecturaEnBuzon";
                     break;
                 default:
                     return "";

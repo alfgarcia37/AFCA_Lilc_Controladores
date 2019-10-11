@@ -73,7 +73,7 @@ namespace Afca.UI
 
             if (ControlsProvider.Controls["Explorer"] == null)
             {
-                treeView = new TreeViewControl(Afca.Common.Trees.ExplorerTree, ThemeColor.Naranja);
+                treeView = new TreeViewControl(Afca.Common.Trees.ExplorerTree, ThemeColor.Azul);
                 ControlsProvider.Controls.Add("Explorer", treeView);
             }
             else
@@ -113,7 +113,7 @@ namespace Afca.UI
         {
             if (ControlsProvider.Controls["ExplorerDetails"] == null)
             {
-                TreeDetailsViewGridControl treeDetailView = new TreeDetailsViewGridControl(ThemeColor.Verde);
+                TreeDetailsViewGridControl treeDetailView = new TreeDetailsViewGridControl(ThemeColor.Azul);
 
                 Form newForm = ShowControlInForm(
                     "Detalles del explorador de objetos"
@@ -206,8 +206,7 @@ namespace Afca.UI
         }
         public static void SetLecturasSiguienteLote(ItemData item)
         {
-            try
-            { 
+
             int codigoControlador = -1;
 
             if (item.ItemColumns.ContainsKey("NumControler"))
@@ -216,9 +215,16 @@ namespace Afca.UI
                 codigoControlador =
                     int.Parse(((ItemData)item.Parent).ItemColumns["CodigoControlador"].Data.Value.ToString());
 
-            IControladorService controladorSrv = AfcaServiceProvider.GetControladorService();
-            controladorSrv.PrepareNextLecturasLote(codigoControlador);
-            DialogsManager.ShowSuccessInfo("Resultado", "Lote generado correctamente!");
+            SetLecturasSiguienteLoteByID(codigoControlador);
+
+        }
+        public static void SetLecturasSiguienteLoteByID(int codigoControlador)
+        {
+            try
+            {               
+                IControladorService controladorSrv = AfcaServiceProvider.GetControladorService();
+                controladorSrv.PrepareNextLecturasLote(codigoControlador);
+                DialogsManager.ShowSuccessInfo("Resultado", "Lote generado correctamente!");
             }
             catch (System.Exception e)
             {
@@ -231,6 +237,81 @@ namespace Afca.UI
             ILecturaControlService lecturaControlSrv= AfcaServiceProvider.GetLecturaControlService();
             lecturaControlSrv.UpdateLecturaControlEstado(argEstablo, estado);
         }
+        public static void GenerarLecturasControlador(ItemData item)
+        {
+
+            if (item.ItemColumns.ContainsKey("CodigoControlador"))
+                GenerarLecturasControladorByID(int.Parse(item.ItemColumns["CodigoControlador"].Data.Value.ToString()));
+            else
+                return;
+        }
+        public static void GenerarLecturasControladorByID(int codigoControlador)
+        {
+            try
+            {
+                IGenerarService iSvrGenerar = AfcaServiceProvider.GetGenerarService();
+
+                Result result = iSvrGenerar.CheckToXmlData(codigoControlador);
+                if (result.success == false)
+                {
+                    DialogResult dr = MessageBox.Show(result.value + "\n" + "No coinciden Maestro y Control"
+                                                , "CHECK Maestro y Control", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.No) return;
+                }
+
+                Result resultado = iSvrGenerar.GenerarXMLs(codigoControlador);
+
+                if (resultado.success == true)
+                    iSvrGenerar.PasarXmlToUP(codigoControlador);
+
+                if (resultado.success == true)
+                    DialogsManager.ShowSuccessInfo("Proceso Exportación", "Exportación correcta!");
+
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
+        public static void ImportarLecturasControlador(ItemData item)
+        {
+
+            if (item.ItemColumns.ContainsKey("CodigoControlador"))
+                ImportarLecturasControladorByID(int.Parse(item.ItemColumns["CodigoControlador"].Data.Value.ToString()));
+            else
+                return;
+        }
+        public static void ImportarLecturasControladorByID(int codigoControlador)
+        {
+            try
+            {
+                IImportarService iSvrImportar;
+                iSvrImportar = AfcaServiceProvider.GetImportarService();
+
+                iSvrImportar.PasarDownToXml(codigoControlador);
+                Result result1 = iSvrImportar.CheckFromXmlData(codigoControlador);
+                if (result1.success == false)
+                {
+                    DialogsManager.ShowErrorDialog("Error", string.Format("Se han producido los siguientes errores:{0}{1}"
+                        ,Environment.NewLine,result1.value));
+                    return;
+                }
+
+                Result resultado1 = iSvrImportar.ImportarXMLs(codigoControlador);
+                if (resultado1.success == true)
+                {
+                    DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
+                    resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
+                }
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
+
         #endregion
 
     }

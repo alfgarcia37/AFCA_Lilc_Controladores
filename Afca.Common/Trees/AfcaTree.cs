@@ -107,8 +107,15 @@ namespace Afca.Common
                                       "SetLecturasSiguienteLote", "Siguiente Lote..."
                                       , ItemMethodType.Properties, "IconoNext"));
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "GenerarLecturasControlador", "Generar..."
+                                                            , ItemMethodType.GridEdit, "IconoExport"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "ImportarLecturasControlador", "Importar..."
+                                                            , ItemMethodType.GridEdit, "IconoImport"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
+
 
             ItemMetaData lecturasControladorNode = CreateLecturasEnProgresoControladorNode();
             controladorNode.Children.Add(lecturasControladorNode);
@@ -217,6 +224,12 @@ namespace Afca.Common
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                       "SetLecturasSiguienteLote", "Siguiente Lote..."
                                       , ItemMethodType.Properties, "IconoNext"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                "GenerarLecturasControlador", "Generar..."
+                                                , ItemMethodType.GridEdit, "IconoPropiedades"));
+            controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "ImportarLecturasControlador", "Importar..."
+                                                            , ItemMethodType.GridEdit, "IconoImport"));
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                            "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                            , ItemMethodType.GridEdit, "IconoPropiedades"));
