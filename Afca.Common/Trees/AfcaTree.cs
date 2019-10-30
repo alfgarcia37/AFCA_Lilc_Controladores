@@ -84,8 +84,7 @@ namespace Afca.Common
             controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
             controladorNode.DataTable = "Controlador";
             controladorNode.SortCriteria = "EnCurso ASC";
-            controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("CodigoControlador", "Código", true, true));
+          
             controladorNode.ItemColumns.AddItemColumn(
                            new ItemColumn("Nombre", "Nombre", false, false, true));
             controladorNode.ItemColumns.AddItemColumn(
@@ -98,10 +97,14 @@ namespace Afca.Common
                     new ItemColumn("Warning", "Warning", false, false));
             controladorNode.ItemColumns.AddItemColumn(
                   new ItemColumn("Nota", "Nota", false, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                         new ItemColumn("CodigoControlador", "Código", true, true));
 
             controladorNode.IconMapper = new ItemIconMapper("Warning");
             controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
             controladorNode.IconMapper.Mapping.Add("1", "IconoControladorWarning");
+            controladorNode.IconMapper.Mapping.Add("2", "IconoControladorRed");
+            
 
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                       "SetLecturasSiguienteLote", "Siguiente Lote..."
@@ -202,8 +205,7 @@ namespace Afca.Common
             controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
             controladorNode.DataTable = "Controlador";
             controladorNode.SortCriteria = "EnCurso ASC";
-            controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("CodigoControlador", "Código", true, true));
+           
             controladorNode.ItemColumns.AddItemColumn(
                            new ItemColumn("Nombre", "Nombre", false, false, true));
             controladorNode.ItemColumns.AddItemColumn(
@@ -216,10 +218,11 @@ namespace Afca.Common
                     new ItemColumn("Warning", "Warning", false, false));
             controladorNode.ItemColumns.AddItemColumn(
                   new ItemColumn("Nota", "Nota", false, true));
+            controladorNode.ItemColumns.AddItemColumn(
+                          new ItemColumn("CodigoControlador", "Código", true, true));
 
             controladorNode.IconMapper = new ItemIconMapper("Warning");
             controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
-            controladorNode.IconMapper.Mapping.Add("1", "IconoControladorWarning");
 
             controladorNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                       "SetLecturasSiguienteLote", "Siguiente Lote..."

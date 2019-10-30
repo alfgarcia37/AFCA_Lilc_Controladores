@@ -102,7 +102,7 @@ namespace Afca.UI
 
             treeView.SetTreeDetailsView(detailsView);
 
-            UltraTreeNode lecturasExplotaciones = treeView.SelectNodeByItemName("Lecturas");
+            UltraTreeNode lecturasExplotaciones = treeView.SelectNodeByItemName("LecturasEnProgreso");
             if (lecturasExplotaciones != null)
             {
                 lecturasExplotaciones.Expanded = true;

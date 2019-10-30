@@ -309,8 +309,9 @@
             valueListItem6});
             this.ultraGridData.DisplayLayout.ValueLists.AddRange(new Infragistics.Win.ValueList[] {
             valueList1});
+            this.ultraGridData.Location = new System.Drawing.Point(0, 52);
             this.ultraGridData.Margin = new System.Windows.Forms.Padding(3);
-            this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
+            this.ultraGridData.Size = new System.Drawing.Size(1008, 477);
             this.ultraGridData.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGridData_DoubleClickRow);
             // 
             // ultraToolbarsManager
