@@ -3,7 +3,7 @@
 sp_LecturaControl_selectByControladorEstado -> Selecciono establos a generar por controlador
 
 ....Chequeos
-sp_CheckMaestroControlesToXML -> Coincidencias en NP y NC Maestro y Control
+sp_CheckToXML -> Coincidencias en NP y NC Maestro y Control
 
 ....Exportación de Tablas de CL a XML
 sp_GanaderiasToXMLByControlador
@@ -21,10 +21,7 @@ IMPORTAR **********************************************************
 
 SP_PasarDownToXML -> Paso tablas de DOWN a XML
 
-....Chequeos
-SP_CheckDuplicadosXMLDatos -> Establos ya leídos
-SP_CheckDuplicadosXMLControl -> Controles duplicados en el servidor
-SP_CheckDuplicadosXMLPartos -> Partos duplicados en el servidor
+....Chequeos -> Establos ya leídos, Controles duplicados en el servidor, Partos duplicados en el servidor
 
 ....Importación de Tablas de XML a CL
 sp_GanaderiasFromXMLByControlador

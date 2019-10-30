@@ -70,7 +70,7 @@ namespace Afca.Data.Access {
             this.ExecuteNonQuery(
                                 "sp_Controlador_create_nextLote"
                                 , new SqlParameter[]{
-                                        new SqlParameter("@Id",codigoControlador)});
+                                        new SqlParameter("@controlador",codigoControlador)});
         }
     }
 }

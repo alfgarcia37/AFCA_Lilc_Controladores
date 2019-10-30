@@ -199,7 +199,7 @@ namespace Afca.UI
             switch (comando)
             {
                 case "SiguienteLote":
-                    message = "Se va a ejecutar el SIGUIENTE LOTE";
+                    //message = "Se va a ejecutar el SIGUIENTE LOTE";
                     break;
                 case "Generar":
                     message = "Se van a GENERAR las lecturas";
