@@ -12,7 +12,7 @@
   <xs:element name="LecturaControlData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="LecturaControlData" msprop:Generator_UserDSName="LecturaControlData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="LecturaControl" msprop:Generator_TableClassName="LecturaControlDataTable" msprop:Generator_TableVarName="tableLecturaControl" msprop:Generator_RowChangedName="LecturaControlRowChanged" msprop:Generator_TablePropName="LecturaControl" msprop:Generator_RowDeletingName="LecturaControlRowDeleting" msprop:Generator_RowChangingName="LecturaControlRowChanging" msprop:Generator_RowEvHandlerName="LecturaControlRowChangeEventHandler" msprop:Generator_RowDeletedName="LecturaControlRowDeleted" msprop:Generator_RowClassName="LecturaControlRow" msprop:Generator_UserTableName="LecturaControl" msprop:Generator_RowEvArgName="LecturaControlRowChangeEvent">
+        <xs:element name="LecturaControl" msprop:Generator_TableClassName="LecturaControlDataTable" msprop:Generator_TableVarName="tableLecturaControl" msprop:Generator_TablePropName="LecturaControl" msprop:Generator_RowDeletingName="LecturaControlRowDeleting" msprop:Generator_RowChangingName="LecturaControlRowChanging" msprop:Generator_RowEvHandlerName="LecturaControlRowChangeEventHandler" msprop:Generator_RowDeletedName="LecturaControlRowDeleted" msprop:Generator_UserTableName="LecturaControl" msprop:Generator_RowChangedName="LecturaControlRowChanged" msprop:Generator_RowEvArgName="LecturaControlRowChangeEvent" msprop:Generator_RowClassName="LecturaControlRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NumControler" msprop:Generator_ColumnVarNameInTable="columnNumControler" msprop:Generator_ColumnPropNameInRow="NumControler" msprop:Generator_ColumnPropNameInTable="NumControlerColumn" msprop:Generator_UserColumnName="NumControler" type="xs:int" minOccurs="0" />
@@ -59,13 +59,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Incidencia" msprop:Generator_TableClassName="IncidenciaDataTable" msprop:Generator_TableVarName="tableIncidencia" msprop:Generator_TablePropName="Incidencia" msprop:Generator_RowDeletingName="IncidenciaRowDeleting" msprop:Generator_RowChangingName="IncidenciaRowChanging" msprop:Generator_RowEvHandlerName="IncidenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="IncidenciaRowDeleted" msprop:Generator_UserTableName="Incidencia" msprop:Generator_RowChangedName="IncidenciaRowChanged" msprop:Generator_RowEvArgName="IncidenciaRowChangeEvent" msprop:Generator_RowClassName="IncidenciaRow">
+        <xs:element name="Incidencia" msprop:Generator_TableClassName="IncidenciaDataTable" msprop:Generator_TableVarName="tableIncidencia" msprop:Generator_RowChangedName="IncidenciaRowChanged" msprop:Generator_TablePropName="Incidencia" msprop:Generator_RowDeletingName="IncidenciaRowDeleting" msprop:Generator_RowChangingName="IncidenciaRowChanging" msprop:Generator_RowEvHandlerName="IncidenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="IncidenciaRowDeleted" msprop:Generator_RowClassName="IncidenciaRow" msprop:Generator_UserTableName="Incidencia" msprop:Generator_RowEvArgName="IncidenciaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Establo" msprop:Generator_ColumnVarNameInTable="columnEstablo" msprop:Generator_ColumnPropNameInRow="Establo" msprop:Generator_ColumnPropNameInTable="EstabloColumn" msprop:Generator_UserColumnName="Establo" type="xs:string" />
               <xs:element name="IncidenciaID" msprop:Generator_ColumnVarNameInTable="columnIncidenciaID" msprop:Generator_ColumnPropNameInRow="IncidenciaID" msprop:Generator_ColumnPropNameInTable="IncidenciaIDColumn" msprop:Generator_UserColumnName="IncidenciaID" type="xs:int" />
               <xs:element name="CodigoCrotal" msprop:Generator_ColumnVarNameInTable="columnCodigoCrotal" msprop:Generator_ColumnPropNameInRow="CodigoCrotal" msprop:Generator_ColumnPropNameInTable="CodigoCrotalColumn" msprop:Generator_UserColumnName="CodigoCrotal" type="xs:string" />
               <xs:element name="Incidencia" msprop:Generator_ColumnVarNameInTable="columnIncidencia" msprop:Generator_ColumnPropNameInRow="Incidencia" msprop:Generator_ColumnPropNameInTable="IncidenciaColumn" msprop:Generator_UserColumnName="Incidencia" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaIncidencia" msprop:Generator_ColumnVarNameInTable="columnFechaIncidencia" msprop:Generator_ColumnPropNameInRow="FechaIncidencia" msprop:Generator_ColumnPropNameInTable="FechaIncidenciaColumn" msprop:Generator_UserColumnName="FechaIncidencia" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre" type="xs:string" minOccurs="0" />
               <xs:element name="Collar" msprop:Generator_ColumnVarNameInTable="columnCollar" msprop:Generator_ColumnPropNameInRow="Collar" msprop:Generator_ColumnPropNameInTable="CollarColumn" msprop:Generator_UserColumnName="Collar" type="xs:string" minOccurs="0" />
               <xs:element name="NumeroPartos" msprop:Generator_ColumnVarNameInTable="columnNumeroPartos" msprop:Generator_ColumnPropNameInRow="NumeroPartos" msprop:Generator_ColumnPropNameInTable="NumeroPartosColumn" msprop:Generator_UserColumnName="NumeroPartos" type="xs:int" minOccurs="0" />
@@ -106,7 +107,7 @@
       <xs:field xpath="IncidenciaID" />
       <xs:field xpath="CodigoCrotal" />
     </xs:unique>
-    <xs:keyref name="LecturaControl_Incidencia_fk" refer="LecturaControl_pk" msprop:rel_Generator_UserChildTable="Incidencia" msprop:rel_Generator_ChildPropName="GetIncidenciaRows" msprop:rel_Generator_UserRelationName="LecturaControl_Incidencia_fk" msprop:rel_Generator_ParentPropName="LecturaControlRow" msprop:rel_Generator_RelationVarName="relationLecturaControl_Incidencia_fk" msprop:rel_Generator_UserParentTable="LecturaControl">
+    <xs:keyref name="LecturaControl_Incidencia_fk" refer="LecturaControl_pk" msprop:rel_Generator_UserChildTable="Incidencia" msprop:rel_Generator_ChildPropName="GetIncidenciaRows" msprop:rel_Generator_UserRelationName="LecturaControl_Incidencia_fk" msprop:rel_Generator_RelationVarName="relationLecturaControl_Incidencia_fk" msprop:rel_Generator_UserParentTable="LecturaControl" msprop:rel_Generator_ParentPropName="LecturaControlRow">
       <xs:selector xpath=".//Incidencia" />
       <xs:field xpath="Establo" />
     </xs:keyref>

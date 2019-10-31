@@ -112,13 +112,15 @@ namespace Afca.UI
                 ultraGridData.DataMember = DataMember;
             }
 
-            CheckWariningIndicators();
+            CheckWarningIndicators();
         }
         protected override void UpdateData()
         {
             base.UpdateData();
             if (itemContainer != null)
                 itemContainer.UserInterface.RefreshUI();
+
+            CheckWarningIndicators();
         }
 
         private void ultraGridData_InitializeRow(object sender, InitializeRowEventArgs e)
@@ -230,28 +232,37 @@ namespace Afca.UI
                         break;
                     case "Importar":
                         DataSet incData = ControlsProvider.ImportarLecturasControladorByID(controladorID);
+
                         if (dO.HasRows(incData, "Incidencia"))
                             HandleIncidencias((LecturaControlData)incData);
+                        else
+                            LoadData();
+
                         break;
                 }
-
                 Cursor = Cursors.Default;
             }
         }
         void HandleIncidencias(LecturaControlData incidenciaData)
         {
             this.lecturaControlData.Merge(incidenciaData.Incidencia);
-            CheckWariningIndicators();   
+            CheckWarningIndicators();   
         }
-        void CheckWariningIndicators()
+        void CheckWarningIndicators()
         {
             foreach (UltraGridRow row in ultraGridData.Rows)
             {
-                if (row.HasChild())
+                EstadoLectura estado = EstadoLectura.NoLeido;
+
+                if (!dO.EsNulo(row, "Estado"))
+                    estado = (EstadoLectura)int.Parse(row.Cells["Estado"].Value.ToString());
+                
+                if (row.HasChild() && estado==EstadoLectura.EnBuzon)
                     ShowWarningIndicator(row);
                 else
                     ClearWarningIndicator(row);
             }
+
             ultraGridData.DisplayLayout.Bands[1].PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand);
         }
         void ShowWarningIndicator(UltraGridRow row)

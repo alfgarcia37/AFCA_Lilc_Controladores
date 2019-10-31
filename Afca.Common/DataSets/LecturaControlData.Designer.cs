@@ -1197,6 +1197,8 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnIncidencia;
             
+            private global::System.Data.DataColumn columnFechaIncidencia;
+            
             private global::System.Data.DataColumn columnNombre;
             
             private global::System.Data.DataColumn columnCollar;
@@ -1309,6 +1311,14 @@ namespace Afca.Common.DataSets {
             public global::System.Data.DataColumn IncidenciaColumn {
                 get {
                     return this.columnIncidencia;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FechaIncidenciaColumn {
+                get {
+                    return this.columnFechaIncidencia;
                 }
             }
             
@@ -1554,6 +1564,7 @@ namespace Afca.Common.DataSets {
                         int IncidenciaID, 
                         string CodigoCrotal, 
                         string Incidencia, 
+                        System.DateTime FechaIncidencia, 
                         string Nombre, 
                         string Collar, 
                         int NumeroPartos, 
@@ -1585,6 +1596,7 @@ namespace Afca.Common.DataSets {
                         IncidenciaID,
                         CodigoCrotal,
                         Incidencia,
+                        FechaIncidencia,
                         Nombre,
                         Collar,
                         NumeroPartos,
@@ -1648,6 +1660,7 @@ namespace Afca.Common.DataSets {
                 this.columnIncidenciaID = base.Columns["IncidenciaID"];
                 this.columnCodigoCrotal = base.Columns["CodigoCrotal"];
                 this.columnIncidencia = base.Columns["Incidencia"];
+                this.columnFechaIncidencia = base.Columns["FechaIncidencia"];
                 this.columnNombre = base.Columns["Nombre"];
                 this.columnCollar = base.Columns["Collar"];
                 this.columnNumeroPartos = base.Columns["NumeroPartos"];
@@ -1686,6 +1699,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnCodigoCrotal);
                 this.columnIncidencia = new global::System.Data.DataColumn("Incidencia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIncidencia);
+                this.columnFechaIncidencia = new global::System.Data.DataColumn("FechaIncidencia", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaIncidencia);
                 this.columnNombre = new global::System.Data.DataColumn("Nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombre);
                 this.columnCollar = new global::System.Data.DataColumn("Collar", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3075,6 +3090,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime FechaIncidencia {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableIncidencia.FechaIncidenciaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FechaIncidencia\' in table \'Incidencia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableIncidencia.FechaIncidenciaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Nombre {
                 get {
                     try {
@@ -3494,6 +3525,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetIncidenciaNull() {
                 this[this.tableIncidencia.IncidenciaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFechaIncidenciaNull() {
+                return this.IsNull(this.tableIncidencia.FechaIncidenciaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFechaIncidenciaNull() {
+                this[this.tableIncidencia.FechaIncidenciaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

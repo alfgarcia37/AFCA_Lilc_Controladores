@@ -7,7 +7,7 @@
 <DiagramLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ex:showrelationlabel="False" ViewPortX="60" ViewPortY="60" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:LecturaControl" ZOrder="3" X="70" Y="70" Height="808" Width="184" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="804" />
-    <Shape ID="DesignTable:Incidencia" ZOrder="2" X="530" Y="287" Height="580" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="576" />
+    <Shape ID="DesignTable:Incidencia" ZOrder="2" X="530" Y="287" Height="599" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="595" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:LecturaControl_Incidencia_fk" ZOrder="1" LineWidth="11">

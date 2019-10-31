@@ -22,9 +22,9 @@ namespace Afca.Common.DataAccessor
 
         //XMLDATOS IMPORTAR=========================================================
         // Pasar From XML -> Chequeos -> ActGlobales -> Importar Chequeos -> Auditoría .........
-        DataSet PasarDownToXmlData(int argControlador);
+        int PasarDownToXmlData(int argControlador);
         XmlData LoadXMLDatosDataByControlador(int argcontrolador);
-        string CheckFromXMLData(int argControlador);//establos ya leidos
+        DataSet CheckFromXMLData(int argControlador);//establos ya leidos
         
         int GetXmlGanaderiasByControlador(int argcontrolador);
         int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipoControl);
