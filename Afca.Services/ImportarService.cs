@@ -32,11 +32,10 @@ namespace Afca.Services
             iXmlDA = Afca.Common.AfcaDataAccessorProvider.GetXmlDataAccessor();
         }
         //..CHECKS........................................................................
-        public Result CheckFromXmlData(int argControlador)
+        public DataSet CheckFromXmlData(int argControlador)
         {
-            var result = GetXmlCheckData(argControlador);
-            return result;
-         }
+            return iXmlDA.CheckFromXMLData(argControlador);
+        }
        
         public Result ImportarXMLs(int argControlador)
 
@@ -71,18 +70,7 @@ namespace Afca.Services
 
         #region Chequeos
         //...hago los chequeos....................
-        public Result GetXmlCheckData(int argcontrolador)
-        {
-            //return ObjImportar.GetXmlCheckGanaderiasData(iXmlDA, argcontrolador);
-            result.value = iXmlDA.CheckFromXMLData(argcontrolador);
-            if (result.value.Length > 0)
-                result.success = false;
-            else result.success = true;
-
-            return result;
-        }
-       
-       
+            
         #endregion
 
         #region GETs
@@ -144,9 +132,15 @@ namespace Afca.Services
             return result;
         }
         #endregion
-        public DataSet PasarDownToXml(int argcontrolador)
+        public Result PasarDownToXml(int argcontrolador)
         {
-            return iXmlDA.PasarDownToXmlData(argcontrolador);
+            //return ObjImportar.PasarDownToXml(iXmlDA, argcontrolador);
+            result.value = iXmlDA.PasarDownToXmlData(argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "pasar de Down a XML";
+
+            return result;
         }
     }
 }

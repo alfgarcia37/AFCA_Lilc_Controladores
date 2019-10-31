@@ -1551,7 +1551,7 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public IncidenciaRow AddIncidenciaRow(
                         LecturaControlRow parentLecturaControlRowByLecturaControl_Incidencia_fk, 
-                        short IncidenciaID, 
+                        int IncidenciaID, 
                         string CodigoCrotal, 
                         string Incidencia, 
                         string Nombre, 
@@ -1620,7 +1620,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public IncidenciaRow FindByEstabloIncidenciaIDCodigoCrotal(string Establo, short IncidenciaID, string CodigoCrotal) {
+            public IncidenciaRow FindByEstabloIncidenciaIDCodigoCrotal(string Establo, int IncidenciaID, string CodigoCrotal) {
                 return ((IncidenciaRow)(this.Rows.Find(new object[] {
                             Establo,
                             IncidenciaID,
@@ -1680,7 +1680,7 @@ namespace Afca.Common.DataSets {
             private void InitClass() {
                 this.columnEstablo = new global::System.Data.DataColumn("Establo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstablo);
-                this.columnIncidenciaID = new global::System.Data.DataColumn("IncidenciaID", typeof(short), null, global::System.Data.MappingType.Element);
+                this.columnIncidenciaID = new global::System.Data.DataColumn("IncidenciaID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIncidenciaID);
                 this.columnCodigoCrotal = new global::System.Data.DataColumn("CodigoCrotal", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodigoCrotal);
@@ -3037,9 +3037,9 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public short IncidenciaID {
+            public int IncidenciaID {
                 get {
-                    return ((short)(this[this.tableIncidencia.IncidenciaIDColumn]));
+                    return ((int)(this[this.tableIncidencia.IncidenciaIDColumn]));
                 }
                 set {
                     this[this.tableIncidencia.IncidenciaIDColumn] = value;

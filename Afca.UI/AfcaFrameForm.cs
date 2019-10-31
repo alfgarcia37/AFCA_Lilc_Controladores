@@ -165,44 +165,13 @@ namespace Afca.UI
         #region Toolbar Manager
         private void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
-            int controlador = 6;
             switch (e.Tool.Key)
             {
                 case "Generar":
-                    var et = Afca.Common.Trees.ExplorerTree;
-                    var s= sender;
-                    //--APROVECHO EL PRIMER CHECK PARA Borrar XML's y METER LAS DOWN A XML    
-                    Result result = iSvrGenerar.CheckToXmlData(controlador);
-                    if (result.success == false)
-                        { DialogResult dr = MessageBox.Show(result.value + "\n" + "No coinciden Maestro y Control", "CHECK Maestro y Control", MessageBoxButtons.YesNo);
-                                                if (dr == DialogResult.No) break;
-                    }
-                    Result resultado= iSvrGenerar.GenerarXMLs(controlador);
-                    if (resultado.success==true)
-                    {
-                        iSvrGenerar.PasarXmlToUP(controlador);
-                    }
-                    if (resultado.success == true)
-                    {
-                        DialogResult dr3 = MessageBox.Show(resultado.value + "\n" + "Exportación OK", "proceso Exportación", MessageBoxButtons.OK);
-
-                    }
+                   
                     break;
                 case "Importar":
-                    iSvrImportar.PasarDownToXml(controlador);
-                    Result result1 = iSvrImportar.CheckFromXmlData(controlador);
-                    if (result1.success == false)
-                    {
-                        DialogResult dr1 = MessageBox.Show(result1.value + "\n" + "Existen Establos ya Controlados", "CHECK Establos", MessageBoxButtons.YesNo);
-                        if (dr1 == DialogResult.No) break;
-                    }
-                    //si paso los check's cargo las tablas
-                    Result resultado1 = iSvrImportar.ImportarXMLs(controlador);
-                    if (resultado1.success == true)
-                    {
-                        DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
-                        resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(controlador);
-                    }
+                    
                     break;
                 case "tbbExplorer":
                 case "tbbExplorerDetails":

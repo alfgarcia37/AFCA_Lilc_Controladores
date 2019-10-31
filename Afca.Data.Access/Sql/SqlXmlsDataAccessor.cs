@@ -103,7 +103,7 @@
             return regs;
         }
         //GET XML's.=========================================================================================================
-        public DataSet PasarDownToXmlData(int argControlador)
+        public DataSet PasarDownToXmlData_(int argControlador)
         {
             DataSet data = new LecturaControlData();
             data.EnforceConstraints = false;
@@ -118,6 +118,16 @@
             //                            new SqlParameter("@Controlador",argControlador)});
             //return regs;
         }
+        public int PasarDownToXmlData(int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "SP_PasarDownToXML"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)});
+            return regs;
+        }
         public XmlData LoadXMLDatosDataByControlador(int argControlador)
         {
             return (XmlData)this.ExecuteDataSet(new XmlData()
@@ -127,14 +137,14 @@
                                         new SqlParameter("@Controlador",argControlador) }
                                 , new string[] { "XMLDatos" });
         }
-        public string CheckFromXMLData(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
+        public DataSet CheckFromXMLData(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
         {
-            var regs = this.ExecuteScalar(
-                               "SP_CheckFromXML"
-                               , new SqlParameter[]{
-                                        new SqlParameter("@Controlador",argControlador) });
-            
-                return (regs == null ? "" : regs.ToString());
+            DataSet data = new LecturaControlData();
+            data.EnforceConstraints = false;
+
+            return this.ExecuteDataSet(data, "SP_CheckFromXML", CommandType.StoredProcedure
+                , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)}, new string[] { "Incidencia" });
         }
        
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero

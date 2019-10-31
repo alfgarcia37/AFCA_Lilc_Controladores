@@ -290,22 +290,14 @@ namespace Afca.UI
                 IImportarService iSvrImportar;
                 iSvrImportar = AfcaServiceProvider.GetImportarService();
 
-                DataSet incidenciasData = iSvrImportar.PasarDownToXml(codigoControlador);
+                 iSvrImportar.PasarDownToXml(codigoControlador);
 
-                if(incidenciasData!=null && dO.HasRows(incidenciasData, "Incidencia"))
+                DataSet incidenciasData = iSvrImportar.CheckFromXmlData(codigoControlador);
+
+                if (incidenciasData!=null && dO.HasRows(incidenciasData, "Incidencia"))
                 {
                     DialogsManager.ShowErrorDialog("Error", string.Format("Se han producido errores en el proceso de importacion.{0}{1}"
                         , Environment.NewLine, "Abra la ventana de edición de lecturas y revíselos, por favor."));
-                }
-
-                return incidenciasData;
-                //sigue siendo necesario el código de abajo??
-                /*
-                Result result1 = iSvrImportar.CheckFromXmlData(codigoControlador);
-                if (result1.success == false)
-                {
-                    DialogsManager.ShowErrorDialog("Error", string.Format("Se han producido los siguientes errores:{0}{1}"
-                        ,Environment.NewLine,result1.value));
                     return incidenciasData;
                 }
 
@@ -315,7 +307,7 @@ namespace Afca.UI
                     DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
                     resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
                 }
-                */
+                return new LecturaControlData();
             }
             catch (System.Exception e)
             {
