@@ -5,6 +5,8 @@ namespace Afca.Common.DataAccessor
     using Afca.Common.DataSets;
 
     using System;
+    using System.Data;
+
     public interface IXmlsDataAccessor : IDataAccessor
     {
         //XMLDATOS EXPORTAR========================================================
@@ -20,7 +22,7 @@ namespace Afca.Common.DataAccessor
 
         //XMLDATOS IMPORTAR=========================================================
         // Pasar From XML -> Chequeos -> ActGlobales -> Importar Chequeos -> Auditoría .........
-        int PasarDownToXmlData(int argControlador);
+        DataSet PasarDownToXmlData(int argControlador);
         XmlData LoadXMLDatosDataByControlador(int argcontrolador);
         string CheckFromXMLData(int argControlador);//establos ya leidos
         
