@@ -16,10 +16,11 @@ namespace Afca
         static void Main()
         {
             FrameworkForge.UI.ApplicationContext.Run();
+            //Encrypt();
         }
         static void Encrypt()
         {
-            string conectionString = @"Server=localhost\SQLE_2K17;Database=reggen;Integrated Security=True;";
+            string conectionString = @"Server=localhost\SQLE_2K17;Database=CLM2;Integrated Security=True;";
             string cencrypted = Encriptador.Encrypt(conectionString, false);
             Console.WriteLine(cencrypted);
             Console.ReadLine();

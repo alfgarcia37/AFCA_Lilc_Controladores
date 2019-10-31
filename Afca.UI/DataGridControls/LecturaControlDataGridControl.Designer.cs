@@ -70,6 +70,37 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Amarre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cetosis");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Frison");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn42 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LecturaControl_Incidencia_fk");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("LecturaControl_Incidencia_fk", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn43 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Establo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IncidenciaID");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoCrotal");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Incidencia");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Collar");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NumeroPartos");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NumeroControles");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MovimientoBajaFecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MovimientoBajaCausa");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MovimientoEstado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MovimientoEstadoOriginal");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Controlador");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ControlMananaKilosLeche");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ControlTardeKilosLeche");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoBarras");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VelocidadOrdeno");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VacaNueva");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FacilidadParto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn61 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("IncidenciaControl");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn62 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SexoTernero");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn63 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("TamanoTernero");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn64 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ConformacionTernero");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn65 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RetencionPlacenta");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn66 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaControl");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn67 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaParto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn68 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ControlTardeFecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn69 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ControlMananaFecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Temperamento");
             Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(6038126);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
@@ -162,7 +193,7 @@
             ultraGridColumn16.Header.Caption = "Tipo";
             ultraGridColumn16.Header.Editor = null;
             ultraGridColumn16.Header.VisiblePosition = 6;
-            ultraGridColumn16.Width = 81;
+            ultraGridColumn16.Width = 94;
             ultraGridColumn17.Header.Editor = null;
             ultraGridColumn17.Header.VisiblePosition = 18;
             ultraGridColumn17.Hidden = true;
@@ -238,6 +269,8 @@
             ultraGridColumn41.Header.Editor = null;
             ultraGridColumn41.Header.VisiblePosition = 40;
             ultraGridColumn41.Hidden = true;
+            ultraGridColumn42.Header.Editor = null;
+            ultraGridColumn42.Header.VisiblePosition = 41;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -279,12 +312,130 @@
             ultraGridColumn38,
             ultraGridColumn39,
             ultraGridColumn40,
-            ultraGridColumn41});
+            ultraGridColumn41,
+            ultraGridColumn42});
+            ultraGridColumn43.Header.Editor = null;
+            ultraGridColumn43.Header.VisiblePosition = 0;
+            ultraGridColumn43.Hidden = true;
+            ultraGridColumn44.Header.Editor = null;
+            ultraGridColumn44.Header.VisiblePosition = 1;
+            ultraGridColumn44.Hidden = true;
+            ultraGridColumn45.Header.Caption = "Codigo Crotal";
+            ultraGridColumn45.Header.Editor = null;
+            ultraGridColumn45.Header.VisiblePosition = 2;
+            ultraGridColumn46.Header.Editor = null;
+            ultraGridColumn46.Header.VisiblePosition = 4;
+            ultraGridColumn47.Header.Editor = null;
+            ultraGridColumn47.Header.VisiblePosition = 3;
+            ultraGridColumn48.Header.Editor = null;
+            ultraGridColumn48.Header.VisiblePosition = 5;
+            ultraGridColumn49.Header.Caption = "NP";
+            ultraGridColumn49.Header.Editor = null;
+            ultraGridColumn49.Header.VisiblePosition = 6;
+            ultraGridColumn50.Header.Caption = "NC";
+            ultraGridColumn50.Header.Editor = null;
+            ultraGridColumn50.Header.VisiblePosition = 7;
+            ultraGridColumn51.Header.Caption = "Fecha Baja";
+            ultraGridColumn51.Header.Editor = null;
+            ultraGridColumn51.Header.VisiblePosition = 10;
+            ultraGridColumn52.Header.Caption = "Causa Baja";
+            ultraGridColumn52.Header.Editor = null;
+            ultraGridColumn52.Header.VisiblePosition = 11;
+            ultraGridColumn71.Header.Caption = "Estado";
+            ultraGridColumn71.Header.Editor = null;
+            ultraGridColumn71.Header.VisiblePosition = 9;
+            ultraGridColumn53.Header.Caption = "Estado Original";
+            ultraGridColumn53.Header.Editor = null;
+            ultraGridColumn53.Header.VisiblePosition = 8;
+            ultraGridColumn54.Header.Editor = null;
+            ultraGridColumn54.Header.VisiblePosition = 12;
+            ultraGridColumn54.Hidden = true;
+            ultraGridColumn55.Header.Caption = "Kilos Mañana";
+            ultraGridColumn55.Header.Editor = null;
+            ultraGridColumn55.Header.VisiblePosition = 13;
+            ultraGridColumn56.Header.Caption = "Kilos Tarde";
+            ultraGridColumn56.Header.Editor = null;
+            ultraGridColumn56.Header.VisiblePosition = 15;
+            ultraGridColumn57.Header.Caption = "Codigo Barras";
+            ultraGridColumn57.Header.Editor = null;
+            ultraGridColumn57.Header.VisiblePosition = 17;
+            ultraGridColumn58.Header.Caption = "Velocidad Ordeno";
+            ultraGridColumn58.Header.Editor = null;
+            ultraGridColumn58.Header.VisiblePosition = 18;
+            ultraGridColumn59.Header.Caption = "Vaca Nueva";
+            ultraGridColumn59.Header.Editor = null;
+            ultraGridColumn59.Header.VisiblePosition = 19;
+            ultraGridColumn60.Header.Caption = "Facilidad Parto";
+            ultraGridColumn60.Header.Editor = null;
+            ultraGridColumn60.Header.VisiblePosition = 20;
+            ultraGridColumn61.Header.Caption = "Incidencia Control";
+            ultraGridColumn61.Header.Editor = null;
+            ultraGridColumn61.Header.VisiblePosition = 21;
+            ultraGridColumn62.Header.Caption = "Sexo Ternero";
+            ultraGridColumn62.Header.Editor = null;
+            ultraGridColumn62.Header.VisiblePosition = 22;
+            ultraGridColumn63.Header.Caption = "Tamano Ternero";
+            ultraGridColumn63.Header.Editor = null;
+            ultraGridColumn63.Header.VisiblePosition = 23;
+            ultraGridColumn64.Header.Caption = "Conformacion Ternero";
+            ultraGridColumn64.Header.Editor = null;
+            ultraGridColumn64.Header.VisiblePosition = 24;
+            ultraGridColumn65.Header.Caption = "Retencion Placenta";
+            ultraGridColumn65.Header.Editor = null;
+            ultraGridColumn65.Header.VisiblePosition = 25;
+            ultraGridColumn66.Header.Caption = "Fecha Control";
+            ultraGridColumn66.Header.Editor = null;
+            ultraGridColumn66.Header.VisiblePosition = 26;
+            ultraGridColumn67.Header.Caption = "Fecha Parto";
+            ultraGridColumn67.Header.Editor = null;
+            ultraGridColumn67.Header.VisiblePosition = 27;
+            ultraGridColumn68.Header.Caption = "Fecha Tarde";
+            ultraGridColumn68.Header.Editor = null;
+            ultraGridColumn68.Header.VisiblePosition = 16;
+            ultraGridColumn69.Header.Caption = "Fecha Mañana";
+            ultraGridColumn69.Header.Editor = null;
+            ultraGridColumn69.Header.VisiblePosition = 14;
+            ultraGridColumn70.Header.Editor = null;
+            ultraGridColumn70.Header.VisiblePosition = 28;
+            ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridColumn43,
+            ultraGridColumn44,
+            ultraGridColumn45,
+            ultraGridColumn46,
+            ultraGridColumn47,
+            ultraGridColumn48,
+            ultraGridColumn49,
+            ultraGridColumn50,
+            ultraGridColumn51,
+            ultraGridColumn52,
+            ultraGridColumn71,
+            ultraGridColumn53,
+            ultraGridColumn54,
+            ultraGridColumn55,
+            ultraGridColumn56,
+            ultraGridColumn57,
+            ultraGridColumn58,
+            ultraGridColumn59,
+            ultraGridColumn60,
+            ultraGridColumn61,
+            ultraGridColumn62,
+            ultraGridColumn63,
+            ultraGridColumn64,
+            ultraGridColumn65,
+            ultraGridColumn66,
+            ultraGridColumn67,
+            ultraGridColumn68,
+            ultraGridColumn69,
+            ultraGridColumn70});
             this.ultraGridData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
+            this.ultraGridData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.ultraGridData.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
             this.ultraGridData.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.Empty;
             this.ultraGridData.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.TabRepeat;
+            this.ultraGridData.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
             this.ultraGridData.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraGridData.DisplayLayout.Override.AutoResizeColumnWidthOptions = ((Infragistics.Win.UltraWinGrid.AutoResizeColumnWidthOptions)(((Infragistics.Win.UltraWinGrid.AutoResizeColumnWidthOptions.IncludeCells | Infragistics.Win.UltraWinGrid.AutoResizeColumnWidthOptions.IncludeHeader) 
+            | Infragistics.Win.UltraWinGrid.AutoResizeColumnWidthOptions.IncludeSummaryRows)));
             this.ultraGridData.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.ultraGridData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             valueList1.Key = "vlTipos";
@@ -309,9 +460,9 @@
             valueListItem6});
             this.ultraGridData.DisplayLayout.ValueLists.AddRange(new Infragistics.Win.ValueList[] {
             valueList1});
-            this.ultraGridData.Location = new System.Drawing.Point(0, 52);
             this.ultraGridData.Margin = new System.Windows.Forms.Padding(3);
-            this.ultraGridData.Size = new System.Drawing.Size(1008, 477);
+            this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
+            this.ultraGridData.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ultraGridData_InitializeRow);
             this.ultraGridData.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGridData_DoubleClickRow);
             // 
             // ultraToolbarsManager

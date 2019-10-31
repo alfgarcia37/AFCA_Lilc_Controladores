@@ -144,15 +144,9 @@ namespace Afca.Services
             return result;
         }
         #endregion
-        public Result PasarDownToXml(int argcontrolador)
+        public DataSet PasarDownToXml(int argcontrolador)
         {
-            //return ObjImportar.PasarDownToXml(iXmlDA, argcontrolador);
-            result.value = iXmlDA.PasarDownToXmlData(argcontrolador).ToString();
-            if (Convert.ToInt32(result.value) > 0)
-                result.success = true;
-            result.value = "pasar de Down a XML";
-
-            return result;
+            return iXmlDA.PasarDownToXmlData(argcontrolador);
         }
     }
 }

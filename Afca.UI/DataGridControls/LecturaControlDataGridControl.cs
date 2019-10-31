@@ -57,7 +57,7 @@ namespace Afca.UI
 
             ControlsThemeBuilder.GridMakeUp(this.ultraGridData,ThemeColor.Verde);
             ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0],ThemeColor.Verde);
-            SetDataGridFilters();
+            ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[1], ThemeColor.Rojo);
 
             if (codigoControlador.HasValue)
             {
@@ -111,6 +111,8 @@ namespace Afca.UI
                 ultraGridData.DataSource = DataSource;
                 ultraGridData.DataMember = DataMember;
             }
+
+            CheckWariningIndicators();
         }
         protected override void UpdateData()
         {
@@ -119,6 +121,9 @@ namespace Afca.UI
                 itemContainer.UserInterface.RefreshUI();
         }
 
+        private void ultraGridData_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+        }
         private void ultraGridData_DoubleClickRow(object sender, DoubleClickRowEventArgs e)
         {
             OpenLecturaPropertiesControl(e.Row);
@@ -217,17 +222,48 @@ namespace Afca.UI
                 {
                     case "SiguienteLote":
                         ControlsProvider.SetLecturasSiguienteLoteByID(controladorID);
+                        LoadData();
                         break;
                     case "Generar":
                         ControlsProvider.GenerarLecturasControladorByID(controladorID);
+                        LoadData();
                         break;
                     case "Importar":
-                        ControlsProvider.ImportarLecturasControladorByID(controladorID);
+                        DataSet incData = ControlsProvider.ImportarLecturasControladorByID(controladorID);
+                        if (dO.HasRows(incData, "Incidencia"))
+                            HandleIncidencias((LecturaControlData)incData);
                         break;
                 }
-                LoadData();
+
                 Cursor = Cursors.Default;
             }
+        }
+        void HandleIncidencias(LecturaControlData incidenciaData)
+        {
+            this.lecturaControlData.Merge(incidenciaData.Incidencia);
+            CheckWariningIndicators();   
+        }
+        void CheckWariningIndicators()
+        {
+            foreach (UltraGridRow row in ultraGridData.Rows)
+            {
+                if (row.HasChild())
+                    ShowWarningIndicator(row);
+                else
+                    ClearWarningIndicator(row);
+            }
+            ultraGridData.DisplayLayout.Bands[1].PerformAutoResizeColumns(false, PerformAutoSizeType.AllRowsInBand);
+        }
+        void ShowWarningIndicator(UltraGridRow row)
+        {
+            row.RowSelectorAppearance.Image = FrameworkForge.Common.ResourceProvider.GetIconImage("IconoWarning");
+            row.Tag = row.Appearance.BackColor;
+            row.Appearance.BackColor = System.Drawing.Color.MistyRose;
+        }
+        void ClearWarningIndicator(UltraGridRow row)
+        {
+            row.RowSelectorAppearance.Image = null;
+            if(row.Tag!=null) row.Appearance.BackColor =  (System.Drawing.Color) row.Tag;
         }
     }
 }

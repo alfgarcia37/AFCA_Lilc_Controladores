@@ -12,6 +12,7 @@ using Afca.Common;
 using System.Collections;
 using Infragistics.Win.UltraWinDock;
 using FrameworkForge.Common.DataSets;
+using dO = FrameworkForge.Common.DataOperations;
 
 
 
@@ -282,20 +283,30 @@ namespace Afca.UI
             else
                 return;
         }
-        public static void ImportarLecturasControladorByID(int codigoControlador)
+        public static DataSet ImportarLecturasControladorByID(int codigoControlador)
         {
             try
             {
                 IImportarService iSvrImportar;
                 iSvrImportar = AfcaServiceProvider.GetImportarService();
 
-                iSvrImportar.PasarDownToXml(codigoControlador);
+                DataSet incidenciasData = iSvrImportar.PasarDownToXml(codigoControlador);
+
+                if(incidenciasData!=null && dO.HasRows(incidenciasData, "Incidencia"))
+                {
+                    DialogsManager.ShowErrorDialog("Error", string.Format("Se han producido errores en el proceso de importacion.{0}{1}"
+                        , Environment.NewLine, "Abra la ventana de edición de lecturas y revíselos, por favor."));
+                }
+
+                return incidenciasData;
+                //sigue siendo necesario el código de abajo??
+                /*
                 Result result1 = iSvrImportar.CheckFromXmlData(codigoControlador);
                 if (result1.success == false)
                 {
                     DialogsManager.ShowErrorDialog("Error", string.Format("Se han producido los siguientes errores:{0}{1}"
                         ,Environment.NewLine,result1.value));
-                    return;
+                    return incidenciasData;
                 }
 
                 Result resultado1 = iSvrImportar.ImportarXMLs(codigoControlador);
@@ -304,11 +315,13 @@ namespace Afca.UI
                     DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
                     resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
                 }
+                */
             }
             catch (System.Exception e)
             {
                 DialogsManager.ShowErrorDialog("Error",
                     e.Message);
+                return null;
             }
         }
 

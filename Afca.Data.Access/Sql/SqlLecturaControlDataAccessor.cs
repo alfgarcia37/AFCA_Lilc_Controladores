@@ -55,7 +55,7 @@ namespace Afca.Data.Access {
                                , new SqlParameter[]{
                                         new SqlParameter("@CodigoControlador",argControladorID)
 }
-                               , new string[] { "LecturaControl" });
+                               , new string[] { "LecturaControl","Incidencia" });
         }
 
         //agc 
@@ -79,6 +79,11 @@ namespace Afca.Data.Access {
                                 ,"sp_LecturaControl_insert"
                                 ,"sp_LecturaControl_update"
                                 ,"sp_LecturaControl_delete"));
+            updateInfo.UpdateTable.Add(
+                                new DataUpdateTableInfo("Incidencia"
+                                , "sp_Clm2_ControlDown_insert"
+                                , "sp_Clm2_ControlDown_update"
+                                , "sp_Clm2_ControlDown_delete"));
             return this.UpdateDataSet(updateInfo);
         }
         public void UpdateLecturaControlEstado(string argEstablo, int estado)
