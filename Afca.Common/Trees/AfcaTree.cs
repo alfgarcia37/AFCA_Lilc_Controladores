@@ -83,7 +83,7 @@ namespace Afca.Common
             controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
             controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
             controladorNode.DataTable = "Controlador";
-            controladorNode.SortCriteria = "EnCurso ASC";
+            controladorNode.SortCriteria = "CodigoControlador ASC";
           
             controladorNode.ItemColumns.AddItemColumn(
                            new ItemColumn("Nombre", "Nombre", false, false, true));
@@ -204,7 +204,7 @@ namespace Afca.Common
             controladorNode.Icons.AddRange(new string[] { "IconoControlador" });
             controladorNode.LoadMethod = "IControladorService,LoadControladorProgresoData";
             controladorNode.DataTable = "Controlador";
-            controladorNode.SortCriteria = "EnCurso ASC";
+            controladorNode.SortCriteria = "CodigoControlador ASC";
            
             controladorNode.ItemColumns.AddItemColumn(
                            new ItemColumn("Nombre", "Nombre", false, false, true));

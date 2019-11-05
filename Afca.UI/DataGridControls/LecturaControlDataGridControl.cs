@@ -116,6 +116,8 @@ namespace Afca.UI
         }
         protected override void UpdateData()
         {
+            ultraGridData.UpdateData();
+
             base.UpdateData();
             if (itemContainer != null)
                 itemContainer.UserInterface.RefreshUI();
