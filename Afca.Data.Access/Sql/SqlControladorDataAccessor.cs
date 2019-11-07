@@ -40,9 +40,9 @@ namespace Afca.Data.Access {
         }
         public ControladorProgresoData LoadControladorProgresoData(bool lecturasFinalizadas=false)
         {
-            return (ControladorProgresoData)this.ExecuteDataSet(new ControladorProgresoData()
+            return (ControladorProgresoData)this.ExecuteDataSet( new ControladorProgresoData()
                                  , "sp_ControladoresEnProgreso_select"
-                                 , CommandType.StoredProcedure
+                                 , CommandType.StoredProcedure 
                                  , lecturasFinalizadas?new SqlParameter[] {new SqlParameter("@finalizadas",1) }
                                    :null
                                  , new string[] { "Controlador" });

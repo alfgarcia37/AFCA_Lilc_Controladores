@@ -50,25 +50,30 @@
             this.ultraDockManager.DefaultGroupSettings.TabStyle = Infragistics.Win.UltraWinTabs.TabStyle.VisualStudio;
             this.ultraDockManager.DefaultPaneSettings.ForceSerialization = true;
             // 
+            // _FrameFormAutoHideControl
+            // 
+            this._FrameFormAutoHideControl.Location = new System.Drawing.Point(0, 27);
+            this._FrameFormAutoHideControl.Size = new System.Drawing.Size(0, 755);
+            // 
             // _FrameFormUnpinnedTabAreaBottom
             // 
-            this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 615);
-            this._FrameFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1008, 0);
+            this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 782);
+            this._FrameFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1088, 0);
             // 
             // _FrameFormUnpinnedTabAreaTop
             // 
-            this._FrameFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 52);
-            this._FrameFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1008, 0);
+            this._FrameFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 27);
+            this._FrameFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1088, 0);
             // 
             // _FrameFormUnpinnedTabAreaRight
             // 
-            this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1008, 52);
-            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 563);
+            this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1088, 27);
+            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 755);
             // 
             // _FrameFormUnpinnedTabAreaLeft
             // 
-            this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 52);
-            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 563);
+            this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 27);
+            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 755);
             // 
             // ultraToolbarsManager
             // 
@@ -106,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 638);
+            this.ClientSize = new System.Drawing.Size(1088, 805);
             this.Name = "AfcaFrameForm";
             this.Text = "AFCA";
             this.Load += new System.EventHandler(this.AfcaFrameForm_Load);

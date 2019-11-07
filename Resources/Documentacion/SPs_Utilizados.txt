@@ -32,5 +32,9 @@ sp_RcsFromXMLByControlador
 
 sp_ActualizacionesGlobalesFromXMLByControlador
 
+--- OJo!!!!!! incluir tambiénlas funciones..
+fn_getControladorLectura_byEstado
+
+
 
 

@@ -315,6 +315,7 @@
             ultraGridColumn40,
             ultraGridColumn41,
             ultraGridColumn42});
+            ultraGridBand2.CardView = true;
             ultraGridColumn43.Header.Editor = null;
             ultraGridColumn43.Header.VisiblePosition = 0;
             ultraGridColumn43.Hidden = true;
