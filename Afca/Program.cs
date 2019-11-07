@@ -16,19 +16,29 @@ namespace Afca
         static void Main()
         {
             FrameworkForge.UI.ApplicationContext.Run();
-            //Encrypt();
+
+            //Encrypt
+
         }
         static void Encrypt()
         {
-            string conectionString = @"Server=localhost\SQLE_2K17;Database=CLM2;Integrated Security=True;";
+            // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
+
+            string conectionString = @"Server=CTX2011\CTXSQL2011;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+            string conectionString1 = @"Server=CTX2011\CTXSQL2011;Database=reggen;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+
+            //string conectionString = @"Data Source=CTX2011\CTXSQL2011;Initial Catalog=CLM2;Persist Security Info=true;User ID=alfonsog;Password=afca37
             string cencrypted = Encriptador.Encrypt(conectionString, false);
+            string cencrypted1 = Encriptador.Encrypt(conectionString1, false);
+
             Console.WriteLine(cencrypted);
+            Console.WriteLine(cencrypted1);
             Console.ReadLine();
         }
         static void Decrypt()
         {
-            string cdecrypted = Encriptador.Decrypt("gZziQZqwgFz8m+jB9Y3Me5ZPqyFCdJ9zzzSE6Tq9/iWg69dVXCdbdptGR4x5PhY32J/ZPIM289BOyIhmgbeqzg=");
-            Console.WriteLine(string.Format("Afca.xps15: {0}", cdecrypted));
+            string cdecrypted = Encriptador.Decrypt("gZziQZqwgFz8m+jB9Y3Me6XV7kBVmFuxChQcrc36gR79dhWkSIftThm/5Bf1IJnGiJ3sWsbsMjM/LKrcmLzQpg==");
+            Console.WriteLine(string.Format("Afca.dell: {0}", cdecrypted));
             Console.ReadLine();
         }
     }
