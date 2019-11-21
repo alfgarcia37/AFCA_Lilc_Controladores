@@ -2,15 +2,23 @@
 
 sp_LecturaControl_selectByControladorEstado -> Selecciono establos a generar por controlador
 
+
 ....Chequeos
 sp_CheckToXML -> Coincidencias en NP y NC Maestro y Control
-
+	-> PR_Check_Maestro_Control
 ....Exportación de Tablas de CL a XML
 sp_GanaderiasToXMLByControlador
+
 sp_ControlesToXMLByEstablo
+	-> fn_ReemplazarNombresVacas
+
 sp_InseminacionesToXMLByEstablo
+	->ViewInseminacionesEstabloNPIdFinseminacion 
+
 sp_TorosToXMLByEstablo
+
 sp_NacimientosToXMLByEstablo
+	->SP_GetAnimalesNoRegistradosRIIA
 
 sp_ActualizacionesglobalesToXMLBycontrolador
 
@@ -22,18 +30,36 @@ IMPORTAR **********************************************************
 SP_PasarDownToXML -> Paso tablas de DOWN a XML
 
 ....Chequeos -> Establos ya leídos, Controles duplicados en el servidor, Partos duplicados en el servidor
+SP_CheckFromXML
 
 ....Importación de Tablas de XML a CL
+
 sp_GanaderiasFromXMLByControlador
+	->dbo.func_KmLecturasFinalizadas
+
 sp_ControlesFromXMLByEstablo
+	-> [dbo].func_ExisteVelocidad
+
 sp_InseminacionesFromXMLByEstablo
+	-> SP_ASIGNA_INSEMINACION_PARTO
+
 sp_NacimientosFromXMLByEstablo
+	-> set @Pathfirmas='DIR "' + C:\AFCA_CTXSQL\CONTLECH\FIRMAS\' + @ano +'\' + @mes + '"'
+
 sp_RcsFromXMLByControlador
 
 sp_ActualizacionesGlobalesFromXMLByControlador
 
+CLM => CLM_AUDIT
+
 --- OJo!!!!!! incluir tambiénlas funciones..
 fn_getControladorLectura_byEstado
+
+FUNCIONES DE CLM2
+	sp_FichaVaca_select
+	sp_RIIA_Animal_select
+	sp_RIIA_Censo_select
+	sp_UpdateEstadoGanaderia_FromTerminal
 
 
 
