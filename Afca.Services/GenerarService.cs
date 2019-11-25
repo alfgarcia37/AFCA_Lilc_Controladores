@@ -47,13 +47,13 @@ namespace Afca.Services
          public Result GenerarXMLs(int argControlador)
 
         {
+            //GANADERIAS.... 
+            resultGanaderias = SetXmlGanaderiasData(argControlador);
+            if (resultGanaderias.value == "0") { resultGanaderias.success = false;  }
             //Recorro GANADERIAS para Generar Tablas
             LecturaControlData lecturaControlData = ilecturasDA.LoadLecturaControlDataByControladorEstado(argControlador, EstadoLectura.Planificar);
             foreach (DataRow drLectura in lecturaControlData.LecturaControl.Rows)
             {
-                //GANADERIAS.... 
-                resultGanaderias = SetXmlGanaderiasData(argControlador);
-                if (resultGanaderias.value == "0") { resultGanaderias.success = false; break; }
                 //CONTROLES
                 resultControles = SetXmlControlesData(drLectura["Establo"].ToString(), argControlador);
                 if (resultControles.value == "0") { resultControles.success = false; break; }

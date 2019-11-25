@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afca", "Afca\Afca.csproj", "{C300F42B-21E1-4745-98F9-45871900CD41}"
 EndProject
@@ -32,12 +32,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentacion", "Documentac
 	ProjectSection(SolutionItems) = preProject
 		Resources\Documentacion\AfcaTree.xlsx = Resources\Documentacion\AfcaTree.xlsx
 		Resources\Documentacion\ALL_SCRIPTS.sql = Resources\Documentacion\ALL_SCRIPTS.sql
+		Resources\Documentacion\dbo.func_ConversionUEa14Digitos.UserDefinedFunction.sql = Resources\Documentacion\dbo.func_ConversionUEa14Digitos.UserDefinedFunction.sql
 		Resources\Documentacion\Flujo1.pptx = Resources\Documentacion\Flujo1.pptx
 		Resources\Documentacion\SPs_Utilizados.txt = Resources\Documentacion\SPs_Utilizados.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generar", "Generar", "{9184FDA4-E5F7-4C13-A586-AB32CAB64F1E}"
 	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\dbo.fn_getControladorLectura_byEstado.UserDefinedFunction.sql = Resources\Documentacion\dbo.fn_getControladorLectura_byEstado.UserDefinedFunction.sql
 		Resources\Documentacion\Generar\dbo.sp_ActualizacionesGlobalesToXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_ActualizacionesGlobalesToXMLByControlador.StoredProcedure.sql
 		Resources\Documentacion\Generar\dbo.sp_CheckToXML.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_CheckToXML.StoredProcedure.sql
 		Resources\Documentacion\Generar\dbo.sp_ControlesToXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Generar\dbo.sp_ControlesToXMLByEstablo.StoredProcedure.sql
@@ -55,17 +57,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Importar", "Importar", "{A5
 		Resources\Documentacion\Importar\dbo.sp_ActualizacionesGlobalesFromXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_ActualizacionesGlobalesFromXMLByControlador.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.SP_CheckFromXML.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.SP_CheckFromXML.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.sp_ControlesFromXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_ControlesFromXMLByEstablo.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_FichaVaca_select.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_FichaVaca_select.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.sp_GanaderiasFromXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_GanaderiasFromXMLByControlador.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.sp_InseminacionesFromXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_InseminacionesFromXMLByEstablo.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.sp_NacimientosFromXMLByEstablo.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_NacimientosFromXMLByEstablo.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.SP_PasarDownToAudit.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.SP_PasarDownToAudit.StoredProcedure.sql
 		Resources\Documentacion\Importar\dbo.sp_RcsFromXMLByControlador.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_RcsFromXMLByControlador.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_RIIA_Animal_select.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_RIIA_Animal_select.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_RIIA_Censo_select.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_RIIA_Censo_select.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_RIIA_Partos_select.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_RIIA_Partos_select.StoredProcedure.sql
+		Resources\Documentacion\Importar\dbo.sp_UpdateEstadoGanaderia_FromTerminal.StoredProcedure.sql = Resources\Documentacion\Importar\dbo.sp_UpdateEstadoGanaderia_FromTerminal.StoredProcedure.sql
 		Resources\Documentacion\Importar\sp_CheckDuplicadosXMLDatos.sql = Resources\Documentacion\Importar\sp_CheckDuplicadosXMLDatos.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Otros", "Otros", "{35DBBFF4-4B65-48FD-894F-450E3BC09C49}"
 	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\dbo.fn_ReemplazarNombresVacas.UserDefinedFunction.sql = Resources\Documentacion\dbo.fn_ReemplazarNombresVacas.UserDefinedFunction.sql
+		Resources\Documentacion\dbo.GetAnimalesNoRegistradosRIIA.StoredProcedure.sql = Resources\Documentacion\dbo.GetAnimalesNoRegistradosRIIA.StoredProcedure.sql
 		Resources\Documentacion\Generar\Otros\dbo.SP_Controlador_create_nextLote.StoredProcedure.sql = Resources\Documentacion\Generar\Otros\dbo.SP_Controlador_create_nextLote.StoredProcedure.sql
+		Resources\Documentacion\dbo.ViewInseminacionesEstabloNPIdFinseminacion.View.sql = Resources\Documentacion\dbo.ViewInseminacionesEstabloNPIdFinseminacion.View.sql
 		Resources\Documentacion\Generar\Otros\fn_ReemplazarNombresVacas.sql = Resources\Documentacion\Generar\Otros\fn_ReemplazarNombresVacas.sql
 		Resources\Documentacion\Generar\Otros\func_ConversionUEa14Digitos.sql = Resources\Documentacion\Generar\Otros\func_ConversionUEa14Digitos.sql
 		Resources\Documentacion\Generar\Otros\func_ExisteVelocidad.sql = Resources\Documentacion\Generar\Otros\func_ExisteVelocidad.sql
@@ -75,8 +85,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Otros", "Otros", "{35DBBFF4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Otros", "Otros", "{793C1839-9F2B-457A-ADB7-7C3C086CA93F}"
 	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\dbo.func_ExisteVelocidad.UserDefinedFunction.sql = Resources\Documentacion\dbo.func_ExisteVelocidad.UserDefinedFunction.sql
+		Resources\Documentacion\dbo.func_KmLecturasFinalizadas.UserDefinedFunction.sql = Resources\Documentacion\dbo.func_KmLecturasFinalizadas.UserDefinedFunction.sql
 		Resources\Documentacion\Importar\Otros\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql = Resources\Documentacion\Importar\Otros\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql
+		Resources\Documentacion\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql = Resources\Documentacion\dbo.SP_ASIGNA_INSEMINACION_PARTO.StoredProcedure.sql
 		Resources\Documentacion\Importar\Otros\func_KmLecturasFinalizadas.sql = Resources\Documentacion\Importar\Otros\func_KmLecturasFinalizadas.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CLM2", "CLM2", "{0915C363-955B-47C1-9A5A-BCC0281CF0D8}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Documentacion\CLM2\dbo.BORRARDUPLICADOS_CLM2_DOWN.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.BORRARDUPLICADOS_CLM2_DOWN.StoredProcedure.sql
+		Resources\Documentacion\CLM2\dbo.BORRARDUPLICADOS_INSEMINACIONES.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.BORRARDUPLICADOS_INSEMINACIONES.StoredProcedure.sql
+		Resources\Documentacion\CLM2\dbo.fn_getControladorLectura_byEstado.UserDefinedFunction.sql = Resources\Documentacion\CLM2\dbo.fn_getControladorLectura_byEstado.UserDefinedFunction.sql
+		Resources\Documentacion\CLM2\dbo.sp_FichaVaca_select.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.sp_FichaVaca_select.StoredProcedure.sql
+		Resources\Documentacion\CLM2\dbo.sp_RIIA_Animal_select.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.sp_RIIA_Animal_select.StoredProcedure.sql
+		Resources\Documentacion\CLM2\dbo.sp_RIIA_Censo_select.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.sp_RIIA_Censo_select.StoredProcedure.sql
+		Resources\Documentacion\CLM2\dbo.sp_RIIA_Partos_select.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.sp_RIIA_Partos_select.StoredProcedure.sql
+		Resources\Documentacion\CLM2\dbo.sp_UpdateEstadoGanaderia_FromTerminal.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.sp_UpdateEstadoGanaderia_FromTerminal.StoredProcedure.sql
 	EndProjectSection
 EndProject
 Global
@@ -115,6 +140,7 @@ Global
 		{A5DB4E6E-954D-412D-8105-F2B04188DCDC} = {63F6CAB4-8A13-4FAE-BCB5-C192FBB45E12}
 		{35DBBFF4-4B65-48FD-894F-450E3BC09C49} = {9184FDA4-E5F7-4C13-A586-AB32CAB64F1E}
 		{793C1839-9F2B-457A-ADB7-7C3C086CA93F} = {A5DB4E6E-954D-412D-8105-F2B04188DCDC}
+		{0915C363-955B-47C1-9A5A-BCC0281CF0D8} = {63F6CAB4-8A13-4FAE-BCB5-C192FBB45E12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2ED2DE7-C0C9-432E-940C-1109E0BB6470}
