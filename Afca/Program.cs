@@ -17,21 +17,25 @@ namespace Afca
         {
             FrameworkForge.UI.ApplicationContext.Run();
 
-            //Encrypt
+            //Encrypt();
 
         }
         static void Encrypt()
         {
             // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
 
-            string conectionString = @"Server=CTX2011\CTXSQL2011;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
-            string conectionString1 = @"Server=CTX2011\CTXSQL2011;Database=reggen;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+            string conectionString = @"Server=CTXSQL\SQL14_2019;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+            string conectionString1 = @"Server=CTXSQL\SQL14_2019;Database=reggen;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
 
             //string conectionString = @"Data Source=CTX2011\CTXSQL2011;Initial Catalog=CLM2;Persist Security Info=true;User ID=alfonsog;Password=afca37
             string cencrypted = Encriptador.Encrypt(conectionString, false);
             string cencrypted1 = Encriptador.Encrypt(conectionString1, false);
+            //ctxsql14
+            //A01AAP/PXELFLDbJ/DXp88DrLt0YmD5zuQhQM3QGTmqtZwO8P2TlVtbKqAoG0WDylShtFavNgOTriei3KYp7yd08w56lzKGOFtPhcwEKXKG80kWM6MVfAmcPd7Mj5NvtK19/7ZoaEQz24skai4Bxzg==
+            //A01AAP/PXELFLDbJ/DXp88DrLt0YmD5zuQhQM3QGTmpPle + aoUAXOGENlcjK74hcByUraWAslquBEi3ICR4jpTOJ6QGqN9dJpILVIvW6tYM + WJGicMInHFuKSNavLWOQPfl5t40QOx4PVO3M/IpH/g==
+            
 
-            Console.WriteLine(cencrypted);
+                              Console.WriteLine(cencrypted);
             Console.WriteLine(cencrypted1);
             Console.ReadLine();
         }

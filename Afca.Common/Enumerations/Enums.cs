@@ -11,7 +11,7 @@ namespace Afca.Common
         Leido=0,
         Planificar=1,
         EnCurso=2,
-        Replanificado=3,
+        Borrado=3,
         NoLeido=4,
         EnTerminal=5,
         EnBuzon=6

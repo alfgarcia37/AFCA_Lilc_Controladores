@@ -24,8 +24,8 @@ namespace Afca.Common
                 case EstadoLectura.EnCurso:
                     name = "En Curso";
                     break;
-                case EstadoLectura.Replanificado:
-                    name = "Replanificada";
+                case EstadoLectura.Borrado:
+                    name = "Borrada";
                     break;
                 case EstadoLectura.NoLeido:
                     name = "No Leida";

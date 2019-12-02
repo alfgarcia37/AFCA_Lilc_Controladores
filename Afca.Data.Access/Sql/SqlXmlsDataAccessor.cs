@@ -120,8 +120,6 @@
         }
         public int PasarDownToXmlData(int argControlador)
         {
-
-
             int regs = this.ExecuteNonQuery(
                                "SP_PasarDownToXML"
                                , new SqlParameter[]{
@@ -141,17 +139,13 @@
         {
             DataSet data = new LecturaControlData();
             data.EnforceConstraints = false;
-
             return this.ExecuteDataSet(data, "SP_CheckFromXML", CommandType.StoredProcedure
                 , new SqlParameter[]{
                                         new SqlParameter("@Controlador",argControlador)}, new string[] { "Incidencia" });
         }
-       
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero
         public int GetXmlGanaderiasByControlador(int argControlador)
         {
-
-
             int regs = this.ExecuteNonQuery(
                                 "sp_GanaderiasFromXMLByControlador"
                                 , new SqlParameter[]{
@@ -160,8 +154,6 @@
         }
         public int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipocontrol)
         {
-
-
             int regs = this.ExecuteNonQuery(
                                 "sp_ControlesFromXMLByEstablo"
                                 , new SqlParameter[]{

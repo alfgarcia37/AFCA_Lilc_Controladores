@@ -24,8 +24,8 @@ namespace Afca.Common
                 case EstadoLectura.EnCurso:
                     iconName = "IconoLecturaEnCurso";
                     break;
-                case EstadoLectura.Replanificado:
-                    iconName = "IconoLecturaReplanificada";
+                case EstadoLectura.Borrado:
+                    iconName = "IconoLecturaBorrada";
                     break;
                 case EstadoLectura.NoLeido:
                     iconName = "IconoLecturaNoLeida";
