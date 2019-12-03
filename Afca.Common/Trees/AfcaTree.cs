@@ -134,7 +134,7 @@ namespace Afca.Common
             lecturaNode.IconMapper.Mapping.Add("0", "IconoLecturaLeida");
             lecturaNode.IconMapper.Mapping.Add("1", "IconoLecturaPlanificada");
             lecturaNode.IconMapper.Mapping.Add("2", "IconoLecturaEnCurso");
-            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaReplanificada");
+            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaBorrada");
             lecturaNode.IconMapper.Mapping.Add("4", "IconoLecturaNoLeida");
             lecturaNode.IconMapper.Mapping.Add("5", "IconoLecturaEnTerminal");
 
@@ -251,7 +251,7 @@ namespace Afca.Common
             lecturaNode.IconMapper.Mapping.Add("0", "IconoLecturaLeida");
             lecturaNode.IconMapper.Mapping.Add("1", "IconoLecturaPlanificada");
             lecturaNode.IconMapper.Mapping.Add("2", "IconoLecturaEnCurso");
-            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaReplanificada");
+            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaBorrada");
             lecturaNode.IconMapper.Mapping.Add("4", "IconoLecturaNoLeida");
             lecturaNode.IconMapper.Mapping.Add("5", "IconoLecturaEnTerminal");
 
@@ -321,7 +321,7 @@ namespace Afca.Common
             lecturaNode.IconMapper.Mapping.Add("0", "IconoLecturaLeida");
             lecturaNode.IconMapper.Mapping.Add("1", "IconoLecturaPlanificada");
             lecturaNode.IconMapper.Mapping.Add("2", "IconoLecturaEnCurso");
-            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaReplanificada");
+            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaBorrada");
             lecturaNode.IconMapper.Mapping.Add("4", "IconoLecturaNoLeida");
             lecturaNode.IconMapper.Mapping.Add("5", "IconoLecturaEnTerminal");
 
@@ -396,7 +396,7 @@ namespace Afca.Common
             lecturaNode.IconMapper.Mapping.Add("0", "IconoLecturaLeida");
             lecturaNode.IconMapper.Mapping.Add("1", "IconoLecturaPlanificada");
             lecturaNode.IconMapper.Mapping.Add("2", "IconoLecturaEnCurso");
-            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaReplanificada");
+            lecturaNode.IconMapper.Mapping.Add("3", "IconoLecturaBorrada");
             lecturaNode.IconMapper.Mapping.Add("4", "IconoLecturaNoLeida");
             lecturaNode.IconMapper.Mapping.Add("5", "IconoLecturaEnTerminal");
 

@@ -302,7 +302,7 @@ namespace Afca.UI
                 }
 
                 Result resultado1 = iSvrImportar.ImportarXMLs(codigoControlador);
-                if (resultado1.success == true)
+                if (resultado1!=null && resultado1.success == true)
                 {
                     DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
                     resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
