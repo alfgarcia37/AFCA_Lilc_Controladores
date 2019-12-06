@@ -15,7 +15,7 @@ namespace Afca.Common.ServicesInterfaces
         //XmlData LoadXMLDatosDataByControlador(int argControlador);... realmente no me hace aqui, pq se usa para DA
         DataSet CheckFromXmlData(int controlador);      
         Result PasarDownToXml(int controlador);
-        Result GetXmlGanaderiasData(int controlador);
+        Result GetXmlGanaderiasData(string ganaderia);
         Result GetXmlControlesData(string ganaderia,int controlador,System.DateTime FPrevista,string TipoControl);
         Result GetXmlInseminacionesData(string ganaderia, int controlador);
         Result GetXmlNacimientosData(string ganaderia, int controlador);

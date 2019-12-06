@@ -50,7 +50,7 @@ namespace Afca.Services
             foreach (DataRow drGanaderias in xmldatosData.XMLDATOS.Rows)
             {
                 //GANADERIAS.... 
-                resultGanaderias = GetXmlGanaderiasData(argControlador);
+                resultGanaderias = GetXmlGanaderiasData(drGanaderias["GanaderiaCodigo"].ToString());
                 if (resultGanaderias.value == "0") { resultGanaderias.success = false; break; }
                 ////CONTROLES
                 resultControles = GetXmlControlesData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador,Convert.ToDateTime( drGanaderias["FechaPrevista"]), drGanaderias["TipoControl"].ToString());
@@ -77,10 +77,10 @@ namespace Afca.Services
 
         //...cuando paso los chequeos hago las iimportaciones desde XML a CL ...........
         //Una vez Chequeado.. -> Importo las tablas
-        public Result GetXmlGanaderiasData(int argControlador)
+        public Result GetXmlGanaderiasData(string argEstablo)
         {
             //return ObjImportar.GetXmlGanaderiasData( iXmlDA, argControlador);
-            result.value = iXmlDA.GetXmlGanaderiasByControlador(argControlador).ToString();
+            result.value = iXmlDA.GetXmlGanaderiasByEstablo(argEstablo).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "Importada Tabla de Ganaderias";

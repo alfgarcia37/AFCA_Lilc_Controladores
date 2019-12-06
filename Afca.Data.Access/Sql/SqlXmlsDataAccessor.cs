@@ -144,12 +144,12 @@
                                         new SqlParameter("@Controlador",argControlador)}, new string[] { "Incidencia" });
         }
         //Una vez realizo los Check... -> Inserto las tablas de XML a ControlLechero
-        public int GetXmlGanaderiasByControlador(int argControlador)
+        public int GetXmlGanaderiasByEstablo(string argEstablo)
         {
             int regs = this.ExecuteNonQuery(
-                                "sp_GanaderiasFromXMLByControlador"
+                                "sp_GanaderiasFromXMLByEstablo"
                                 , new SqlParameter[]{
-                                        new SqlParameter("@Controlador",argControlador)});
+                                        new SqlParameter("@strEstablo",argEstablo)});
             return regs;
         }
         public int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipocontrol)
