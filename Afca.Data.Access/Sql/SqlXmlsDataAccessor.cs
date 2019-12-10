@@ -11,6 +11,8 @@
     public class SqlXmlsDataAccessor : SqlDataAccessor, IXmlsDataAccessor
     {
         //SET XML's
+        public SqlXmlsDataAccessor() :base()
+        { }
         public string CheckToXMLData(string argGanaderia)
         {
 

@@ -471,6 +471,7 @@
             this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
             this.ultraGridData.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ultraGridData_InitializeRow);
             this.ultraGridData.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGridData_DoubleClickRow);
+            this.ultraGridData.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ultraGridData_MouseDown);
             // 
             // ultraToolbarsManager
             // 

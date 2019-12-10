@@ -82,6 +82,9 @@ namespace Afca.UI
                 treeView = (TreeViewControl)ControlsProvider.Controls["Explorer"];
             }
 
+            treeView.Enter += TreeView_Enter;
+
+
             ((AfcaFrameForm)FrameworkForge.UI.ApplicationContext.FrameForm)
                 .AddControlToDockPanel(
                             treeView,
@@ -110,6 +113,21 @@ namespace Afca.UI
                 lecturasExplotaciones.Selected = true;
             }
         }
+
+        private static void TreeView_Enter(object sender, EventArgs e)
+        {
+            if (FrameworkForge.UI.ApplicationContext.FrameForm.Tag == null)
+            {
+                if (ControlsProvider.Controls["ExplorerDetails"] != null)
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Tag = "Focusing...";
+                    ((ITreeDetailViewsUI)ControlsProvider.Controls["ExplorerDetails"]).GetFocus();
+                    ((TreeViewControl)sender).Focus();
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Tag = null;
+                }
+            }
+        }
+
         public static ITreeDetailViewsUI ShowAfcaExplorerDetails()
         {
             if (ControlsProvider.Controls["ExplorerDetails"] == null)

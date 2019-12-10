@@ -293,6 +293,10 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnNota;
             
+            private global::System.Data.DataColumn columnEstablosIn;
+            
+            private global::System.Data.DataColumn columnEstablosOut;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ControladorDataTable() {
@@ -384,6 +388,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EstablosInColumn {
+                get {
+                    return this.columnEstablosIn;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EstablosOutColumn {
+                get {
+                    return this.columnEstablosOut;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -419,7 +439,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ControladorRow AddControladorRow(int CodigoControlador, string Nombre, int EnTerminal, int EnCurso, int EnBuzon, int Warning, string Nota) {
+            public ControladorRow AddControladorRow(int CodigoControlador, string Nombre, int EnTerminal, int EnCurso, int EnBuzon, int Warning, string Nota, string EstablosIn, string EstablosOut) {
                 ControladorRow rowControladorRow = ((ControladorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CodigoControlador,
@@ -428,7 +448,9 @@ namespace Afca.Common.DataSets {
                         EnCurso,
                         EnBuzon,
                         Warning,
-                        Nota};
+                        Nota,
+                        EstablosIn,
+                        EstablosOut};
                 rowControladorRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowControladorRow);
                 return rowControladorRow;
@@ -465,6 +487,8 @@ namespace Afca.Common.DataSets {
                 this.columnEnBuzon = base.Columns["EnBuzon"];
                 this.columnWarning = base.Columns["Warning"];
                 this.columnNota = base.Columns["Nota"];
+                this.columnEstablosIn = base.Columns["EstablosIn"];
+                this.columnEstablosOut = base.Columns["EstablosOut"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -484,6 +508,10 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnWarning);
                 this.columnNota = new global::System.Data.DataColumn("Nota", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNota);
+                this.columnEstablosIn = new global::System.Data.DataColumn("EstablosIn", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstablosIn);
+                this.columnEstablosOut = new global::System.Data.DataColumn("EstablosOut", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstablosOut);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Indicadores_pk", new global::System.Data.DataColumn[] {
                                 this.columnCodigoControlador}, true));
                 this.columnCodigoControlador.AllowDBNull = false;
@@ -737,6 +765,38 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string EstablosIn {
+                get {
+                    try {
+                        return ((string)(this[this.tableControlador.EstablosInColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EstablosIn\' in table \'Controlador\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableControlador.EstablosInColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string EstablosOut {
+                get {
+                    try {
+                        return ((string)(this[this.tableControlador.EstablosOutColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EstablosOut\' in table \'Controlador\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableControlador.EstablosOutColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNombreNull() {
                 return this.IsNull(this.tableControlador.NombreColumn);
             }
@@ -805,6 +865,30 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNotaNull() {
                 this[this.tableControlador.NotaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEstablosInNull() {
+                return this.IsNull(this.tableControlador.EstablosInColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEstablosInNull() {
+                this[this.tableControlador.EstablosInColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEstablosOutNull() {
+                return this.IsNull(this.tableControlador.EstablosOutColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEstablosOutNull() {
+                this[this.tableControlador.EstablosOutColumn] = global::System.Convert.DBNull;
             }
         }
         

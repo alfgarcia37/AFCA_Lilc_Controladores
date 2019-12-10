@@ -25,7 +25,7 @@ namespace Afca
             // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
 
             string conectionString = @"Server=CTXSQL\SQL14_2019;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
-            string conectionString1 = @"Server=CTXSQL\SQL14_2019;Database=reggen;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+            string conectionString1 = @"Server=localhost\SQLE_2K17;Database=controllechero_dev;Integrated Security=True;";
 
             //string conectionString = @"Data Source=CTX2011\CTXSQL2011;Initial Catalog=CLM2;Persist Security Info=true;User ID=alfonsog;Password=afca37
             string cencrypted = Encriptador.Encrypt(conectionString, false);
