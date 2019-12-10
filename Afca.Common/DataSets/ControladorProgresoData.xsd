@@ -12,7 +12,7 @@
   <xs:element name="ControladorProgresoData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ControladorProgresoData" msprop:Generator_UserDSName="ControladorProgresoData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Controlador" msprop:Generator_TableClassName="ControladorDataTable" msprop:Generator_TableVarName="tableControlador" msprop:Generator_RowChangedName="ControladorRowChanged" msprop:Generator_TablePropName="Controlador" msprop:Generator_RowDeletingName="ControladorRowDeleting" msprop:Generator_RowChangingName="ControladorRowChanging" msprop:Generator_RowEvHandlerName="ControladorRowChangeEventHandler" msprop:Generator_RowDeletedName="ControladorRowDeleted" msprop:Generator_RowClassName="ControladorRow" msprop:Generator_UserTableName="Controlador" msprop:Generator_RowEvArgName="ControladorRowChangeEvent">
+        <xs:element name="Controlador" msprop:Generator_TableClassName="ControladorDataTable" msprop:Generator_TableVarName="tableControlador" msprop:Generator_TablePropName="Controlador" msprop:Generator_RowDeletingName="ControladorRowDeleting" msprop:Generator_RowChangingName="ControladorRowChanging" msprop:Generator_RowEvHandlerName="ControladorRowChangeEventHandler" msprop:Generator_RowDeletedName="ControladorRowDeleted" msprop:Generator_UserTableName="Controlador" msprop:Generator_RowChangedName="ControladorRowChanged" msprop:Generator_RowEvArgName="ControladorRowChangeEvent" msprop:Generator_RowClassName="ControladorRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CodigoControlador" msprop:Generator_ColumnVarNameInTable="columnCodigoControlador" msprop:Generator_ColumnPropNameInRow="CodigoControlador" msprop:Generator_ColumnPropNameInTable="CodigoControladorColumn" msprop:Generator_UserColumnName="CodigoControlador" type="xs:int" />
@@ -22,6 +22,8 @@
               <xs:element name="EnBuzon" msprop:Generator_ColumnVarNameInTable="columnEnBuzon" msprop:Generator_ColumnPropNameInRow="EnBuzon" msprop:Generator_ColumnPropNameInTable="EnBuzonColumn" msprop:Generator_UserColumnName="EnBuzon" type="xs:int" minOccurs="0" />
               <xs:element name="Warning" msprop:Generator_ColumnVarNameInTable="columnWarning" msprop:Generator_ColumnPropNameInRow="Warning" msprop:Generator_ColumnPropNameInTable="WarningColumn" msprop:Generator_UserColumnName="Warning" type="xs:int" minOccurs="0" />
               <xs:element name="Nota" msprop:Generator_ColumnVarNameInTable="columnNota" msprop:Generator_ColumnPropNameInRow="Nota" msprop:Generator_ColumnPropNameInTable="NotaColumn" msprop:Generator_UserColumnName="Nota" type="xs:string" minOccurs="0" />
+              <xs:element name="EstablosIn" msprop:Generator_ColumnVarNameInTable="columnEstablosIn" msprop:Generator_ColumnPropNameInRow="EstablosIn" msprop:Generator_ColumnPropNameInTable="EstablosInColumn" msprop:Generator_UserColumnName="EstablosIn" type="xs:string" minOccurs="0" />
+              <xs:element name="EstablosOut" msprop:Generator_ColumnVarNameInTable="columnEstablosOut" msprop:Generator_ColumnPropNameInRow="EstablosOut" msprop:Generator_ColumnPropNameInTable="EstablosOutColumn" msprop:Generator_UserColumnName="EstablosOut" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

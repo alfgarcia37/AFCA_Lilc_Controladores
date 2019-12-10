@@ -61,7 +61,7 @@ namespace Afca.Common {
         public static IXmlsDataAccessor GetXmlDataAccessor()
         {
             try
-            {var a= DataAccessorProvider.GetDataAccessorInstance("IXmlsDataAccessor");
+            {
 
                 return (IXmlsDataAccessor)DataAccessorProvider.GetDataAccessorInstance("IXmlsDataAccessor");
             }

@@ -14,6 +14,7 @@ using Afca.Common.DataSets;
 using FrameworkForge.Common.DataStructures;
 using Infragistics.Win.UltraWinToolbars;
 using dO = FrameworkForge.Common.DataOperations;
+using System.Drawing;
 
 namespace Afca.UI
 {
@@ -28,6 +29,7 @@ namespace Afca.UI
             InitializeComponent();
             InitializeDropDowns();
             LoadData();
+
         }
         public LecturaControlDataGridControl(ItemData argItemContainer)
         {
@@ -203,24 +205,7 @@ namespace Afca.UI
                 return;
             }
 
-            string message = "";
-
-            switch (comando)
-            {
-                case "SiguienteLote":
-                    //message = "Se va a ejecutar el SIGUIENTE LOTE";
-                    break;
-                case "Generar":
-                    message = "Se van a GENERAR las lecturas";
-                    break;
-                case "Importar":
-                    message = "Se van a IMPORTAR las lecturas";
-                    break;
-            }
-
-            if (MessageBox.Show(string.Format("{0}{1}{2}¿ Desea continuar ?",
-                   message,Environment.NewLine, Environment.NewLine), controladorName, MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
-            {
+           
                 Cursor = Cursors.WaitCursor;
                 switch (comando)
                 {
@@ -243,7 +228,7 @@ namespace Afca.UI
                         break;
                 }
                 Cursor = Cursors.Default;
-            }
+            
         }
         void HandleIncidencias(LecturaControlData incidenciaData)
         {
@@ -277,6 +262,21 @@ namespace Afca.UI
         {
             row.RowSelectorAppearance.Image = null;
             if(row.Tag!=null) row.Appearance.BackColor =  (System.Drawing.Color) row.Tag;
+        }
+
+        private void ultraGridData_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ( e.Button == MouseButtons.Right)
+            {
+                Point mousePoint = new Point(e.X, e.Y);
+                UIElement element = ((UltraGrid)sender).DisplayLayout.UIElement.ElementFromPoint(mousePoint);
+
+                if (!(element is RowSelectorUIElement))
+                    return;
+
+                this.ultraToolbarsManager.SetContextMenuUltra(this, "popMenuEstados");
+
+            }
         }
     }
 }

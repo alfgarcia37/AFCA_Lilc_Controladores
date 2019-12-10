@@ -5,6 +5,7 @@ using System.Text;
 using FrameworkForge.Common.Generics;
 using FrameworkForge.Common.DataStructures;
 using dO = FrameworkForge.Common.DataOperations;
+using FrameworkForge.Common;
 
 namespace Afca.Common
 {
@@ -86,19 +87,30 @@ namespace Afca.Common
             controladorNode.SortCriteria = "CodigoControlador ASC";
           
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("Nombre", "Nombre", false, false, true));
+                           new ItemColumn("Nombre", "Nombre", false, false));
+            
             controladorNode.ItemColumns.AddItemColumn(
-                            new ItemColumn("EnCurso", "En curso", false, true));
+                            new ItemColumn("EnCurso", "CUR", false, true) { HorizontalAlign = HorizontalAlign.Centered });
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("EnTerminal", "En terminal", false, true));
+                           new ItemColumn("EnTerminal", "TER", false, true) { HorizontalAlign = HorizontalAlign.Centered });            
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("EnBuzon", "En buzón", false, true));
+                           new ItemColumn("EnBuzon", "BUZ", false, true) { HorizontalAlign = HorizontalAlign.Centered });            
             controladorNode.ItemColumns.AddItemColumn(
                     new ItemColumn("Warning", "Warning", false, false));
             controladorNode.ItemColumns.AddItemColumn(
                   new ItemColumn("Nota", "Nota", false, true));
             controladorNode.ItemColumns.AddItemColumn(
-                         new ItemColumn("CodigoControlador", "Código", true, true));
+                         new ItemColumn("CodigoControlador", "Código", true, false));
+            controladorNode.ItemColumns["CodigoControlador"].Data.DataType = typeof(int);
+            controladorNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("EstablosIn", "IN", false, true) );
+            controladorNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("EstablosOut", "OUT", false, true) );
+
+            ItemColumnList formattedExpressionColumns = new ItemColumnList();
+            formattedExpressionColumns.AddItemColumn(controladorNode.ItemColumns["CodigoControlador"]);
+            formattedExpressionColumns.AddItemColumn(controladorNode.ItemColumns["Nombre"]);
+            controladorNode.SetFormattedTextExpression("{0,2} - {1}", formattedExpressionColumns);
 
             controladorNode.IconMapper = new ItemIconMapper("Warning");
             controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
@@ -141,6 +153,7 @@ namespace Afca.Common
             lecturaNode.LoadMethod = "ILecturaControlService,LoadLecturaControlDataByParent";
             lecturaNode.DataTable = "LecturaControl";
             lecturaNode.SortCriteria = "Estado DESC";
+            lecturaNode.ShowTreeNodes = false;
             lecturaNode.ItemColumns.AddItemColumn(
                             new ItemColumn("Establo", "Establo", true, false, true));
             lecturaNode.ItemColumns.AddItemColumn(
@@ -207,19 +220,25 @@ namespace Afca.Common
             controladorNode.SortCriteria = "CodigoControlador ASC";
            
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("Nombre", "Nombre", false, false, true));
+                           new ItemColumn("Nombre", "Nombre", false, false) );
             controladorNode.ItemColumns.AddItemColumn(
-                            new ItemColumn("EnCurso", "En curso", false, true));
+                             new ItemColumn("EnCurso", "CUR", false, true) { HorizontalAlign = HorizontalAlign.Centered });
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("EnTerminal", "En terminal", false, true));
+                           new ItemColumn("EnTerminal", "TER", false, true) { HorizontalAlign = HorizontalAlign.Centered });
             controladorNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("EnBuzon", "En buzón", false, true));
+                           new ItemColumn("EnBuzon", "BUZ", false, true) { HorizontalAlign = HorizontalAlign.Centered });
             controladorNode.ItemColumns.AddItemColumn(
                     new ItemColumn("Warning", "Warning", false, false));
             controladorNode.ItemColumns.AddItemColumn(
                   new ItemColumn("Nota", "Nota", false, true));
             controladorNode.ItemColumns.AddItemColumn(
-                          new ItemColumn("CodigoControlador", "Código", true, true));
+                          new ItemColumn("CodigoControlador", "Código", true, false));
+            controladorNode.ItemColumns["CodigoControlador"].Data.DataType = typeof(int);
+
+            ItemColumnList formattedExpressionColumns = new ItemColumnList();
+            formattedExpressionColumns.AddItemColumn(controladorNode.ItemColumns["CodigoControlador"]);
+            formattedExpressionColumns.AddItemColumn(controladorNode.ItemColumns["Nombre"]);
+            controladorNode.SetFormattedTextExpression("{0,2} - {1}", formattedExpressionColumns);
 
             controladorNode.IconMapper = new ItemIconMapper("Warning");
             controladorNode.IconMapper.Mapping.Add("0", "IconoControlador");
