@@ -26,7 +26,7 @@ namespace Afca.Common.DataAccessor
         XmlData LoadXMLDatosDataByControlador(int argcontrolador);
         DataSet CheckFromXMLData(int argControlador);//establos ya leidos
         
-        int GetXmlGanaderiasByControlador(int argcontrolador);
+        int GetXmlGanaderiasByEstablo(string argGanaderia);
         int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipoControl);
         int GetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int GetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
