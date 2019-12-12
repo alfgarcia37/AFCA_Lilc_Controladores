@@ -92,6 +92,19 @@ namespace Afca.UI
                 }
             }
 
+            ultraGridData.DisplayLayout.Override.ColumnAutoSizeMode = Infragistics.Win.UltraWinGrid.ColumnAutoSizeMode.AllRowsInBand;
+
+            foreach(UltraGridBand bi in ultraGridData.DisplayLayout.Bands)
+            {
+                if (!bi.CardView)
+                {
+                    foreach (UltraGridColumn col in bi.Columns)
+                        col.PerformAutoResize();
+                }
+                else
+                    bi.PerformAutoResizeCards(false);
+            }
+
         }
         void InitializeDropDowns()
         {
