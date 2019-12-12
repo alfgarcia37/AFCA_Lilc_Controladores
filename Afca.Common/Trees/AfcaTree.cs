@@ -71,6 +71,9 @@ namespace Afca.Common
             enProgresoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider", 
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
+            enProgresoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "ImportarLecturasControladores", "Importar todos..."
+                                                           , ItemMethodType.Logic, "IconoImport"));
 
             ItemMetaData detalleControladoresNode = CreateEnProgresoControladoresNode();
             enProgresoNode.Children.Add(detalleControladoresNode);

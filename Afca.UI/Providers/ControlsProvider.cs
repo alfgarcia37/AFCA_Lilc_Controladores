@@ -13,8 +13,8 @@ using System.Collections;
 using Infragistics.Win.UltraWinDock;
 using FrameworkForge.Common.DataSets;
 using dO = FrameworkForge.Common.DataOperations;
-
-
+using System.Collections.Generic;
+using FrameworkForge.Common.Generics;
 
 namespace Afca.UI
 {
@@ -295,14 +295,53 @@ namespace Afca.UI
         }
         public static void ImportarLecturasControlador(ItemData item)
         {
-
+            bool hasfatalError = false;
             if (item.ItemColumns.ContainsKey("CodigoControlador"))
-                ImportarLecturasControladorByID(int.Parse(item.ItemColumns["CodigoControlador"].Data.Value.ToString()));
+                ImportarLecturasControladorByID(int.Parse(item.ItemColumns["CodigoControlador"].Data.Value.ToString()),out hasfatalError,true);
             else
                 return;
         }
-        public static DataSet ImportarLecturasControladorByID(int codigoControlador)
+        public static void ImportarLecturasControladores(ItemData item)
         {
+            List<string> errores = new List<string>();
+
+            foreach(LogicTreeNode<Item> it in item.Children)
+            {
+                ItemData itemControlador = (ItemData)it.Value;
+                try
+                {
+                    int enBuzon =int.Parse( dO.cls(itemControlador.ItemColumns["EnBuzon"].Data.Value, 0).ToString());
+
+                    if (enBuzon > 0)
+                    {
+                        bool hasfatalError = false;
+                        ImportarLecturasControladorByID(int.Parse(itemControlador.ItemColumns["CodigoControlador"].Data.Value.ToString())
+                            , out hasfatalError, false);
+
+                        if (hasfatalError)
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    errores.Add(string.Format("Controlador {0} : {1}"
+                        , itemControlador.ItemColumns["CodigoControlador"].Data.Value.ToString(),e.Message));
+               }
+           }
+            item.UserInterface.RefreshUI();
+            if (errores.Count > 0)
+            {
+                string error = "";
+                foreach (string e in errores)
+                    error = string.Format("{0}{1}{2}",error,Environment.NewLine,e);
+
+                DialogsManager.ShowErrorDialog("Errores en la importación",error);
+            }
+
+        }
+        public static DataSet ImportarLecturasControladorByID(int codigoControlador,out bool hasFatalError, bool showMessages = true)
+        {
+            hasFatalError = false;
             try
             {
                 IImportarService iSvrImportar;
@@ -314,13 +353,14 @@ namespace Afca.UI
 
                 if (incidenciasData!=null && dO.HasRows(incidenciasData, "Incidencia"))
                 {
-                    DialogsManager.ShowErrorDialog("Error", string.Format("Se han producido errores en el proceso de importacion.{0}{1}"
-                        , Environment.NewLine, "Abra la ventana de edición de lecturas y revíselos, por favor."));
+                    DialogsManager.ShowErrorDialog("Error", string.Format("Controlador {0}.{1}Se han producido errores en el proceso de importacion.{2}{3}"
+                       ,codigoControlador, Environment.NewLine, Environment.NewLine, "Abra la ventana de edición de lecturas y revíselos, por favor."));
+                    hasFatalError = true;
                     return incidenciasData;
                 }
 
                 Result resultado1 = iSvrImportar.ImportarXMLs(codigoControlador);
-                if (resultado1!=null && resultado1.success == true)
+                if (resultado1!=null && resultado1.success == true && showMessages)
                 {
                     DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
                     resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
@@ -329,9 +369,14 @@ namespace Afca.UI
             }
             catch (System.Exception e)
             {
-                DialogsManager.ShowErrorDialog("Error",
-                    e.Message);
-                return null;
+                if (showMessages)
+                {
+                    DialogsManager.ShowErrorDialog("Error",
+                        e.Message);
+                    return null;
+                }
+                else
+                    throw e;
             }
         }
 

@@ -254,7 +254,8 @@ namespace Afca.UI
                         LoadData();
                         break;
                     case "Importar":
-                        DataSet incData = ControlsProvider.ImportarLecturasControladorByID(controladorID);
+                        bool hasFataError = false;
+                        DataSet incData = ControlsProvider.ImportarLecturasControladorByID(controladorID,out hasFataError,true);
 
                         if (dO.HasRows(incData, "Incidencia"))
                             HandleIncidencias((LecturaControlData)incData);
