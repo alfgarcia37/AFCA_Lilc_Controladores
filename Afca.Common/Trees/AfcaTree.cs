@@ -131,6 +131,9 @@ namespace Afca.Common
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
 
+            controladorNode.DobleClickMethod = controladorNode.Methods
+                .Where(m => m.Name == "ShowLecturaControlDataGrid").FirstOrDefault();
+
 
             ItemMetaData lecturasControladorNode = CreateLecturasEnProgresoControladorNode();
             controladorNode.Children.Add(lecturasControladorNode);

@@ -469,6 +469,7 @@
             valueList1});
             this.ultraGridData.Margin = new System.Windows.Forms.Padding(3);
             this.ultraGridData.Size = new System.Drawing.Size(1008, 502);
+            this.ultraGridData.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ultraGridData_AfterCellUpdate);
             this.ultraGridData.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ultraGridData_InitializeRow);
             this.ultraGridData.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.ultraGridData_DoubleClickRow);
             this.ultraGridData.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ultraGridData_MouseDown);

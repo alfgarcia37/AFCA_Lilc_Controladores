@@ -23,6 +23,7 @@ namespace Afca.UI
         ItemData itemContainer;
         int? codigoControlador;
         string nombreControlador = "";
+        bool manuallyUpdated = false;
 
         public LecturaControlDataGridControl()
         {
@@ -134,6 +135,25 @@ namespace Afca.UI
         {
             OpenLecturaPropertiesControl(e.Row);
         }
+        private void ultraGridData_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point mousePoint = new Point(e.X, e.Y);
+                UIElement element = ((UltraGrid)sender).DisplayLayout.UIElement.ElementFromPoint(mousePoint);
+
+                if (!(element is RowSelectorUIElement))
+                    return;
+
+                this.ultraToolbarsManager.SetContextMenuUltra(this, "popMenuEstados");
+
+            }
+        }
+        private void ultraGridData_AfterCellUpdate(object sender, CellEventArgs e)
+        {
+            if (e.Cell.Row.Band.Index == 0 && e.Cell.Column.Key == "Estado" && !manuallyUpdated)
+                UpdateData();
+        }
         private void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
             string[] menukeys = new string[] { "menuPlanificado", "menuLeido", "menuEnCurso", "menuEnTerminal", "menuEnBuzon" };
@@ -171,12 +191,15 @@ namespace Afca.UI
         {
             if (ultraGridData.Selected.Rows.Count > 0)
             {
+                manuallyUpdated = true;
                 foreach (UltraGridRow ugrow in ultraGridData.Selected.Rows)
                 {
                     ugrow.Cells["Estado"].Value = newEstado;
                     ugrow.Update();
                 }
+                manuallyUpdated = false;
             }
+            UpdateData();
         }
         void EjecutarComando(string comando)
         {
@@ -264,19 +287,6 @@ namespace Afca.UI
             if(row.Tag!=null) row.Appearance.BackColor =  (System.Drawing.Color) row.Tag;
         }
 
-        private void ultraGridData_MouseDown(object sender, MouseEventArgs e)
-        {
-            if ( e.Button == MouseButtons.Right)
-            {
-                Point mousePoint = new Point(e.X, e.Y);
-                UIElement element = ((UltraGrid)sender).DisplayLayout.UIElement.ElementFromPoint(mousePoint);
 
-                if (!(element is RowSelectorUIElement))
-                    return;
-
-                this.ultraToolbarsManager.SetContextMenuUltra(this, "popMenuEstados");
-
-            }
-        }
     }
 }
