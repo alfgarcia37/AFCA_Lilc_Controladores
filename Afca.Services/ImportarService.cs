@@ -62,7 +62,7 @@ namespace Afca.Services
                 resultNacimientos = GetXmlNacimientosData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
                 if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
                 ////RCS....
-                resultNacimientos = GetXmlRcsData( argControlador);
+                resultRcs = GetXmlRcsData( argControlador);
                 if (resultRcs.value == "0") { resultRcs.success = false; break; }
 
             }
@@ -123,7 +123,7 @@ namespace Afca.Services
             result.value = iXmlDA.GetXmlRcsByControlador(argcontrolador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
-            result.value = "Exportada Tabla de RCS";
+            result.value = "Importada Tabla de RCS";
             return result;
         }
         public Result GetXmlActualizacionesGlobalData(int argcontrolador)
