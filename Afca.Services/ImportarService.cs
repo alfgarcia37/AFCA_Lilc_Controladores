@@ -61,6 +61,9 @@ namespace Afca.Services
                 ////NACIMIENTOS....
                 resultNacimientos = GetXmlNacimientosData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
                 if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
+                ////RCS....
+                resultNacimientos = GetXmlRcsData( argControlador);
+                if (resultRcs.value == "0") { resultRcs.success = false; break; }
 
             }
             //TABLAS GLOBAL (Independiente del Establo)
