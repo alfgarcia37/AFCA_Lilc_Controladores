@@ -304,8 +304,8 @@ namespace Afca.UI
         public static void ImportarLecturasControladores(ItemData item)
         {
             List<string> errores = new List<string>();
-
-            foreach(LogicTreeNode<Item> it in item.Children)
+            bool hasfatalError = false;
+            foreach (LogicTreeNode<Item> it in item.Children)
             {
                 ItemData itemControlador = (ItemData)it.Value;
                 try
@@ -314,7 +314,7 @@ namespace Afca.UI
 
                     if (enBuzon > 0)
                     {
-                        bool hasfatalError = false;
+                        hasfatalError = false;
                         ImportarLecturasControladorByID(int.Parse(itemControlador.ItemColumns["CodigoControlador"].Data.Value.ToString())
                             , out hasfatalError, false);
 
@@ -329,13 +329,17 @@ namespace Afca.UI
                }
            }
             item.UserInterface.RefreshUI();
-            if (errores.Count > 0)
+            if (errores.Count > 0 || hasfatalError)
             {
                 string error = "";
                 foreach (string e in errores)
                     error = string.Format("{0}{1}{2}",error,Environment.NewLine,e);
 
-                DialogsManager.ShowErrorDialog("Errores en la importación",error);
+                DialogsManager.ShowErrorDialog("Errores en la importación Masiva",error);
+            }
+            else
+            {
+                DialogsManager.ShowSuccessInfo("IMPORTACION MASIVA","Proceso de Importación Masiva Exitoso !!!");
             }
 
         }
@@ -344,6 +348,7 @@ namespace Afca.UI
             hasFatalError = false;
             try
             {
+                Result resultado1 = null;
                 IImportarService iSvrImportar;
                 iSvrImportar = AfcaServiceProvider.GetImportarService();
 
@@ -358,12 +363,19 @@ namespace Afca.UI
                     hasFatalError = true;
                     return incidenciasData;
                 }
-
-                Result resultado1 = iSvrImportar.ImportarXMLs(codigoControlador);
+                else
+                {
+                    resultado1 = iSvrImportar.ImportarXMLs(codigoControlador);
+                    if (resultado1 != null && resultado1.success == true)
+                        resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
+                    else
+                        DialogsManager.ShowErrorDialog("Error al Insertar Valores", " Revise todos los procesos");
+                }
+                   
                 if (resultado1!=null && resultado1.success == true && showMessages)
                 {
                     DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
-                    resultado1 = iSvrImportar.GetXmlActualizacionesGlobalData(codigoControlador);
+                 
                 }
                 return new LecturaControlData();
             }
