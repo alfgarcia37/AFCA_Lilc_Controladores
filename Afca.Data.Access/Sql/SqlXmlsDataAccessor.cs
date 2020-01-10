@@ -137,6 +137,16 @@
                                         new SqlParameter("@Controlador",argControlador) }
                                 , new string[] { "XMLDatos" });
         }
+
+
+        public string CheckFromControlXmlDuplicados(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
+        {
+            string establo =(string) this.ExecuteScalar(
+                                 "SP_CheckFromControlXmlDuplicados"
+                                 , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)});
+            return establo;
+        }
         public DataSet CheckFromXMLData(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
         {
             DataSet data = new LecturaControlData();

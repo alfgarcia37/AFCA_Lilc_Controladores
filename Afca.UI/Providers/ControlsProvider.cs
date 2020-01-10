@@ -353,10 +353,20 @@ namespace Afca.UI
                 iSvrImportar = AfcaServiceProvider.GetImportarService();
 
                  iSvrImportar.PasarDownToXml(codigoControlador);
+                //agc ::::::::Esto es temporal. Es por el extraño caso de la descarga duplicada de los controles (algunos)...????
+                resultado1 = iSvrImportar.CheckFromControlXmlDuplicados(codigoControlador);
+                if (resultado1 != null && resultado1.success == false)
+                {
+                    DialogsManager.ShowErrorDialog("Descarga Duplicada de Controles",
+                        string.Format("Establo {0}.Se han producido errores en el proceso de importacion.{1}Avise al Administrador{2}", resultado1.value, Environment.NewLine, Environment.NewLine));
+                    hasFatalError = true;
+                    return null;
+                }
+                //:::::::::::::::::::::::    
 
                 DataSet incidenciasData = iSvrImportar.CheckFromXmlData(codigoControlador);
 
-                if (incidenciasData!=null && dO.HasRows(incidenciasData, "Incidencia"))
+                if (incidenciasData != null && dO.HasRows(incidenciasData, "Incidencia"))
                 {
                     DialogsManager.ShowErrorDialog("Error", string.Format("Controlador {0}.{1}Se han producido errores en el proceso de importacion.{2}{3}"
                        ,codigoControlador, Environment.NewLine, Environment.NewLine, "Abra la ventana de edición de lecturas y revíselos, por favor."));

@@ -12,7 +12,7 @@ using dO = FrameworkForge.Common.DataOperations;
 namespace Afca.Services
 {
 
-    public class ImportarService :IImportarService
+    public class ImportarService : IImportarService
     {
         private Result resultGanaderias;
         private Result resultControles;
@@ -21,17 +21,31 @@ namespace Afca.Services
         private Result resultRcs;
         private Result result = new Result();
 
-       // private ClsImportar ObjImportar = new ClsImportar();
+        // private ClsImportar ObjImportar = new ClsImportar();
         private IXmlsDataAccessor iXmlDA;
         //private ILecturaControlDataAccessor ilecturasDA;
-       
+
         //private LecturaControlData lecturaControlData;
         private XmlData xmldatosData;
-       public ImportarService()
+        public ImportarService()
         {
             iXmlDA = Afca.Common.AfcaDataAccessorProvider.GetXmlDataAccessor();
         }
         //..CHECKS........................................................................
+        //agc::::Temporal(espero)... hasta resolver porqué descarga algunos controles duplicados
+
+        public Result CheckFromControlXmlDuplicados(int argControlador)
+        {
+           // Result resultControlesDobles;
+            var strEstablo = iXmlDA.CheckFromControlXmlDuplicados(argControlador);
+            if (strEstablo!=null && strEstablo != "")
+                { result.success = false; result.value = strEstablo; }
+            else
+                { result.success = true; result.value = "";}
+
+            return result; 
+        }
+         //:::::::::::::::::::::::::::::::::
         public DataSet CheckFromXmlData(int argControlador)
         {
             return iXmlDA.CheckFromXMLData(argControlador);
