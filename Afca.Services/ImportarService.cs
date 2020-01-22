@@ -50,17 +50,18 @@ namespace Afca.Services
         {
             return iXmlDA.CheckFromXMLData(argControlador);
         }
-       
+
         public Result ImportarXMLs(int argControlador)
 
         {
             //Result resul = new Result { success = true, value = "999" };
-           // resultGanaderias = GetXmlCheckGanaderiasData(argControlador);
+            // resultGanaderias = GetXmlCheckGanaderiasData(argControlador);
 
-             //Recorro GANADERIAS para Generar Tablas
-             XmlData xmldatosData = iXmlDA.LoadXMLDatosDataByControlador(argControlador);
+            //Recorro GANADERIAS para Generar Tablas
+            XmlData xmldatosData = iXmlDA.LoadXMLDatosDataByControlador(argControlador);
 
             Result result = null;
+
             foreach (DataRow drGanaderias in xmldatosData.XMLDATOS.Rows)
             {
                 //GANADERIAS.... 
@@ -82,6 +83,11 @@ namespace Afca.Services
             }
             //TABLAS GLOBAL (Independiente del Establo)
             //if resultControles = GetXmlActualizacionesGlobalData(argControlador);
+
+
+            if (xmldatosData==null || xmldatosData.XMLDATOS.Rows.Count == 0)
+                resultControles = new Result { success = true };
+
             return resultControles;
         }
 
