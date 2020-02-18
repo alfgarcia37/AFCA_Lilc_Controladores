@@ -60,7 +60,7 @@ namespace Afca.Common
             lecturasNode.Children.Add(finalizadasNode);
 
             return lecturasNode;
-        }
+        }   
 
         #region Lecturas en progreso
         static ItemMetaData CreateLecturasEnProgresoTree()
@@ -134,7 +134,8 @@ namespace Afca.Common
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
 
-            controladorNode.DobleClickMethod = controladorNode.Methods
+            controladorNode.ItemMethodClickTrigger = ItemMethodClickTrigger.OneClick;
+            controladorNode.ClickMethod = controladorNode.Methods
                 .Where(m => m.Name == "ShowLecturaControlDataGrid").FirstOrDefault();
 
 
