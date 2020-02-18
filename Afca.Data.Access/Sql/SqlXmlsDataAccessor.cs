@@ -111,21 +111,21 @@
             return regs;
         }
         //GET XML's.=========================================================================================================
-        public DataSet PasarDownToXmlData_(int argControlador)
-        {
-            DataSet data = new LecturaControlData();
-            data.EnforceConstraints = false;
+        //public DataSet PasarDownToXmlData_(int argControlador)
+        //{
+        //    DataSet data = new LecturaControlData();
+        //    data.EnforceConstraints = false;
 
-            return this.ExecuteDataSet(data, "SP_PasarDownToXML", CommandType.StoredProcedure
-                , new SqlParameter[]{
-                                        new SqlParameter("@Controlador",argControlador)}, new string[] { "Incidencia" });
+        //    return this.ExecuteDataSet(data, "SP_PasarDownToXML", CommandType.StoredProcedure
+        //        , new SqlParameter[]{
+        //                                new SqlParameter("@Controlador",argControlador)}, new string[] { "Incidencia" });
 
-            //int regs = this.ExecuteNonQuery(
-            //                   "SP_PasarDownToXML"
-            //                   , new SqlParameter[]{
-            //                            new SqlParameter("@Controlador",argControlador)});
-            //return regs;
-        }
+        //    //int regs = this.ExecuteNonQuery(
+        //    //                   "SP_PasarDownToXML"
+        //    //                   , new SqlParameter[]{
+        //    //                            new SqlParameter("@Controlador",argControlador)});
+        //    //return regs;
+        //}
         public int PasarDownToXmlData(int argControlador)
         {
             int regs = this.ExecuteNonQuery(
