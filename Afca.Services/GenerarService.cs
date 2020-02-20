@@ -19,6 +19,7 @@ namespace Afca.Services
         private Result resultToros;
         private Result resultInseminaciones;
         private Result resultNacimientos;
+        private Result resultActualizaciones;
         private Result result = new Result();
 
         //private ClsGenerar ObjGenerar = new ClsGenerar();.... Lo he reconfigurado para evitar este paso redundante (pensabamos usar más clases auxiliares)
@@ -68,8 +69,8 @@ namespace Afca.Services
                 if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
             }
             //TABLAS GLOBAL (Independiente del Establo)
-            resultControles = SetXmlActualizacionesGlobalData(argControlador);
-            return resultControles;
+           resultActualizaciones = SetXmlActualizacionesGlobalData(argControlador);
+            return resultActualizaciones;
         }
 
         public Result SetXmlCheckData(string argGanaderia)
