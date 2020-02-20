@@ -134,8 +134,8 @@ namespace Afca.Common
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
 
-            controladorNode.ItemMethodClickTrigger = ItemMethodClickTrigger.OneClick;
-            controladorNode.ClickMethod = controladorNode.Methods
+            controladorNode.ItemMethodClickIconTrigger = ItemMethodClickTrigger.OneClick;
+            controladorNode.ClickIconMethod = controladorNode.Methods
                 .Where(m => m.Name == "ShowLecturaControlDataGrid").FirstOrDefault();
 
 
