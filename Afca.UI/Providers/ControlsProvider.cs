@@ -273,8 +273,8 @@ namespace Afca.UI
                 Result result = iSvrGenerar.CheckToXmlData(codigoControlador);
                 if (result.success == false)
                 {
-                    DialogResult dr = MessageBox.Show(result.value + "\n" + "No coinciden Maestro y Control"
-                                                , "CHECK Maestro y Control", MessageBoxButtons.YesNo);
+                    DialogResult dr = MessageBox.Show(result.value + "\n" 
+                                                , "CheckToXmlData", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.No) return;
                 }
 
