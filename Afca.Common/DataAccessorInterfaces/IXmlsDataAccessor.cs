@@ -11,6 +11,8 @@ namespace Afca.Common.DataAccessor
     {
         //XMLDATOS EXPORTAR========================================================
         // Chequeos -> Exportar -> ActGlobales -> Pasar To XML ....................................
+
+       
         string CheckToXMLData(string argEstablo);
         int SetXmlGanaderiasByControlador(int argcontrolador);
         int SetXmlControlesByGanaderia(string argGanaderia, int argControlador);
@@ -22,6 +24,7 @@ namespace Afca.Common.DataAccessor
 
         //XMLDATOS IMPORTAR=========================================================
         // Pasar From XML -> Chequeos -> ActGlobales -> Importar Chequeos -> Auditoría .........
+        string CheckFromAppVersion(int controlador);
         int PasarDownToXmlData(int argControlador);
         XmlData LoadXMLDatosDataByControlador(int argcontrolador);
         //:::temporal
