@@ -143,7 +143,27 @@
                                         new SqlParameter("@Controlador",argControlador) }
                                 , new string[] { "XMLDatos" });
         }
+        //CheckFromAppVersion
+        public string CheckFromAppVersion(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
+        {
+            try
+            {
+                string version = (string)this.ExecuteScalar(
+                                 "SP_CheckFromAppVersion"
+                                 , new SqlParameter[]{
+                                        new SqlParameter("@Controlador",argControlador)});
+                return version;
+            }
+            catch (System.Exception e)
+            {
 
+                DialogsManager.ShowErrorDialog("Error en SP_CheckFromAppVersion",
+                          e.Message);
+                return "0";
+            }
+
+
+        }
 
         public string CheckFromControlXmlDuplicados(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
         {

@@ -33,6 +33,20 @@ namespace Afca.Services
         }
         //..CHECKS........................................................................
         //agc::::Temporal(espero)... hasta resolver porqué descarga algunos controles duplicados
+        //CheckFromAppVersion
+        public Result CheckFromAppVersion(int argControlador)
+        {
+            // Result resultControlesDobles;
+            var strVersion = iXmlDA.CheckFromAppVersion(argControlador);
+            if (strVersion != null && strVersion != "")
+            { result.success = false; result.value = strVersion; }
+            else
+            { result.success = true; result.value = ""; }
+
+            return result;
+        }
+
+
 
         public Result CheckFromControlXmlDuplicados(int argControlador)
         {

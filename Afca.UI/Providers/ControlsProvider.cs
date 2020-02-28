@@ -352,7 +352,26 @@ namespace Afca.UI
                 IImportarService iSvrImportar;
                 iSvrImportar = AfcaServiceProvider.GetImportarService();
 
-                 iSvrImportar.PasarDownToXml(codigoControlador);
+                //Control de Versiones
+                resultado1 = iSvrImportar.CheckFromAppVersion(codigoControlador);
+                if (resultado1 != null && resultado1.success == false)
+                {
+                    DialogResult dr = MessageBox.Show(string.Format("Versión Errónea {0}.Avise al Administrador.{1} Desea continuar", resultado1.value, Environment.NewLine)
+                                               , "VersionChecker", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.No)
+                    {
+                        hasFatalError = true;
+                        return null;
+                    }
+
+                }
+
+
+                iSvrImportar.PasarDownToXml(codigoControlador);
+                
+
+
+
                 //agc ::::::::Esto es temporal. Es por el extraño caso de la descarga duplicada de los controles (algunos)...????
                 resultado1 = iSvrImportar.CheckFromControlXmlDuplicados(codigoControlador);
                 if (resultado1 != null && resultado1.success == false)
