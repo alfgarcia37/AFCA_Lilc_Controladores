@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AfcaDataAccessorProvider.cs" />
     <Compile Include="AfcaServiceProvider.cs" />
+    <Compile Include="DataAccessorInterfaces\INacimientoSiluetasDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IXmlsDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IEstadoLecturaDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IGanaderiaDataAccessor.cs" />
@@ -60,6 +61,19 @@
     </Compile>
     <Compile Include="DataSets\EstadoLecturaData.cs">
       <DependentUpon>EstadoLecturaData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\NacimientoSiluetasData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NacimientoSiluetasData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\NacimientoSiluetasQueryData.cs">
+      <DependentUpon>NacimientoSiluetasQueryData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\NacimientoSiluetasQueryData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NacimientoSiluetasQueryData.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\XmlData.cs">
       <DependentUpon>XmlData.xsd</DependentUpon>
@@ -87,6 +101,7 @@
     </Compile>
     <Compile Include="ServicesInterfaces\IImportarService.cs" />
     <Compile Include="ServicesInterfaces\IGenerarService.cs" />
+    <Compile Include="ServicesInterfaces\INacimientoSiluetasService.cs" />
     <Compile Include="Utilities\ClsResult.cs" />
     <Compile Include="Utilities\DataMapper.cs" />
     <Compile Include="Utilities\IconMapper.cs" />
@@ -143,6 +158,27 @@
     </None>
     <None Include="DataSets\ControladorProgresoData.xss">
       <DependentUpon>ControladorProgresoData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\NacimientoSiluetasData.xsc">
+      <DependentUpon>NacimientoSiluetasData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\NacimientoSiluetasData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NacimientoSiluetasData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\NacimientoSiluetasData.xss">
+      <DependentUpon>NacimientoSiluetasData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\NacimientoSiluetasQueryData.xsc">
+      <DependentUpon>NacimientoSiluetasQueryData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\NacimientoSiluetasQueryData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NacimientoSiluetasQueryData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\NacimientoSiluetasQueryData.xss">
+      <DependentUpon>NacimientoSiluetasQueryData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\XmlData.xsc">
       <DependentUpon>XmlData.xsd</DependentUpon>
@@ -246,6 +282,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\export.png" />
     <EmbeddedResource Include="Icons\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\printer_new.png" />
+    <EmbeddedResource Include="Icons\printer_ok.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -70,5 +70,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static INacimientoSiluetasDataAccessor GetNacimientoSiluetasDataAccessor()
+        {
+            try
+            {
+                return (INacimientoSiluetasDataAccessor)DataAccessorProvider.GetDataAccessorInstance("INacimientoSiluetasDataAccessor");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

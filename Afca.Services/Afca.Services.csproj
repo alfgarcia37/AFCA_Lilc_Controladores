@@ -53,6 +53,7 @@
     <Compile Include="EstadoLecturaService.cs" />
     <Compile Include="GanaderiaService.cs" />
     <Compile Include="LecturaControlService.cs" />
+    <Compile Include="NacimientoSiluetasService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

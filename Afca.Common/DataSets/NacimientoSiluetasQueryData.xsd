@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NacimientoSiluetasQueryData" targetNamespace="http://tempuri.org/NacimientoSiluetasQueryData.xsd" xmlns:mstns="http://tempuri.org/NacimientoSiluetasQueryData.xsd" xmlns="http://tempuri.org/NacimientoSiluetasQueryData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="NacimientoSiluetasQueryData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="NacimientoSiluetasQueryData" msprop:Generator_UserDSName="NacimientoSiluetasQueryData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Query" msprop:Generator_TableClassName="QueryDataTable" msprop:Generator_TableVarName="tableQuery" msprop:Generator_RowChangedName="QueryRowChanged" msprop:Generator_TablePropName="Query" msprop:Generator_RowDeletingName="QueryRowDeleting" msprop:Generator_RowChangingName="QueryRowChanging" msprop:Generator_RowEvHandlerName="QueryRowChangeEventHandler" msprop:Generator_RowDeletedName="QueryRowDeleted" msprop:Generator_RowClassName="QueryRow" msprop:Generator_UserTableName="Query" msprop:Generator_RowEvArgName="QueryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoGanaderia" msprop:Generator_ColumnVarNameInTable="columnCodigoGanaderia" msprop:Generator_ColumnPropNameInRow="CodigoGanaderia" msprop:Generator_ColumnPropNameInTable="CodigoGanaderiaColumn" msprop:Generator_UserColumnName="CodigoGanaderia" type="xs:string" minOccurs="0" />
+              <xs:element name="CodigoCrotal" msprop:Generator_ColumnVarNameInTable="columnCodigoCrotal" msprop:Generator_ColumnPropNameInRow="CodigoCrotal" msprop:Generator_ColumnPropNameInTable="CodigoCrotalColumn" msprop:Generator_UserColumnName="CodigoCrotal" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaNacimiento" msprop:Generator_ColumnVarNameInTable="columnFechaNacimiento" msprop:Generator_ColumnPropNameInRow="FechaNacimiento" msprop:Generator_ColumnPropNameInTable="FechaNacimientoColumn" msprop:Generator_UserColumnName="FechaNacimiento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Controlador" msprop:Generator_ColumnVarNameInTable="columnControlador" msprop:Generator_ColumnPropNameInRow="Controlador" msprop:Generator_ColumnPropNameInTable="ControladorColumn" msprop:Generator_UserColumnName="Controlador" type="xs:int" minOccurs="0" />
+              <xs:element name="FechaCreadoDesde" msdata:Caption="FechaCreado" msprop:Generator_ColumnVarNameInTable="columnFechaCreadoDesde" msprop:Generator_ColumnPropNameInRow="FechaCreadoDesde" msprop:Generator_ColumnPropNameInTable="FechaCreadoDesdeColumn" msprop:Generator_UserColumnName="FechaCreadoDesde" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaCreadoHasta" msdata:Caption="FechaCreado" msprop:Generator_ColumnVarNameInTable="columnFechaCreadoHasta" msprop:Generator_ColumnPropNameInRow="FechaCreadoHasta" msprop:Generator_ColumnPropNameInTable="FechaCreadoHastaColumn" msprop:Generator_UserColumnName="FechaCreadoHasta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Imprimida" msprop:Generator_ColumnVarNameInTable="columnImprimida" msprop:Generator_ColumnPropNameInRow="Imprimida" msprop:Generator_ColumnPropNameInTable="ImprimidaColumn" msprop:Generator_UserColumnName="Imprimida" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

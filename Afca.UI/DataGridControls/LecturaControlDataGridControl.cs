@@ -57,7 +57,6 @@ namespace Afca.UI
             ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "tbbImportar", "IconoImport");
             ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "popMenuEstados", "IconoChange"); 
 
-
             ControlsThemeBuilder.GridMakeUp(this.ultraGridData,ThemeColor.Verde);
             ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0],ThemeColor.Verde);
             ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[1], ThemeColor.Rojo);

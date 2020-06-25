@@ -58,6 +58,7 @@
     <Compile Include="Sql\SqlEstadoLecturaDataAccessor.cs" />
     <Compile Include="Sql\SqlGanaderiaDataAccessor.cs" />
     <Compile Include="Sql\SqlLecturaControlDataAccessor.cs" />
+    <Compile Include="Sql\SqlNacimientoSiluetasDataAccessor.cs" />
     <Compile Include="Sql\SqlXmlsDataAccessor.cs" />
   </ItemGroup>
   <ItemGroup>

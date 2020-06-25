@@ -104,6 +104,12 @@
     <Compile Include="DropDowns\ControladorDropDown.Designer.cs">
       <DependentUpon>ControladorDropDown.cs</DependentUpon>
     </Compile>
+    <Compile Include="Custom Controls\NacimientoSiluetasControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom Controls\NacimientoSiluetasControl.Designer.cs">
+      <DependentUpon>NacimientoSiluetasControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="PropertiesBaseControls\PropertiesLeftTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     <EmbeddedResource Include="DropDowns\EstadoLecturaDropDown.resx">
       <DependentUpon>EstadoLecturaDropDown.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Custom Controls\NacimientoSiluetasControl.resx">
+      <DependentUpon>NacimientoSiluetasControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PropertiesBaseControls\PropertiesLeftTabControl.resx">
       <DependentUpon>PropertiesLeftTabControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +170,15 @@
       <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
       <Name>Afca.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

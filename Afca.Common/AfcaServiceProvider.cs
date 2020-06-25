@@ -78,5 +78,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static INacimientoSiluetasService GetNacimientoSiluetasService()
+        {
+            try
+            {
+                return (INacimientoSiluetasService)ServiceProvider.GetServiceInstance("INacimientoSiluetasService");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

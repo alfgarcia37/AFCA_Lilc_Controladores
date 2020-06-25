@@ -28,6 +28,16 @@ namespace Afca.Common
             ItemMetaData root = CreateTreeRootNode();
             root.Children.Add(CreateLecturasTree());
 
+            string siluetasManagerActive = "false";
+
+            if( !String.IsNullOrEmpty(
+                siluetasManagerActive= ConfigurationProvider.GetConfigurationValue("SiluetasManagerActive")))
+            {
+                if(siluetasManagerActive=="true")
+                    root.Children.Add(CreateSiluetasTree());
+            }
+                
+
             ItemMetaData datosConfiguracionNode = CreateDatosConfiguracionFolderNode();
             root.Children.Add(datosConfiguracionNode);
             datosConfiguracionNode.Children.Add(CreateControladoresTree());
@@ -328,7 +338,7 @@ namespace Afca.Common
         }
         #endregion
 
-
+        #region Lecturas Detalle
         static ItemMetaData CreateLecturasTodasNode()
         {
             ItemMetaData todasNode = new ItemMetaData("Todas");
@@ -461,6 +471,59 @@ namespace Afca.Common
 
             return lecturaNode;
         }
+        #endregion
+
+        #region Gestor Siluetas Nacimiento
+        static ItemMetaData CreateSiluetasTree()
+        {
+            ItemMetaData siluetasFolderNode = CreateSiluetasFolderNode();
+            return siluetasFolderNode;
+        }
+        static ItemMetaData CreateSiluetasFolderNode()
+        {
+            ItemMetaData siluetasNode = new ItemMetaData("Siluetas");
+            siluetasNode.Text = "Nac.Siluetas (30 dias)";
+            siluetasNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            siluetasNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "ShowSiluetasManagerControl", "Exportar siluetas..."
+                                                          , ItemMethodType.GridEdit, "IconoExport"));
+
+            ItemMetaData pendienteNode = CreateSiluetaNode();
+            siluetasNode.Children.Add(pendienteNode);
+
+            return siluetasNode;
+        }
+        static ItemMetaData CreateSiluetaNode()
+        {
+            ItemMetaData siluetaNode = new ItemMetaData("Silueta");
+            siluetaNode.ItemType = ItemType.Leaf;
+            siluetaNode.Icons.AddRange(new string[] { "IconoImprimida" });
+            siluetaNode.IconMapper = new ItemIconMapper("Imprimida");
+            siluetaNode.IconMapper.Mapping.Add(String.Empty, "IconoNoImprimida");
+
+            siluetaNode.LoadMethod = "INacimientoSiluetasService,LoadNacimientoSiluetasDataLastMonth";
+            siluetaNode.DataTable = "NacimientoSiluetas";
+            siluetaNode.SortCriteria = "FechaCreado DESC";
+            siluetaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("CodigoGanaderia", "Establo", true, false, true));
+            siluetaNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("CodigoCrotal", "Cod.Crotal", true, true));
+            siluetaNode.ItemColumns.AddItemColumn(
+                new ItemColumn("FechaNacimiento", "Nacimiento", false, true));
+            siluetaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("Controlador", "Controlador", false, true));
+            siluetaNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("FechaCreado", "Creada", false, true));
+            siluetaNode.ItemColumns.AddItemColumn(
+                         new ItemColumn("Imprimida", "Imprimida", false, true));
+
+            siluetaNode.ItemColumns["Controlador"].DropDownClass = "Afca.UI,Afca.UI.DropDowns.ControladorDropDown";
+
+            return siluetaNode;
+        }
+        #endregion
+
+        #region Datos Configuracion
         static ItemMetaData CreateDatosConfiguracionFolderNode()
         {
             ItemMetaData configNode = new ItemMetaData("DataConfiguration");
@@ -553,6 +616,6 @@ namespace Afca.Common
 
             return controladorNode;
         }
-
+        #endregion
     }
 }
