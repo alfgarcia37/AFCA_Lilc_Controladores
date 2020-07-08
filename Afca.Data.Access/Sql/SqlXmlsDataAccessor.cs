@@ -23,7 +23,6 @@
                                         new SqlParameter("@Establo",argGanaderia)});
             return regs.ToString();
         }
-       
         public int SetXmlGanaderiasByControlador(int argControlador)
         {
 
@@ -82,6 +81,18 @@
                                         });
             return regs;
         }
+        public int SetXmlEncuestasByGanaderia(string argGanaderia, int argControlador)
+        {
+
+
+            int regs = this.ExecuteNonQuery(
+                               "sp_EncuestasToXMLByEstablo"
+                               , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                        });
+            return regs;
+        }
         public int SetXmlActualizacionesGlobales( int argControlador)
         {
 
@@ -111,21 +122,6 @@
             return regs;
         }
         //GET XML's.=========================================================================================================
-        //public DataSet PasarDownToXmlData_(int argControlador)
-        //{
-        //    DataSet data = new LecturaControlData();
-        //    data.EnforceConstraints = false;
-
-        //    return this.ExecuteDataSet(data, "SP_PasarDownToXML", CommandType.StoredProcedure
-        //        , new SqlParameter[]{
-        //                                new SqlParameter("@Controlador",argControlador)}, new string[] { "Incidencia" });
-
-        //    //int regs = this.ExecuteNonQuery(
-        //    //                   "SP_PasarDownToXML"
-        //    //                   , new SqlParameter[]{
-        //    //                            new SqlParameter("@Controlador",argControlador)});
-        //    //return regs;
-        //}
         public int PasarDownToXmlData(int argControlador)
         {
             int regs = this.ExecuteNonQuery(
@@ -164,7 +160,6 @@
 
 
         }
-
         public string CheckFromControlXmlDuplicados(int argControlador)//establos ya leidos //new SqlParameter("@FPrevista",argFPrevista)});
         {
             try
@@ -282,6 +277,27 @@
             {
 
                 DialogsManager.ShowErrorDialog("Error en sp_NacimientosFromXMLByEstablo",
+                          e.Message);
+                return 0;
+            }
+        }
+        public int GetXmlEncuestasByGanaderia(string argGanaderia, int argControlador)
+        {
+            try
+            {
+
+                int regs = this.ExecuteNonQuery(
+                                    "sp_EncuestasFromXMLByEstablo"
+                                    , new SqlParameter[]{
+                                        new SqlParameter("@Establo",argGanaderia),
+                                        new SqlParameter("@controlador",argControlador)
+                                            });
+                return regs;
+            }
+            catch (System.Exception e)
+            {
+
+                DialogsManager.ShowErrorDialog("Error en sp_EncuestasFromXMLByEstablo",
                           e.Message);
                 return 0;
             }

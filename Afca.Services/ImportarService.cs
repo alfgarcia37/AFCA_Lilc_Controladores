@@ -19,21 +19,16 @@ namespace Afca.Services
         private Result resultInseminaciones;
         private Result resultNacimientos;
         private Result resultRcs;
+        private Result resultEncuestas;
         private Result result = new Result();
 
-        // private ClsImportar ObjImportar = new ClsImportar();
         private IXmlsDataAccessor iXmlDA;
-        //private ILecturaControlDataAccessor ilecturasDA;
-
-        //private LecturaControlData lecturaControlData;
         private XmlData xmldatosData;
         public ImportarService()
         {
             iXmlDA = Afca.Common.AfcaDataAccessorProvider.GetXmlDataAccessor();
         }
         //..CHECKS........................................................................
-        //agc::::Temporal(espero)... hasta resolver porqué descarga algunos controles duplicados
-        //CheckFromAppVersion
         public Result CheckFromAppVersion(int argControlador)
         {
             // Result resultControlesDobles;
@@ -45,9 +40,6 @@ namespace Afca.Services
 
             return result;
         }
-
-
-
         public Result CheckFromControlXmlDuplicados(int argControlador)
         {
            // Result resultControlesDobles;
@@ -68,9 +60,6 @@ namespace Afca.Services
         public Result ImportarXMLs(int argControlador)
 
         {
-            //Result resul = new Result { success = true, value = "999" };
-            // resultGanaderias = GetXmlCheckGanaderiasData(argControlador);
-
             //Recorro GANADERIAS para Generar Tablas
             XmlData xmldatosData = iXmlDA.LoadXMLDatosDataByControlador(argControlador);
 
@@ -90,6 +79,9 @@ namespace Afca.Services
                 ////NACIMIENTOS....
                 resultNacimientos = GetXmlNacimientosData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
                 if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
+                ////ENCUESTAS....
+                resultEncuestas = GetXmlEncuestasData(drGanaderias["GanaderiaCodigo"].ToString(), argControlador);
+                if (resultEncuestas.value == "0") { resultEncuestas.success = false; break; }
                 ////RCS....
                 resultRcs = GetXmlRcsData( argControlador);
                 if (resultRcs.value == "0") { resultRcs.success = false; break; }
@@ -149,6 +141,14 @@ namespace Afca.Services
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;
             result.value = "IMportados Tabla de Nacimientos";
+            return result;
+        }
+        public Result GetXmlEncuestasData(string argGanaderia, int argcontrolador)
+        {
+            result.value = iXmlDA.GetXmlEncuestasByGanaderia(argGanaderia, argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "IMportados Tabla de Encuestas";
             return result;
         }
         public Result GetXmlRcsData(int argcontrolador)
