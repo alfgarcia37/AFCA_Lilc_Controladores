@@ -225,11 +225,7 @@ namespace Afca.Common
             finalizadasNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                             "ShowLecturaControlDataGrid", "Editar lecturas..."
                                                             , ItemMethodType.GridEdit, "IconoPropiedades"));
-            finalizadasNode.ToolbarOptions.AddItemToolbarOption(new ItemToolbarOption(typeof(bool), "Validación automática",
-                                                            "Habilita la validación automática al importar", "IconoCalculadora",
-                                                            "Afca.UI,ControlsProvider|SetValidacionAutomaticaGlobal",
-                                                            bool.Parse(ConfigurationProvider.GetConfigurationValue("ValidacionAutomatica"))));
-
+           
             ItemMetaData detalleControladoresNode = CreateFinalizadasControladoresNode();
             finalizadasNode.Children.Add(detalleControladoresNode);
 
