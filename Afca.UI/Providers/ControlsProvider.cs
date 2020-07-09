@@ -433,6 +433,14 @@ namespace Afca.UI
         }
         #endregion
 
+        #region global Settings
+        public static void SetValidacionAutomaticaGlobal(Type valueType,object value)
+        {
+            ConfigurationProvider.UpdateAppSettingValue("ValidacionAutomatica",
+                    value.ToString());
+        }
+        #endregion
+
     }
 
 }

@@ -287,6 +287,9 @@
     <EmbeddedResource Include="Icons\printer_new.png" />
     <EmbeddedResource Include="Icons\printer_ok.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\calculator.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"
