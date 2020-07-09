@@ -11,7 +11,6 @@ namespace Afca.Common.DataAccessor
     {
         //XMLDATOS EXPORTAR========================================================
         // Chequeos -> Exportar -> ActGlobales -> Pasar To XML ....................................
-
        
         string CheckToXMLData(string argEstablo);
         int SetXmlGanaderiasByControlador(int argcontrolador);
@@ -19,6 +18,7 @@ namespace Afca.Common.DataAccessor
         int SetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int SetXmlTorosByGanaderia(string argGanaderia, int argControlador);
         int SetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
+        int SetXmlEncuestasByGanaderia(string argGanaderia, int argControlador);
         int SetXmlActualizacionesGlobales( int argControlador);
         int PasarXmlToUPData(int argControlador);
 
@@ -35,6 +35,7 @@ namespace Afca.Common.DataAccessor
         int GetXmlControlesByGanaderia(string argGanaderia, int argControlador,DateTime argFPrevista,string argTipoControl);
         int GetXmlInseminacionesByGanaderia(string argGanaderia, int argControlador);
         int GetXmlNacimientosByGanaderia(string argGanaderia, int argControlador);
+        int GetXmlEncuestasByGanaderia(string argGanaderia, int argControlador);
         int GetXmlRcsByControlador( int argControlador);
         int GetXmlActualizacionesGlobales(int argControlador);
      

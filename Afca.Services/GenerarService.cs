@@ -20,6 +20,7 @@ namespace Afca.Services
         private Result resultInseminaciones;
         private Result resultNacimientos;
         private Result resultActualizaciones;
+        private Result resultEncuestas;
         private Result result = new Result();
 
         //private ClsGenerar ObjGenerar = new ClsGenerar();.... Lo he reconfigurado para evitar este paso redundante (pensabamos usar más clases auxiliares)
@@ -67,6 +68,9 @@ namespace Afca.Services
                 //NACIMIENTOS
                 resultNacimientos = SetXmlNacimientosData(drLectura["Establo"].ToString(), argControlador);
                 if (resultNacimientos.value == "0") { resultNacimientos.success = false; break; }
+                //Encuestas
+                resultEncuestas = SetXmlEncuestasData(drLectura["Establo"].ToString(), argControlador);
+                if (resultToros.value == "0") { resultToros.success = false; break; }
             }
             //TABLAS GLOBAL (Independiente del Establo)
            resultActualizaciones = SetXmlActualizacionesGlobalData(argControlador);
@@ -134,6 +138,15 @@ namespace Afca.Services
             result.value = "Exportada Tabla de Nacimientos";
             return result;
         }
+        public Result SetXmlEncuestasData(string argGanaderia, int argcontrolador)
+        {
+            result.value = iXmlDA.SetXmlEncuestasByGanaderia(argGanaderia, argcontrolador).ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Exportada Tabla de Encuestas";
+
+            return result;
+        }
         public Result SetXmlActualizacionesGlobalData( int argcontrolador)
         {
             //return ObjGenerar.SetXmlActualizacionesGlobalData(iXmlDA,  argcontrolador);
@@ -146,7 +159,6 @@ namespace Afca.Services
         }
         public Result PasarXmlToUP(int argcontrolador)
         {
-            // return ObjGenerar.PasarXmlToUP(iXmlDA, argcontrolador);
             result.value = iXmlDA.PasarXmlToUPData(argcontrolador).ToString();
             if (Convert.ToInt32(result.value) > 0)
                 result.success = true;

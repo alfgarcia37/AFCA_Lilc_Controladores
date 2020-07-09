@@ -21,6 +21,7 @@ namespace Afca.Common.ServicesInterfaces
         Result GetXmlControlesData(string ganaderia,int controlador,System.DateTime FPrevista,string TipoControl);
         Result GetXmlInseminacionesData(string ganaderia, int controlador);
         Result GetXmlNacimientosData(string ganaderia, int controlador);
+        Result GetXmlEncuestasData(string ganaderia, int controlador);
         Result GetXmlRcsData(int controlador);
         Result GetXmlActualizacionesGlobalData( int controlador);
     }
