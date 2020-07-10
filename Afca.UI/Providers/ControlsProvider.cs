@@ -15,6 +15,7 @@ using FrameworkForge.Common.DataSets;
 using dO = FrameworkForge.Common.DataOperations;
 using System.Collections.Generic;
 using FrameworkForge.Common.Generics;
+using Infragistics.Win.UltraWinToolbars;
 
 namespace Afca.UI
 {
@@ -366,12 +367,8 @@ namespace Afca.UI
 
                 }
 
-
                 iSvrImportar.PasarDownToXml(codigoControlador);
-                
-
-
-
+ 
                 //agc ::::::::Esto es temporal. Es por el extraño caso de la descarga duplicada de los controles (algunos)...????
                 resultado1 = iSvrImportar.CheckFromControlXmlDuplicados(codigoControlador);
                 if (resultado1 != null && resultado1.success == false)
@@ -384,7 +381,7 @@ namespace Afca.UI
                 //:::::::::::::::::::::::    
 
                 DataSet incidenciasData = iSvrImportar.CheckFromXmlData(codigoControlador);
-
+                //goto eit;
                 if (incidenciasData != null && dO.HasRows(incidenciasData, "Incidencia"))
                 {
                     DialogsManager.ShowErrorDialog("Error", string.Format("Controlador {0}.{1}Se han producido errores en el proceso de importacion.{2}{3}"
@@ -400,9 +397,21 @@ namespace Afca.UI
                     else
                         DialogsManager.ShowErrorDialog("Error al Insertar Valores", " Revise todos los procesos");
                 }
-                   
-                if (resultado1!=null && resultado1.success == true && showMessages)
+           // eit:
+               // if (resultado1!=null && resultado1.success == true && showMessages)
                 {
+                    
+                    bool validate = bool.Parse(ConfigurationProvider.GetConfigurationValue("ValidacionAutomatica"));
+                    if (validate)
+                    {
+                        resultado1 = iSvrImportar.GetLaunchAutoERP();
+                        if (resultado1 != null && resultado1.success == true)
+                            DialogsManager.ShowErrorDialog("launchERP con éxito", " que tengas buen día");
+                        else
+                            DialogsManager.ShowErrorDialog("Error en LaunchERP", " Revise todos los procesos");
+                    }
+
+
                     DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
                  
                 }

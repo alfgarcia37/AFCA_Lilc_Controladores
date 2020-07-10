@@ -97,9 +97,19 @@ namespace Afca.Services
             return resultControles;
         }
 
+        public Result GetLaunchAutoERP()
+        {
+            
+            result.value = iXmlDA.GetLaunchAutoERP().ToString();
+            if (Convert.ToInt32(result.value) > 0)
+                result.success = true;
+            result.value = "Lanzados SPs de AutoRegister";
+            return result;
+        }
+
         #region Chequeos
         //...hago los chequeos....................
-            
+
         #endregion
 
         #region GETs
@@ -179,6 +189,8 @@ namespace Afca.Services
 
             return result;
         }
+
+
     }
 }
 

@@ -24,6 +24,7 @@ namespace Afca.Common.ServicesInterfaces
         Result GetXmlEncuestasData(string ganaderia, int controlador);
         Result GetXmlRcsData(int controlador);
         Result GetXmlActualizacionesGlobalData( int controlador);
+        Result GetLaunchAutoERP();
     }
 }
 

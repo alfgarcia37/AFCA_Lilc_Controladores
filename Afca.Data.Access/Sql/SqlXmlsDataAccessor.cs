@@ -373,7 +373,23 @@
 });
         }
 
-       
+        public int GetLaunchAutoERP()
+        {
+            try
+            {
+                int regs = this.ExecuteNonQuery(
+                                    "sp_LaunchAutoERP",  null
+                                    );
+                return regs;
+            }
+            catch (System.Exception e)
+            {
+
+                DialogsManager.ShowErrorDialog("Error en sp_GanaderiasFromXMLByEstablo",
+                          e.Message);
+                return 0;
+            }
+        }
 
 
     }
