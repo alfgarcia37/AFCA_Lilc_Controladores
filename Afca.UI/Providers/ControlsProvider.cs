@@ -406,7 +406,7 @@ namespace Afca.UI
                     {
                         resultado1 = iSvrImportar.GetLaunchAutoERP();
                         if (resultado1 != null && resultado1.success == true)
-                            DialogsManager.ShowErrorDialog("launchERP con éxito", " que tengas buen día");
+                            MessageBox.Show("LaunchERP con éxito", " que tengas buen día");
                         else
                             DialogsManager.ShowErrorDialog("Error en LaunchERP", " Revise todos los procesos");
                     }
