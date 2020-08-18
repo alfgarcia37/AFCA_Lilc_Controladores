@@ -4,22 +4,17 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Afca.Laboratorio
 {
     static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
+        [STAThread]
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new Service()
-            };
-            ServiceBase.Run(ServicesToRun);
+            Application.Run(new FileImporter());
+
         }
     }
 }
