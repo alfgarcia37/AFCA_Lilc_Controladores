@@ -28,6 +28,8 @@ namespace Afca.Laboratorio
         IBuzonLaboratorioService _service;
         BuzonLaboratorioData toSaveData;
 
+        public delegate void SetTextDelegate(string text);
+
         public FileImporter()
         {
             InitializeComponent();
@@ -64,23 +66,24 @@ namespace Afca.Laboratorio
             if (LeerFicheros())
                 GuardarDatos();
             HabilitarControles();
-            timer.Interval = 
-                TimeSpan.FromMinutes((double)uneInterval.Value).TotalMilliseconds;
+            this.timer.Interval = TimeSpan.FromMinutes(
+                double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
+
             timer.Start();
         }
         void HabilitarControles()
         {
-            uneInterval.Enabled =
-                utePath.Enabled = 
-                utbtnStart.Enabled =
-                utbtnStop.Enabled = false;
+            //uneInterval.Enabled =
+            //    utePath.Enabled = 
+            //    utbtnStart.Enabled =
+            //    utbtnStop.Enabled = true;
         }
         void DeshabilitarControles()
         {
-            uneInterval.Enabled =
-                utePath.Enabled =
-                utbtnStart.Enabled =
-                utbtnStop.Enabled = true;
+            //uneInterval.Enabled =
+            //    utePath.Enabled =
+            //    utbtnStart.Enabled =
+            //    utbtnStop.Enabled = false;
         }
         bool LeerFicheros()
         {
@@ -95,8 +98,10 @@ namespace Afca.Laboratorio
                     if (files.Length > 0)
                     {
                         int oks = 0;
-                        foreach(FileInfo file in files)
-                             oks = LeerFichero(file)? oks+1:oks;
+                        foreach (FileInfo file in files)
+                        {
+                            oks = LeerFichero(file) ? oks + 1 : oks;
+                        }
 
                         AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente"
                                                         ,oks,files.Length));
@@ -120,6 +125,7 @@ namespace Afca.Laboratorio
                 return false;
             }
         }
+
         FileInfo[] FindFiles(string directoryPath, string patternName)
         {
             if (!Directory.Exists(directoryPath))
@@ -128,14 +134,21 @@ namespace Afca.Laboratorio
             }
 
             DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
-            return directoryInfo.GetFiles(string.Format("{0}.*", patternName), SearchOption.TopDirectoryOnly);
+            return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
         }
         bool LeerFichero(FileInfo file)
         {
             try
             {
+                AppendTraceText(string.Format("Leyendo fichero: {0}",file.Name));
                 //leer información del fichero y guardarlo en un nuevo registro 
                 //en el dataset Buzon Laboratorio Data
+                int linea = 0;
+
+                if (linea==0)
+                {
+                    AppendTraceText("información del establo...");
+                }
                 return true;
             }
             catch(System.Exception e){
@@ -149,7 +162,7 @@ namespace Afca.Laboratorio
 
             try
             {
-                _service.UpdateBuzonLaboratorioData(toSaveData);
+                //_service.UpdateBuzonLaboratorioData(toSaveData);
                 AppendTraceText("Información guardada correctamente");
             }
             catch (System.Exception e)
@@ -172,7 +185,23 @@ namespace Afca.Laboratorio
                 CheckTraceFileSizeLimit();
             }
 
-            this.uteLog.AppendText(string.Format("{0}{1}",text,Environment.NewLine));
+            if (uteLog.InvokeRequired)
+            {
+                uteLog.Invoke(new SetTextDelegate(SetTextCallBack)
+                    ,new object[1] { text });
+            }
+            else
+            {
+                this.uteLog.AppendText(string.Format("{0}{1}", text, Environment.NewLine));
+                uteLog.Select(uteLog.Text.Length - 1, uteLog.Text.Length);
+                uteLog.ScrollToCaret();
+            }
+        }
+        void SetTextCallBack(string text)
+        {
+            this.uteLog.AppendText(string.Format("{0}{1}", text, Environment.NewLine));
+            uteLog.Select(uteLog.Text.Length-1,uteLog.Text.Length);
+            uteLog.ScrollToCaret();
         }
         void CheckTraceFileSizeLimit()
         {
@@ -200,7 +229,7 @@ namespace Afca.Laboratorio
                 return;
             }
             else           
-                this.timer.Interval = TimeSpan.FromMinutes((double)uneInterval.Value).TotalMilliseconds;
+                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
             
             if (String.IsNullOrEmpty(utePath.Text))
             {

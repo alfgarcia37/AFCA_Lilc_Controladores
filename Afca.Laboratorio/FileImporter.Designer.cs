@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileImporter));
             this.ultraPanelTop = new Infragistics.Win.Misc.UltraPanel();
-            this.ultraPanelDown = new Infragistics.Win.Misc.UltraPanel();
-            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.uneInterval = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
-            this.utbtnStart = new Infragistics.Win.Misc.UltraButton();
-            this.utbtnStop = new Infragistics.Win.Misc.UltraButton();
-            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
-            this.utePath = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
+            this.utePath = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.utbtnStop = new Infragistics.Win.Misc.UltraButton();
+            this.utbtnStart = new Infragistics.Win.Misc.UltraButton();
+            this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
+            this.uneInterval = new Infragistics.Win.UltraWinEditors.UltraNumericEditor();
+            this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraPanelDown = new Infragistics.Win.Misc.UltraPanel();
             this.uteLog = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraPanelTop.ClientArea.SuspendLayout();
             this.ultraPanelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.utePath)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneInterval)).BeginInit();
             this.ultraPanelDown.ClientArea.SuspendLayout();
             this.ultraPanelDown.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uneInterval)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.utePath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uteLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,9 +65,81 @@
             this.ultraPanelTop.ClientArea.Controls.Add(this.ultraLabel1);
             this.ultraPanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultraPanelTop.Location = new System.Drawing.Point(0, 0);
+            this.ultraPanelTop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraPanelTop.Name = "ultraPanelTop";
-            this.ultraPanelTop.Size = new System.Drawing.Size(452, 164);
+            this.ultraPanelTop.Size = new System.Drawing.Size(603, 202);
             this.ultraPanelTop.TabIndex = 0;
+            // 
+            // ultraLabel3
+            // 
+            appearance1.TextVAlignAsString = "Middle";
+            this.ultraLabel3.Appearance = appearance1;
+            this.ultraLabel3.Location = new System.Drawing.Point(367, 73);
+            this.ultraLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(85, 28);
+            this.ultraLabel3.TabIndex = 5;
+            this.ultraLabel3.Text = "minutos";
+            // 
+            // utePath
+            // 
+            this.utePath.Location = new System.Drawing.Point(69, 39);
+            this.utePath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.utePath.Name = "utePath";
+            this.utePath.Size = new System.Drawing.Size(469, 24);
+            this.utePath.TabIndex = 4;
+            // 
+            // utbtnStop
+            // 
+            appearance2.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
+            this.utbtnStop.Appearance = appearance2;
+            this.utbtnStop.ImageSize = new System.Drawing.Size(32, 32);
+            this.utbtnStop.Location = new System.Drawing.Point(184, 135);
+            this.utbtnStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.utbtnStop.Name = "utbtnStop";
+            this.utbtnStop.Size = new System.Drawing.Size(105, 42);
+            this.utbtnStop.TabIndex = 3;
+            this.utbtnStop.Text = "Stop";
+            this.utbtnStop.Click += new System.EventHandler(this.utbtnStop_Click);
+            // 
+            // utbtnStart
+            // 
+            appearance3.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+            this.utbtnStart.Appearance = appearance3;
+            this.utbtnStart.ImageSize = new System.Drawing.Size(32, 32);
+            this.utbtnStart.Location = new System.Drawing.Point(76, 135);
+            this.utbtnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.utbtnStart.Name = "utbtnStart";
+            this.utbtnStart.Size = new System.Drawing.Size(100, 42);
+            this.utbtnStart.TabIndex = 2;
+            this.utbtnStart.Text = "Start";
+            this.utbtnStart.Click += new System.EventHandler(this.utbtnStart_Click);
+            // 
+            // ultraLabel2
+            // 
+            this.ultraLabel2.Location = new System.Drawing.Point(69, 15);
+            this.ultraLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ultraLabel2.Name = "ultraLabel2";
+            this.ultraLabel2.Size = new System.Drawing.Size(259, 28);
+            this.ultraLabel2.TabIndex = 0;
+            this.ultraLabel2.Text = "Ruta de los ficheros de laboratorio";
+            // 
+            // uneInterval
+            // 
+            this.uneInterval.Location = new System.Drawing.Point(236, 73);
+            this.uneInterval.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.uneInterval.Name = "uneInterval";
+            this.uneInterval.Size = new System.Drawing.Size(123, 24);
+            this.uneInterval.TabIndex = 1;
+            // 
+            // ultraLabel1
+            // 
+            this.ultraLabel1.Location = new System.Drawing.Point(69, 78);
+            this.ultraLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ultraLabel1.Name = "ultraLabel1";
+            this.ultraLabel1.Size = new System.Drawing.Size(173, 28);
+            this.ultraLabel1.TabIndex = 0;
+            this.ultraLabel1.Text = "Importar ficheros cada ";
             // 
             // ultraPanelDown
             // 
@@ -76,104 +148,44 @@
             // 
             this.ultraPanelDown.ClientArea.Controls.Add(this.uteLog);
             this.ultraPanelDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraPanelDown.Location = new System.Drawing.Point(0, 164);
+            this.ultraPanelDown.Location = new System.Drawing.Point(0, 202);
+            this.ultraPanelDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ultraPanelDown.Name = "ultraPanelDown";
-            this.ultraPanelDown.Size = new System.Drawing.Size(452, 286);
+            this.ultraPanelDown.Size = new System.Drawing.Size(603, 352);
             this.ultraPanelDown.TabIndex = 1;
-            // 
-            // ultraLabel1
-            // 
-            this.ultraLabel1.Location = new System.Drawing.Point(52, 63);
-            this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(130, 23);
-            this.ultraLabel1.TabIndex = 0;
-            this.ultraLabel1.Text = "Importar ficheros cada ";
-            // 
-            // uneInterval
-            // 
-            this.uneInterval.Location = new System.Drawing.Point(177, 59);
-            this.uneInterval.Name = "uneInterval";
-            this.uneInterval.Size = new System.Drawing.Size(92, 21);
-            this.uneInterval.TabIndex = 1;
-            // 
-            // utbtnStart
-            // 
-            appearance3.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-            this.utbtnStart.Appearance = appearance3;
-            this.utbtnStart.ImageSize = new System.Drawing.Size(32, 32);
-            this.utbtnStart.Location = new System.Drawing.Point(57, 110);
-            this.utbtnStart.Name = "utbtnStart";
-            this.utbtnStart.Size = new System.Drawing.Size(75, 34);
-            this.utbtnStart.TabIndex = 2;
-            this.utbtnStart.Text = "Start";
-            this.utbtnStart.Click += new System.EventHandler(this.utbtnStart_Click);
-            // 
-            // utbtnStop
-            // 
-            appearance2.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
-            this.utbtnStop.Appearance = appearance2;
-            this.utbtnStop.ImageSize = new System.Drawing.Size(32, 32);
-            this.utbtnStop.Location = new System.Drawing.Point(138, 110);
-            this.utbtnStop.Name = "utbtnStop";
-            this.utbtnStop.Size = new System.Drawing.Size(79, 34);
-            this.utbtnStop.TabIndex = 3;
-            this.utbtnStop.Text = "Stop";
-            this.utbtnStop.Click += new System.EventHandler(this.utbtnStop_Click);
-            // 
-            // ultraLabel2
-            // 
-            this.ultraLabel2.Location = new System.Drawing.Point(52, 12);
-            this.ultraLabel2.Name = "ultraLabel2";
-            this.ultraLabel2.Size = new System.Drawing.Size(194, 23);
-            this.ultraLabel2.TabIndex = 0;
-            this.ultraLabel2.Text = "Ruta de los ficheros de laboratorio";
-            // 
-            // utePath
-            // 
-            this.utePath.Location = new System.Drawing.Point(52, 32);
-            this.utePath.Name = "utePath";
-            this.utePath.Size = new System.Drawing.Size(352, 21);
-            this.utePath.TabIndex = 4;
-            // 
-            // ultraLabel3
-            // 
-            appearance1.TextVAlignAsString = "Middle";
-            this.ultraLabel3.Appearance = appearance1;
-            this.ultraLabel3.Location = new System.Drawing.Point(275, 59);
-            this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(64, 23);
-            this.ultraLabel3.TabIndex = 5;
-            this.ultraLabel3.Text = "minutos";
             // 
             // uteLog
             // 
             this.uteLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uteLog.Location = new System.Drawing.Point(0, 0);
+            this.uteLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uteLog.Multiline = true;
             this.uteLog.Name = "uteLog";
-            this.uteLog.Size = new System.Drawing.Size(452, 286);
+            this.uteLog.Scrollbars = System.Windows.Forms.ScrollBars.Both;
+            this.uteLog.Size = new System.Drawing.Size(603, 352);
             this.uteLog.TabIndex = 0;
             // 
             // FileImporter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 450);
+            this.ClientSize = new System.Drawing.Size(603, 554);
             this.Controls.Add(this.ultraPanelDown);
             this.Controls.Add(this.ultraPanelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "FileImporter";
-            this.Text = "Proceso importación ficheros labortorio";
+            this.Text = "Proceso importación ficheros laboratorio";
             this.ultraPanelTop.ClientArea.ResumeLayout(false);
             this.ultraPanelTop.ClientArea.PerformLayout();
             this.ultraPanelTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.utePath)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uneInterval)).EndInit();
             this.ultraPanelDown.ClientArea.ResumeLayout(false);
             this.ultraPanelDown.ClientArea.PerformLayout();
             this.ultraPanelDown.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uneInterval)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.utePath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uteLog)).EndInit();
             this.ResumeLayout(false);
 
