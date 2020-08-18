@@ -81,5 +81,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IBuzonLaboratorioDataAccessor GetBuzonLaboratorioDataAccessor()
+        {
+            try
+            {
+                return (IBuzonLaboratorioDataAccessor)DataAccessorProvider.GetDataAccessorInstance("IBuzonLaboratorioDataAccessor");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

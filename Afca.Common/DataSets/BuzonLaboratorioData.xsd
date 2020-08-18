@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="BuzonLaboratorioData" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="BuzonLaboratorioData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BuzonLaboratorio">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" type="xs:string" />
+              <xs:element name="Establo" type="xs:string" minOccurs="0" />
+              <xs:element name="Grasa" type="xs:float" minOccurs="0" />
+              <xs:element name="Proteina" type="xs:float" minOccurs="0" />
+              <xs:element name="Lactosa" type="xs:float" minOccurs="0" />
+              <xs:element name="Rcs" type="xs:float" minOccurs="0" />
+              <xs:element name="FechaPrevista" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaControl" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaEntrega" type="xs:string" minOccurs="0" />
+              <xs:element name="FechaAnalisis" type="xs:string" minOccurs="0" />
+              <xs:element name="Fichero" type="xs:string" minOccurs="0" />
+              <xs:element name="Controlador" type="xs:string" minOccurs="0" />
+              <xs:element name="Agalactiae" type="xs:string" minOccurs="0" />
+              <xs:element name="Aureaus" type="xs:string" minOccurs="0" />
+              <xs:element name="Coag" type="xs:string" minOccurs="0" />
+              <xs:element name="NoAgal" type="xs:string" minOccurs="0" />
+              <xs:element name="Coliformes" type="xs:string" minOccurs="0" />
+              <xs:element name="Enterococos" type="xs:string" minOccurs="0" />
+              <xs:element name="Tanque" type="xs:string" minOccurs="0" />
+              <xs:element name="Acetona" type="xs:float" minOccurs="0" />
+              <xs:element name="Bhb" type="xs:float" minOccurs="0" />
+              <xs:element name="Urea" type="xs:float" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="BuzonLaboratorio_pk" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//BuzonLaboratorio" />
+      <xs:field xpath="Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

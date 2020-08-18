@@ -104,6 +104,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CLM2", "CLM2", "{0915C363-9
 		Resources\Documentacion\CLM2\dbo.sp_UpdateEstadoGanaderia_FromTerminal.StoredProcedure.sql = Resources\Documentacion\CLM2\dbo.sp_UpdateEstadoGanaderia_FromTerminal.StoredProcedure.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afca.Laboratorio", "Afca.Laboratorio\Afca.Laboratorio.csproj", "{8E873A1C-A712-4F20-8AC0-02B0B590A273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +132,10 @@ Global
 		{95F0380C-45A1-49F5-8FBB-B9AC92634937}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95F0380C-45A1-49F5-8FBB-B9AC92634937}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95F0380C-45A1-49F5-8FBB-B9AC92634937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

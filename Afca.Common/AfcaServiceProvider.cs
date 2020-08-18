@@ -89,5 +89,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IBuzonLaboratorioService GetBuzonLaboratorioService()
+        {
+            try
+            {
+                return (IBuzonLaboratorioService)ServiceProvider.GetServiceInstance("IBuzonLaboratorioService");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

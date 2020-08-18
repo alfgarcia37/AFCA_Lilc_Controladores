@@ -50,10 +50,16 @@
   <ItemGroup>
     <Compile Include="AfcaDataAccessorProvider.cs" />
     <Compile Include="AfcaServiceProvider.cs" />
+    <Compile Include="DataAccessorInterfaces\IBuzonLaboratorioDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\INacimientoSiluetasDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IXmlsDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IEstadoLecturaDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IGanaderiaDataAccessor.cs" />
+    <Compile Include="DataSets\BuzonLaboratorioData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\ControladorProgresoData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +105,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ServicesInterfaces\IBuzonLaboratorioService.cs" />
     <Compile Include="ServicesInterfaces\IImportarService.cs" />
     <Compile Include="ServicesInterfaces\IGenerarService.cs" />
     <Compile Include="ServicesInterfaces\INacimientoSiluetasService.cs" />
@@ -137,6 +144,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DataSets\BuzonLaboratorioData.xsc">
+      <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\BuzonLaboratorioData.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BuzonLaboratorioData.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\BuzonLaboratorioData.xss">
+      <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\ControladorData.xsc">
       <DependentUpon>ControladorData.xsd</DependentUpon>
     </None>
