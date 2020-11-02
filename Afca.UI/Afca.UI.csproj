@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,7 +35,15 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FrameworkForge.Common">
       <HintPath>..\Afca\Lib\FrameworkForge.Common.dll</HintPath>
     </Reference>
@@ -42,6 +52,9 @@
     </Reference>
     <Reference Include="FrameworkForge.WPF">
       <HintPath>..\Afca\Lib\FrameworkForge.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Ghostscript.NET, Version=1.2.1.0, Culture=neutral, PublicKeyToken=f85051de34525b59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ghostscript.NET.1.2.1\lib\net40\Ghostscript.NET.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Documents.Excel.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Olap.Core.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
@@ -77,6 +90,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -110,6 +125,7 @@
     <Compile Include="Custom Controls\NacimientoSiluetasControl.Designer.cs">
       <DependentUpon>NacimientoSiluetasControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="PropertiesBaseControls\PropertiesLeftTabControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +152,12 @@
     </Compile>
     <Compile Include="Providers\ControlsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AfcaFrameForm.resx">
@@ -164,14 +186,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
       <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
       <Name>Afca.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Afca.Reports\Afca.Reports.csproj">
+      <Project>{48feb749-adab-4688-b00f-72ce2d1c12c8}</Project>
+      <Name>Afca.Reports</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\find.png" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\export1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

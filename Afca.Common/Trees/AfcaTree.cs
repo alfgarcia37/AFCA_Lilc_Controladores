@@ -477,7 +477,7 @@ namespace Afca.Common
         }
         #endregion
 
-        #region Gestor Siluetas Nacimiento
+        #region Gestor Cartas Nacimiento
         static ItemMetaData CreateSiluetasTree()
         {
             ItemMetaData siluetasFolderNode = CreateSiluetasFolderNode();
@@ -486,10 +486,10 @@ namespace Afca.Common
         static ItemMetaData CreateSiluetasFolderNode()
         {
             ItemMetaData siluetasNode = new ItemMetaData("Siluetas");
-            siluetasNode.Text = "Nac.Siluetas (30 dias)";
+            siluetasNode.Text = "Nac.Cartas (30 dias)";
             siluetasNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
             siluetasNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-                                                          "ShowSiluetasManagerControl", "Exportar siluetas..."
+                                                          "ShowSiluetasManagerControl", "Exportar cartas..."
                                                           , ItemMethodType.GridEdit, "IconoExport"));
 
             ItemMetaData pendienteNode = CreateSiluetaNode();

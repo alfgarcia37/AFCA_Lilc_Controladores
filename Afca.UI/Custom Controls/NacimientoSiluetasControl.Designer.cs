@@ -40,23 +40,30 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("UltraToolbar");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbGuardar");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool2 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExportar");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExportar");
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbGuardar");
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("NacimientoSiluetas", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoGanaderia");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoCrotal");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaNacimiento");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Controlador");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SiluetaIzquierda");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SiluetaDerecha");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SiluetaCabeza");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ImagenCarta");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaCreado");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Imprimida");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoGanaderia");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoCrotal");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaNacimiento");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Controlador");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SiluetaIzquierda");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SiluetaDerecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SiluetaCabeza");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ImagenCarta");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaCreado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Imprimida");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodigoConafe");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("OrdenTrabajo");
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab1 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.UltraWinTabControl.UltraTab ultraTab2 = new Infragistics.Win.UltraWinTabControl.UltraTab();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.ultraPanelTop = new Infragistics.Win.Misc.UltraPanel();
             this.utbtnLimpiar = new Infragistics.Win.Misc.UltraButton();
             this.utbtnConsultar = new Infragistics.Win.Misc.UltraButton();
@@ -76,18 +83,23 @@
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraPanelBottom = new Infragistics.Win.Misc.UltraPanel();
             this.ultraPanel1 = new Infragistics.Win.Misc.UltraPanel();
-            this.ultraPictureBox = new Infragistics.Win.UltraWinEditors.UltraPictureBox();
             this.ultraPanelBody = new Infragistics.Win.Misc.UltraPanel();
             this.ultraPanelGrid = new Infragistics.Win.Misc.UltraPanel();
             this.ultraPanelToolBar = new Infragistics.Win.Misc.UltraPanel();
-            this.ultraToolbarsManager = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this.ClientArea_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this._ClientArea_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this.ultraToolbarsManager = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this._ClientArea_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
-            this._ClientArea_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ClientArea_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
+            this._ClientArea_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.gridSiluetas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.nacimientoSiluetasData = new Afca.Common.DataSets.NacimientoSiluetasData();
+            this.ultraTabControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
+            this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.ultraTabPageControl1 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ultraTabPageControl2 = new Infragistics.Win.UltraWinTabControl.UltraTabPageControl();
+            this.ultraPictureBox = new Infragistics.Win.UltraWinEditors.UltraPictureBox();
+            this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.ultraPanelTop.ClientArea.SuspendLayout();
             this.ultraPanelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udteCreadoHasta)).BeginInit();
@@ -106,10 +118,14 @@
             this.ultraPanelGrid.SuspendLayout();
             this.ultraPanelToolBar.ClientArea.SuspendLayout();
             this.ultraPanelToolBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
             this.ClientArea_Fill_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSiluetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nacimientoSiluetasData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).BeginInit();
+            this.ultraTabControl1.SuspendLayout();
+            this.ultraTabPageControl1.SuspendLayout();
+            this.ultraTabPageControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ultraPanelTop
@@ -332,27 +348,12 @@
             // 
             // ultraPanel1.ClientArea
             // 
-            this.ultraPanel1.ClientArea.Controls.Add(this.ultraPictureBox);
+            this.ultraPanel1.ClientArea.Controls.Add(this.ultraTabControl1);
             this.ultraPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraPanel1.Location = new System.Drawing.Point(0, 396);
             this.ultraPanel1.Name = "ultraPanel1";
             this.ultraPanel1.Size = new System.Drawing.Size(832, 102);
             this.ultraPanel1.TabIndex = 1;
-            // 
-            // ultraPictureBox
-            // 
-            appearance12.BackColor = System.Drawing.Color.Honeydew;
-            appearance12.BackColor2 = System.Drawing.Color.ForestGreen;
-            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            this.ultraPictureBox.Appearance = appearance12;
-            this.ultraPictureBox.BorderShadowColor = System.Drawing.Color.Empty;
-            this.ultraPictureBox.BorderShadowDepth = ((byte)(0));
-            this.ultraPictureBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            this.ultraPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.ultraPictureBox.Name = "ultraPictureBox";
-            this.ultraPictureBox.Size = new System.Drawing.Size(832, 102);
-            this.ultraPictureBox.TabIndex = 0;
             // 
             // ultraPanelBody
             // 
@@ -395,31 +396,6 @@
             this.ultraPanelToolBar.Size = new System.Drawing.Size(832, 38);
             this.ultraPanelToolBar.TabIndex = 0;
             // 
-            // ultraToolbarsManager
-            // 
-            this.ultraToolbarsManager.AlwaysShowMenusExpanded = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraToolbarsManager.DesignerFlags = 1;
-            this.ultraToolbarsManager.DockWithinContainer = this.ultraPanelToolBar.ClientArea;
-            this.ultraToolbarsManager.ShowFullMenusDelay = 500;
-            ultraToolbar1.DockedColumn = 0;
-            ultraToolbar1.DockedRow = 0;
-            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool2});
-            ultraToolbar1.Text = "UltraToolbar";
-            this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar1});
-            appearance13.Image = global::Afca.UI.Properties.Resources.save_as;
-            buttonTool1.SharedPropsInternal.AppearancesLarge.Appearance = appearance13;
-            appearance14.FontData.BoldAsString = "True";
-            appearance14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            appearance14.Image = global::Afca.UI.Properties.Resources.save_as;
-            buttonTool1.SharedPropsInternal.AppearancesSmall.Appearance = appearance14;
-            buttonTool1.SharedPropsInternal.Caption = "Exportar seleccionadas";
-            buttonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            this.ultraToolbarsManager.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool1});
-            this.ultraToolbarsManager.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager_ToolClick);
-            // 
             // ClientArea_Fill_Panel
             // 
             this.ClientArea_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
@@ -440,6 +416,37 @@
             this._ClientArea_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(0, 13);
             this._ClientArea_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager;
             // 
+            // ultraToolbarsManager
+            // 
+            this.ultraToolbarsManager.AlwaysShowMenusExpanded = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraToolbarsManager.DesignerFlags = 1;
+            this.ultraToolbarsManager.DockWithinContainer = this.ultraPanelToolBar.ClientArea;
+            this.ultraToolbarsManager.ShowFullMenusDelay = 500;
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedRow = 0;
+            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool4,
+            buttonTool2});
+            ultraToolbar1.Text = "UltraToolbar";
+            this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
+            ultraToolbar1});
+            appearance13.Image = global::Afca.UI.Properties.Resources.save_as;
+            buttonTool1.SharedPropsInternal.AppearancesLarge.Appearance = appearance13;
+            appearance14.FontData.BoldAsString = "True";
+            appearance14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            appearance14.Image = global::Afca.UI.Properties.Resources.export1;
+            buttonTool1.SharedPropsInternal.AppearancesSmall.Appearance = appearance14;
+            buttonTool1.SharedPropsInternal.Caption = "Exportar seleccionadas";
+            buttonTool1.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            appearance15.Image = global::Afca.UI.Properties.Resources.save_as;
+            buttonTool3.SharedPropsInternal.AppearancesSmall.Appearance = appearance15;
+            buttonTool3.SharedPropsInternal.Caption = "Guardar";
+            buttonTool3.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
+            this.ultraToolbarsManager.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool1,
+            buttonTool3});
+            this.ultraToolbarsManager.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManager_ToolClick);
+            // 
             // _ClientArea_Toolbars_Dock_Area_Right
             // 
             this._ClientArea_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
@@ -450,17 +457,6 @@
             this._ClientArea_Toolbars_Dock_Area_Right.Name = "_ClientArea_Toolbars_Dock_Area_Right";
             this._ClientArea_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(0, 13);
             this._ClientArea_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager;
-            // 
-            // _ClientArea_Toolbars_Dock_Area_Top
-            // 
-            this._ClientArea_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
-            this._ClientArea_Toolbars_Dock_Area_Top.BackColor = System.Drawing.SystemColors.Control;
-            this._ClientArea_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
-            this._ClientArea_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
-            this._ClientArea_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
-            this._ClientArea_Toolbars_Dock_Area_Top.Name = "_ClientArea_Toolbars_Dock_Area_Top";
-            this._ClientArea_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(832, 25);
-            this._ClientArea_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager;
             // 
             // _ClientArea_Toolbars_Dock_Area_Bottom
             // 
@@ -473,44 +469,83 @@
             this._ClientArea_Toolbars_Dock_Area_Bottom.Size = new System.Drawing.Size(832, 0);
             this._ClientArea_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager;
             // 
+            // _ClientArea_Toolbars_Dock_Area_Top
+            // 
+            this._ClientArea_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this._ClientArea_Toolbars_Dock_Area_Top.BackColor = System.Drawing.SystemColors.Control;
+            this._ClientArea_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
+            this._ClientArea_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
+            this._ClientArea_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
+            this._ClientArea_Toolbars_Dock_Area_Top.Name = "_ClientArea_Toolbars_Dock_Area_Top";
+            this._ClientArea_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(832, 25);
+            this._ClientArea_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager;
+            // 
             // gridSiluetas
             // 
             this.gridSiluetas.DataMember = "NacimientoSiluetas";
             this.gridSiluetas.DataSource = this.nacimientoSiluetasData;
-            ultraGridColumn11.Header.Caption = "Cod.Ganaderia";
+            ultraGridColumn1.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn1.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            ultraGridColumn1.Header.Caption = "Cod.Ganaderia";
+            ultraGridColumn1.Header.Editor = null;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn2.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            ultraGridColumn2.Header.Caption = "Cod.Crotal";
+            ultraGridColumn2.Header.Editor = null;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn11.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn11.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            ultraGridColumn11.Header.Caption = "Nacimiento";
             ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 0;
-            ultraGridColumn12.Header.Caption = "Cod.Crotal";
+            ultraGridColumn11.Header.VisiblePosition = 2;
+            ultraGridColumn12.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn12.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 1;
-            ultraGridColumn13.Header.Caption = "Nacimiento";
+            ultraGridColumn12.Header.VisiblePosition = 3;
+            ultraGridColumn13.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn13.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 2;
+            ultraGridColumn13.Header.VisiblePosition = 4;
+            ultraGridColumn13.Hidden = true;
+            ultraGridColumn14.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn14.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 3;
+            ultraGridColumn14.Header.VisiblePosition = 5;
+            ultraGridColumn14.Hidden = true;
+            ultraGridColumn15.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn15.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             ultraGridColumn15.Header.Editor = null;
-            ultraGridColumn15.Header.VisiblePosition = 4;
+            ultraGridColumn15.Header.VisiblePosition = 6;
             ultraGridColumn15.Hidden = true;
+            ultraGridColumn16.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn16.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            ultraGridColumn16.Format = "dd/MM/yyyy hh:mm";
             ultraGridColumn16.Header.Editor = null;
-            ultraGridColumn16.Header.VisiblePosition = 5;
+            ultraGridColumn16.Header.VisiblePosition = 7;
             ultraGridColumn16.Hidden = true;
+            ultraGridColumn17.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn17.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            ultraGridColumn17.Format = "dd/MM/yyyy hh:mm";
+            ultraGridColumn17.Header.Caption = "Registrado";
             ultraGridColumn17.Header.Editor = null;
-            ultraGridColumn17.Header.VisiblePosition = 6;
-            ultraGridColumn17.Hidden = true;
+            ultraGridColumn17.Header.VisiblePosition = 8;
+            ultraGridColumn17.Width = 113;
+            ultraGridColumn18.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn18.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             ultraGridColumn18.Format = "dd/MM/yyyy hh:mm";
             ultraGridColumn18.Header.Editor = null;
-            ultraGridColumn18.Header.VisiblePosition = 7;
-            ultraGridColumn18.Hidden = true;
-            ultraGridColumn19.Format = "dd/MM/yyyy hh:mm";
-            ultraGridColumn19.Header.Caption = "Registrado";
+            ultraGridColumn18.Header.VisiblePosition = 9;
+            ultraGridColumn18.Width = 110;
+            ultraGridColumn19.Header.Caption = "Codigo Conafe";
             ultraGridColumn19.Header.Editor = null;
-            ultraGridColumn19.Header.VisiblePosition = 8;
-            ultraGridColumn19.Width = 113;
-            ultraGridColumn20.Format = "dd/MM/yyyy hh:mm";
+            ultraGridColumn19.Header.VisiblePosition = 10;
+            ultraGridColumn20.Header.Caption = "Orden Trabajo";
             ultraGridColumn20.Header.Editor = null;
-            ultraGridColumn20.Header.VisiblePosition = 9;
-            ultraGridColumn20.Width = 110;
+            ultraGridColumn20.Header.VisiblePosition = 11;
             ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn1,
+            ultraGridColumn2,
             ultraGridColumn11,
             ultraGridColumn12,
             ultraGridColumn13,
@@ -521,14 +556,15 @@
             ultraGridColumn18,
             ultraGridColumn19,
             ultraGridColumn20});
+            ultraGridBand1.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.True;
             this.gridSiluetas.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.gridSiluetas.DisplayLayout.MaxColScrollRegions = 1;
             this.gridSiluetas.DisplayLayout.MaxRowScrollRegions = 1;
-            this.gridSiluetas.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             this.gridSiluetas.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.gridSiluetas.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.gridSiluetas.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.gridSiluetas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridSiluetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridSiluetas.Location = new System.Drawing.Point(0, 0);
             this.gridSiluetas.Name = "gridSiluetas";
             this.gridSiluetas.Size = new System.Drawing.Size(832, 358);
@@ -541,6 +577,71 @@
             // 
             this.nacimientoSiluetasData.DataSetName = "NacimientoSiluetasData";
             this.nacimientoSiluetasData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // ultraTabControl1
+            // 
+            this.ultraTabControl1.Controls.Add(this.ultraTabSharedControlsPage1);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl1);
+            this.ultraTabControl1.Controls.Add(this.ultraTabPageControl2);
+            this.ultraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.ultraTabControl1.Name = "ultraTabControl1";
+            this.ultraTabControl1.SharedControlsPage = this.ultraTabSharedControlsPage1;
+            this.ultraTabControl1.Size = new System.Drawing.Size(832, 102);
+            this.ultraTabControl1.TabIndex = 1;
+            ultraTab1.TabPage = this.ultraTabPageControl1;
+            ultraTab1.Text = "Carta";
+            ultraTab2.TabPage = this.ultraTabPageControl2;
+            ultraTab2.Text = "Silueta";
+            this.ultraTabControl1.Tabs.AddRange(new Infragistics.Win.UltraWinTabControl.UltraTab[] {
+            ultraTab1,
+            ultraTab2});
+            // 
+            // ultraTabSharedControlsPage1
+            // 
+            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(828, 76);
+            // 
+            // ultraTabPageControl1
+            // 
+            this.ultraTabPageControl1.Controls.Add(this.crystalReportViewer);
+            this.ultraTabPageControl1.Location = new System.Drawing.Point(1, 23);
+            this.ultraTabPageControl1.Name = "ultraTabPageControl1";
+            this.ultraTabPageControl1.Size = new System.Drawing.Size(828, 76);
+            // 
+            // ultraTabPageControl2
+            // 
+            this.ultraTabPageControl2.Controls.Add(this.ultraPictureBox);
+            this.ultraTabPageControl2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraTabPageControl2.Name = "ultraTabPageControl2";
+            this.ultraTabPageControl2.Size = new System.Drawing.Size(828, 76);
+            // 
+            // ultraPictureBox
+            // 
+            appearance12.BackColor = System.Drawing.Color.Honeydew;
+            appearance12.BackColor2 = System.Drawing.Color.ForestGreen;
+            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            this.ultraPictureBox.Appearance = appearance12;
+            this.ultraPictureBox.BorderShadowColor = System.Drawing.Color.Empty;
+            this.ultraPictureBox.BorderShadowDepth = ((byte)(0));
+            this.ultraPictureBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
+            this.ultraPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.ultraPictureBox.Name = "ultraPictureBox";
+            this.ultraPictureBox.Size = new System.Drawing.Size(828, 76);
+            this.ultraPictureBox.TabIndex = 1;
+            // 
+            // crystalReportViewer
+            // 
+            this.crystalReportViewer.ActiveViewIndex = -1;
+            this.crystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer.Name = "crystalReportViewer";
+            this.crystalReportViewer.Size = new System.Drawing.Size(828, 76);
+            this.crystalReportViewer.TabIndex = 0;
             // 
             // NacimientoSiluetasControl
             // 
@@ -569,10 +670,14 @@
             this.ultraPanelGrid.ResumeLayout(false);
             this.ultraPanelToolBar.ClientArea.ResumeLayout(false);
             this.ultraPanelToolBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).EndInit();
             this.ClientArea_Fill_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSiluetas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nacimientoSiluetasData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTabControl1)).EndInit();
+            this.ultraTabControl1.ResumeLayout(false);
+            this.ultraTabPageControl1.ResumeLayout(false);
+            this.ultraTabPageControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -603,12 +708,17 @@
         private Infragistics.Win.Misc.UltraPanel ultraPanelToolBar;
         private Common.DataSets.NacimientoSiluetasData nacimientoSiluetasData;
         private Infragistics.Win.Misc.UltraPanel ultraPanel1;
-        private Infragistics.Win.UltraWinEditors.UltraPictureBox ultraPictureBox;
         private Infragistics.Win.Misc.UltraPanel ClientArea_Fill_Panel;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _ClientArea_Toolbars_Dock_Area_Left;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsManager ultraToolbarsManager;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _ClientArea_Toolbars_Dock_Area_Right;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _ClientArea_Toolbars_Dock_Area_Bottom;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea _ClientArea_Toolbars_Dock_Area_Top;
+        private Infragistics.Win.UltraWinTabControl.UltraTabControl ultraTabControl1;
+        private Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage ultraTabSharedControlsPage1;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
+        private Infragistics.Win.UltraWinTabControl.UltraTabPageControl ultraTabPageControl2;
+        private Infragistics.Win.UltraWinEditors.UltraPictureBox ultraPictureBox;
     }
 }

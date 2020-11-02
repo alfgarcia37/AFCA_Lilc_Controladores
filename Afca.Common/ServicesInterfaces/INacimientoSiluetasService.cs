@@ -12,6 +12,7 @@ namespace Afca.Common.ServicesInterfaces {
     using FrameworkForge.Common.Interfaces;
     using FrameworkForge.Common.DataStructures;
     using Afca.Common.DataSets;
+    using Afca.Common.DataReports;
     
     
     public interface INacimientoSiluetasService : IService {
@@ -28,6 +29,12 @@ namespace Afca.Common.ServicesInterfaces {
         
         int UpdateNacimientoSiluetasData(NacimientoSiluetasData data);
         byte[] GetImageCarta(string argCodigoGanaderia, string argCodigoCrotal);
-        void SetImagenCartaImprimida(string argCodigoGanaderia, string argCodigoCrotal);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="argCodigoGanaderia"></param>
+        /// <param name="parameters">Codigo Crotal, Codigo Conafe, orden Tabajo</param>
+        void SetImagenCartaImprimida(string argCodigoGanaderia, string[] parameters);
+        CartaRegistroReportData GetCartaRegistroData(string argCodigoGanaderia, string argCodigoCrotal);
     }
 }

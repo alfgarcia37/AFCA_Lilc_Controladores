@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.EnterpriseLibrary.Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -18,7 +19,6 @@ namespace Afca
         {
             FrameworkForge.UI.ApplicationContext.Run();
             //Encrypt();
-
         }
         static void Encrypt()
         {
@@ -44,6 +44,32 @@ namespace Afca
             string cdecrypted = Encriptador.Decrypt("gZziQZqwgFz8m+jB9Y3Me6XV7kBVmFuxChQcrc36gR79dhWkSIftThm/5Bf1IJnGiJ3sWsbsMjM/LKrcmLzQpg==");
             Console.WriteLine(string.Format("Afca.dell: {0}", cdecrypted));
             Console.ReadLine();
+        }
+        static void LeerFichero()
+        {
+            using (StreamReader reader = new StreamReader(@"J:\txt embarazo.txt"))
+            {
+                using (StreamWriter writer = new StreamWriter(@"J:\output_txt_embarazo.txt"))
+                {
+                    string line = "";
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        string[] split = line.Split(new char[] { '|' });
+
+                        string firstPart = split[0];
+                        string[] firstSplit = firstPart.Split(new char[] { '.' });
+
+                        int i = 1;
+                        while (i < split.Length && split[i] == "")
+                        {
+                            i++;
+                        }
+
+                        writer.WriteLine("{0}|{1}|{2}", firstSplit[0],firstSplit[1], split[i]);
+
+                    }
+                }
+            }
         }
     }
 }

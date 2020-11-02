@@ -15,8 +15,9 @@ namespace Afca.Services {
     using Afca.Common.DataSets;
     using FrameworkForge.Common;
     using FrameworkForge.Common.DataStructures;
-    
-    
+    using Afca.Common.DataReports;
+    using dO = FrameworkForge.Common.DataOperations;
+
     public class NacimientoSiluetasService : INacimientoSiluetasService {
         
         private INacimientoSiluetasDataAccessor nacimientoSiluetasDA;
@@ -64,9 +65,110 @@ namespace Afca.Services {
             return nacimientoSiluetasDA.GetImageCarta(argCodigoGanaderia, argCodigoCrotal);
         }
 
-        public void SetImagenCartaImprimida(string argCodigoGanaderia, string argCodigoCrotal)
+        public void SetImagenCartaImprimida(string argCodigoGanaderia, string[] parameters)
         {
-            nacimientoSiluetasDA.SetImagenCartaImprimida(argCodigoGanaderia, argCodigoCrotal);
+            nacimientoSiluetasDA.SetImagenCartaImprimida(argCodigoGanaderia, parameters);
+        }
+
+        public CartaRegistroReportData GetCartaRegistroData(string argCodigoGanaderia, string argCodigoCrotal)
+        {
+            CartaRegistroReportData data = nacimientoSiluetasDA.GetCartaRegistroData(argCodigoGanaderia, argCodigoCrotal);
+
+            if(data.Datos.Rows.Count>0)
+            {
+                DataRow datosRow = data.Datos.Rows[0];
+
+                string[] upperFields = new string[] { "CodigoConafe"
+                    ,"PadreNombre", "MadreNombre"
+                    ,"GanaderiaNombre"
+                    ,"FirmanteLugar","FirmaMes" };
+
+                foreach (string field in upperFields)
+                {
+                    if (!dO.EsNulo(datosRow, field))
+                        datosRow[field] = datosRow[field].ToString().ToUpper();
+                }
+
+                string nombre = dO.cls(datosRow, "Nombre", "").ToString();
+                DataRow nombreRow = data.Nombre.NewRow();
+
+                int i = 1;
+
+                foreach (char letra in nombre.ToUpper().ToCharArray())
+                {
+                    if (i == 31)
+                        break;
+
+                    nombreRow[string.Format("c{0}", i)] = letra.ToString();
+                    i++;
+                }
+
+                data.Nombre.Rows.Add(nombreRow);
+
+                string establo = dO.cls(datosRow, "EstabloNum", "").ToString();
+
+                if (!string.IsNullOrEmpty(establo) && establo.Length >= 4)
+                {
+                    DataRow establoRow = data.Establo.NewRow();
+                    establoRow["e1"] = establo[0];
+                    establoRow["e2"] = establo[1];
+                    establoRow["e3"] = establo[2];
+                    establoRow["e4"] = establo[3];
+                    data.Establo.Rows.Add(establoRow);
+                }
+
+                string cib = dO.cls(datosRow, "EstabloCib", "").ToString();
+
+                if (!string.IsNullOrEmpty(cib) && cib.Length>=14)
+                {
+                    DataRow cibRow = data.CIB.NewRow();
+                    cibRow["Prefijo"] = cib.Substring(0,2);
+
+                    int j = 1;
+                    foreach (char c in cib.Substring(2,12).ToCharArray())
+                    {
+                        cibRow[string.Format("c{0}", j)] = c.ToString();
+                        j++;
+                    }
+                    data.CIB.Rows.Add(cibRow);
+                }
+
+                string cibP = dO.cls(datosRow, "PortadoraCib", "").ToString();
+
+                if (!string.IsNullOrEmpty(cibP) && cibP.Length >= 14)
+                {
+                    DataRow cibPRow = data.CIBPortadora.NewRow();
+                    cibPRow["Prefijo"] = cibP.Substring(0, 2);
+
+                    int k = 1;
+                    foreach (char c in cibP.Substring(2, 12).ToCharArray())
+                    {
+                        cibPRow[string.Format("c{0}", k)] = c.ToString();
+                        k++;
+                    }
+                    data.CIBPortadora.Rows.Add(cibPRow);
+                }
+
+                string ganaderia = dO.cls(datosRow,"GanaderiaCodigo","").ToString();
+
+                if (!string.IsNullOrEmpty(ganaderia) && ganaderia.Length >= 7)
+                {
+                    DataRow codGanRow = data.Ganaderia.NewRow();
+
+                    int m = 1;
+                    foreach (char c in ganaderia.ToCharArray())
+                    {
+                        codGanRow[string.Format("c{0}", m)] = c.ToString();
+                        m++;
+                    }
+                    data.Ganaderia.Rows.Add(codGanRow);
+                }
+
+            }
+
+            data.AcceptChanges();
+
+            return data;
         }
     }
 }

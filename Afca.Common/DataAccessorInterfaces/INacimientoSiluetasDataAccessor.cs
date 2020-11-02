@@ -11,8 +11,8 @@
 namespace Afca.Common.DataAccessor {
     using FrameworkForge.Common.Interfaces;
     using Afca.Common.DataSets;
-    
-    
+    using Afca.Common.DataReports;
+
     public interface INacimientoSiluetasDataAccessor : IDataAccessor {
         
         NacimientoSiluetasData LoadNacimientoSiluetasData();
@@ -24,6 +24,7 @@ namespace Afca.Common.DataAccessor {
         
         int UpdateNacimientoSiluetasData(NacimientoSiluetasData data);
         byte[] GetImageCarta(string argCodigoGanaderia, string argCodigoCrotal);
-        void SetImagenCartaImprimida(string argCodigoGanaderia, string argCodigoCrotal);
+        void SetImagenCartaImprimida(string argCodigoGanaderia, string[] parameters);
+        CartaRegistroReportData GetCartaRegistroData(string argCodigoGanaderia, string argCodigoCrotal);
     }
 }

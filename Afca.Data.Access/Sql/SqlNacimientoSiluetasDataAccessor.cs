@@ -20,6 +20,8 @@ namespace Afca.Data.Access {
     using System.Linq;
     using dO = FrameworkForge.Common.DataOperations;
     using Infragistics.Win.UltraWinGrid;
+    using System.Data.SqlTypes;
+    using Afca.Common.DataReports;
 
     public class SqlNacimientoSiluetasDataAccessor : SqlDataAccessor, INacimientoSiluetasDataAccessor {
         
@@ -59,9 +61,9 @@ namespace Afca.Data.Access {
             DataUpdateInfo updateInfo = new DataUpdateInfo(data);
             updateInfo.UpdateTable.Add(
                                 new DataUpdateTableInfo("NacimientoSiluetas"
-                                ,"sp_NacimientoSiluetas_insert"
-                                ,"sp_NacimientoSiluetas_update"
-                                ,"sp_NacimientoSiluetas_delete"));
+                                ,"sp_clm2_NacimientoSiluetas_insert"
+                                ,"sp_clm2_NacimientoSiluetas_update"
+                                ,"sp_clm2_NacimientoSiluetas_delete"));
             return this.UpdateDataSet(updateInfo);
         }
 
@@ -111,13 +113,28 @@ namespace Afca.Data.Access {
                 return null;
         }
 
-        public void SetImagenCartaImprimida(string argCodigoGanaderia, string argCodigoCrotal)
+        public void SetImagenCartaImprimida(string argCodigoGanaderia, string[] parameters)
         {
+
             this.ExecuteNonQuery("sp_clm2_NacimientoSiluetas_SetImprimida",
                 new SqlParameter[]{
                                      new SqlParameter("@CodigoGanaderia",argCodigoGanaderia)
-                                    ,new SqlParameter("@CodigoCrotal",argCodigoCrotal)
+                                    ,new SqlParameter("@CodigoCrotal",parameters[0])
+                                    ,new SqlParameter("@CodigoConafe",String.IsNullOrEmpty(parameters[1])? SqlString.Null:parameters[1])
+                                    ,new SqlParameter("@OrdenTrabajo",String.IsNullOrEmpty(parameters[2])? SqlString.Null:parameters[2])
                                     });
+        }
+
+        public CartaRegistroReportData GetCartaRegistroData(string argCodigoGanaderia, string argCodigoCrotal)
+        {
+            return (CartaRegistroReportData)this.ExecuteDataSet(new CartaRegistroReportData()
+                               , "sp_NacimientoCarta_select"
+                               , CommandType.StoredProcedure
+                               , new SqlParameter[]{
+                                        new SqlParameter("@CodigoGanaderia",argCodigoGanaderia)
+                                    ,new SqlParameter("@CodigoCrotal",argCodigoCrotal)
+                                   }
+                               , new string[] { "Datos" });
         }
     }
 }

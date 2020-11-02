@@ -55,6 +55,14 @@
     <Compile Include="DataAccessorInterfaces\IXmlsDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IEstadoLecturaDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IGanaderiaDataAccessor.cs" />
+    <Compile Include="DataReports\CartaRegistroReportData.cs">
+      <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataReports\CartaRegistroReportData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\BuzonLaboratorioData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +152,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DataReports\CartaRegistroReportData.xsc">
+      <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </None>
+    <None Include="DataReports\CartaRegistroReportData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CartaRegistroReportData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataReports\CartaRegistroReportData.xss">
+      <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\BuzonLaboratorioData.xsc">
       <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
     </None>

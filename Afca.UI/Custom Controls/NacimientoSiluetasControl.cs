@@ -6,14 +6,18 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Afca.Common;
+using Afca.Common.DataReports;
 using Afca.Common.DataSets;
 using Afca.Common.ServicesInterfaces;
+using Afca.Reports;
+using CrystalDecisions.CrystalReports.Engine;
 using FrameworkForge.Common;
 using Infragistics.Win.UltraWinGrid;
 using dO = FrameworkForge.Common.DataOperations;
@@ -139,9 +143,11 @@ namespace Afca.UI
         }
         void SetImagenCartaImprida(UltraGridRow selectedRow)
         {
-            string codGanaderia = selectedRow.Cells["CodigoGanaderia"].Value.ToString()
-                 , codCrotal = selectedRow.Cells["CodigoCrotal"].Value.ToString();
-            service.SetImagenCartaImprimida(codGanaderia, codCrotal);
+            service.SetImagenCartaImprimida(
+                selectedRow.Cells["CodigoGanaderia"].Value.ToString(),
+                new string[] {selectedRow.Cells["CodigoCrotal"].Value.ToString()
+                            ,dO.cls(selectedRow, "CodigoConafe", "").ToString()
+                            ,dO.cls(selectedRow, "OrdenTrabajo", "").ToString()});
         }
         void SetRowSelectorIconAppearance(UltraGridRow row)
         {
@@ -162,66 +168,166 @@ namespace Afca.UI
             }
 
         }
-        void ExportarSiluetasSeleccionadas()
+        void SaveInfo()
         {
-            FolderBrowserDialog dialog = new FolderBrowserDialog();
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (nacimientoSiluetasData.NacimientoSiluetas.GetChanges() != null)
             {
-                Cursor = Cursors.WaitCursor;
-
-                string folderToSave = "";
-                ArrayList errores = new ArrayList();
-
-                folderToSave = dialog.SelectedPath;
-
-                int total=0, actualizadas=0;
-
-                foreach (UltraGridRow selectedRow in gridSiluetas.Selected.Rows)
+                try
                 {
-                    try
-                    {
-                        var imageBytes = LoadImagenCarta(
-                         selectedRow.Cells["CodigoGanaderia"].Value.ToString()
-                        , selectedRow.Cells["CodigoCrotal"].Value.ToString());
+                    var data = (NacimientoSiluetasData)nacimientoSiluetasData.GetChanges();
+                    service.UpdateNacimientoSiluetasData(data);
+                    nacimientoSiluetasData.AcceptChanges();
+                }
+                catch (System.Exception e)
+                {
+                    DialogsManager.ShowErrorDialog("Guardando info....",
+                       string.Format("Se han producido el siguiente error al guardar:{0}"
+                       , e.Message));
+                }
+            }
+        }
+        void ExportarCartasSeleccionadas()
+        {
 
-                        if (imageBytes != null)
+            Cursor = Cursors.WaitCursor;
+
+            string folderToSave = ConfigurationProvider.GetConfigurationValue("RutaImpresoraCarta");
+
+            ArrayList errores = new ArrayList();
+
+            int total = 0, actualizadas = 0;
+
+            foreach (UltraGridRow selectedRow in gridSiluetas.Selected.Rows)
+            {
+                try
+                {
+                    string codCrotal = dO.cls(selectedRow, "CodigoCrotal", "").ToString()
+                       , codGanaderia = dO.cls(selectedRow, "CodigoGanaderia", "").ToString()
+                       , codConafe = dO.cls(selectedRow, "CodigoConafe", "").ToString();
+
+                    if (!String.IsNullOrEmpty(codCrotal) && !String.IsNullOrEmpty(codGanaderia))
+                    {
+                        CartaRegistroReportData data = LoadCartaRegistroData(codGanaderia, codCrotal);
+
+                        if (data != null)
                         {
                             total++;
-                            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
-                            ms.Write(imageBytes, 0, imageBytes.Length);
-                            var image = Image.FromStream(ms, true);
-                            image.Save(string.Format(@"{0}\{1}.png", folderToSave, selectedRow.Cells["CodigoCrotal"].Value.ToString())
-                                , ImageFormat.Png);
+
+                            CartaRegistroReport report = new CartaRegistroReport();
+                            report.SetDataSource(data);
+
+                            if (String.IsNullOrEmpty(codConafe))
+                                throw new Exception(string.Format("El crotal {0} no tiene codigo de CONAFE asignado", codCrotal));
+
+                            PrintCartaTiff(report, codConafe.Substring(codConafe.Length - 8, 8));
+
                             SetImagenCartaImprida(selectedRow);
+
                             selectedRow.Cells["Imprimida"].Value = DateTime.Now;
+                            (selectedRow.ListObject as DataRowView).Row.AcceptChanges();
                             actualizadas++;
                         }
                     }
-                    catch (Exception e)
+                }
+                catch (Exception e)
+                {
+                    errores.Add(string.Format("{0} : {1}"
+                        , selectedRow.Cells["CodigoCrotal"].Value.ToString(), e.Message));
+                }
+            }
+            Cursor = Cursors.Default;
+
+
+            if (total > 0)
+            {
+                DialogsManager.ShowInfo("Resultado",
+                    string.Format(@"Se han exportado correctamente {0}\{1} cartas", actualizadas, total));
+            }
+
+            if (total > 0 && errores.Count > 0)
+            {
+                DialogsManager.ShowErrorDialog("Exportación cartas",
+                    string.Format("Se han producido los siguientes errores al exportar:{0}{1}"
+                    , Environment.NewLine
+                    , String.Join(Environment.NewLine, errores.ToArray())));
+            }
+
+            if (folderToSave != "")
+            {
+                DirectoryInfo info = new DirectoryInfo(folderToSave);
+
+                FileInfo[] files = info.GetFiles("*Crystal*");
+
+                for (int i = files.Length - 1; i >= 0; i--)
+                {
+                    string[] split = files[i].Name.Split(new char[] { '-' });
+
+                    if (split.Length == 2)
                     {
-                        errores.Add(string.Format("{0} : {1}"
-                            ,selectedRow.Cells["CodigoCrotal"].Value.ToString(),e.Message));
+                        File.Copy(files[i].FullName,
+                            string.Format(@"{0}\{1}", folderToSave, split[1]),true);
+                        File.Delete(files[i].FullName);
                     }
-                }
-                Cursor = Cursors.Default;
 
-                if (total > 0)
-                {
-                    DialogsManager.ShowInfo("Resultado",
-                        string.Format(@"Se han exportado corretamente {0}\{1} siluetas",actualizadas,total));
                 }
 
-                if (total>0 && errores.Count > 0)
-                {
-                    DialogsManager.ShowErrorDialog("Exportación siluetas",
-                        string.Format("Se han producido los siguientes errores al exportar:{0}{1}"
-                        , Environment.NewLine
-                        , String.Join(Environment.NewLine, errores.ToArray())));
-                }
                 Process.Start("explorer", folderToSave);
             }
 
+
+
+        }
+        void PrintCartaTiff(CartaRegistroReport report,string fileTitle)
+        {
+            PrinterSettings ps = new PrinterSettings();
+            ps.PrinterName = "PDFCreator";
+
+            PageSettings pgs = new PageSettings();
+            pgs.PrinterSettings = ps;
+            pgs.PrinterSettings.PrintFileName = fileTitle;
+
+            ((ReportClass)report).SummaryInfo.ReportTitle = fileTitle;
+            ((ReportClass)report).PrintToPrinter(ps, pgs, false);
+            
+        }
+    
+        void PreviewCartaReport(UltraGridRow selectedRow)
+        {
+            //previsualizar informe
+            try
+            {
+                string codCrotal = dO.cls(selectedRow,"CodigoCrotal","").ToString()
+                    , codGanaderia = dO.cls(selectedRow, "CodigoGanaderia", "").ToString();
+
+                if (!String.IsNullOrEmpty(codCrotal) && !String.IsNullOrEmpty(codGanaderia))
+                {
+                    CartaRegistroReportData data = LoadCartaRegistroData(codGanaderia, codCrotal);
+
+                    CartaRegistroReport report = new CartaRegistroReport();
+                    report.SetDataSource(data);
+                    crystalReportViewer.ReportSource = report;
+                }
+                else
+                    DialogsManager.ShowInfo("Mensaje"
+                        , "El registro seleccionado no tiene datos para mostrar la carta");
+            }
+            catch (Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Mostrar carta"
+                    ,string.Format("{0}{1}{2}",e.Message
+                    ,Environment.NewLine,e.InnerException!=null?e.InnerException.Message:""));
+            }
+        }
+        CartaRegistroReportData LoadCartaRegistroData(string argCodigoGanaderia,string argCodigoCrotal)
+        {
+            try
+            {
+                return service.GetCartaRegistroData(argCodigoGanaderia, argCodigoCrotal);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al cargar los datos de la carta",e);
+            }
         }
         #endregion
 
@@ -234,8 +340,10 @@ namespace Afca.UI
         {
             if (e.Type.Equals(typeof(UltraGridRow)))
             {
+                if (gridSiluetas.Selected.Rows.Count == 0) return;
                 var selectedRow = gridSiluetas.Selected.Rows[0];
                 PreviewImagenCarta(selectedRow);
+                PreviewCartaReport(selectedRow);
             }
         }
         private void gridSiluetas_InitializeRow(object sender, InitializeRowEventArgs e)
@@ -256,7 +364,10 @@ namespace Afca.UI
             switch (e.Tool.Key)
             {
                 case "tbbExportar":
-                    ExportarSiluetasSeleccionadas();
+                    ExportarCartasSeleccionadas();
+                    break;
+                case "tbbGuardar":
+                    SaveInfo();
                     break;
             }
         }

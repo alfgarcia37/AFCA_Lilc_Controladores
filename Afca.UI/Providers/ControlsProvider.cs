@@ -25,13 +25,13 @@ namespace Afca.UI
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new ControlsTesterForm());
-        }
+        //[STAThread]
+        //static void Main()
+        //{
+        //    Application.EnableVisualStyles();
+        //    Application.SetCompatibleTextRenderingDefault(false);
+        //    //Application.Run(new ControlsTesterForm());
+        //}
 
         public static Hashtable Controls = new Hashtable();
         public static Form ShowControlInForm(string title, string iconName, Control controlAdded)
@@ -436,7 +436,7 @@ namespace Afca.UI
         public static void ShowSiluetasManagerControl(ItemData itContainer)
         {
             ShowControlInForm(
-                "Siluetas Nacimientos"
+                "Cartas Nacimientos"
                 , "IconoExport"
                 , new NacimientoSiluetasControl());
         }

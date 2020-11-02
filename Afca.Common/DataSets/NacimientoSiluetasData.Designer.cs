@@ -298,6 +298,10 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnImprimida;
             
+            private global::System.Data.DataColumn columnCodigoConafe;
+            
+            private global::System.Data.DataColumn columnOrdenTrabajo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public NacimientoSiluetasDataTable() {
@@ -413,6 +417,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CodigoConafeColumn {
+                get {
+                    return this.columnCodigoConafe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn OrdenTrabajoColumn {
+                get {
+                    return this.columnOrdenTrabajo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -448,7 +468,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public NacimientoSiluetasRow AddNacimientoSiluetasRow(string CodigoGanaderia, string CodigoCrotal, System.DateTime FechaNacimiento, int Controlador, byte[] SiluetaIzquierda, byte[] SiluetaDerecha, byte[] SiluetaCabeza, byte[] ImagenCarta, System.DateTime FechaCreado, System.DateTime Imprimida) {
+            public NacimientoSiluetasRow AddNacimientoSiluetasRow(string CodigoGanaderia, string CodigoCrotal, System.DateTime FechaNacimiento, int Controlador, byte[] SiluetaIzquierda, byte[] SiluetaDerecha, byte[] SiluetaCabeza, byte[] ImagenCarta, System.DateTime FechaCreado, System.DateTime Imprimida, string CodigoConafe, string OrdenTrabajo) {
                 NacimientoSiluetasRow rowNacimientoSiluetasRow = ((NacimientoSiluetasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CodigoGanaderia,
@@ -460,7 +480,9 @@ namespace Afca.Common.DataSets {
                         SiluetaCabeza,
                         ImagenCarta,
                         FechaCreado,
-                        Imprimida};
+                        Imprimida,
+                        CodigoConafe,
+                        OrdenTrabajo};
                 rowNacimientoSiluetasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNacimientoSiluetasRow);
                 return rowNacimientoSiluetasRow;
@@ -501,6 +523,8 @@ namespace Afca.Common.DataSets {
                 this.columnImagenCarta = base.Columns["ImagenCarta"];
                 this.columnFechaCreado = base.Columns["FechaCreado"];
                 this.columnImprimida = base.Columns["Imprimida"];
+                this.columnCodigoConafe = base.Columns["CodigoConafe"];
+                this.columnOrdenTrabajo = base.Columns["OrdenTrabajo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -526,6 +550,10 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnFechaCreado);
                 this.columnImprimida = new global::System.Data.DataColumn("Imprimida", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnImprimida);
+                this.columnCodigoConafe = new global::System.Data.DataColumn("CodigoConafe", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigoConafe);
+                this.columnOrdenTrabajo = new global::System.Data.DataColumn("OrdenTrabajo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrdenTrabajo);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("NacimientoSiluetas_pk", new global::System.Data.DataColumn[] {
                                 this.columnCodigoGanaderia,
                                 this.columnCodigoCrotal}, true));
@@ -811,6 +839,38 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CodigoConafe {
+                get {
+                    try {
+                        return ((string)(this[this.tableNacimientoSiluetas.CodigoConafeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodigoConafe\' in table \'NacimientoSiluetas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNacimientoSiluetas.CodigoConafeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string OrdenTrabajo {
+                get {
+                    try {
+                        return ((string)(this[this.tableNacimientoSiluetas.OrdenTrabajoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrdenTrabajo\' in table \'NacimientoSiluetas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNacimientoSiluetas.OrdenTrabajoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsSiluetaIzquierdaNull() {
                 return this.IsNull(this.tableNacimientoSiluetas.SiluetaIzquierdaColumn);
             }
@@ -867,6 +927,30 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetImprimidaNull() {
                 this[this.tableNacimientoSiluetas.ImprimidaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCodigoConafeNull() {
+                return this.IsNull(this.tableNacimientoSiluetas.CodigoConafeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCodigoConafeNull() {
+                this[this.tableNacimientoSiluetas.CodigoConafeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsOrdenTrabajoNull() {
+                return this.IsNull(this.tableNacimientoSiluetas.OrdenTrabajoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetOrdenTrabajoNull() {
+                this[this.tableNacimientoSiluetas.OrdenTrabajoColumn] = global::System.Convert.DBNull;
             }
         }
         
