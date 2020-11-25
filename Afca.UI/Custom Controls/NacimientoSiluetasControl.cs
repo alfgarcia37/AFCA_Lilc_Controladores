@@ -10,6 +10,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Afca.Common;
@@ -188,13 +189,10 @@ namespace Afca.UI
         }
         void ExportarCartasSeleccionadas()
         {
-
             Cursor = Cursors.WaitCursor;
-
             string folderToSave = ConfigurationProvider.GetConfigurationValue("RutaImpresoraCarta");
 
             ArrayList errores = new ArrayList();
-
             int total = 0, actualizadas = 0;
 
             foreach (UltraGridRow selectedRow in gridSiluetas.Selected.Rows)
@@ -220,6 +218,7 @@ namespace Afca.UI
                                 throw new Exception(string.Format("El crotal {0} no tiene codigo de CONAFE asignado", codCrotal));
 
                             PrintCartaTiff(report, codConafe.Substring(codConafe.Length - 8, 8));
+                            Thread.Sleep(1500);
 
                             SetImagenCartaImprida(selectedRow);
 
@@ -235,22 +234,8 @@ namespace Afca.UI
                         , selectedRow.Cells["CodigoCrotal"].Value.ToString(), e.Message));
                 }
             }
+
             Cursor = Cursors.Default;
-
-
-            if (total > 0)
-            {
-                DialogsManager.ShowInfo("Resultado",
-                    string.Format(@"Se han exportado correctamente {0}\{1} cartas", actualizadas, total));
-            }
-
-            if (total > 0 && errores.Count > 0)
-            {
-                DialogsManager.ShowErrorDialog("Exportación cartas",
-                    string.Format("Se han producido los siguientes errores al exportar:{0}{1}"
-                    , Environment.NewLine
-                    , String.Join(Environment.NewLine, errores.ToArray())));
-            }
 
             if (folderToSave != "")
             {
@@ -265,22 +250,32 @@ namespace Afca.UI
                     if (split.Length == 2)
                     {
                         File.Copy(files[i].FullName,
-                            string.Format(@"{0}\{1}", folderToSave, split[1]),true);
+                            string.Format(@"{0}\{1}", folderToSave, split[1]), true);
                         File.Delete(files[i].FullName);
                     }
-
                 }
-
-                Process.Start("explorer", folderToSave);
             }
 
+            if (total > 0)
+            {
+                DialogsManager.ShowInfo("Resultado",
+                    string.Format(@"Se han exportado correctamente {0}\{1} cartas", actualizadas, total));
+            }
+            if (total > 0 && errores.Count > 0)
+            {
+                DialogsManager.ShowErrorDialog("Exportación cartas",
+                    string.Format("Se han producido los siguientes errores al exportar:{0}{1}"
+                    , Environment.NewLine
+                    , String.Join(Environment.NewLine, errores.ToArray())));
+            }
 
+            Process.Start("explorer", folderToSave);
 
         }
         void PrintCartaTiff(CartaRegistroReport report,string fileTitle)
         {
             PrinterSettings ps = new PrinterSettings();
-            ps.PrinterName = "PDFCreator";
+            ps.PrinterName = "PDFCreator";            
 
             PageSettings pgs = new PageSettings();
             pgs.PrinterSettings = ps;
@@ -288,7 +283,6 @@ namespace Afca.UI
 
             ((ReportClass)report).SummaryInfo.ReportTitle = fileTitle;
             ((ReportClass)report).PrintToPrinter(ps, pgs, false);
-            
         }
     
         void PreviewCartaReport(UltraGridRow selectedRow)
@@ -322,7 +316,9 @@ namespace Afca.UI
         {
             try
             {
-                return service.GetCartaRegistroData(argCodigoGanaderia, argCodigoCrotal);
+                CartaRegistroReportData data = service.GetCartaRegistroData(argCodigoGanaderia, argCodigoCrotal);
+                ChangeFirmaBackground(data);
+                return data;
             }
             catch (Exception e)
             {
@@ -338,13 +334,26 @@ namespace Afca.UI
         }
         private void gridSiluetas_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
-            if (e.Type.Equals(typeof(UltraGridRow)))
+        }
+        private void ultraTabControl1_SelectedTabChanged(object sender, Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventArgs e)
+        {
+            if (gridSiluetas.Selected.Rows.Count == 0) return;
+
+            if (e.Tab.Key=="tbbCarta")
             {
-                if (gridSiluetas.Selected.Rows.Count == 0) return;
+                Cursor = Cursors.WaitCursor;
+                var selectedRow = gridSiluetas.Selected.Rows[0];
+                PreviewCartaReport(selectedRow);
+                Cursor = Cursors.Default;
+            }
+            else if(e.Tab.Key=="tbbSilueta")
+            {
+                Cursor = Cursors.WaitCursor;
                 var selectedRow = gridSiluetas.Selected.Rows[0];
                 PreviewImagenCarta(selectedRow);
-                PreviewCartaReport(selectedRow);
+                Cursor = Cursors.Default;
             }
+            
         }
         private void gridSiluetas_InitializeRow(object sender, InitializeRowEventArgs e)
         {
@@ -371,8 +380,40 @@ namespace Afca.UI
                     break;
             }
         }
+
         #endregion
 
+        #region Firma methods
+        void ChangeFirmaBackground(CartaRegistroReportData data)
+        {
+            if (dO.HasRows(data, "Datos"))
+            {
+                DataRow datosRow = data.Datos.Rows[0];
 
+                if (!dO.EsNulo(datosRow, "Firma"))
+                {
+                    byte[] firmaOriginal = (byte[]) datosRow["Firma"];
+                    datosRow["Firma"] = RemoveTransparentBackground(firmaOriginal);
+                }
+            }
+        }
+        byte[] RemoveTransparentBackground(byte[] orgImage)
+        {
+            using (MemoryStream dest = new MemoryStream())
+            {
+                using (MemoryStream ms = new MemoryStream(orgImage))
+                {
+                    Bitmap org = new Bitmap(ms);
+                    Bitmap target = new Bitmap(org.Size.Width, org.Size.Height);
+                    Graphics g = Graphics.FromImage(target);
+                    g.Clear(Color.White);
+                    g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                    g.DrawImage(org,0, 0,org.Size.Width,org.Size.Height);
+                    target.Save(dest, ImageFormat.Png);
+                    return dest.ToArray();
+                }
+            }
+        }
+        #endregion
     }
 }
