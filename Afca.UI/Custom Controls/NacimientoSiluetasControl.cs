@@ -237,6 +237,8 @@ namespace Afca.UI
 
             Cursor = Cursors.Default;
 
+            //Chequear que el fichero no tenga ninguna protección de lectura
+            //En el equipo de JoseLuis no cambia el nombre al último fichero imprimido
             if (folderToSave != "")
             {
                 DirectoryInfo info = new DirectoryInfo(folderToSave);
@@ -249,9 +251,15 @@ namespace Afca.UI
 
                     if (split.Length == 2)
                     {
-                        File.Copy(files[i].FullName,
-                            string.Format(@"{0}\{1}", folderToSave, split[1]), true);
-                        File.Delete(files[i].FullName);
+                        if (File.Exists(string.Format(@"{0}\{1}", folderToSave, split[1])))
+                            File.Delete(string.Format(@"{0}\{1}", folderToSave, split[1]));
+
+                        File.Move(files[i].FullName,
+                            string.Format(@"{0}\{1}", folderToSave, split[1]));
+
+                        //File.Copy(files[i].FullName,
+                        //    string.Format(@"{0}\{1}", folderToSave, split[1]), true);
+                        //File.Delete(files[i].FullName);
                     }
                 }
             }
