@@ -100,5 +100,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IAgmService GetAgmService()
+        {
+            try
+            {
+                return (IAgmService)ServiceProvider.GetServiceInstance("IAgmService");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

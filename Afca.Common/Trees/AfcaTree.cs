@@ -28,15 +28,24 @@ namespace Afca.Common
             ItemMetaData root = CreateTreeRootNode();
             root.Children.Add(CreateLecturasTree());
 
-            string siluetasManagerActive = "false";
+            string agmManagerActive = "false";
 
             if( !String.IsNullOrEmpty(
-                siluetasManagerActive= ConfigurationProvider.GetConfigurationValue("SiluetasManagerActive")))
+                agmManagerActive = ConfigurationProvider.GetConfigurationValue("AgmManagerActive")))
             {
-                if(siluetasManagerActive=="true")
+                if(agmManagerActive == "true")
+                    root.Children.Add(CreateAgmTree());
+            }
+
+
+            string siluetasManagerActive = "false";
+
+            if (!String.IsNullOrEmpty(
+                siluetasManagerActive = ConfigurationProvider.GetConfigurationValue("SiluetasManagerActive")))
+            {
+                if (siluetasManagerActive == "true")
                     root.Children.Add(CreateSiluetasTree());
             }
-                
 
             ItemMetaData datosConfiguracionNode = CreateDatosConfiguracionFolderNode();
             root.Children.Add(datosConfiguracionNode);
@@ -477,6 +486,119 @@ namespace Afca.Common
         }
         #endregion
 
+        #region AGM
+        static ItemMetaData CreateAgmTree()
+        {
+            ItemMetaData agmNode = new ItemMetaData("AgmRoot");
+            agmNode.Text = "AGM Manager";
+            agmNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            //agmNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+            //                                                "ShowLecturaControlDataGrid", "Editar lecturas..."
+            //                                                , ItemMethodType.GridEdit, "IconoPropiedades"));
+
+            ItemMetaData agmEnviosNode = CreateAgmEnviosNode();
+            agmNode.Children.Add(agmEnviosNode);
+
+            return agmNode;
+        }
+        static ItemMetaData CreateAgmEnviosNode()
+        {
+            ItemMetaData agmEnviosNode = new ItemMetaData("AgmEnvios");
+            agmEnviosNode.Text = "Envios";
+            agmEnviosNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            ItemMetaData principalesNode = CreateAgmEnviosPrincipalesTree();
+            agmEnviosNode.Children.Add(principalesNode);
+
+            ItemMetaData secundariosNode = CreateAgmEnviosSecundariosTree();
+            agmEnviosNode.Children.Add(secundariosNode);
+
+            return agmEnviosNode;
+        }
+        static ItemMetaData CreateAgmEnviosPrincipalesTree()
+        {
+            ItemMetaData envPrincipalesNode = new ItemMetaData("AgmEnviosPrincipales");
+            envPrincipalesNode.Text = "Principales";
+            envPrincipalesNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            envPrincipalesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "PrepareAgmEnviosPrincipales", "Preparar envios..."
+                                                            , ItemMethodType.GridEdit, "IconoGenerador"));
+            envPrincipalesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosPrincipales", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoGenerador"));
+            ItemMetaData detallePrincipalesNode = CreateAgmEnviosPrincipalesNode();
+            envPrincipalesNode.Children.Add(detallePrincipalesNode);
+
+            return envPrincipalesNode;
+        }
+        static ItemMetaData CreateAgmEnviosPrincipalesNode()
+        {
+            ItemMetaData envPrincipalNode = new ItemMetaData("AgmEnvioPrincipal");
+            envPrincipalNode.ItemType = ItemType.Leaf;
+            envPrincipalNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+
+            envPrincipalNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envPrincipalNode.DataTable = "Ganaderia";
+            envPrincipalNode.SortCriteria = "GanaderiaID ASC";
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true,true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Lecturas", "Lecturas", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("Controles", "Controles", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("Inseminaciones", "Inseminaciones", false, true));
+
+            return envPrincipalNode;
+        }
+        static ItemMetaData CreateAgmEnviosSecundariosTree()
+        {
+            ItemMetaData envSecundariosNode = new ItemMetaData("AgmEnviosSecundarios");
+            envSecundariosNode.Text = "Secundarios";
+            envSecundariosNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            //envPrincipalesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+            //                                                "ShowLecturaControlDataGrid", "Editar lecturas..."
+            //                                                , ItemMethodType.GridEdit, "IconoPropiedades"));
+
+            ItemMetaData detalleSecundariosNode = CreateAgmEnviosSecundariosNode();
+            envSecundariosNode.Children.Add(detalleSecundariosNode);
+
+            return envSecundariosNode;
+        }
+        static ItemMetaData CreateAgmEnviosSecundariosNode()
+        {
+
+            //Pensar en colgar subcarpetas:
+            // Censo
+            // Recibos
+            // Calificaciones
+            // Concursos
+            // Genómica
+            // Y poder ejecutar cada uno de forma aislada (pasando ganaderiaID como parámetro o para todoas?)
+            ItemMetaData envSecundarioNode = new ItemMetaData("AgmEnvioSecundario");
+            envSecundarioNode.ItemType = ItemType.Leaf;
+            envSecundarioNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+
+            envSecundarioNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envSecundarioNode.DataTable = "Ganaderia";
+            envSecundarioNode.SortCriteria = "GanaderiaID ASC";
+            envSecundarioNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            envSecundarioNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            envSecundarioNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Lecturas", "Lecturas", false, true));
+            envSecundarioNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("Controles", "Controles", false, true));
+            envSecundarioNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("Inseminaciones", "Inseminaciones", false, true));
+
+            return envSecundarioNode;
+        }
+        #endregion
+
         #region Gestor Cartas Nacimiento
         static ItemMetaData CreateSiluetasTree()
         {
@@ -526,6 +648,7 @@ namespace Afca.Common
             return siluetaNode;
         }
         #endregion
+
 
         #region Datos Configuracion
         static ItemMetaData CreateDatosConfiguracionFolderNode()

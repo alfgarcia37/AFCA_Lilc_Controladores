@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgmService.cs" />
     <Compile Include="BuzonLaboratorioService.cs" />
     <Compile Include="ImportarService.cs" />
     <Compile Include="GenerarService.cs" />

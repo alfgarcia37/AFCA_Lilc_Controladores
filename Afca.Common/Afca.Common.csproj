@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AfcaDataAccessorProvider.cs" />
     <Compile Include="AfcaServiceProvider.cs" />
+    <Compile Include="DataAccessorInterfaces\IAgmDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IBuzonLaboratorioDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\INacimientoSiluetasDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IXmlsDataAccessor.cs" />
@@ -62,6 +63,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\AgmEnvioData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgmEnvioData.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\BuzonLaboratorioData.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -113,6 +119,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="ServicesInterfaces\IAgmService.cs" />
     <Compile Include="ServicesInterfaces\IBuzonLaboratorioService.cs" />
     <Compile Include="ServicesInterfaces\IImportarService.cs" />
     <Compile Include="ServicesInterfaces\IGenerarService.cs" />
@@ -162,6 +169,17 @@
     </None>
     <None Include="DataReports\CartaRegistroReportData.xss">
       <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\AgmEnvioData.xsc">
+      <DependentUpon>AgmEnvioData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\AgmEnvioData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AgmEnvioData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\AgmEnvioData.xss">
+      <DependentUpon>AgmEnvioData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\BuzonLaboratorioData.xsc">
       <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
@@ -326,6 +344,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Icons\calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\gear_run.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

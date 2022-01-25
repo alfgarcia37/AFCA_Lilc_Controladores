@@ -92,5 +92,16 @@ namespace Afca.Common {
                 throw e;
             }
         }
+        public static IAgmDataAccessor GetAgmDataAccessor()
+        {
+            try
+            {
+                return (IAgmDataAccessor)DataAccessorProvider.GetDataAccessorInstance("IAgmDataAccessor");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
     }
 }

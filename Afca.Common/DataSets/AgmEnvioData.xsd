@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AgmEnvioData" targetNamespace="http://tempuri.org/AgmEnvioData.xsd" xmlns:mstns="http://tempuri.org/AgmEnvioData.xsd" xmlns="http://tempuri.org/AgmEnvioData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AgmEnvioData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AgmEnvioData" msprop:Generator_UserDSName="AgmEnvioData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Ganaderia" msprop:Generator_TableClassName="GanaderiaDataTable" msprop:Generator_TableVarName="tableGanaderia" msprop:Generator_TablePropName="Ganaderia" msprop:Generator_RowDeletingName="GanaderiaRowDeleting" msprop:Generator_RowChangingName="GanaderiaRowChanging" msprop:Generator_RowEvHandlerName="GanaderiaRowChangeEventHandler" msprop:Generator_RowDeletedName="GanaderiaRowDeleted" msprop:Generator_UserTableName="Ganaderia" msprop:Generator_RowChangedName="GanaderiaRowChanged" msprop:Generator_RowEvArgName="GanaderiaRowChangeEvent" msprop:Generator_RowClassName="GanaderiaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AsociacionID" msprop:Generator_ColumnVarNameInTable="columnAsociacionID" msprop:Generator_ColumnPropNameInRow="AsociacionID" msprop:Generator_ColumnPropNameInTable="AsociacionIDColumn" msprop:Generator_UserColumnName="AsociacionID" type="xs:int" />
+              <xs:element name="GanaderiaID" msprop:Generator_ColumnVarNameInTable="columnGanaderiaID" msprop:Generator_ColumnPropNameInRow="GanaderiaID" msprop:Generator_ColumnPropNameInTable="GanaderiaIDColumn" msprop:Generator_UserColumnName="GanaderiaID" type="xs:string" />
+              <xs:element name="Lecturas" msprop:Generator_ColumnVarNameInTable="columnLecturas" msprop:Generator_ColumnPropNameInRow="Lecturas" msprop:Generator_ColumnPropNameInTable="LecturasColumn" msprop:Generator_UserColumnName="Lecturas" type="xs:int" minOccurs="0" />
+              <xs:element name="Controles" msprop:Generator_ColumnVarNameInTable="columnControles" msprop:Generator_ColumnPropNameInRow="Controles" msprop:Generator_ColumnPropNameInTable="ControlesColumn" msprop:Generator_UserColumnName="Controles" type="xs:int" minOccurs="0" />
+              <xs:element name="Lactaciones" msprop:Generator_ColumnVarNameInTable="columnLactaciones" msprop:Generator_ColumnPropNameInRow="Lactaciones" msprop:Generator_ColumnPropNameInTable="LactacionesColumn" msprop:Generator_UserColumnName="Lactaciones" type="xs:int" minOccurs="0" />
+              <xs:element name="Inseminaciones" msprop:Generator_ColumnVarNameInTable="columnInseminaciones" msprop:Generator_ColumnPropNameInRow="Inseminaciones" msprop:Generator_ColumnPropNameInTable="InseminacionesColumn" msprop:Generator_UserColumnName="Inseminaciones" type="xs:int" minOccurs="0" />
+              <xs:element name="IntervalosParto" msprop:Generator_ColumnVarNameInTable="columnIntervalosParto" msprop:Generator_ColumnPropNameInRow="IntervalosParto" msprop:Generator_ColumnPropNameInTable="IntervalosPartoColumn" msprop:Generator_UserColumnName="IntervalosParto" type="xs:int" minOccurs="0" />
+              <xs:element name="Partos" msprop:Generator_ColumnVarNameInTable="columnPartos" msprop:Generator_ColumnPropNameInRow="Partos" msprop:Generator_ColumnPropNameInTable="PartosColumn" msprop:Generator_UserColumnName="Partos" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="GanaderiaEnvios" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Ganaderia" />
+      <xs:field xpath="mstns:AsociacionID" />
+      <xs:field xpath="mstns:GanaderiaID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

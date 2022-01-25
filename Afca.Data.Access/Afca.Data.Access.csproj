@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sql\SqlAgmDataAccessor.cs" />
     <Compile Include="Sql\SqlBuzonLaboratorioDataAccessor.cs" />
     <Compile Include="Sql\SqlControladorDataAccessor.cs" />
     <Compile Include="Sql\SqlEstadoLecturaDataAccessor.cs" />

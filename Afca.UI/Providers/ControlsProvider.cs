@@ -432,6 +432,35 @@ namespace Afca.UI
 
         #endregion
 
+        #region Agm
+        public static void PrepareAgmEnviosPrincipales(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+                service.PrepareAgmEnvios(itContainer);
+            }
+            catch(System.Exception e)
+            {
+                    DialogsManager.ShowErrorDialog("Error",
+                        e.Message);
+            }
+        }
+        public static void AgmExecuteEnviosPrincipales(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+                service.PrepareAgmEnvios(itContainer);
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
+        #endregion
+
         #region Siluetas
         public static void ShowSiluetasManagerControl(ItemData itContainer)
         {
