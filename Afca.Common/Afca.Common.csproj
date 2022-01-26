@@ -348,6 +348,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\gear_run.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\media_play_green.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"

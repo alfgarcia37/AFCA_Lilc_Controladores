@@ -448,16 +448,10 @@ namespace Afca.UI
         }
         public static void AgmExecuteEnviosPrincipales(ItemData itContainer)
         {
-            try
-            {
-                IAgmService service = AfcaServiceProvider.GetAgmService();
-                service.PrepareAgmEnvios(itContainer);
-            }
-            catch (System.Exception e)
-            {
-                DialogsManager.ShowErrorDialog("Error",
-                    e.Message);
-            }
+            ShowControlInForm(
+                               "AGM - Envios principales pendientes"
+                               , "IconoFolderWindow"
+                               , new AgmEnvioPrincipalDataGridControl(itContainer));
         }
         #endregion
 

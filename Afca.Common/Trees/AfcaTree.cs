@@ -525,7 +525,7 @@ namespace Afca.Common
                                                             , ItemMethodType.GridEdit, "IconoGenerador"));
             envPrincipalesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
                                                           "AgmExecuteEnviosPrincipales", "Enviar..."
-                                                          , ItemMethodType.GridEdit, "IconoGenerador"));
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
             ItemMetaData detallePrincipalesNode = CreateAgmEnviosPrincipalesNode();
             envPrincipalesNode.Children.Add(detallePrincipalesNode);
 
@@ -549,8 +549,13 @@ namespace Afca.Common
             envPrincipalNode.ItemColumns.AddItemColumn(
                             new ItemColumn("Controles", "Controles", false, true));
             envPrincipalNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("Lactaciones", "Lactaciones", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
                             new ItemColumn("Inseminaciones", "Inseminaciones", false, true));
-
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("IntervalosParto", "Inter.Parto", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("Partos", "Partos", false, true));
             return envPrincipalNode;
         }
         static ItemMetaData CreateAgmEnviosSecundariosTree()

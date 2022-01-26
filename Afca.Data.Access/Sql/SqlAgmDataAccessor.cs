@@ -2,6 +2,7 @@
 using Afca.Common.DataSets;
 using FrameworkForge.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -14,6 +15,15 @@ namespace Afca.Data.Access
 {
     public class SqlAgmDataAccessor : SqlDataAccessor, IAgmDataAccessor
     {
+        public void PrepareAgmEnviosPrincipales()
+        {
+            this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles");
+        }
+        public void PrepareAgmEnviosSecundarios()
+        {
+            this.ChangeDataBase("gandmTemp");
+            throw new NotImplementedException();
+        }
         public AgmEnvioData GetAgmEnviosPrincipalesData()
         {
             this.ChangeDataBase("gandmTemp");
@@ -26,7 +36,6 @@ namespace Afca.Data.Access
                                  }
                                  , new string[] { "Ganaderia" });
         }
-
         public AgmEnvioData GetAgmEnviosSecundariosData()
         {
             this.ChangeDataBase("gandmTemp");
@@ -39,15 +48,30 @@ namespace Afca.Data.Access
                                  }
                                  , new string[] { "Ganaderia" });
         }
-        public void PrepareAgmEnviosPrincipales()
-        {           
-            this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles");
-        }
 
-        public void PrepareAgmEnviosSecundarios()
+        public AgmEnvioData GetEnvioPrincipalMessageData(string ganaderiaID, ArrayList entidadesIncluded)
         {
             this.ChangeDataBase("gandmTemp");
-            throw new NotImplementedException();
+            DataSet data = new AgmEnvioData();
+            data.EnforceConstraints = false;
+
+            string entidades = "";
+
+            foreach (string entidad in entidadesIncluded)
+                entidades = string.Format("{0}{1}{2}"
+                    ,entidades
+                    ,entidades.Length>0?";":""
+                    ,entidad);
+
+            return (AgmEnvioData)this.ExecuteDataSet(data
+                                 , "sp_AgmEnvioPrincipalMessage_select"
+                                 , CommandType.StoredProcedure
+                                 , new SqlParameter[2]
+                                 {
+                                     new SqlParameter("@GanaderiaID",ganaderiaID),
+                                      new SqlParameter("@Entidades",entidades)
+                                 }
+                                 , new string[] { "MessageToSend" });
         }
     }
 }

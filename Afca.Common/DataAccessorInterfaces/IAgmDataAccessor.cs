@@ -1,6 +1,7 @@
 ﻿using Afca.Common.DataSets;
 using FrameworkForge.Common.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,6 @@ namespace Afca.Common.DataAccessor
         AgmEnvioData GetAgmEnviosPrincipalesData();
         void PrepareAgmEnviosSecundarios();
         AgmEnvioData GetAgmEnviosSecundariosData();
+        AgmEnvioData GetEnvioPrincipalMessageData(string ganaderiaID, ArrayList entidadesIncluded);
     }
 }
