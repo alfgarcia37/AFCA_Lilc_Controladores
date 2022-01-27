@@ -11,6 +11,7 @@
 using Afca.Common.DataAccessor;
 using FrameworkForge.Common;
 using System;
+using System.Reflection;
 
 namespace Afca.Common {
     
@@ -97,6 +98,25 @@ namespace Afca.Common {
             try
             {
                 return (IAgmDataAccessor)DataAccessorProvider.GetDataAccessorInstance("IAgmDataAccessor");
+            }
+            catch (SystemException e)
+            {
+                throw e;
+            }
+        }
+        public static IAgmWebApiDataAccessor GetAgmWebApiDataAccessor(string interfaceDataAccessorKey)
+        {
+            try
+            {
+                string classInfo = ConfigurationProvider.GetConfigurationValue(interfaceDataAccessorKey);
+                string[] parts = classInfo.Split(new char[] { ',' });
+                string assemblyName = parts[0];
+                string className = parts[1];
+
+                Assembly asm = Assembly.Load(assemblyName);
+
+                object dataAccessorInstance = asm.CreateInstance(className);
+                return (IAgmWebApiDataAccessor)dataAccessorInstance;
             }
             catch (SystemException e)
             {

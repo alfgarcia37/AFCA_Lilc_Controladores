@@ -90,9 +90,11 @@ namespace Afca.UI
             if (grow.Cells["Status"].Value.ToString() == "PE")
                 grow.Cells["Selected"].Value = false;
         }
-        void SendData()
+        async Task SendData()
         {
             ultraGridData.UpdateData();
+
+            IAgmService agmService = ((IAgmService)Service);
 
             var ganaderiasToSend = agmEnvioData.Ganaderia.Where(g => g.Selected);
 
@@ -108,21 +110,33 @@ namespace Afca.UI
                     .Where(d => d.GanaderiaID == ganaderia.GanaderiaID && d.Selected)
                     .Select(e => e.Entidad).ToArray());
 
-                    string message = ((IAgmService)Service)
+                    string message = agmService
                        .GenerateJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, entidadesIncluded);
 
                     if (!String.IsNullOrEmpty(message))
                     {
-                        ganaderia.Status = "OK";
+                        var result = await agmService.SendJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, message).ConfigureAwait(false);
+
+                        string status = result.success ? "OK" : "ER";
+
+                        ganaderia.Status = status;
                         ganaderia.Selected = false;
-                        ganaderia.Message = "PRUEBAS-- MENSAJE NO ENVIADO";
+                        ganaderia.Message = result.success ? "Envio aceptado" : result.value;
 
                         foreach (var entidad in entidades)
                         {
-                            entidad.Status = "OK";
+                            entidad.Status = status;
                             entidad.Selected = false;
                         }
 
+                        if (result.success)
+                        {
+                            //call procedure to mark all ganaderia rows as sended                            
+                        }
+                        else
+                        {
+                            //mark as err??
+                        }
                     }
                     else
                     {
@@ -137,7 +151,7 @@ namespace Afca.UI
                 // if (!ok)  -> do nothing in database (log de operaciones?), change status in dataset (show message)
             }
         }
-        private void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        private async void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
         {
             switch (e.Tool.Key)
             {
@@ -148,7 +162,7 @@ namespace Afca.UI
                     UncheckSelected();
                     break;
                 case "tbbSend":
-                    SendData();
+                    await SendData();
                     break;
             }
         }

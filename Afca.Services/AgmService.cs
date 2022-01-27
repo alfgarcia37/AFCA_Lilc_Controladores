@@ -10,15 +10,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using Afca.Common;
 
 namespace Afca.Services
 {
     public class AgmService : IAgmService
     {
         IAgmDataAccessor agmDA;
+        IAgmWebApiDataAccessor agmWebAPI;
+
         public AgmService()
         {
             agmDA = Afca.Common.AfcaDataAccessorProvider.GetAgmDataAccessor();
+        }
+        void InitializeAgmWebApiDA()
+        {
+            if(agmWebAPI==null) 
+                agmWebAPI = Afca.Common.AfcaDataAccessorProvider.GetAgmWebApiDataAccessor("IAgmWebApiDataAccessor");
+
         }
         public void PrepareAgmEnvios(ItemData itemParent)
         {
@@ -103,10 +112,10 @@ namespace Afca.Services
                 jsonMessage = string.Format("{0}{1}{2}","{",jsonMessage,"}");
             return jsonMessage;
         }
-
-        public bool SendJsonMessageEnvioPrincipal(string ganaderiaID, string jsonMessage)
+        public async Task<Result> SendJsonMessageEnvioPrincipal(string ganaderiaID, string jsonMessage)
         {
-           return true;
+            InitializeAgmWebApiDA();
+            return await agmWebAPI.UploadPrincipalData(ganaderiaID,jsonMessage).ConfigureAwait(false);
         }
     }
 }

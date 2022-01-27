@@ -51,6 +51,7 @@
     <Compile Include="AfcaDataAccessorProvider.cs" />
     <Compile Include="AfcaServiceProvider.cs" />
     <Compile Include="DataAccessorInterfaces\IAgmDataAccessor.cs" />
+    <Compile Include="DataAccessorInterfaces\IAgmWebApiDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IBuzonLaboratorioDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\INacimientoSiluetasDataAccessor.cs" />
     <Compile Include="DataAccessorInterfaces\IXmlsDataAccessor.cs" />
@@ -114,6 +115,9 @@
       <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
     </Compile>
     <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Models\BaseResponse.cs" />
+    <Compile Include="Models\LoginResponse.cs" />
+    <Compile Include="Models\LoginToken.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
