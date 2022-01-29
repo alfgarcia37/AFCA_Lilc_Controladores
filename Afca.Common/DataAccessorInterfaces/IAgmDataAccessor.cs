@@ -16,5 +16,6 @@ namespace Afca.Common.DataAccessor
         void PrepareAgmEnviosSecundarios();
         AgmEnvioData GetAgmEnviosSecundariosData();
         AgmEnvioData GetEnvioPrincipalMessageData(string ganaderiaID, ArrayList entidadesIncluded);
+        int MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded);
     }
 }

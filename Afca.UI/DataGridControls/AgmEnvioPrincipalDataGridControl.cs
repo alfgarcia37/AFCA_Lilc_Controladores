@@ -53,6 +53,13 @@ namespace Afca.UI
             }
 
         }
+        protected override void LoadData()
+        {
+            if (agmEnvioData != null)
+                agmEnvioData.Clear();
+
+            base.LoadData();
+        }
         void CheckSelected()
         {
             if (ultraGridData.Selected.Rows.Count > 0)
@@ -118,25 +125,30 @@ namespace Afca.UI
                         var result = await agmService.SendJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, message).ConfigureAwait(false);
 
                         string status = result.success ? "OK" : "ER";
+                        ganaderia.Message = result.success ? "Envio aceptado" : result.value;
+
+                        if (result.success)
+                        {
+                            string  err = "";
+                            var marked = agmService.MarkAgmEnviosPrincipalesAsSended(ganaderia.GanaderiaID, entidadesIncluded,out err);
+
+                            if (!marked)
+                            {
+                                ganaderia.Message += 
+                                    "\n Envio realizado,sin embargo se ha producido un error al actualizar el estado como enviada en la base de datos local."+
+                                    "\n"+err;
+                                status = "ER";
+                            }
+                        }
 
                         ganaderia.Status = status;
                         ganaderia.Selected = false;
-                        ganaderia.Message = result.success ? "Envio aceptado" : result.value;
 
                         foreach (var entidad in entidades)
                         {
                             entidad.Status = status;
                             entidad.Selected = false;
-                        }
-
-                        if (result.success)
-                        {
-                            //call procedure to mark all ganaderia rows as sended                            
-                        }
-                        else
-                        {
-                            //mark as err??
-                        }
+                        }                        
                     }
                     else
                     {

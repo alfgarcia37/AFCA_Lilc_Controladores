@@ -117,5 +117,19 @@ namespace Afca.Services
             InitializeAgmWebApiDA();
             return await agmWebAPI.UploadPrincipalData(ganaderiaID,jsonMessage).ConfigureAwait(false);
         }
+
+        public bool MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message)
+        {
+            message = "";
+            try {
+                agmDA.MarkAgmEnviosPrincipalesAsSended(ganaderiaID, entidadesIncluded);
+                return true;
+            }
+            catch(System.Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
     }
 }

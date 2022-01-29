@@ -73,5 +73,29 @@ namespace Afca.Data.Access
                                  }
                                  , new string[] { "MessageToSend" });
         }
+
+        public int MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded)
+        {
+            this.ChangeDataBase("gandmTemp");
+            DataSet data = new AgmEnvioData();
+            data.EnforceConstraints = false;
+
+            string entidades = "";
+
+            foreach (string entidad in entidadesIncluded)
+                entidades = string.Format("{0}{1}{2}"
+                    , entidades
+                    , entidades.Length > 0 ? ";" : ""
+                    , entidad);
+
+            return this.ExecuteNonQuery("sp_AgmEnvios_state_update"
+                                 , new SqlParameter[4]
+                                 {
+                                     new SqlParameter("@Tipo","P"),
+                                     new SqlParameter("@GanaderiaID",ganaderiaID),
+                                     new SqlParameter("@StatusBuzon","UP"),
+                                      new SqlParameter("@Entidades",entidades)
+                                 });
+        }
     }
 }
