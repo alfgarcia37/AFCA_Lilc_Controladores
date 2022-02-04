@@ -130,9 +130,36 @@ namespace Afca.Services
             }
         }
 
-        public void PrepareAgmRecibosEnvios(ItemData itemParent, string remesaID)
+        public void PrepareAgmRecibosEnvios(string remesaID)
         {
-            throw new NotImplementedException();
+            agmDA.PrepareAgmEnviosRecibos(remesaID);
         }
+        public AgmEnvioData GetAgmEnviosSecundariosToSend(string entidad)
+        {
+           AgmEnvioData data = agmDA.GetAgmEnviosSecundariosData(entidad);
+
+            foreach (DataRow gan in data.Ganaderia.Rows)
+            {
+                gan["Status"] = "PE";
+                gan["Selected"] = true;
+
+                foreach (string e in new string[] {entidad })
+                {
+                    if (!dO.EsNulo(gan, e)
+                            && Convert.ToInt32(gan[e]) > 0)
+                    {
+                        DataRow detail = data.Detail.NewRow();
+                        dO.ImportPrimaryKeysValues(gan, detail);
+                        detail["Entidad"] = e;
+                        detail["Count"] = Convert.ToInt32(gan[e]);
+                        detail["Selected"] = true;
+                        detail["Status"] = "PE";
+                        data.Detail.Rows.Add(detail);
+                    }
+                }
+            }
+            return data;
+        }
+
     }
 }

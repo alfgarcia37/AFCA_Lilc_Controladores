@@ -19,10 +19,12 @@ namespace Afca.Data.Access
         {
             this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles");
         }
-        public void PrepareAgmEnviosSecundarios()
+        public void PrepareAgmEnviosRecibos(string remesaID)
         {
-            this.ChangeDataBase("gandmTemp");
-            throw new NotImplementedException();
+            this.ExecuteNonQuery( 
+                "sp_GDM_CL_Recibos"
+                ,new SqlParameter[] { new SqlParameter("@RemesaID",remesaID)});
+
         }
         public AgmEnvioData GetAgmEnviosPrincipalesData()
         {

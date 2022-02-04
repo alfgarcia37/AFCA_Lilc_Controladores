@@ -455,7 +455,7 @@ namespace Afca.UI
                                , "IconoFolderWindow"
                                , new AgmEnvioPrincipalDataGridControl(itContainer));
         }
-        public static void PrepareAgmEnvioRecibos(ItemData itContainer)
+        public static void PrepareAgmEnviosRecibos(ItemData itContainer)
         {
             try
             {
@@ -464,8 +464,22 @@ namespace Afca.UI
                 DialogRemesaForm dgRemesa = new DialogRemesaForm();
                 if(dgRemesa.ShowDialog()==DialogResult.OK)
                 {
-                    service.PrepareAgmRecibosEnvios(itContainer,dgRemesa.RemesaCodigoSelected);
-                    DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                    try
+                    {
+                        FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.WaitCursor;
+                        service.PrepareAgmRecibosEnvios(dgRemesa.RemesaCodigoSelected);
+                        DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                        itContainer.UserInterface.RefreshUI();
+                    }
+                    catch (System.Exception e)
+                    {
+                        DialogsManager.ShowErrorDialog("Generación envios"
+                            , e.Message);
+                    }
+                    finally
+                    {
+                        FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.Default;
+                    }
                 }
             }
             catch (System.Exception e)
@@ -473,6 +487,13 @@ namespace Afca.UI
                 DialogsManager.ShowErrorDialog("Error",
                     e.Message);
             }
+        }
+        public static void AgmExecuteEnviosSecundarios(ItemData itContainer)
+        {
+            ShowControlInForm(
+                               "AGM - Envios secundarios pendientes"
+                               , "IconoFolderWindow"
+                               , new AgmEnvioSecundarioDataGridControl(itContainer));
         }
         #endregion
 

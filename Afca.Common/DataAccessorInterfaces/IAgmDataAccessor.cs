@@ -12,10 +12,12 @@ namespace Afca.Common.DataAccessor
     public interface IAgmDataAccessor:IDataAccessor
     {
         void PrepareAgmEnviosPrincipales();
-        AgmEnvioData GetAgmEnviosPrincipalesData();
-        void PrepareAgmEnviosSecundarios();
-        AgmEnvioData GetAgmEnviosSecundariosData(string entidad);
+        AgmEnvioData GetAgmEnviosPrincipalesData();        
         AgmEnvioData GetEnvioPrincipalMessageData(string ganaderiaID, ArrayList entidadesIncluded);
         int MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded);
+
+        void PrepareAgmEnviosRecibos(string remesaID);
+        AgmEnvioData GetAgmEnviosSecundariosData(string entidad);
+
     }
 }

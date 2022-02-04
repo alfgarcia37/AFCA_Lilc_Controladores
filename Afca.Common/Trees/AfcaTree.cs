@@ -586,7 +586,7 @@ namespace Afca.Common
                                                            "PrepareAgmEnviosRecibos", "Preparar envios..."
                                                            , ItemMethodType.GridEdit, "IconoGenerador"));
             envRecibosNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-                                                          "AgmExecuteEnviosPrincipales", "Enviar..."
+                                                          "AgmExecuteEnviosSecundarios", "Enviar..."
                                                           , ItemMethodType.GridEdit, "IconoPlay"));
 
             ItemMetaData recibosNode = CreateAgmEnviosRecibosNode();
