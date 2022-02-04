@@ -553,7 +553,7 @@ namespace Afca.Common
             envPrincipalNode.ItemColumns.AddItemColumn(
                             new ItemColumn("Inseminaciones", "Inseminaciones", false, true));
             envPrincipalNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("IntervalosParto", "Inter.Parto", false, true));
+                           new ItemColumn("Parametros", "Parametros", false, true));
             envPrincipalNode.ItemColumns.AddItemColumn(
                            new ItemColumn("Partos", "Partos", false, true));
             return envPrincipalNode;
@@ -563,17 +563,6 @@ namespace Afca.Common
             ItemMetaData envSecundariosNode = new ItemMetaData("AgmEnviosSecundarios");
             envSecundariosNode.Text = "Secundarios";
             envSecundariosNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
-            //envPrincipalesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-            //                                                "ShowLecturaControlDataGrid", "Editar lecturas..."
-            //                                                , ItemMethodType.GridEdit, "IconoPropiedades"));
-
-            ItemMetaData detalleSecundariosNode = CreateAgmEnviosSecundariosNode();
-            envSecundariosNode.Children.Add(detalleSecundariosNode);
-
-            return envSecundariosNode;
-        }
-        static ItemMetaData CreateAgmEnviosSecundariosNode()
-        {
 
             //Pensar en colgar subcarpetas:
             // Censo
@@ -581,26 +570,47 @@ namespace Afca.Common
             // Calificaciones
             // Concursos
             // Genómica
-            // Y poder ejecutar cada uno de forma aislada (pasando ganaderiaID como parámetro o para todoas?)
-            ItemMetaData envSecundarioNode = new ItemMetaData("AgmEnvioSecundario");
-            envSecundarioNode.ItemType = ItemType.Leaf;
-            envSecundarioNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
 
-            envSecundarioNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
-            envSecundarioNode.DataTable = "Ganaderia";
-            envSecundarioNode.SortCriteria = "GanaderiaID ASC";
-            envSecundarioNode.ItemColumns.AddItemColumn(
+            ItemMetaData recibosNodeTree = CreateAgmEnviosRecibosTree();
+            envSecundariosNode.Children.Add(recibosNodeTree);
+
+            return envSecundariosNode;
+        }
+        static ItemMetaData CreateAgmEnviosRecibosTree()
+        {
+            ItemMetaData envRecibosNode = new ItemMetaData("AgmEnviosRecibos");
+            envRecibosNode.Text = "Recibos";
+            envRecibosNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            envRecibosNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "PrepareAgmEnviosRecibos", "Preparar envios..."
+                                                           , ItemMethodType.GridEdit, "IconoGenerador"));
+            envRecibosNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosPrincipales", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+
+            ItemMetaData recibosNode = CreateAgmEnviosRecibosNode();
+            envRecibosNode.Children.Add(recibosNode);
+            return envRecibosNode;
+        }
+        static ItemMetaData CreateAgmEnviosRecibosNode()
+        {
+
+            ItemMetaData envRecibolNode = new ItemMetaData("AgmEnvioRecibo");
+            envRecibolNode.ItemType = ItemType.Leaf;
+            envRecibolNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+
+            envRecibolNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envRecibolNode.DataTable = "Ganaderia";
+            envRecibolNode.SortCriteria = "GanaderiaID ASC";
+            envRecibolNode.ItemColumns.AddItemColumn(
                             new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
-            envSecundarioNode.ItemColumns.AddItemColumn(
+            envRecibolNode.ItemColumns.AddItemColumn(
                            new ItemColumn("GanaderiaID", "Establo", true, true, true));
-            envSecundarioNode.ItemColumns.AddItemColumn(
-                new ItemColumn("Lecturas", "Lecturas", false, true));
-            envSecundarioNode.ItemColumns.AddItemColumn(
-                            new ItemColumn("Controles", "Controles", false, true));
-            envSecundarioNode.ItemColumns.AddItemColumn(
-                            new ItemColumn("Inseminaciones", "Inseminaciones", false, true));
-
-            return envSecundarioNode;
+            envRecibolNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Recibos", "Recibos", false, true));
+          
+            return envRecibolNode;
         }
         #endregion
 

@@ -37,9 +37,7 @@ namespace Afca.Services
                      agmDA.PrepareAgmEnviosPrincipales();
                     break;
                 case "AgmEnviosSecundarios":
-                    throw new Exception("Operación no implementada");
-                    break;
-
+                   throw new Exception("No implementado");                    
             }
         }
         public AgmEnvioData GetAgmEnvioDataByParent(ItemData itemParent)
@@ -48,8 +46,8 @@ namespace Afca.Services
             {
                 case "AgmEnviosPrincipales":
                     return agmDA.GetAgmEnviosPrincipalesData();
-                case "AgmEnviosSecundarios":
-                    return agmDA.GetAgmEnviosSecundariosData();
+                case "AgmEnviosRecibos":
+                    return agmDA.GetAgmEnviosSecundariosData("Recibos");
                 default:
                     return null;
             }
@@ -59,7 +57,7 @@ namespace Afca.Services
             string[] entidades = new string[] { 
                 "Controles", "Lecturas",
                 "Inseminaciones", "Lactaciones", 
-                "IntervalosParto", "Partos" };
+                "Parametros", "Partos" };
 
             AgmEnvioData data = agmDA.GetAgmEnviosPrincipalesData();
 
@@ -130,6 +128,11 @@ namespace Afca.Services
                 message = e.Message;
                 return false;
             }
+        }
+
+        public void PrepareAgmRecibosEnvios(ItemData itemParent, string remesaID)
+        {
+            throw new NotImplementedException();
         }
     }
 }

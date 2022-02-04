@@ -16,6 +16,7 @@ using dO = FrameworkForge.Common.DataOperations;
 using System.Collections.Generic;
 using FrameworkForge.Common.Generics;
 using Infragistics.Win.UltraWinToolbars;
+using Afca.UI.Dialogs;
 
 namespace Afca.UI
 {
@@ -439,6 +440,7 @@ namespace Afca.UI
             {
                 IAgmService service = AfcaServiceProvider.GetAgmService();
                 service.PrepareAgmEnvios(itContainer);
+                DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
             }
             catch(System.Exception e)
             {
@@ -452,6 +454,25 @@ namespace Afca.UI
                                "AGM - Envios principales pendientes"
                                , "IconoFolderWindow"
                                , new AgmEnvioPrincipalDataGridControl(itContainer));
+        }
+        public static void PrepareAgmEnvioRecibos(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+
+                DialogRemesaForm dgRemesa = new DialogRemesaForm();
+                if(dgRemesa.ShowDialog()==DialogResult.OK)
+                {
+                    service.PrepareAgmRecibosEnvios(itContainer,dgRemesa.RemesaCodigoSelected);
+                    DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                }
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
         }
         #endregion
 

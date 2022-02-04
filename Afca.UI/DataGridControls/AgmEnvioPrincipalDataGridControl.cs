@@ -19,6 +19,8 @@ namespace Afca.UI
     public partial class AgmEnvioPrincipalDataGridControl : DataGridControl
     {
         ItemData itemContainer;
+        Task uiTask;
+        UltraGridRow currentSendingRow;
         public AgmEnvioPrincipalDataGridControl(ItemData argItemContainer)
         {
             InitializeComponent();
@@ -105,13 +107,23 @@ namespace Afca.UI
 
             var ganaderiasToSend = agmEnvioData.Ganaderia.Where(g => g.Selected);
 
-            foreach(var ganaderia in ganaderiasToSend)
+            foreach (var ganaderia in ganaderiasToSend)
             {
+
+                //this.Cursor = Cursors.WaitCursor;
                 var entidades = agmEnvioData.Detail
                     .Where(d => d.GanaderiaID == ganaderia.GanaderiaID && d.Selected);
 
-                if(entidades!=null && entidades.Count() > 0)
+                if (entidades != null && entidades.Count() > 0)
                 {
+                    UltraGridRow gRow = ultraGridData.Rows
+                        .Where(r => (string) r.Cells["GanaderiaID"].Value == ganaderia.GanaderiaID).FirstOrDefault();
+
+                    if (gRow != null)
+                        currentSendingRow = gRow;
+                    else
+                        currentSendingRow = null;
+
                     ArrayList entidadesIncluded = new ArrayList();
                     entidadesIncluded.AddRange(agmEnvioData.Detail
                     .Where(d => d.GanaderiaID == ganaderia.GanaderiaID && d.Selected)
@@ -122,33 +134,51 @@ namespace Afca.UI
 
                     if (!String.IsNullOrEmpty(message))
                     {
-                        var result = await agmService.SendJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, message).ConfigureAwait(false);
+                        string status = "";
 
-                        string status = result.success ? "OK" : "ER";
-                        ganaderia.Message = result.success ? "Envio aceptado" : result.value;
-
-                        if (result.success)
+                        try
                         {
-                            string  err = "";
-                            var marked = agmService.MarkAgmEnviosPrincipalesAsSended(ganaderia.GanaderiaID, entidadesIncluded,out err);
 
-                            if (!marked)
+                            Action setProgressAction = ShowUIProgressAction;
+                            uiTask= Task.Run(setProgressAction);
+
+                            var result = await agmService.SendJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, message).ConfigureAwait(false);
+                            status = result.success ? "OK" : "ER";
+                            ganaderia.Message = result.success ? "Envio aceptado" : result.value;
+
+                            if (result.success)
                             {
-                                ganaderia.Message += 
-                                    "\n Envio realizado,sin embargo se ha producido un error al actualizar el estado como enviada en la base de datos local."+
-                                    "\n"+err;
+                                string err = "";
+                                var marked = agmService.MarkAgmEnviosPrincipalesAsSended(ganaderia.GanaderiaID, entidadesIncluded, out err);
+
+                                if (!marked)
+                                {
+                                    ganaderia.Message +=
+                                        "\n Envio realizado,sin embargo se ha producido un error al actualizar el estado como enviada en la base de datos local." +
+                                        "\n" + err;
+                                    status = "ER";
+                                }
+                            }
+                        }
+                        catch (System.Exception e)
+                        {
+                            if (String.IsNullOrEmpty(status))
                                 status = "ER";
+                            ganaderia.Message += "\n" + e.InnerException;
+                        }
+                        finally
+                        {
+                            ganaderia.Status = status;
+                            ganaderia.Selected = false;
+
+                            foreach (var entidad in entidades)
+                            {
+                                entidad.Status = status;
+                                entidad.Selected = false;
                             }
                         }
 
-                        ganaderia.Status = status;
-                        ganaderia.Selected = false;
 
-                        foreach (var entidad in entidades)
-                        {
-                            entidad.Status = status;
-                            entidad.Selected = false;
-                        }                        
                     }
                     else
                     {
@@ -156,11 +186,91 @@ namespace Afca.UI
                     }
                 }
 
-               
-                // prepare json data ; parameters : ganaderiaId, entidades selected
-                // send data 
-                // if ( ok)  -> mark as updated in database; change status in dataset
-                // if (!ok)  -> do nothing in database (log de operaciones?), change status in dataset (show message)
+                Action disableProgressAction = HideUIProgressAction;
+                uiTask = Task.Run(disableProgressAction);
+                uiTask.Wait();
+            }
+            // prepare json data ; parameters : ganaderiaId, entidades selected
+            // send data 
+            // if ( ok)  -> mark as updated in database; change status in dataset
+            // if (!ok)  -> do nothing in database (log de operaciones?), change status in dataset (show message)            
+        }
+        void ShowUIProgressAction() {
+            ShowCursor();
+            MarkDataGridRowAsBeingSending();            
+        }    
+        void ShowCursor()
+        {
+            if (this.InvokeRequired)
+            {
+                Action doMethod = ShowUIProgressAction;
+                this.Invoke(doMethod);
+            }
+            else
+            {
+                this.Cursor = Cursors.WaitCursor;
+            }
+        }
+        void MarkDataGridRowAsBeingSending()
+        {
+            if (this.ultraGridData.InvokeRequired)
+            {
+                Action doMethod = MarkDataGridRowAsBeingSending;
+                this.Invoke(doMethod);
+            }
+            else
+            {
+                if (currentSendingRow != null)
+                {
+                    currentSendingRow.Tag = currentSendingRow.Appearance.BackColor;
+                    currentSendingRow.Appearance.BackColor = Color.Orange;
+                }
+            }
+        }
+        void HideUIProgressAction()
+        {
+            HideCursor();
+            MarkDataGridRowSendedResult();
+        }
+        void HideCursor()
+        {
+            if (this.InvokeRequired)
+            {
+                Action doMethod = HideUIProgressAction;
+                this.Invoke(doMethod);
+            }
+            else
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+        void MarkDataGridRowSendedResult()
+        {
+            if (this.ultraGridData.InvokeRequired)
+            {
+                Action doMethod = MarkDataGridRowSendedResult;
+                this.Invoke(doMethod);
+            }
+            else
+            {
+                if (currentSendingRow != null)
+                {
+                    string status = currentSendingRow.Cells["Status"].Value.ToString();
+
+                    switch (status.ToUpper())
+                    {
+                        case "PE":
+                            if(currentSendingRow.Tag is Color)
+                                currentSendingRow.Appearance.BackColor = (Color)currentSendingRow.Tag;
+                            break;
+                        case "OK":
+                            currentSendingRow.Appearance.BackColor = Color.LightGreen;
+                            break;
+                        case "ER":
+                            currentSendingRow.Appearance.BackColor = Color.LightSalmon;
+                            break;
+                    }
+                }
             }
         }
         private async void ultraToolbarsManager_ToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)

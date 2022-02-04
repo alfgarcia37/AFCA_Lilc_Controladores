@@ -18,5 +18,7 @@ namespace Afca.Common.ServicesInterfaces
         string GenerateJsonMessageEnvioPrincipal(string ganaderiaID, ArrayList entidadesIncluded);
         Task<Result> SendJsonMessageEnvioPrincipal(string ganaderiaID, string jsonMessage);
         bool MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message);
+
+        void PrepareAgmRecibosEnvios(ItemData itemParent,string remesaID);
     }
 }

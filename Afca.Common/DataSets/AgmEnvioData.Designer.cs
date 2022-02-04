@@ -398,9 +398,11 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnInseminaciones;
             
-            private global::System.Data.DataColumn columnIntervalosParto;
+            private global::System.Data.DataColumn columnParametros;
             
             private global::System.Data.DataColumn columnPartos;
+            
+            private global::System.Data.DataColumn columnRecibos;
             
             private global::System.Data.DataColumn columnSelected;
             
@@ -491,9 +493,9 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IntervalosPartoColumn {
+            public global::System.Data.DataColumn ParametrosColumn {
                 get {
-                    return this.columnIntervalosParto;
+                    return this.columnParametros;
                 }
             }
             
@@ -502,6 +504,14 @@ namespace Afca.Common.DataSets {
             public global::System.Data.DataColumn PartosColumn {
                 get {
                     return this.columnPartos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RecibosColumn {
+                get {
+                    return this.columnRecibos;
                 }
             }
             
@@ -566,7 +576,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public GanaderiaRow AddGanaderiaRow(int AsociacionID, string GanaderiaID, int Lecturas, int Controles, int Lactaciones, int Inseminaciones, int IntervalosParto, int Partos, bool Selected, string Status, string Message) {
+            public GanaderiaRow AddGanaderiaRow(int AsociacionID, string GanaderiaID, int Lecturas, int Controles, int Lactaciones, int Inseminaciones, int Parametros, int Partos, int Recibos, bool Selected, string Status, string Message) {
                 GanaderiaRow rowGanaderiaRow = ((GanaderiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         AsociacionID,
@@ -575,8 +585,9 @@ namespace Afca.Common.DataSets {
                         Controles,
                         Lactaciones,
                         Inseminaciones,
-                        IntervalosParto,
+                        Parametros,
                         Partos,
+                        Recibos,
                         Selected,
                         Status,
                         Message};
@@ -616,8 +627,9 @@ namespace Afca.Common.DataSets {
                 this.columnControles = base.Columns["Controles"];
                 this.columnLactaciones = base.Columns["Lactaciones"];
                 this.columnInseminaciones = base.Columns["Inseminaciones"];
-                this.columnIntervalosParto = base.Columns["IntervalosParto"];
+                this.columnParametros = base.Columns["Parametros"];
                 this.columnPartos = base.Columns["Partos"];
+                this.columnRecibos = base.Columns["Recibos"];
                 this.columnSelected = base.Columns["Selected"];
                 this.columnStatus = base.Columns["Status"];
                 this.columnMessage = base.Columns["Message"];
@@ -638,10 +650,12 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnLactaciones);
                 this.columnInseminaciones = new global::System.Data.DataColumn("Inseminaciones", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInseminaciones);
-                this.columnIntervalosParto = new global::System.Data.DataColumn("IntervalosParto", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIntervalosParto);
+                this.columnParametros = new global::System.Data.DataColumn("Parametros", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnParametros);
                 this.columnPartos = new global::System.Data.DataColumn("Partos", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPartos);
+                this.columnRecibos = new global::System.Data.DataColumn("Recibos", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRecibos);
                 this.columnSelected = new global::System.Data.DataColumn("Selected", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSelected);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1519,17 +1533,17 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int IntervalosParto {
+            public int Parametros {
                 get {
                     try {
-                        return ((int)(this[this.tableGanaderia.IntervalosPartoColumn]));
+                        return ((int)(this[this.tableGanaderia.ParametrosColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'IntervalosParto\' in table \'Ganaderia\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Parametros\' in table \'Ganaderia\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGanaderia.IntervalosPartoColumn] = value;
+                    this[this.tableGanaderia.ParametrosColumn] = value;
                 }
             }
             
@@ -1546,6 +1560,22 @@ namespace Afca.Common.DataSets {
                 }
                 set {
                     this[this.tableGanaderia.PartosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Recibos {
+                get {
+                    try {
+                        return ((int)(this[this.tableGanaderia.RecibosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Recibos\' in table \'Ganaderia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGanaderia.RecibosColumn] = value;
                 }
             }
             
@@ -1647,14 +1677,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsIntervalosPartoNull() {
-                return this.IsNull(this.tableGanaderia.IntervalosPartoColumn);
+            public bool IsParametrosNull() {
+                return this.IsNull(this.tableGanaderia.ParametrosColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetIntervalosPartoNull() {
-                this[this.tableGanaderia.IntervalosPartoColumn] = global::System.Convert.DBNull;
+            public void SetParametrosNull() {
+                this[this.tableGanaderia.ParametrosColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1667,6 +1697,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPartosNull() {
                 this[this.tableGanaderia.PartosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsRecibosNull() {
+                return this.IsNull(this.tableGanaderia.RecibosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetRecibosNull() {
+                this[this.tableGanaderia.RecibosColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

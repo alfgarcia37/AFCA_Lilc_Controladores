@@ -36,15 +36,16 @@ namespace Afca.Data.Access
                                  }
                                  , new string[] { "Ganaderia" });
         }
-        public AgmEnvioData GetAgmEnviosSecundariosData()
+        public AgmEnvioData GetAgmEnviosSecundariosData(string entidad)
         {
             this.ChangeDataBase("gandmTemp");
             return (AgmEnvioData)this.ExecuteDataSet(new AgmEnvioData()
                                  , "sp_AgmEnvios_select"
                                  , CommandType.StoredProcedure
-                                 , new SqlParameter[]
+                                 , new SqlParameter[2]
                                  {
                                      new SqlParameter("@Tipo","S")
+                                     ,new SqlParameter("@Entidades",entidad)
                                  }
                                  , new string[] { "Ganaderia" });
         }

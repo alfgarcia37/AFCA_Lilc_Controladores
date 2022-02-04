@@ -119,6 +119,12 @@
     <Compile Include="DataGridControls\LecturaControlDataGridControl.Designer.cs">
       <DependentUpon>LecturaControlDataGridControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DialogRemesaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogRemesaForm.Designer.cs">
+      <DependentUpon>DialogRemesaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DropDowns\ControladorDropDown.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataGridControls\LecturaControlDataGridControl.resx">
       <DependentUpon>LecturaControlDataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogRemesaForm.resx">
+      <DependentUpon>DialogRemesaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DropDowns\ControladorDropDown.resx">
       <DependentUpon>ControladorDropDown.cs</DependentUpon>
