@@ -26,16 +26,19 @@ namespace Afca.Data.Access
                 ,new SqlParameter[] { new SqlParameter("@RemesaID",remesaID)});
 
         }
-        public AgmEnvioData GetAgmEnviosPrincipalesData()
+        public void PrepareAgmEnviosRCS()
+        {
+            this.ExecuteNonQuery(
+               "sp_GDM_CL_RCS"
+               , null);
+        }
+        public AgmEnvioData GetAgmEnviosData()
         {
             this.ChangeDataBase("gandmTemp");
             return (AgmEnvioData)this.ExecuteDataSet(new AgmEnvioData()
                                  , "sp_AgmEnvios_select"
                                  , CommandType.StoredProcedure
-                                 , new SqlParameter[]
-                                 {
-                                     new SqlParameter("@Tipo","P")
-                                 }
+                                 , null
                                  , new string[] { "Ganaderia" });
         }
         public AgmEnvioData GetAgmEnviosSecundariosData(string entidad)
@@ -44,15 +47,14 @@ namespace Afca.Data.Access
             return (AgmEnvioData)this.ExecuteDataSet(new AgmEnvioData()
                                  , "sp_AgmEnvios_select"
                                  , CommandType.StoredProcedure
-                                 , new SqlParameter[2]
+                                 , new SqlParameter[1]
                                  {
-                                     new SqlParameter("@Tipo","S")
-                                     ,new SqlParameter("@Entidades",entidad)
+                                     new SqlParameter("@Entidades",entidad)
                                  }
                                  , new string[] { "Ganaderia" });
         }
 
-        public AgmEnvioData GetEnvioPrincipalMessageData(string ganaderiaID, ArrayList entidadesIncluded)
+        public AgmEnvioData GetEnvioMessageData(string ganaderiaID, ArrayList entidadesIncluded)
         {
             this.ChangeDataBase("gandmTemp");
             DataSet data = new AgmEnvioData();
@@ -67,7 +69,7 @@ namespace Afca.Data.Access
                     ,entidad);
 
             return (AgmEnvioData)this.ExecuteDataSet(data
-                                 , "sp_AgmEnvioPrincipalMessage_select"
+                                 , "sp_AgmEnvioMessage_select"
                                  , CommandType.StoredProcedure
                                  , new SqlParameter[2]
                                  {
@@ -77,7 +79,7 @@ namespace Afca.Data.Access
                                  , new string[] { "MessageToSend" });
         }
 
-        public int MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded)
+        public int MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded)
         {
             this.ChangeDataBase("gandmTemp");
             DataSet data = new AgmEnvioData();
@@ -92,13 +94,13 @@ namespace Afca.Data.Access
                     , entidad);
 
             return this.ExecuteNonQuery("sp_AgmEnvios_state_update"
-                                 , new SqlParameter[4]
+                                 , new SqlParameter[3]
                                  {
-                                     new SqlParameter("@Tipo","P"),
                                      new SqlParameter("@GanaderiaID",ganaderiaID),
                                      new SqlParameter("@StatusBuzon","UP"),
                                       new SqlParameter("@Entidades",entidades)
                                  });
         }
+
     }
 }

@@ -26,7 +26,7 @@ namespace Afca.Data.Access
         {
             InitializeHttpClient();
         }
-        public async Task<Result> UploadPrincipalData(string ganaderiaId, string jsonData)
+        public async Task<Result> UploadData(string ganaderiaId, string jsonData)
         {
             var setRoutine = await SetConnectionContext();
 
@@ -35,7 +35,7 @@ namespace Afca.Data.Access
                                    , value = setRoutine.value };
 
             var urlAction = UrlWebAPIController(dataHubController);
-            urlAction = string.Format("{0}{1}/principal", urlAction, ganaderiaId);
+            urlAction = string.Format("{0}{1}", urlAction, ganaderiaId);
 
             var parameter = JsonConvert.ToString(jsonData);
 

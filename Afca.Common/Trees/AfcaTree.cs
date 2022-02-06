@@ -558,6 +558,7 @@ namespace Afca.Common
                            new ItemColumn("Partos", "Partos", false, true));
             return envPrincipalNode;
         }
+
         static ItemMetaData CreateAgmEnviosSecundariosTree()
         {
             ItemMetaData envSecundariosNode = new ItemMetaData("AgmEnviosSecundarios");
@@ -573,6 +574,9 @@ namespace Afca.Common
 
             ItemMetaData recibosNodeTree = CreateAgmEnviosRecibosTree();
             envSecundariosNode.Children.Add(recibosNodeTree);
+
+            ItemMetaData rcsNodeTree = CreateAgmEnviosRCSTree();
+            envSecundariosNode.Children.Add(rcsNodeTree);
 
             return envSecundariosNode;
         }
@@ -611,6 +615,42 @@ namespace Afca.Common
                 new ItemColumn("Recibos", "Recibos", false, true));
           
             return envRecibolNode;
+        }
+        static ItemMetaData CreateAgmEnviosRCSTree()
+        {
+            ItemMetaData envRcsNode = new ItemMetaData("AgmEnviosRCS");
+            envRcsNode.Text = "RCS";
+            envRcsNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            envRcsNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "PrepareAgmEnviosRCS", "Preparar envios..."
+                                                           , ItemMethodType.GridEdit, "IconoGenerador"));
+            envRcsNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosSecundarios", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+
+            ItemMetaData rcsNode = CreateAgmEnviosRCSNode();
+            envRcsNode.Children.Add(rcsNode);
+            return envRcsNode;
+        }
+        static ItemMetaData CreateAgmEnviosRCSNode()
+        {
+
+            ItemMetaData envRcsNode = new ItemMetaData("AgmEnvioRCS");
+            envRcsNode.ItemType = ItemType.Leaf;
+            envRcsNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+
+            envRcsNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envRcsNode.DataTable = "Ganaderia";
+            envRcsNode.SortCriteria = "GanaderiaID ASC";
+            envRcsNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            envRcsNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            envRcsNode.ItemColumns.AddItemColumn(
+                new ItemColumn("RCS", "RCS", false, true));
+
+            return envRcsNode;
         }
         #endregion
 

@@ -130,7 +130,7 @@ namespace Afca.UI
                     .Select(e => e.Entidad).ToArray());
 
                     string message = agmService
-                       .GenerateJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, entidadesIncluded);
+                       .GenerateJsonMessageEnvio(ganaderia.GanaderiaID, entidadesIncluded);
 
                     if (!String.IsNullOrEmpty(message))
                     {
@@ -142,14 +142,14 @@ namespace Afca.UI
                             Action setProgressAction = ShowUIProgressAction;
                             uiTask= Task.Run(setProgressAction);
 
-                            var result = await agmService.SendJsonMessageEnvioPrincipal(ganaderia.GanaderiaID, message).ConfigureAwait(false);
+                            var result = await agmService.SendJsonMessageEnvio(ganaderia.GanaderiaID, message).ConfigureAwait(false);
                             status = result.success ? "OK" : "ER";
                             ganaderia.Message = result.success ? "Envio aceptado" : result.value;
 
                             if (result.success)
                             {
                                 string err = "";
-                                var marked = agmService.MarkAgmEnviosPrincipalesAsSended(ganaderia.GanaderiaID, entidadesIncluded, out err);
+                                var marked = agmService.MarkAgmEnviosAsSended(ganaderia.GanaderiaID, entidadesIncluded, out err);
 
                                 if (!marked)
                                 {
@@ -287,6 +287,11 @@ namespace Afca.UI
                     await SendData();
                     break;
             }
+        }
+
+        private void ultraGridData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+
         }
     }
 }

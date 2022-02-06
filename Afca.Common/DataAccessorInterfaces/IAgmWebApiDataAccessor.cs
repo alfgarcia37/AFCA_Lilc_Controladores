@@ -8,6 +8,6 @@ namespace Afca.Common.DataAccessor
 {
     public interface IAgmWebApiDataAccessor
     {
-        Task<Result> UploadPrincipalData(string ganaderiaId,string jsonData);
+        Task<Result> UploadData(string ganaderiaId,string jsonData);
     }
 }

@@ -36,45 +36,65 @@ namespace Afca.Services
                 case "AgmEnviosPrincipales":
                      agmDA.PrepareAgmEnviosPrincipales();
                     break;
-                case "AgmEnviosSecundarios":
-                   throw new Exception("No implementado");                    
+                case "AgmEnviosRCS":
+                   agmDA.PrepareAgmEnviosRCS();
+                    break;
             }
         }
+        public void PrepareAgmRecibosEnvios(string remesaID)
+        {
+            agmDA.PrepareAgmEnviosRecibos(remesaID);
+        }
+
         public AgmEnvioData GetAgmEnvioDataByParent(ItemData itemParent)
         {
             switch (itemParent.Name)
             {
                 case "AgmEnviosPrincipales":
-                    return agmDA.GetAgmEnviosPrincipalesData();
+                    return agmDA.GetAgmEnviosData();
                 case "AgmEnviosRecibos":
                     return agmDA.GetAgmEnviosSecundariosData("Recibos");
+                case "AgmEnviosRCS":
+                    return agmDA.GetAgmEnviosSecundariosData("RCS");
                 default:
                     return null;
             }
         }
-        public AgmEnvioData GetAgmEnvioPrincipalesToSendData()
+        public AgmEnvioData GetAgmEnviosPrincipalesToSendData()
         {
-            string[] entidades = new string[] { 
+            return getAgmEnviosToSendData();
+        }
+        public AgmEnvioData GetAgmEnviosToSendData(string entidad)
+        {
+            return getAgmEnviosToSendData(entidad);
+        }
+        AgmEnvioData getAgmEnviosToSendData(string entidad=null)
+        {
+            string[] entidades = entidad==null?
+                new string[] { 
                 "Controles", "Lecturas",
                 "Inseminaciones", "Lactaciones", 
-                "Parametros", "Partos" };
+                "Parametros", "Partos" }
+                : new string[] { entidad};
 
-            AgmEnvioData data = agmDA.GetAgmEnviosPrincipalesData();
+            AgmEnvioData data = entidades.Length==1?
+                agmDA.GetAgmEnviosSecundariosData(entidad)
+                :agmDA.GetAgmEnviosData();
 
             foreach(DataRow gan in data.Ganaderia.Rows)
             {
                 gan["Status"] = "PE";
                 gan["Selected"] = true;
 
-                foreach(string entidad in entidades)
+                foreach(string ent in entidades)
                 {
-                    if (!dO.EsNulo(gan, entidad)
-                            && Convert.ToInt32(gan[entidad])>0)
+                    if (!dO.EsNulo(gan, ent)
+                            && Convert.ToInt32(gan[ent])>0)
                     {
                         DataRow detail = data.Detail.NewRow();
                         dO.ImportPrimaryKeysValues(gan, detail);
-                        detail["Entidad"] = entidad;
-                        detail["Count"] = Convert.ToInt32(gan[entidad]);
+                        detail["Entidad"] = ent;
+                        detail["Count"] = Convert.ToInt32(gan[ent]);
                         detail["Selected"] = true;
                         detail["Status"] = "PE";
                         data.Detail.Rows.Add(detail);
@@ -83,11 +103,11 @@ namespace Afca.Services
             }
             return data;
         }
-        public string GenerateJsonMessageEnvioPrincipal(string ganaderiaID, ArrayList entidadesIncluded)
+        public string GenerateJsonMessageEnvio(string ganaderiaID, ArrayList entidadesIncluded)
         {
             string jsonMessage = "";
 
-            AgmEnvioData data = agmDA.GetEnvioPrincipalMessageData(ganaderiaID, entidadesIncluded);
+            AgmEnvioData data = agmDA.GetEnvioMessageData(ganaderiaID, entidadesIncluded);
 
             foreach(DataRow entidadMsg in data.MessageToSend.Rows)
             {
@@ -110,17 +130,16 @@ namespace Afca.Services
                 jsonMessage = string.Format("{0}{1}{2}","{",jsonMessage,"}");
             return jsonMessage;
         }
-        public async Task<Result> SendJsonMessageEnvioPrincipal(string ganaderiaID, string jsonMessage)
+        public async Task<Result> SendJsonMessageEnvio(string ganaderiaID, string jsonMessage)
         {
             InitializeAgmWebApiDA();
-            return await agmWebAPI.UploadPrincipalData(ganaderiaID,jsonMessage).ConfigureAwait(false);
+            return await agmWebAPI.UploadData(ganaderiaID,jsonMessage).ConfigureAwait(false);
         }
-
-        public bool MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message)
+        public bool MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message)
         {
             message = "";
             try {
-                agmDA.MarkAgmEnviosPrincipalesAsSended(ganaderiaID, entidadesIncluded);
+                agmDA.MarkAgmEnviosAsSended(ganaderiaID, entidadesIncluded);
                 return true;
             }
             catch(System.Exception e)
@@ -129,37 +148,5 @@ namespace Afca.Services
                 return false;
             }
         }
-
-        public void PrepareAgmRecibosEnvios(string remesaID)
-        {
-            agmDA.PrepareAgmEnviosRecibos(remesaID);
-        }
-        public AgmEnvioData GetAgmEnviosSecundariosToSend(string entidad)
-        {
-           AgmEnvioData data = agmDA.GetAgmEnviosSecundariosData(entidad);
-
-            foreach (DataRow gan in data.Ganaderia.Rows)
-            {
-                gan["Status"] = "PE";
-                gan["Selected"] = true;
-
-                foreach (string e in new string[] {entidad })
-                {
-                    if (!dO.EsNulo(gan, e)
-                            && Convert.ToInt32(gan[e]) > 0)
-                    {
-                        DataRow detail = data.Detail.NewRow();
-                        dO.ImportPrimaryKeysValues(gan, detail);
-                        detail["Entidad"] = e;
-                        detail["Count"] = Convert.ToInt32(gan[e]);
-                        detail["Selected"] = true;
-                        detail["Status"] = "PE";
-                        data.Detail.Rows.Add(detail);
-                    }
-                }
-            }
-            return data;
-        }
-
     }
 }

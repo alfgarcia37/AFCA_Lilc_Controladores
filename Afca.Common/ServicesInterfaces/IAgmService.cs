@@ -14,11 +14,11 @@ namespace Afca.Common.ServicesInterfaces
     {
         void PrepareAgmEnvios(ItemData itemParent);
         AgmEnvioData GetAgmEnvioDataByParent(ItemData itemParent);
-        AgmEnvioData GetAgmEnvioPrincipalesToSendData();
-        string GenerateJsonMessageEnvioPrincipal(string ganaderiaID, ArrayList entidadesIncluded);
-        Task<Result> SendJsonMessageEnvioPrincipal(string ganaderiaID, string jsonMessage);
-        bool MarkAgmEnviosPrincipalesAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message);
+        AgmEnvioData GetAgmEnviosPrincipalesToSendData();
+        AgmEnvioData GetAgmEnviosToSendData(string entidad);
+        string GenerateJsonMessageEnvio(string ganaderiaID, ArrayList entidadesIncluded);
+        Task<Result> SendJsonMessageEnvio(string ganaderiaID, string jsonMessage);
+        bool MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message);
         void PrepareAgmRecibosEnvios(string remesaID);
-        AgmEnvioData GetAgmEnviosSecundariosToSend(string entidad);
     }
 }

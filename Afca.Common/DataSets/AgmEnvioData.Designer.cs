@@ -404,6 +404,8 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnRecibos;
             
+            private global::System.Data.DataColumn columnRCS;
+            
             private global::System.Data.DataColumn columnSelected;
             
             private global::System.Data.DataColumn columnStatus;
@@ -517,6 +519,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn RCSColumn {
+                get {
+                    return this.columnRCS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn SelectedColumn {
                 get {
                     return this.columnSelected;
@@ -576,7 +586,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public GanaderiaRow AddGanaderiaRow(int AsociacionID, string GanaderiaID, int Lecturas, int Controles, int Lactaciones, int Inseminaciones, int Parametros, int Partos, int Recibos, bool Selected, string Status, string Message) {
+            public GanaderiaRow AddGanaderiaRow(int AsociacionID, string GanaderiaID, int Lecturas, int Controles, int Lactaciones, int Inseminaciones, int Parametros, int Partos, int Recibos, int RCS, bool Selected, string Status, string Message) {
                 GanaderiaRow rowGanaderiaRow = ((GanaderiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         AsociacionID,
@@ -588,6 +598,7 @@ namespace Afca.Common.DataSets {
                         Parametros,
                         Partos,
                         Recibos,
+                        RCS,
                         Selected,
                         Status,
                         Message};
@@ -630,6 +641,7 @@ namespace Afca.Common.DataSets {
                 this.columnParametros = base.Columns["Parametros"];
                 this.columnPartos = base.Columns["Partos"];
                 this.columnRecibos = base.Columns["Recibos"];
+                this.columnRCS = base.Columns["RCS"];
                 this.columnSelected = base.Columns["Selected"];
                 this.columnStatus = base.Columns["Status"];
                 this.columnMessage = base.Columns["Message"];
@@ -656,6 +668,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnPartos);
                 this.columnRecibos = new global::System.Data.DataColumn("Recibos", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRecibos);
+                this.columnRCS = new global::System.Data.DataColumn("RCS", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRCS);
                 this.columnSelected = new global::System.Data.DataColumn("Selected", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSelected);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1581,6 +1595,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int RCS {
+                get {
+                    try {
+                        return ((int)(this[this.tableGanaderia.RCSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RCS\' in table \'Ganaderia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGanaderia.RCSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Selected {
                 get {
                     try {
@@ -1709,6 +1739,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetRecibosNull() {
                 this[this.tableGanaderia.RecibosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsRCSNull() {
+                return this.IsNull(this.tableGanaderia.RCSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetRCSNull() {
+                this[this.tableGanaderia.RCSColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

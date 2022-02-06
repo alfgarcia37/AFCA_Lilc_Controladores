@@ -12,7 +12,7 @@
   <xs:element name="AgmEnvioData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AgmEnvioData" msprop:Generator_UserDSName="AgmEnvioData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Ganaderia" msprop:Generator_TableClassName="GanaderiaDataTable" msprop:Generator_TableVarName="tableGanaderia" msprop:Generator_RowChangedName="GanaderiaRowChanged" msprop:Generator_TablePropName="Ganaderia" msprop:Generator_RowDeletingName="GanaderiaRowDeleting" msprop:Generator_RowChangingName="GanaderiaRowChanging" msprop:Generator_RowEvHandlerName="GanaderiaRowChangeEventHandler" msprop:Generator_RowDeletedName="GanaderiaRowDeleted" msprop:Generator_RowClassName="GanaderiaRow" msprop:Generator_UserTableName="Ganaderia" msprop:Generator_RowEvArgName="GanaderiaRowChangeEvent">
+        <xs:element name="Ganaderia" msprop:Generator_TableClassName="GanaderiaDataTable" msprop:Generator_TableVarName="tableGanaderia" msprop:Generator_TablePropName="Ganaderia" msprop:Generator_RowDeletingName="GanaderiaRowDeleting" msprop:Generator_RowChangingName="GanaderiaRowChanging" msprop:Generator_RowEvHandlerName="GanaderiaRowChangeEventHandler" msprop:Generator_RowDeletedName="GanaderiaRowDeleted" msprop:Generator_UserTableName="Ganaderia" msprop:Generator_RowChangedName="GanaderiaRowChanged" msprop:Generator_RowEvArgName="GanaderiaRowChangeEvent" msprop:Generator_RowClassName="GanaderiaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AsociacionID" msprop:Generator_ColumnVarNameInTable="columnAsociacionID" msprop:Generator_ColumnPropNameInRow="AsociacionID" msprop:Generator_ColumnPropNameInTable="AsociacionIDColumn" msprop:Generator_UserColumnName="AsociacionID" type="xs:int" />
@@ -24,13 +24,14 @@
               <xs:element name="Parametros" msprop:Generator_ColumnVarNameInTable="columnParametros" msprop:Generator_ColumnPropNameInRow="Parametros" msprop:Generator_ColumnPropNameInTable="ParametrosColumn" msprop:Generator_UserColumnName="Parametros" type="xs:int" minOccurs="0" />
               <xs:element name="Partos" msprop:Generator_ColumnVarNameInTable="columnPartos" msprop:Generator_ColumnPropNameInRow="Partos" msprop:Generator_ColumnPropNameInTable="PartosColumn" msprop:Generator_UserColumnName="Partos" type="xs:int" minOccurs="0" />
               <xs:element name="Recibos" msprop:Generator_ColumnVarNameInTable="columnRecibos" msprop:Generator_ColumnPropNameInRow="Recibos" msprop:Generator_ColumnPropNameInTable="RecibosColumn" msprop:Generator_UserColumnName="Recibos" type="xs:int" minOccurs="0" />
+              <xs:element name="RCS" msprop:Generator_ColumnVarNameInTable="columnRCS" msprop:Generator_ColumnPropNameInRow="RCS" msprop:Generator_ColumnPropNameInTable="RCSColumn" msprop:Generator_UserColumnName="RCS" type="xs:int" minOccurs="0" />
               <xs:element name="Selected" msprop:Generator_ColumnVarNameInTable="columnSelected" msprop:Generator_ColumnPropNameInRow="Selected" msprop:Generator_ColumnPropNameInTable="SelectedColumn" msprop:Generator_UserColumnName="Selected" type="xs:boolean" minOccurs="0" />
               <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
               <xs:element name="Message" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_ColumnPropNameInRow="Message" msprop:Generator_ColumnPropNameInTable="MessageColumn" msprop:Generator_UserColumnName="Message" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Detail" msprop:Generator_TableClassName="DetailDataTable" msprop:Generator_TableVarName="tableDetail" msprop:Generator_TablePropName="Detail" msprop:Generator_RowDeletingName="DetailRowDeleting" msprop:Generator_RowChangingName="DetailRowChanging" msprop:Generator_RowEvHandlerName="DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="DetailRowDeleted" msprop:Generator_UserTableName="Detail" msprop:Generator_RowChangedName="DetailRowChanged" msprop:Generator_RowEvArgName="DetailRowChangeEvent" msprop:Generator_RowClassName="DetailRow">
+        <xs:element name="Detail" msprop:Generator_TableClassName="DetailDataTable" msprop:Generator_TableVarName="tableDetail" msprop:Generator_RowChangedName="DetailRowChanged" msprop:Generator_TablePropName="Detail" msprop:Generator_RowDeletingName="DetailRowDeleting" msprop:Generator_RowChangingName="DetailRowChanging" msprop:Generator_RowEvHandlerName="DetailRowChangeEventHandler" msprop:Generator_RowDeletedName="DetailRowDeleted" msprop:Generator_RowClassName="DetailRow" msprop:Generator_UserTableName="Detail" msprop:Generator_RowEvArgName="DetailRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AsociacionID" msprop:Generator_ColumnVarNameInTable="columnAsociacionID" msprop:Generator_ColumnPropNameInRow="AsociacionID" msprop:Generator_ColumnPropNameInTable="AsociacionIDColumn" msprop:Generator_UserColumnName="AsociacionID" type="xs:int" />
@@ -42,7 +43,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MessageToSend" msprop:Generator_TableClassName="MessageToSendDataTable" msprop:Generator_TableVarName="tableMessageToSend" msprop:Generator_TablePropName="MessageToSend" msprop:Generator_RowDeletingName="MessageToSendRowDeleting" msprop:Generator_RowChangingName="MessageToSendRowChanging" msprop:Generator_RowEvHandlerName="MessageToSendRowChangeEventHandler" msprop:Generator_RowDeletedName="MessageToSendRowDeleted" msprop:Generator_UserTableName="MessageToSend" msprop:Generator_RowChangedName="MessageToSendRowChanged" msprop:Generator_RowEvArgName="MessageToSendRowChangeEvent" msprop:Generator_RowClassName="MessageToSendRow">
+        <xs:element name="MessageToSend" msprop:Generator_TableClassName="MessageToSendDataTable" msprop:Generator_TableVarName="tableMessageToSend" msprop:Generator_RowChangedName="MessageToSendRowChanged" msprop:Generator_TablePropName="MessageToSend" msprop:Generator_RowDeletingName="MessageToSendRowDeleting" msprop:Generator_RowChangingName="MessageToSendRowChanging" msprop:Generator_RowEvHandlerName="MessageToSendRowChangeEventHandler" msprop:Generator_RowDeletedName="MessageToSendRowDeleted" msprop:Generator_RowClassName="MessageToSendRow" msprop:Generator_UserTableName="MessageToSend" msprop:Generator_RowEvArgName="MessageToSendRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="AsociacionID" msprop:Generator_ColumnVarNameInTable="columnAsociacionID" msprop:Generator_ColumnPropNameInRow="AsociacionID" msprop:Generator_ColumnPropNameInTable="AsociacionIDColumn" msprop:Generator_UserColumnName="AsociacionID" type="xs:int" />
@@ -71,12 +72,12 @@
       <xs:field xpath="mstns:GanaderiaID" />
       <xs:field xpath="mstns:Entidad" />
     </xs:unique>
-    <xs:keyref name="FK_Ganaderia_MessageToSend" refer="GanaderiaEnvios" msprop:rel_Generator_UserChildTable="MessageToSend" msprop:rel_Generator_ChildPropName="GetMessageToSendRows" msprop:rel_Generator_UserRelationName="FK_Ganaderia_MessageToSend" msprop:rel_Generator_ParentPropName="GanaderiaRowParent" msprop:rel_Generator_RelationVarName="relationFK_Ganaderia_MessageToSend" msprop:rel_Generator_UserParentTable="Ganaderia">
+    <xs:keyref name="FK_Ganaderia_MessageToSend" refer="GanaderiaEnvios" msprop:rel_Generator_UserChildTable="MessageToSend" msprop:rel_Generator_ChildPropName="GetMessageToSendRows" msprop:rel_Generator_UserRelationName="FK_Ganaderia_MessageToSend" msprop:rel_Generator_RelationVarName="relationFK_Ganaderia_MessageToSend" msprop:rel_Generator_UserParentTable="Ganaderia" msprop:rel_Generator_ParentPropName="GanaderiaRowParent">
       <xs:selector xpath=".//mstns:MessageToSend" />
       <xs:field xpath="mstns:AsociacionID" />
       <xs:field xpath="mstns:GanaderiaID" />
     </xs:keyref>
-    <xs:keyref name="FK_Ganaderia_Detail" refer="GanaderiaEnvios" msprop:rel_Generator_UserChildTable="Detail" msprop:rel_Generator_ChildPropName="GetDetailRows" msprop:rel_Generator_UserRelationName="FK_Ganaderia_Detail" msprop:rel_Generator_ParentPropName="GanaderiaRowParent" msprop:rel_Generator_RelationVarName="relationFK_Ganaderia_Detail" msprop:rel_Generator_UserParentTable="Ganaderia">
+    <xs:keyref name="FK_Ganaderia_Detail" refer="GanaderiaEnvios" msprop:rel_Generator_UserChildTable="Detail" msprop:rel_Generator_ChildPropName="GetDetailRows" msprop:rel_Generator_UserRelationName="FK_Ganaderia_Detail" msprop:rel_Generator_RelationVarName="relationFK_Ganaderia_Detail" msprop:rel_Generator_UserParentTable="Ganaderia" msprop:rel_Generator_ParentPropName="GanaderiaRowParent">
       <xs:selector xpath=".//mstns:Detail" />
       <xs:field xpath="mstns:AsociacionID" />
       <xs:field xpath="mstns:GanaderiaID" />
