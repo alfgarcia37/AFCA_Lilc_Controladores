@@ -52,6 +52,10 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FrameworkForge.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=79610fd68f4422fc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\FrameworkForge.Common.dll</HintPath>
+    </Reference>
     <Reference Include="FrameworkForge.UI">
       <HintPath>Lib\FrameworkForge.UI.dll</HintPath>
     </Reference>

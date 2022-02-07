@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FrameworkForge.Common;
 
 
 namespace Afca
@@ -17,8 +18,25 @@ namespace Afca
         [STAThread]
         static void Main()
         {
+            ConfigureAgmWebAPI();
             FrameworkForge.UI.ApplicationContext.Run();
             //Encrypt();
+        }
+        static void ConfigureAgmWebAPI()
+        {
+            var url = Encriptador.Encrypt("http://localhost/AGMWebAPI/api",false);
+            var credentials = Encriptador.Encrypt("fernando@gmail.com;Pepona123",false);
+
+            if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUrl") == null)
+                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUrl", url, @"J:\My projects\Visual Studio 2017\Production\Afca\Afca\");
+            else
+                ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUrl", url);
+
+            if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUser") == null)
+                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUser", credentials, @"J:\My projects\Visual Studio 2017\Production\Afca\Afca\");
+            else
+                ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUser", credentials);
+
         }
         static void Encrypt()
         {

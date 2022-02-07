@@ -39,13 +39,22 @@ namespace Afca.Services
                 case "AgmEnviosRCS":
                    agmDA.PrepareAgmEnviosRCS();
                     break;
+                case "AgmEnviosCenso":
+                    agmDA.PrepareAgmEnviosCenso();
+                    break;
+                case "AgmEnviosGenomica":
+                    agmDA.PreparaAgmEnviosGenomica();
+                    break;
             }
         }
         public void PrepareAgmRecibosEnvios(string remesaID)
         {
             agmDA.PrepareAgmEnviosRecibos(remesaID);
         }
-
+        public void PrepareAgmCalificacionesEnvios(string ganaderiaCodigoSelected)
+        {
+            agmDA.PrepareAgmEnviosCalificaciones(ganaderiaCodigoSelected);
+        }
         public AgmEnvioData GetAgmEnvioDataByParent(ItemData itemParent)
         {
             switch (itemParent.Name)
@@ -56,6 +65,12 @@ namespace Afca.Services
                     return agmDA.GetAgmEnviosSecundariosData("Recibos");
                 case "AgmEnviosRCS":
                     return agmDA.GetAgmEnviosSecundariosData("RCS");
+                case "AgmEnviosCalificaciones":
+                    return agmDA.GetAgmEnviosSecundariosData("Calificaciones");
+                case "AgmEnviosCenso":
+                    return agmDA.GetAgmEnviosSecundariosData("Censo");
+                case "AgmEnviosGenomica":
+                    return agmDA.GetAgmEnviosSecundariosData("Genomica");
                 default:
                     return null;
             }
@@ -148,5 +163,21 @@ namespace Afca.Services
                 return false;
             }
         }
+        public bool MarkAgmEnvioAsNotSended(string ganaderiaID,string entidad,string error,out string message)
+        {
+            message = "";
+            try
+            {
+                agmDA.MarkAgmEnvioAsNotSended(ganaderiaID,entidad, error);
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                message = e.Message;
+                return false;
+            }
+        }
+
+
     }
 }

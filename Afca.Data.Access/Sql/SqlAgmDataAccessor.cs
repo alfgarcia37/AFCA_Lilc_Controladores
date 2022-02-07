@@ -32,6 +32,27 @@ namespace Afca.Data.Access
                "sp_GDM_CL_RCS"
                , null);
         }
+        public void PrepareAgmEnviosCalificaciones(string codigoGanaderia)
+        {
+            this.ChangeDataBase("reggen");
+            this.ExecuteNonQuery(
+               "SP_GDM_REG_Calificacion"
+               , new SqlParameter[1] {new SqlParameter("@ESTABLO",codigoGanaderia) });
+        }
+        public void PrepareAgmEnviosCenso()
+        {
+            this.ChangeDataBase("reggen");
+            this.ExecuteNonQuery(
+               "SP_GDM_REG_Censo"
+               , null);
+        }
+        public void PreparaAgmEnviosGenomica()
+        {
+            this.ChangeDataBase("reggen");
+            this.ExecuteNonQuery(
+               "SP_GDM_REG_Genomica"
+               , null);
+        }
         public AgmEnvioData GetAgmEnviosData()
         {
             this.ChangeDataBase("gandmTemp");
@@ -82,9 +103,7 @@ namespace Afca.Data.Access
         public int MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded)
         {
             this.ChangeDataBase("gandmTemp");
-            DataSet data = new AgmEnvioData();
-            data.EnforceConstraints = false;
-
+           
             string entidades = "";
 
             foreach (string entidad in entidadesIncluded)
@@ -96,11 +115,25 @@ namespace Afca.Data.Access
             return this.ExecuteNonQuery("sp_AgmEnvios_state_update"
                                  , new SqlParameter[3]
                                  {
-                                     new SqlParameter("@GanaderiaID",ganaderiaID),
-                                     new SqlParameter("@StatusBuzon","UP"),
+                                      new SqlParameter("@GanaderiaID",ganaderiaID),
+                                      new SqlParameter("@StatusBuzon","UP"),
                                       new SqlParameter("@Entidades",entidades)
                                  });
         }
 
+        public int MarkAgmEnvioAsNotSended(string ganaderiaID,string entidad,string error)
+        {
+            this.ChangeDataBase("gandmTemp");
+
+
+            return this.ExecuteNonQuery("sp_AgmEnvios_state_update"
+                                 , new SqlParameter[4]
+                                 {
+                                      new SqlParameter("@GanaderiaID",ganaderiaID),
+                                      new SqlParameter("@StatusBuzon","ER"),
+                                      new SqlParameter("@Entidades",entidad),
+                                      new SqlParameter("@Mensaje",error)
+                                 });
+        }
     }
 }

@@ -518,12 +518,121 @@ namespace Afca.UI
                     e.Message);
             }
         }
+        public static void PrepareAgmEnviosCalificaciones(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+
+                DialogGanaderiaForm dgGanaderia = new DialogGanaderiaForm();
+                if (dgGanaderia.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.WaitCursor;
+                        service.PrepareAgmCalificacionesEnvios(dgGanaderia.GanaderiaCodigoSelected);
+                        DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                        itContainer.UserInterface.RefreshUI();
+                    }
+                    catch (System.Exception e)
+                    {
+                        DialogsManager.ShowErrorDialog("Generación envios"
+                            , e.Message);
+                    }
+                    finally
+                    {
+                        FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.Default;
+                    }
+                }
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
+        public static void PrepareAgmEnviosCenso(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+
+                try
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.WaitCursor;
+                    service.PrepareAgmEnvios(itContainer);
+                    DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                    itContainer.UserInterface.RefreshUI();
+                }
+                catch (System.Exception e)
+                {
+                    DialogsManager.ShowErrorDialog("Generación envios"
+                        , e.Message);
+                }
+                finally
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.Default;
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
+        public static void PrepareAgmEnviosGenomica(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+
+                try
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.WaitCursor;
+                    service.PrepareAgmEnvios(itContainer);
+                    DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                    itContainer.UserInterface.RefreshUI();
+                }
+                catch (System.Exception e)
+                {
+                    DialogsManager.ShowErrorDialog("Generación envios"
+                        , e.Message);
+                }
+                finally
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.Default;
+                }
+
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
 
         public static void AgmExecuteEnviosSecundarios(ItemData itContainer)
         {
+            ItemMetaData itMetada = itContainer.MetaData;
+
+            string icon = "IconoFolderWindow";
+            string title = "AGM - Envios secundarios pendientes";
+
+            if (itMetada.Children.Count > 0)
+            {
+                ItemMetaData child = (ItemMetaData) itMetada.Children[0].Value;
+
+                if (child.Icons.Count > 0)
+                    icon = child.Icons[0];
+
+                title = string.Format("{0} ({1})",title, itMetada.Text.ToUpper());
+
+            }
+
             ShowControlInForm(
-                               "AGM - Envios secundarios pendientes"
-                               , "IconoFolderWindow"
+                               title
+                               , icon
                                , new AgmEnvioSecundarioDataGridControl(itContainer));
         }
         #endregion

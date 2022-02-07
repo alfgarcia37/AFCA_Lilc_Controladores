@@ -21,7 +21,8 @@ namespace Afca.UI
     public partial class AgmEnvioSecundarioDataGridControl : DataGridControl
     {
         ItemData itemContainer;
-        Task uiTask;
+        Task uiTaskShow;
+        Task uiTaskHide;
         UltraGridRow currentSendingRow;
         string CallerEntidadId;
 
@@ -69,6 +70,15 @@ namespace Afca.UI
                 case "AgmEnviosRCS":
                     CallerEntidadId = "RCS";
                     break;
+                case "AgmEnviosCalificaciones":
+                    CallerEntidadId = "Calificaciones";
+                    break;
+                case "AgmEnviosCenso":
+                    CallerEntidadId = "Censo";
+                    break;
+                case "AgmEnviosGenomica":
+                    CallerEntidadId = "Genomica";
+                    break;
             }
         }
         void SetGridColumnsAppearance()
@@ -80,6 +90,15 @@ namespace Afca.UI
                     break;
                 case "rcs":
                     ultraGridData.DisplayLayout.Bands[0].Columns["RCS"].Hidden = false;
+                    break;
+                case "calificaciones":
+                    ultraGridData.DisplayLayout.Bands[0].Columns["Calificaciones"].Hidden = false;
+                    break;
+                case "censo":
+                    ultraGridData.DisplayLayout.Bands[0].Columns["Censo"].Hidden = false;
+                    break;
+                case "genomica":
+                    ultraGridData.DisplayLayout.Bands[0].Columns["Genomica"].Hidden = false;
                     break;
             }
         }
@@ -99,6 +118,15 @@ namespace Afca.UI
                     break;
                 case "rcs":
                     loadedData = agmService.GetAgmEnviosToSendData("RCS");
+                    break;
+                case "calificaciones":
+                    loadedData = agmService.GetAgmEnviosToSendData("Calificaciones");
+                    break;
+                case "censo":
+                    loadedData = agmService.GetAgmEnviosToSendData("Censo");
+                    break;
+                case "genomica":
+                    loadedData = agmService.GetAgmEnviosToSendData("Genomica");
                     break;
             }
 
@@ -159,7 +187,6 @@ namespace Afca.UI
             foreach (var ganaderia in ganaderiasToSend)
             {
 
-                //this.Cursor = Cursors.WaitCursor;
                 var entidades = agmEnvioData.Detail
                     .Where(d => d.GanaderiaID == ganaderia.GanaderiaID && d.Selected);
 
@@ -168,8 +195,8 @@ namespace Afca.UI
                     UltraGridRow gRow = ultraGridData.Rows
                         .Where(r => (string)r.Cells["GanaderiaID"].Value == ganaderia.GanaderiaID).FirstOrDefault();
 
-                    if (gRow != null)
-                        currentSendingRow = gRow;
+                    if (gRow != null)                    
+                        currentSendingRow = gRow;                    
                     else
                         currentSendingRow = null;
 
@@ -187,9 +214,7 @@ namespace Afca.UI
 
                         try
                         {
-
-                            Action setProgressAction = ShowUIProgressAction;
-                            uiTask = Task.Run(setProgressAction);
+                            await Task.Run(()=> ShowUIProgressAction(currentSendingRow));
 
                             var result = await agmService.SendJsonMessageEnvio(ganaderia.GanaderiaID, message).ConfigureAwait(false);
                             status = result.success ? "OK" : "ER";
@@ -199,6 +224,19 @@ namespace Afca.UI
                             {
                                 string err = "";
                                 var marked = agmService.MarkAgmEnviosAsSended(ganaderia.GanaderiaID, entidadesIncluded, out err);
+
+                                if (!marked)
+                                {
+                                    ganaderia.Message +=
+                                        "\n Envio realizado,sin embargo se ha producido un error al actualizar el estado como enviada en la base de datos local." +
+                                        "\n" + err;
+                                    status = "ER";
+                                }
+                            }
+                            else
+                            {
+                                string err = "";
+                                var marked = agmService.MarkAgmEnvioAsNotSended(ganaderia.GanaderiaID,CallerEntidadId, ganaderia.Message, out err);
 
                                 if (!marked)
                                 {
@@ -226,34 +264,30 @@ namespace Afca.UI
                                 entidad.Selected = false;
                             }
                         }
-
-
                     }
                     else
                     {
                         ganaderia.Message = "Sin información asociada para enviar.";
                     }
                 }
-
-                Action disableProgressAction = HideUIProgressAction;
-                uiTask = Task.Run(disableProgressAction);
-                uiTask.Wait();
+                await Task.Run(()=>HideUIProgressAction(currentSendingRow));
             }
-            // prepare json data ; parameters : ganaderiaId, entidades selected
-            // send data 
-            // if ( ok)  -> mark as updated in database; change status in dataset
-            // if (!ok)  -> do nothing in database (log de operaciones?), change status in dataset (show message)            
+
+            HideCursor();
+           
         }
-        void ShowUIProgressAction()
+        void ShowUIProgressAction(UltraGridRow gridRow)
         {
-            ShowCursor();
-            MarkDataGridRowAsBeingSending();
-        }
+            Action showCursorAct = ShowCursor;
+            Task t1 = Task.Run(showCursorAct);
+
+            Task.Run(() => MarkDataGridRowAsBeingSending(gridRow));
+        }   
         void ShowCursor()
         {
             if (this.InvokeRequired)
             {
-                Action doMethod = ShowUIProgressAction;
+                Action doMethod = ShowCursor;
                 this.Invoke(doMethod);
             }
             else
@@ -261,32 +295,39 @@ namespace Afca.UI
                 this.Cursor = Cursors.WaitCursor;
             }
         }
-        void MarkDataGridRowAsBeingSending()
+        void MarkDataGridRowAsBeingSending(UltraGridRow gridRow)
         {
             if (this.ultraGridData.InvokeRequired)
             {
-                Action doMethod = MarkDataGridRowAsBeingSending;
-                this.Invoke(doMethod);
+                Action<UltraGridRow> doMethod = MarkDataGridRowAsBeingSending;
+                this.Invoke(doMethod,gridRow);                
             }
             else
             {
-                if (currentSendingRow != null)
+                if (gridRow != null)
                 {
-                    currentSendingRow.Tag = currentSendingRow.Appearance.BackColor;
-                    currentSendingRow.Appearance.BackColor = Color.Orange;
+                    gridRow.Tag = currentSendingRow.Appearance.BackColor;
+                    gridRow.Appearance.BackColor = Color.Orange;
+                    gridRow.Activate();
+                    gridRow.Refresh();
                 }
             }
         }
-        void HideUIProgressAction()
+        void HideUIProgressAction(UltraGridRow gridRow)
         {
-            HideCursor();
-            MarkDataGridRowSendedResult();
+            Task[] tasksHide = new Task[2];
+
+            Action hideCursorAct = HideCursor;
+            Task t1 = Task.Run(hideCursorAct);
+
+            Task.Run(()=>MarkDataGridRowSendedResult(gridRow));
+
         }
         void HideCursor()
         {
             if (this.InvokeRequired)
             {
-                Action doMethod = HideUIProgressAction;
+                Action doMethod = HideCursor;
                 this.Invoke(doMethod);
             }
             else
@@ -294,32 +335,33 @@ namespace Afca.UI
                 this.Cursor = Cursors.Default;
             }
         }
-        void MarkDataGridRowSendedResult()
+        void MarkDataGridRowSendedResult(UltraGridRow gridRow)
         {
             if (this.ultraGridData.InvokeRequired)
             {
-                Action doMethod = MarkDataGridRowSendedResult;
-                this.Invoke(doMethod);
+                Action<UltraGridRow> doMethod = MarkDataGridRowSendedResult;
+                this.Invoke(doMethod,gridRow);
             }
             else
             {
-                if (currentSendingRow != null)
+                if (gridRow != null)
                 {
-                    string status = currentSendingRow.Cells["Status"].Value.ToString();
+                    string status = gridRow.Cells["Status"].Value.ToString();
 
                     switch (status.ToUpper())
                     {
                         case "PE":
-                            if (currentSendingRow.Tag is Color)
-                                currentSendingRow.Appearance.BackColor = (Color)currentSendingRow.Tag;
+                            if (gridRow.Tag is Color)
+                                gridRow.Appearance.BackColor = (Color)gridRow.Tag;
                             break;
                         case "OK":
-                            currentSendingRow.Appearance.BackColor = Color.LightGreen;
+                            gridRow.Appearance.BackColor = Color.LightGreen;
                             break;
                         case "ER":
-                            currentSendingRow.Appearance.BackColor = Color.LightSalmon;
+                            gridRow.Appearance.BackColor = Color.LightSalmon;
                             break;
                     }
+                    gridRow.Refresh();
                 }
             }
         }
@@ -335,6 +377,7 @@ namespace Afca.UI
                     break;
                 case "tbbSend":
                     await SendData();
+                    itemContainer.UserInterface.RefreshUI();
                     break;
             }
         }

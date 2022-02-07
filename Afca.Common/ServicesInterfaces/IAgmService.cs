@@ -13,12 +13,15 @@ namespace Afca.Common.ServicesInterfaces
     public interface IAgmService:IService
     {
         void PrepareAgmEnvios(ItemData itemParent);
+        void PrepareAgmRecibosEnvios(string remesaID);
+        void PrepareAgmCalificacionesEnvios(string ganaderiaCodigoSelected);
+
         AgmEnvioData GetAgmEnvioDataByParent(ItemData itemParent);
         AgmEnvioData GetAgmEnviosPrincipalesToSendData();
         AgmEnvioData GetAgmEnviosToSendData(string entidad);
         string GenerateJsonMessageEnvio(string ganaderiaID, ArrayList entidadesIncluded);
         Task<Result> SendJsonMessageEnvio(string ganaderiaID, string jsonMessage);
         bool MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message);
-        void PrepareAgmRecibosEnvios(string remesaID);
+        bool MarkAgmEnvioAsNotSended(string ganaderiaID,string entidad, string error,out string message);
     }
 }

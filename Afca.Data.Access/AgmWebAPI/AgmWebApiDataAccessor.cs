@@ -1,9 +1,11 @@
 ﻿using Afca.Common;
 using Afca.Common.DataAccessor;
 using Afca.Common.Models;
+using Microsoft.Practices.EnterpriseLibrary.Common;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -18,8 +20,8 @@ namespace Afca.Data.Access
         string dataHubController = "datahub";
 
         //load from app.config (encrypted saved)
-        string email = "fernando@gmail.com";
-        string key = "Pepona123";
+        string email = "";
+        string key = "";
 
         #region agm web api data accessor methods
         public AgmWebApiDataAccessor()
@@ -66,11 +68,42 @@ namespace Afca.Data.Access
             httpClient.DefaultRequestHeaders.Accept.Add(
                new MediaTypeWithQualityHeaderValue("application/json"));
             LoadWebServiceUrl();
+            LoadWebApiCredentials();
         }
         void LoadWebServiceUrl()
         {
             //load from app.config (encrypted saved)
-            urlWebAPI = @"http://localhost/AGMWebAPI/api";
+
+            var url = ConfigurationManager.AppSettings["AgmWebApiUrl"];
+
+            if (url != null)
+                urlWebAPI = Encriptador.Decrypt(url,false);
+            else
+                throw new Exception("Conexión con el Web API AGM no encontrada");
+
+            //urlWebAPI = @"http://localhost/AGMWebAPI/api";
+        }
+        void LoadWebApiCredentials()
+        {
+            var credentials = ConfigurationManager.AppSettings["AgmWebApiUser"];
+
+            if (credentials != null)
+            {
+                string credentialsRaw = Encriptador.Decrypt(credentials,false);
+                string[] parts = credentialsRaw.Split(new char[] {';' });
+
+                if (parts.Length == 2)
+                {
+                    email = parts[0];
+                    key = parts[1];
+                    return;
+                }
+
+                throw new Exception("Credenciales con el Web API AGM no encontradas");
+
+            }
+            else
+                throw new Exception("Credenciales con el Web API AGM no encontradas");
         }
         string UrlWebAPIController(string controller)
         {

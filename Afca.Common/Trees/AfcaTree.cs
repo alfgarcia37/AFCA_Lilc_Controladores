@@ -569,7 +569,7 @@ namespace Afca.Common
             // Censo
             // Recibos
             // Calificaciones
-            // Concursos
+            // RCS
             // Genómica
 
             ItemMetaData recibosNodeTree = CreateAgmEnviosRecibosTree();
@@ -577,6 +577,15 @@ namespace Afca.Common
 
             ItemMetaData rcsNodeTree = CreateAgmEnviosRCSTree();
             envSecundariosNode.Children.Add(rcsNodeTree);
+
+            ItemMetaData calificacionesNodeTree = CreateAgmEnvioCalificacionesTree();
+            envSecundariosNode.Children.Add(calificacionesNodeTree);
+
+            ItemMetaData censoNodeTree = CreateAgmEnviosCensoTree();
+            envSecundariosNode.Children.Add(censoNodeTree);
+
+            ItemMetaData genomicaNodeTree = CreateAgmEnviosGenomicaTree();
+            envSecundariosNode.Children.Add(genomicaNodeTree);
 
             return envSecundariosNode;
         }
@@ -602,7 +611,7 @@ namespace Afca.Common
 
             ItemMetaData envRecibolNode = new ItemMetaData("AgmEnvioRecibo");
             envRecibolNode.ItemType = ItemType.Leaf;
-            envRecibolNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+            envRecibolNode.Icons.AddRange(new string[] { "IconoDocumento" });
 
             envRecibolNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
             envRecibolNode.DataTable = "Ganaderia";
@@ -638,7 +647,7 @@ namespace Afca.Common
 
             ItemMetaData envRcsNode = new ItemMetaData("AgmEnvioRCS");
             envRcsNode.ItemType = ItemType.Leaf;
-            envRcsNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+            envRcsNode.Icons.AddRange(new string[] { "IconoMatrazRojo" });
 
             envRcsNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
             envRcsNode.DataTable = "Ganaderia";
@@ -649,6 +658,114 @@ namespace Afca.Common
                            new ItemColumn("GanaderiaID", "Establo", true, true, true));
             envRcsNode.ItemColumns.AddItemColumn(
                 new ItemColumn("RCS", "RCS", false, true));
+
+            return envRcsNode;
+        }
+        static ItemMetaData CreateAgmEnvioCalificacionesTree()
+        {
+            ItemMetaData envCalificacionesNode = new ItemMetaData("AgmEnviosCalificaciones");
+            envCalificacionesNode.Text = "Calificaciones";
+            envCalificacionesNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            envCalificacionesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "PrepareAgmEnviosCalificaciones", "Preparar envios..."
+                                                           , ItemMethodType.GridEdit, "IconoGenerador"));
+            envCalificacionesNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosSecundarios", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+
+            ItemMetaData calificacionNode = CreateAgmEnviosCalificacionesNode();
+            envCalificacionesNode.Children.Add(calificacionNode);
+            return envCalificacionesNode;
+        }
+        static ItemMetaData CreateAgmEnviosCalificacionesNode()
+        {
+
+            ItemMetaData envCalificacionNode = new ItemMetaData("AgmEnvioCalificacion");
+            envCalificacionNode.ItemType = ItemType.Leaf;
+            envCalificacionNode.Icons.AddRange(new string[] { "IconoCalificacion" });
+
+            envCalificacionNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envCalificacionNode.DataTable = "Ganaderia";
+            envCalificacionNode.SortCriteria = "GanaderiaID ASC";
+            envCalificacionNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            envCalificacionNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            envCalificacionNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Calificaciones", "Calificaciones", false, true));
+
+            return envCalificacionNode;
+        }
+        static ItemMetaData CreateAgmEnviosCensoTree()
+        {
+            ItemMetaData envCensoNode = new ItemMetaData("AgmEnviosCenso");
+            envCensoNode.Text = "Censo";
+            envCensoNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            envCensoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "PrepareAgmEnviosCenso", "Preparar envios..."
+                                                           , ItemMethodType.GridEdit, "IconoGenerador"));
+            envCensoNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosSecundarios", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+
+            ItemMetaData censoNode = CreateAgmEnviosCensoNode();
+            envCensoNode.Children.Add(censoNode);
+            return envCensoNode;
+        }
+        static ItemMetaData CreateAgmEnviosCensoNode()
+        {
+
+            ItemMetaData envCensoNode = new ItemMetaData("AgmEnvioCenso");
+            envCensoNode.ItemType = ItemType.Leaf;
+            envCensoNode.Icons.AddRange(new string[] { "IconoCenso" });
+
+            envCensoNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envCensoNode.DataTable = "Ganaderia";
+            envCensoNode.SortCriteria = "GanaderiaID ASC";
+            envCensoNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            envCensoNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            envCensoNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Censo", "Censo", false, true));
+
+            return envCensoNode;
+        }
+        static ItemMetaData CreateAgmEnviosGenomicaTree()
+        {
+            ItemMetaData envRcsNode = new ItemMetaData("AgmEnviosGenomica");
+            envRcsNode.Text = "Genomica";
+            envRcsNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            envRcsNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "PrepareAgmEnviosGenomica", "Preparar envios..."
+                                                           , ItemMethodType.GridEdit, "IconoGenerador"));
+            envRcsNode.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosSecundarios", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+
+            ItemMetaData genomicaNode = CreateAgmEnviosGenomicaNode();
+            envRcsNode.Children.Add(genomicaNode);
+            return envRcsNode;
+        }
+        static ItemMetaData CreateAgmEnviosGenomicaNode()
+        {
+
+            ItemMetaData envRcsNode = new ItemMetaData("AgmEnvioGenomica");
+            envRcsNode.ItemType = ItemType.Leaf;
+            envRcsNode.Icons.AddRange(new string[] { "IconoGanado" });
+
+            envRcsNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            envRcsNode.DataTable = "Ganaderia";
+            envRcsNode.SortCriteria = "GanaderiaID ASC";
+            envRcsNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            envRcsNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            envRcsNode.ItemColumns.AddItemColumn(
+                new ItemColumn("Genomica", "Genomica", false, true));
 
             return envRcsNode;
         }

@@ -125,6 +125,12 @@
     <Compile Include="DataGridControls\LecturaControlDataGridControl.Designer.cs">
       <DependentUpon>LecturaControlDataGridControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\DialogGanaderiaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\DialogGanaderiaForm.Designer.cs">
+      <DependentUpon>DialogGanaderiaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\DialogRemesaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataGridControls\LecturaControlDataGridControl.resx">
       <DependentUpon>LecturaControlDataGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\DialogGanaderiaForm.resx">
+      <DependentUpon>DialogGanaderiaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\DialogRemesaForm.resx">
       <DependentUpon>DialogRemesaForm.cs</DependentUpon>

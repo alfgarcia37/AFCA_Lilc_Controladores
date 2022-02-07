@@ -41,6 +41,9 @@ namespace Afca.UI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Partos");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Recibos");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RCS");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Calificaciones");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Censo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Genomica");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Selected");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Status", -1, 108465735);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Message");
@@ -118,11 +121,23 @@ namespace Afca.UI
             ultraGridColumn8.Hidden = true;
             ultraGridColumn9.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 11;
+            ultraGridColumn9.Header.VisiblePosition = 12;
             ultraGridColumn9.Hidden = true;
             ultraGridColumn25.Header.Editor = null;
             ultraGridColumn25.Header.VisiblePosition = 10;
             ultraGridColumn25.Hidden = true;
+            ultraGridColumn26.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn26.Header.Editor = null;
+            ultraGridColumn26.Header.VisiblePosition = 11;
+            ultraGridColumn26.Hidden = true;
+            ultraGridColumn27.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn27.Header.Editor = null;
+            ultraGridColumn27.Header.VisiblePosition = 13;
+            ultraGridColumn27.Hidden = true;
+            ultraGridColumn28.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn28.Header.Editor = null;
+            ultraGridColumn28.Header.VisiblePosition = 14;
+            ultraGridColumn28.Hidden = true;
             ultraGridColumn10.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn10.Header.Caption = "Enviar";
             ultraGridColumn10.Header.Editor = null;
@@ -135,11 +150,11 @@ namespace Afca.UI
             ultraGridColumn12.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn12.Header.Caption = "Mensaje";
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 12;
+            ultraGridColumn12.Header.VisiblePosition = 15;
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 13;
+            ultraGridColumn13.Header.VisiblePosition = 16;
             ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 14;
+            ultraGridColumn14.Header.VisiblePosition = 17;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -151,6 +166,9 @@ namespace Afca.UI
             ultraGridColumn8,
             ultraGridColumn9,
             ultraGridColumn25,
+            ultraGridColumn26,
+            ultraGridColumn27,
+            ultraGridColumn28,
             ultraGridColumn10,
             ultraGridColumn11,
             ultraGridColumn12,

@@ -355,6 +355,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Icons\media_play_green.png" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\probeta_roja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\icon-farm.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\cow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Common.dll"
