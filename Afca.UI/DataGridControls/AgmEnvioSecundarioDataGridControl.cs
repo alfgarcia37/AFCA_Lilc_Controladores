@@ -1,6 +1,7 @@
 ﻿using Afca.Common;
 using Afca.Common.DataSets;
 using Afca.Common.ServicesInterfaces;
+using Afca.Common.Utilities;
 using FrameworkForge.Common;
 using FrameworkForge.Common.DataStructures;
 using FrameworkForge.UI;
@@ -23,6 +24,11 @@ namespace Afca.UI
         ItemData itemContainer;
         Task uiTaskShow;
         Task uiTaskHide;
+
+        FileTracer fileTracer;
+        ArrayList traceBuffer = new ArrayList();
+        bool traceBufferFlushed = false;
+
         UltraGridRow currentSendingRow;
         string CallerEntidadId;
 
@@ -31,6 +37,7 @@ namespace Afca.UI
             InitializeComponent();
             itemContainer = argItemContainer;
             SetCallerEntidadId();
+            fileTracer = new FileTracer(string.Format("agm_env_{0}",CallerEntidadId));
             SetGridColumnsAppearance();
             LoadData();
         }
@@ -176,6 +183,20 @@ namespace Afca.UI
             if (grow.Cells["Status"].Value.ToString() == "PE")
                 grow.Cells["Selected"].Value = false;
         }
+        void WriteTraceBuffer()
+        {
+            if (!traceBufferFlushed)
+            {
+                if (traceBuffer.Count > 0)
+                {
+                    foreach (string msg in traceBuffer)
+                        fileTracer.AppendTraceText(msg);
+
+                    traceBuffer.Clear();
+                    traceBufferFlushed = true;
+                }
+            }
+        }
         async Task SendData()
         {
             ultraGridData.UpdateData();
@@ -183,6 +204,11 @@ namespace Afca.UI
             IAgmService agmService = AfcaServiceProvider.GetAgmService();
 
             var ganaderiasToSend = agmEnvioData.Ganaderia.Where(g => g.Selected);
+
+            if (ganaderiasToSend.Count() > 0)
+                WriteTraceBuffer();
+
+            traceBufferFlushed = false;
 
             foreach (var ganaderia in ganaderiasToSend)
             {
@@ -192,6 +218,8 @@ namespace Afca.UI
 
                 if (entidades != null && entidades.Count() > 0)
                 {
+                    string traceText = string.Format(">>GanaderiaID : {0}", ganaderia.GanaderiaID);
+
                     UltraGridRow gRow = ultraGridData.Rows
                         .Where(r => (string)r.Cells["GanaderiaID"].Value == ganaderia.GanaderiaID).FirstOrDefault();
 
@@ -211,6 +239,9 @@ namespace Afca.UI
                     if (!String.IsNullOrEmpty(message))
                     {
                         string status = "";
+
+                        traceText = string.Format("{0}{1}>>{2}", traceText, Environment.NewLine, message);
+
 
                         try
                         {
@@ -263,16 +294,22 @@ namespace Afca.UI
                                 entidad.Status = status;
                                 entidad.Selected = false;
                             }
+
+                            traceText = string.Format("{0}{1}<<{2}", traceText, Environment.NewLine, ganaderia.Message);
+
                         }
                     }
                     else
                     {
                         ganaderia.Message = "Sin información asociada para enviar.";
+                        traceText = string.Format("{0}{1}>>{2}", traceText, Environment.NewLine, "Sin información asociada para enviar.");                        
                     }
+                    traceBuffer.Add(traceText);
                 }
                 await Task.Run(()=>HideUIProgressAction(currentSendingRow));
             }
 
+            WriteTraceBuffer();
             HideCursor();
            
         }
