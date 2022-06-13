@@ -67,8 +67,8 @@ namespace Afca.Services
                     return agmDA.GetAgmEnviosSecundariosData("RCS");
                 case "AgmEnviosCalificaciones":
                     return agmDA.GetAgmEnviosSecundariosData("Calificaciones");
-                case "AgmEnviosCenso":
-                    return agmDA.GetAgmEnviosSecundariosData("Censo");
+                //case "AgmEnviosCenso":
+                //    return agmDA.GetAgmEnviosSecundariosData("Censo");
                 case "AgmEnviosGenomica":
                     return agmDA.GetAgmEnviosSecundariosData("Genomica");
                 default:
@@ -87,7 +87,7 @@ namespace Afca.Services
         {
             string[] entidades = entidad==null?
                 new string[] { 
-                "Controles", "Lecturas",
+                "Controles", "Lecturas","Censo",
                 "Inseminaciones", "Lactaciones", 
                 "Parametros", "Partos" }
                 : new string[] { entidad};

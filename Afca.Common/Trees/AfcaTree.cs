@@ -556,6 +556,11 @@ namespace Afca.Common
                            new ItemColumn("Parametros", "Parametros", false, true));
             envPrincipalNode.ItemColumns.AddItemColumn(
                            new ItemColumn("Partos", "Partos", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                          new ItemColumn("Censo", "Censo", false, true));
+
+
+
             return envPrincipalNode;
         }
 
@@ -581,8 +586,8 @@ namespace Afca.Common
             ItemMetaData calificacionesNodeTree = CreateAgmEnvioCalificacionesTree();
             envSecundariosNode.Children.Add(calificacionesNodeTree);
 
-            ItemMetaData censoNodeTree = CreateAgmEnviosCensoTree();
-            envSecundariosNode.Children.Add(censoNodeTree);
+            //ItemMetaData censoNodeTree = CreateAgmEnviosCensoTree();
+            //envSecundariosNode.Children.Add(censoNodeTree);
 
             ItemMetaData genomicaNodeTree = CreateAgmEnviosGenomicaTree();
             envSecundariosNode.Children.Add(genomicaNodeTree);

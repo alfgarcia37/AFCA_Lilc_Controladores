@@ -17,7 +17,25 @@ namespace Afca.Data.Access
     {
         public void PrepareAgmEnviosPrincipales()
         {
-            this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles");
+            var parameters = new DbParameter[11];
+
+            parameters[0] = new SqlParameter("@controles", 1);
+            parameters[1] = new SqlParameter("@lactaciones", 1);
+            parameters[2] = new SqlParameter("@inseminaciones", 1);
+
+            parameters[3] = new SqlParameter("@reproductivo", 1);
+            parameters[4] = new SqlParameter("@partos",1);
+            parameters[5] = new SqlParameter("@rcs", 1);
+
+            parameters[6] = new SqlParameter("@censo", 1);
+            parameters[7] = new SqlParameter("@genomica", 1);
+            parameters[8] = new SqlParameter("@calificacion", 1);
+
+            parameters[9] = new SqlParameter("@ico", 1);
+            parameters[10] = new SqlParameter("@encuestas", 1);
+
+            this.ExecuteNonQuery( "sp_GDM_CL_Controles", parameters);
+           // this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles", parameters);
         }
         public void PrepareAgmEnviosRecibos(string remesaID)
         {
@@ -56,6 +74,7 @@ namespace Afca.Data.Access
         public AgmEnvioData GetAgmEnviosData()
         {
             this.ChangeDataBase("gandmTemp");
+           
             return (AgmEnvioData)this.ExecuteDataSet(new AgmEnvioData()
                                  , "sp_AgmEnvios_select"
                                  , CommandType.StoredProcedure
@@ -134,6 +153,12 @@ namespace Afca.Data.Access
                                       new SqlParameter("@Entidades",entidad),
                                       new SqlParameter("@Mensaje",error)
                                  });
+        }
+
+        public void RecalculaIndicadores()
+        {
+           
+
         }
     }
 }

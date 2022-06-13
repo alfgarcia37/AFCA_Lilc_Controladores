@@ -385,7 +385,7 @@
             catch (System.Exception e)
             {
 
-                DialogsManager.ShowErrorDialog("Error en sp_GanaderiasFromXMLByEstablo",
+                DialogsManager.ShowErrorDialog("Error en sp_LaunchAutoERP",
                           e.Message);
                 return 0;
             }

@@ -24,16 +24,17 @@ namespace Afca
         }
         static void ConfigureAgmWebAPI()
         {
+
             var url = Encriptador.Encrypt("http://localhost/AGMWebAPI/api",false);
             var credentials = Encriptador.Encrypt("fernando@gmail.com;Pepona123",false);
 
             if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUrl") == null)
-                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUrl", url, @"J:\My projects\Visual Studio 2017\Production\Afca\Afca\");
+                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUrl", url, @"C:\My Projects\VS2017\Production\AFCA_ControlLechero\Afca\bin\Debug");
             else
                 ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUrl", url);
 
             if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUser") == null)
-                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUser", credentials, @"J:\My projects\Visual Studio 2017\Production\Afca\Afca\");
+                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUser", credentials, @"C:\My Projects\VS2017\Production\AFCA_ControlLechero\Afca\bin\Debug");
             else
                 ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUser", credentials);
 

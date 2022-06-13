@@ -231,6 +231,15 @@ namespace Afca.UI
                 }
                 await Task.Run(() => HideUIProgressAction(currentSendingRow));
             }
+            // agc. ahora tenemos que lanzar un SP (SP_RecalculoIndicadores) que recalcule:
+            //SP_ControlesValor
+            //SP_LactacionesValor
+            //SP_CalificacionValor
+            //SP_CalificacionResValor
+            //SP_GenomicaValor
+            //SP_GenomicaResValor
+
+
             HideCursor();
         }
         void ShowUIProgressAction(UltraGridRow gridRow)

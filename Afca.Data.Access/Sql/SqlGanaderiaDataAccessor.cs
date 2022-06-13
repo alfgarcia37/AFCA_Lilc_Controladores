@@ -16,7 +16,7 @@ namespace Afca.Data.Access
 
         public GanaderiaDomainData LoadGanaderiaDomainData()
         {
-            ChangeDataBase("Afca.xps15.reggen");
+            ChangeDataBase("reggen");
             return (GanaderiaDomainData)this.ExecuteDataSet(new GanaderiaDomainData()
                     , "sp_GanaderiaDomain_select"
                     , CommandType.StoredProcedure
