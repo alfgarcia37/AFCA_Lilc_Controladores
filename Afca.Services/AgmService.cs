@@ -36,15 +36,15 @@ namespace Afca.Services
                 case "AgmEnviosPrincipales":
                      agmDA.PrepareAgmEnviosPrincipales();
                     break;
-                case "AgmEnviosRCS":
-                   agmDA.PrepareAgmEnviosRCS();
-                    break;
-                case "AgmEnviosCenso":
-                    agmDA.PrepareAgmEnviosCenso();
-                    break;
-                case "AgmEnviosGenomica":
-                    agmDA.PreparaAgmEnviosGenomica();
-                    break;
+                //case "AgmEnviosRecibos":
+                //   agmDA.PrepareAgmEnviosRecibos();
+                //    break;
+                //case "AgmEnviosCenso":
+                //    agmDA.PrepareAgmEnviosCenso();
+                //    break;
+                //case "AgmEnviosGenomica":
+                //    agmDA.PreparaAgmEnviosGenomica();
+                //    break;
             }
         }
         public void PrepareAgmRecibosEnvios(string remesaID)
@@ -60,17 +60,19 @@ namespace Afca.Services
             switch (itemParent.Name)
             {
                 case "AgmEnviosPrincipales":
-                    return agmDA.GetAgmEnviosData();
+
+                    AgmEnvioData data=agmDA.GetAgmEnviosData();
+                        return data;
                 case "AgmEnviosRecibos":
                     return agmDA.GetAgmEnviosSecundariosData("Recibos");
-                case "AgmEnviosRCS":
-                    return agmDA.GetAgmEnviosSecundariosData("RCS");
-                case "AgmEnviosCalificaciones":
-                    return agmDA.GetAgmEnviosSecundariosData("Calificaciones");
+                //case "AgmEnviosRCS":
+                //    return agmDA.GetAgmEnviosSecundariosData("RCS");
+                //case "AgmEnviosCalificaciones":
+                //    return agmDA.GetAgmEnviosSecundariosData("Calificaciones");
                 //case "AgmEnviosCenso":
                 //    return agmDA.GetAgmEnviosSecundariosData("Censo");
-                case "AgmEnviosGenomica":
-                    return agmDA.GetAgmEnviosSecundariosData("Genomica");
+                //case "AgmEnviosGenomica":
+                //    return agmDA.GetAgmEnviosSecundariosData("Genomica");
                 default:
                     return null;
             }
@@ -87,9 +89,9 @@ namespace Afca.Services
         {
             string[] entidades = entidad==null?
                 new string[] { 
-                "Controles", "Lecturas","Censo",
-                "Inseminaciones", "Lactaciones", 
-                "Parametros", "Partos" }
+                "Controles", "Lecturas","Censo","Genomica",
+                "Inseminaciones", "Lactaciones", "Calificaciones",
+                "Parametros", "Partos","Rcs","Nacimientos" }
                 : new string[] { entidad};
 
             AgmEnvioData data = entidades.Length==1?

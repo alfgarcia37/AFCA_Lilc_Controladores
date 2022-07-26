@@ -34,19 +34,31 @@ namespace Afca.UI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AsociacionID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("GanaderiaID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Lecturas");
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Controles");
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Lactaciones");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Inseminaciones", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Inseminaciones");
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Parametros");
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Partos");
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Recibos");
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RCS");
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Calificaciones");
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Censo");
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Genomica");
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nacimientos");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Selected");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Status", -1, 14694469);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Message");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Message", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FK_Ganaderia_Detail");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FK_Ganaderia_MessageToSend");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("FK_Ganaderia_Detail", 0);
@@ -63,11 +75,11 @@ namespace Afca.UI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Message");
             Infragistics.Win.ValueList valueList1 = new Infragistics.Win.ValueList(14694469);
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("Barra secundaria");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbCheckSelected");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbUncheckSelected");
@@ -96,36 +108,61 @@ namespace Afca.UI
             ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 2;
             ultraGridColumn3.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance1.TextHAlignAsString = "Right";
+            ultraGridColumn3.CellAppearance = appearance1;
             ultraGridColumn3.Header.Editor = null;
             ultraGridColumn3.Header.VisiblePosition = 4;
             ultraGridColumn4.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance2.TextHAlignAsString = "Right";
+            ultraGridColumn4.CellAppearance = appearance2;
             ultraGridColumn4.Header.Editor = null;
             ultraGridColumn4.Header.VisiblePosition = 5;
             ultraGridColumn5.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance3.TextHAlignAsString = "Right";
+            ultraGridColumn5.CellAppearance = appearance3;
             ultraGridColumn5.Header.Editor = null;
             ultraGridColumn5.Header.VisiblePosition = 7;
             ultraGridColumn6.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance4.TextHAlignAsString = "Right";
+            ultraGridColumn6.CellAppearance = appearance4;
             ultraGridColumn6.Header.Editor = null;
             ultraGridColumn6.Header.VisiblePosition = 9;
+            appearance5.TextHAlignAsString = "Right";
+            ultraGridColumn24.CellAppearance = appearance5;
             ultraGridColumn24.Header.Editor = null;
             ultraGridColumn24.Header.VisiblePosition = 8;
             ultraGridColumn8.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance6.TextHAlignAsString = "Right";
+            ultraGridColumn8.CellAppearance = appearance6;
             ultraGridColumn8.Header.Editor = null;
             ultraGridColumn8.Header.VisiblePosition = 10;
+            appearance7.TextHAlignAsString = "Right";
+            ultraGridColumn25.CellAppearance = appearance7;
             ultraGridColumn25.Header.Editor = null;
             ultraGridColumn25.Header.VisiblePosition = 11;
             ultraGridColumn25.Hidden = true;
+            ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance8.TextHAlignAsString = "Right";
+            ultraGridColumn7.CellAppearance = appearance8;
             ultraGridColumn7.Header.Editor = null;
             ultraGridColumn7.Header.VisiblePosition = 12;
-            ultraGridColumn7.Hidden = true;
+            ultraGridColumn26.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance9.TextHAlignAsString = "Right";
+            ultraGridColumn26.CellAppearance = appearance9;
             ultraGridColumn26.Header.Editor = null;
             ultraGridColumn26.Header.VisiblePosition = 13;
-            ultraGridColumn26.Hidden = true;
+            appearance10.TextHAlignAsString = "Right";
+            ultraGridColumn27.CellAppearance = appearance10;
             ultraGridColumn27.Header.Editor = null;
             ultraGridColumn27.Header.VisiblePosition = 6;
+            ultraGridColumn28.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            appearance11.TextHAlignAsString = "Right";
+            ultraGridColumn28.CellAppearance = appearance11;
             ultraGridColumn28.Header.Editor = null;
-            ultraGridColumn28.Header.VisiblePosition = 14;
-            ultraGridColumn28.Hidden = true;
+            ultraGridColumn28.Header.VisiblePosition = 15;
+            ultraGridColumn29.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn29.Header.Editor = null;
+            ultraGridColumn29.Header.VisiblePosition = 14;
             ultraGridColumn9.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn9.Header.Caption = "Enviar";
             ultraGridColumn9.Header.Editor = null;
@@ -139,11 +176,11 @@ namespace Afca.UI
             ultraGridColumn11.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn11.Header.Caption = "Mensaje";
             ultraGridColumn11.Header.Editor = null;
-            ultraGridColumn11.Header.VisiblePosition = 15;
+            ultraGridColumn11.Header.VisiblePosition = 16;
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 16;
+            ultraGridColumn12.Header.VisiblePosition = 17;
             ultraGridColumn19.Header.Editor = null;
-            ultraGridColumn19.Header.VisiblePosition = 17;
+            ultraGridColumn19.Header.VisiblePosition = 18;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -158,6 +195,7 @@ namespace Afca.UI
             ultraGridColumn26,
             ultraGridColumn27,
             ultraGridColumn28,
+            ultraGridColumn29,
             ultraGridColumn9,
             ultraGridColumn10,
             ultraGridColumn11,
@@ -219,16 +257,16 @@ namespace Afca.UI
             this.ultraGridData.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.FilterRow;
             this.ultraGridData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             valueList1.Key = "vlStatus";
-            appearance1.Image = "data_unknown.png";
-            valueListItem1.Appearance = appearance1;
+            appearance12.Image = "data_unknown.png";
+            valueListItem1.Appearance = appearance12;
             valueListItem1.DataValue = "PE";
             valueListItem1.DisplayText = "Pend.Envio";
-            appearance2.Image = "data_ok.png";
-            valueListItem2.Appearance = appearance2;
+            appearance13.Image = "data_ok.png";
+            valueListItem2.Appearance = appearance13;
             valueListItem2.DataValue = "OK";
             valueListItem2.DisplayText = "Envio correcto";
-            appearance3.Image = "data_error.png";
-            valueListItem3.Appearance = appearance3;
+            appearance14.Image = "data_error.png";
+            valueListItem3.Appearance = appearance14;
             valueListItem3.DataValue = "ER";
             valueListItem3.DisplayText = "Erroneo";
             valueList1.ValueListItems.AddRange(new Infragistics.Win.ValueListItem[] {
