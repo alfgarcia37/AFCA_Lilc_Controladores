@@ -28,6 +28,8 @@ namespace Afca.Data.Access
         {
             InitializeHttpClient();
         }
+
+
         public async Task<Result> UploadData(string ganaderiaId, string jsonData)
         {
             var setRoutine = await SetConnectionContext();
@@ -54,7 +56,39 @@ namespace Afca.Data.Access
             return new Result {success=responseOk
                              ,value=responseOk?"":content};
         }
+
+
+        public async Task<Result> ExecuteIndicadores()
+        {
+            var setRoutine = await SetConnectionContext();
+
+            if (!setRoutine.success)
+                return new Result
+                {
+                    success = false,
+                    value = setRoutine.value
+                };
+
+            var urlAction = UrlWebAPIController(dataHubController);
+            //urlAction = string.Format("{0}{1}", urlAction, asociacionId);
+
+
+            var response = await ServerRepositoryHttpClient()
+                                    .GetAsync(urlAction)
+                                    .ConfigureAwait(false);
+
+            bool responseOk = HandleResponse(response);
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = JsonConvert.DeserializeObject<Result>(json);
+
+            return result ?? null;
+
+        }
+
         #endregion
+
+
+
         #region http common interface methods
         readonly HttpClient httpClient = new HttpClient();
         string urlWebAPI = "";

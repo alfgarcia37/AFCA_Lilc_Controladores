@@ -21,6 +21,7 @@ namespace Afca.Common.ServicesInterfaces
         AgmEnvioData GetAgmEnviosToSendData(string entidad);
         string GenerateJsonMessageEnvio(string ganaderiaID, ArrayList entidadesIncluded);
         Task<Result> SendJsonMessageEnvio(string ganaderiaID, string jsonMessage);
+        Task<Result> ExecuteIndicadores();
         bool MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message);
         bool MarkAgmEnvioAsNotSended(string ganaderiaID,string entidad, string error,out string message);
     }
