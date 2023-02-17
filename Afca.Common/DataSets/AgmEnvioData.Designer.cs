@@ -414,6 +414,8 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnNacimientos;
             
+            private global::System.Data.DataColumn columnLactacionesHistorico;
+            
             private global::System.Data.DataColumn columnSelected;
             
             private global::System.Data.DataColumn columnStatus;
@@ -567,6 +569,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LactacionesHistoricoColumn {
+                get {
+                    return this.columnLactacionesHistorico;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn SelectedColumn {
                 get {
                     return this.columnSelected;
@@ -641,6 +651,7 @@ namespace Afca.Common.DataSets {
                         int Censo, 
                         int Genomica, 
                         int Nacimientos, 
+                        int LactacionesHistorico, 
                         bool Selected, 
                         string Status, 
                         string Message) {
@@ -660,6 +671,7 @@ namespace Afca.Common.DataSets {
                         Censo,
                         Genomica,
                         Nacimientos,
+                        LactacionesHistorico,
                         Selected,
                         Status,
                         Message};
@@ -707,6 +719,7 @@ namespace Afca.Common.DataSets {
                 this.columnCenso = base.Columns["Censo"];
                 this.columnGenomica = base.Columns["Genomica"];
                 this.columnNacimientos = base.Columns["Nacimientos"];
+                this.columnLactacionesHistorico = base.Columns["LactacionesHistorico"];
                 this.columnSelected = base.Columns["Selected"];
                 this.columnStatus = base.Columns["Status"];
                 this.columnMessage = base.Columns["Message"];
@@ -743,6 +756,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnGenomica);
                 this.columnNacimientos = new global::System.Data.DataColumn("Nacimientos", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNacimientos);
+                this.columnLactacionesHistorico = new global::System.Data.DataColumn("LactacionesHistorico", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLactacionesHistorico);
                 this.columnSelected = new global::System.Data.DataColumn("Selected", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSelected);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1748,6 +1763,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int LactacionesHistorico {
+                get {
+                    try {
+                        return ((int)(this[this.tableGanaderia.LactacionesHistoricoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LactacionesHistorico\' de la tabla \'Ganaderia\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableGanaderia.LactacionesHistoricoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Selected {
                 get {
                     try {
@@ -1936,6 +1967,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNacimientosNull() {
                 this[this.tableGanaderia.NacimientosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsLactacionesHistoricoNull() {
+                return this.IsNull(this.tableGanaderia.LactacionesHistoricoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetLactacionesHistoricoNull() {
+                this[this.tableGanaderia.LactacionesHistoricoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

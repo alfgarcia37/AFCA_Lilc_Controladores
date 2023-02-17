@@ -611,6 +611,35 @@ namespace Afca.UI
                     e.Message);
             }
         }
+        public static void PrepareAgmEnviosLactacionesHistorico(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+
+                try
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.WaitCursor;
+                    service.PrepareAgmEnvios(itContainer);
+                    DialogsManager.ShowSuccessInfo("Generación envios", "Envios preparados!");
+                    itContainer.UserInterface.RefreshUI();
+                }
+                catch (System.Exception e)
+                {
+                    DialogsManager.ShowErrorDialog("Generación envios"
+                        , e.Message);
+                }
+                finally
+                {
+                    FrameworkForge.UI.ApplicationContext.FrameForm.Cursor = Cursors.Default;
+                }
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
 
         public static void AgmExecuteEnviosSecundarios(ItemData itContainer)
         {

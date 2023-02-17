@@ -86,6 +86,9 @@ namespace Afca.UI
                 case "AgmEnviosGenomica":
                     CallerEntidadId = "Genomica";
                     break;
+                case "AgmEnviosLacHistorico":
+                    CallerEntidadId = "LactacionesHistorico";
+                    break;
             }
         }
         void SetGridColumnsAppearance()
@@ -95,17 +98,20 @@ namespace Afca.UI
                 case "recibos":
                     ultraGridData.DisplayLayout.Bands[0].Columns["Recibos"].Hidden = false;
                     break;
-                case "rcs":
-                    ultraGridData.DisplayLayout.Bands[0].Columns["RCS"].Hidden = false;
-                    break;
-                case "calificaciones":
-                    ultraGridData.DisplayLayout.Bands[0].Columns["Calificaciones"].Hidden = false;
-                    break;
-                case "censo":
-                    ultraGridData.DisplayLayout.Bands[0].Columns["Censo"].Hidden = false;
-                    break;
-                case "genomica":
-                    ultraGridData.DisplayLayout.Bands[0].Columns["Genomica"].Hidden = false;
+                //case "rcs":
+                //    ultraGridData.DisplayLayout.Bands[0].Columns["RCS"].Hidden = false;
+                //    break;
+                //case "calificaciones":
+                //    ultraGridData.DisplayLayout.Bands[0].Columns["Calificaciones"].Hidden = false;
+                //    break;
+                //case "censo":
+                //    ultraGridData.DisplayLayout.Bands[0].Columns["Censo"].Hidden = false;
+                //    break;
+                //case "genomica":
+                //    ultraGridData.DisplayLayout.Bands[0].Columns["Genomica"].Hidden = false;
+                //    break;
+                case "lactacioneshistorico":
+                    ultraGridData.DisplayLayout.Bands[0].Columns["LactacionesHistorico"].Hidden = false;
                     break;
             }
         }
@@ -123,17 +129,20 @@ namespace Afca.UI
                 case "recibos":
                     loadedData  = agmService.GetAgmEnviosToSendData("Recibos");
                     break;
-                case "rcs":
-                    loadedData = agmService.GetAgmEnviosToSendData("RCS");
-                    break;
-                case "calificaciones":
-                    loadedData = agmService.GetAgmEnviosToSendData("Calificaciones");
-                    break;
-                case "censo":
-                    loadedData = agmService.GetAgmEnviosToSendData("Censo");
-                    break;
-                case "genomica":
-                    loadedData = agmService.GetAgmEnviosToSendData("Genomica");
+                //case "rcs":
+                //    loadedData = agmService.GetAgmEnviosToSendData("RCS");
+                //    break;
+                //case "calificaciones":
+                //    loadedData = agmService.GetAgmEnviosToSendData("Calificaciones");
+                //    break;
+                //case "censo":
+                //    loadedData = agmService.GetAgmEnviosToSendData("Censo");
+                //    break;
+                //case "genomica":
+                //    loadedData = agmService.GetAgmEnviosToSendData("Genomica");
+                //    break;
+                case "lactacioneshistorico":
+                    loadedData = agmService.GetAgmEnviosToSendData("LactacionesHistorico");
                     break;
             }
 

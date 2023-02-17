@@ -53,6 +53,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CartaRegistroReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DeclaracionNacimiento.cs">
       <AutoGen>True</AutoGen>

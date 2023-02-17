@@ -36,15 +36,9 @@ namespace Afca.Services
                 case "AgmEnviosPrincipales":
                      agmDA.PrepareAgmEnviosPrincipales();
                     break;
-                //case "AgmEnviosRecibos":
-                //   agmDA.PrepareAgmEnviosRecibos();
-                //    break;
-                //case "AgmEnviosCenso":
-                //    agmDA.PrepareAgmEnviosCenso();
-                //    break;
-                //case "AgmEnviosGenomica":
-                //    agmDA.PreparaAgmEnviosGenomica();
-                //    break;
+                case "AgmEnviosLacHistorico":
+                    agmDA.PreparaAgmEnviosLactacionesHistorico();
+                    break;
             }
         }
         public void PrepareAgmRecibosEnvios(string remesaID)
@@ -65,14 +59,8 @@ namespace Afca.Services
                         return data;
                 case "AgmEnviosRecibos":
                     return agmDA.GetAgmEnviosSecundariosData("Recibos");
-                //case "AgmEnviosRCS":
-                //    return agmDA.GetAgmEnviosSecundariosData("RCS");
-                //case "AgmEnviosCalificaciones":
-                //    return agmDA.GetAgmEnviosSecundariosData("Calificaciones");
-                //case "AgmEnviosCenso":
-                //    return agmDA.GetAgmEnviosSecundariosData("Censo");
-                //case "AgmEnviosGenomica":
-                //    return agmDA.GetAgmEnviosSecundariosData("Genomica");
+                    case "AgmEnviosLacHistorico":
+                    return agmDA.GetAgmEnviosSecundariosData("LactacionesHistorico");
                 default:
                     return null;
             }

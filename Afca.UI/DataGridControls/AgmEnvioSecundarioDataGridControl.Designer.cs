@@ -44,6 +44,8 @@ namespace Afca.UI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Calificaciones");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Censo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Genomica");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nacimientos");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("LactacionesHistorico");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Selected");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Status", -1, 108465735);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Message");
@@ -136,8 +138,14 @@ namespace Afca.UI
             ultraGridColumn27.Hidden = true;
             ultraGridColumn28.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn28.Header.Editor = null;
-            ultraGridColumn28.Header.VisiblePosition = 14;
+            ultraGridColumn28.Header.VisiblePosition = 16;
             ultraGridColumn28.Hidden = true;
+            ultraGridColumn29.Header.Editor = null;
+            ultraGridColumn29.Header.VisiblePosition = 14;
+            ultraGridColumn29.Hidden = true;
+            ultraGridColumn30.Header.Editor = null;
+            ultraGridColumn30.Header.VisiblePosition = 15;
+            ultraGridColumn30.Hidden = true;
             ultraGridColumn10.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn10.Header.Caption = "Enviar";
             ultraGridColumn10.Header.Editor = null;
@@ -150,11 +158,11 @@ namespace Afca.UI
             ultraGridColumn12.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn12.Header.Caption = "Mensaje";
             ultraGridColumn12.Header.Editor = null;
-            ultraGridColumn12.Header.VisiblePosition = 15;
+            ultraGridColumn12.Header.VisiblePosition = 17;
             ultraGridColumn13.Header.Editor = null;
-            ultraGridColumn13.Header.VisiblePosition = 16;
+            ultraGridColumn13.Header.VisiblePosition = 18;
             ultraGridColumn14.Header.Editor = null;
-            ultraGridColumn14.Header.VisiblePosition = 17;
+            ultraGridColumn14.Header.VisiblePosition = 19;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
@@ -169,6 +177,8 @@ namespace Afca.UI
             ultraGridColumn26,
             ultraGridColumn27,
             ultraGridColumn28,
+            ultraGridColumn29,
+            ultraGridColumn30,
             ultraGridColumn10,
             ultraGridColumn11,
             ultraGridColumn12,
@@ -250,6 +260,8 @@ namespace Afca.UI
             this.ultraGridData.DisplayLayout.ValueLists.AddRange(new Infragistics.Win.ValueList[] {
             valueList1});
             this.ultraGridData.ImageList = this.imageList;
+            this.ultraGridData.Location = new System.Drawing.Point(0, 27);
+            this.ultraGridData.Size = new System.Drawing.Size(663, 424);
             // 
             // ultraToolbarsManager
             // 
@@ -288,10 +300,11 @@ namespace Afca.UI
             // 
             // AgmEnvioSecundarioDataGridControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.DataMember = "Ganaderia";
             this.DataSource = this.agmEnvioData;
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "AgmEnvioSecundarioDataGridControl";
             this.ServiceProvider = "IAgmService";
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).EndInit();

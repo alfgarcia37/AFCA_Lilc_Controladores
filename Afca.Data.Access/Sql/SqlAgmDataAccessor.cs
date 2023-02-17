@@ -71,6 +71,13 @@ namespace Afca.Data.Access
                "SP_GDM_REG_Genomica"
                , null);
         }
+        public void PreparaAgmEnviosLactacionesHistorico()
+        {
+            this.ChangeDataBase("reggen");
+            this.ExecuteNonQuery(
+               "SP_GDM_REG_LactacionesHistorico"
+               , null);
+        }
         public AgmEnvioData GetAgmEnviosData()
         {
             this.ChangeDataBase("gandmTemp");

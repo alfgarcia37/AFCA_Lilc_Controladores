@@ -24,5 +24,6 @@ namespace Afca.Common.DataAccessor
         void PrepareAgmEnviosCenso();
         void PreparaAgmEnviosGenomica();
         AgmEnvioData GetAgmEnviosSecundariosData(string entidad);
+        void PreparaAgmEnviosLactacionesHistorico();
     }
 }

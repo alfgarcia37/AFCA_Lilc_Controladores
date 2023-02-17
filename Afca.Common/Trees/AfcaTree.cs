@@ -587,6 +587,11 @@ namespace Afca.Common
             ItemMetaData recibosNodeTree = CreateAgmEnviosRecibosTree();
             envSecundariosNode.Children.Add(recibosNodeTree);
 
+            ItemMetaData lactacionesHistoricoTree = CreateAgmEnviosLactacionesHistoricoTree();
+            envSecundariosNode.Children.Add(lactacionesHistoricoTree);
+
+            
+
             //ItemMetaData rcsNodeTree = CreateAgmEnviosRCSTree();
             //envSecundariosNode.Children.Add(rcsNodeTree);
 
@@ -780,6 +785,42 @@ namespace Afca.Common
                 new ItemColumn("Genomica", "Genomica", false, true));
 
             return envGenomicaNode;
+        }
+        static ItemMetaData CreateAgmEnviosLactacionesHistoricoTree()
+        {
+            ItemMetaData envLacHistorico = new ItemMetaData("AgmEnviosLacHistorico");
+            envLacHistorico.Text = "Lacta.Historico";
+            envLacHistorico.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            envLacHistorico.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                           "PrepareAgmEnviosLactacionesHistorico", "Preparar envios..."
+                                                           , ItemMethodType.GridEdit, "IconoGenerador"));
+            envLacHistorico.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmExecuteEnviosSecundarios", "Enviar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+
+            ItemMetaData lacHistoricoNode = CreateAgmEnviosLactacionesHistoricoNode();
+            envLacHistorico.Children.Add(lacHistoricoNode);
+            return envLacHistorico;
+        }
+        static ItemMetaData  CreateAgmEnviosLactacionesHistoricoNode()
+        {
+
+            ItemMetaData lacHistoricoNode = new ItemMetaData("AgmEnvioLacHistorico");
+            lacHistoricoNode.ItemType = ItemType.Leaf;
+            lacHistoricoNode.Icons.AddRange(new string[] { "IconoGanado" });
+
+            lacHistoricoNode.LoadMethod = "IAgmService,GetAgmEnvioDataByParent";
+            lacHistoricoNode.DataTable = "Ganaderia";
+            lacHistoricoNode.SortCriteria = "GanaderiaID ASC";
+            lacHistoricoNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            lacHistoricoNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            lacHistoricoNode.ItemColumns.AddItemColumn(
+                new ItemColumn("LactacionesHistorico", "Lac.Historico", false, true));
+
+            return lacHistoricoNode;
         }
         #endregion
 
