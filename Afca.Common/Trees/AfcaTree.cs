@@ -566,6 +566,8 @@ namespace Afca.Common
                    new ItemColumn("Genomica", "Genomica", false, true));
             envPrincipalNode.ItemColumns.AddItemColumn(
                   new ItemColumn("Nacimientos", "Nacimientos", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("Recesivos", "Recesivos", false, true));
 
 
             return envPrincipalNode;

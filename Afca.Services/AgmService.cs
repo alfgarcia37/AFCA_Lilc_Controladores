@@ -54,9 +54,7 @@ namespace Afca.Services
             switch (itemParent.Name)
             {
                 case "AgmEnviosPrincipales":
-
-                    AgmEnvioData data=agmDA.GetAgmEnviosData();
-                        return data;
+                    return agmDA.GetAgmEnviosData();
                 case "AgmEnviosRecibos":
                     return agmDA.GetAgmEnviosSecundariosData("Recibos");
                     case "AgmEnviosLacHistorico":
@@ -79,7 +77,7 @@ namespace Afca.Services
                 new string[] { 
                 "Controles", "Lecturas","Censo","Genomica",
                 "Inseminaciones", "Lactaciones", "Calificaciones",
-                "Parametros", "Partos","Rcs","Nacimientos" }
+                "Parametros", "Partos","Rcs","Nacimientos","Recesivos" }
                 : new string[] { entidad};
 
             AgmEnvioData data = entidades.Length==1?
