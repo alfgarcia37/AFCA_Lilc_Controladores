@@ -11,7 +11,11 @@ namespace Afca.Common.DataAccessor
 {
     public interface IAgmDataAccessor:IDataAccessor
     {
+        //este es el sp_GDM_CL_Controles que ahora lanza todos los SP's, por lo que
+        // los lanzamientos del los SPs de abajo son innecesarios
         void PrepareAgmEnviosPrincipales();
+
+
         AgmEnvioData GetAgmEnviosData();        
         AgmEnvioData GetEnvioMessageData(string ganaderiaID, ArrayList entidadesIncluded);
         int MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded);

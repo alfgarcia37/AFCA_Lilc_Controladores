@@ -15,68 +15,77 @@ namespace Afca.Data.Access
 {
     public class SqlAgmDataAccessor : SqlDataAccessor, IAgmDataAccessor
     {
+
+        // fon 03/05/2023
+        // Ahora este SP es el maestro. Se le llama todos los dias para pasar los datos (Controles,Lactaciones,partos...)
+        // desde CL y Reg a GandmTemp
+        // Posteriormente cargaremos desde Temp A Azure
+        // Hay que deshabilitar (no Los borres) los SP de abajo :
+        // sp_GDM_CL_RCS... SP_GDM_REG_Calificacion.. etc...
+        // Hay posibilidad de crear un seleccionador en pantalla para poner a 1 ó 0 los sqlParameters (@controles,@lactaciones......)?
         public void PrepareAgmEnviosPrincipales()
         {
-            var parameters = new DbParameter[11];
+            SqlParameter[] parameters = new SqlParameter[12];
 
-            parameters[0] = new SqlParameter("@controles", 1);
-            parameters[1] = new SqlParameter("@lactaciones", 1);
-            parameters[2] = new SqlParameter("@inseminaciones", 1);
+            parameters[0] = new SqlParameter("@controles",SqlDbType.Bit);
+            parameters[0].Value = 0;
+            parameters[1] = new SqlParameter("@lactaciones", SqlDbType.Bit);
+            parameters[1].Value = 0;
+            parameters[2] = new SqlParameter("@inseminaciones", SqlDbType.Bit);
+            parameters[2].Value = 0;
 
-            parameters[3] = new SqlParameter("@reproductivo", 1);
-            parameters[4] = new SqlParameter("@partos",1);
-            parameters[5] = new SqlParameter("@rcs", 1);
+            parameters[3] = new SqlParameter("@reproductivo", SqlDbType.Bit);
+            parameters[3].Value = 0;
+            parameters[4] = new SqlParameter("@partos", SqlDbType.Bit);
+            parameters[4].Value = 0;
+            parameters[5] = new SqlParameter("@rcs", SqlDbType.Bit);
+            parameters[5].Value = 0;
 
-            parameters[6] = new SqlParameter("@censo", 1);
-            parameters[7] = new SqlParameter("@genomica", 1);
-            parameters[8] = new SqlParameter("@calificacion", 1);
+            parameters[6] = new SqlParameter("@censo", SqlDbType.Bit);
+            parameters[6].Value = 1;
+            parameters[7] = new SqlParameter("@genomica", SqlDbType.Bit);
+            parameters[7].Value = 0;
+            parameters[8] = new SqlParameter("@calificacion", SqlDbType.Bit);
+            parameters[8].Value = 0;
 
-            parameters[9] = new SqlParameter("@ico", 1);
-            parameters[10] = new SqlParameter("@encuestas", 1);
-
-            this.ExecuteNonQuery( "sp_GDM_CL_Controles", parameters);
+            parameters[9] = new SqlParameter("@ico", SqlDbType.Bit);
+            parameters[9].Value = 0;
+            parameters[10] = new SqlParameter("@recesivos", SqlDbType.Bit);
+            parameters[10].Value = 0;
+            parameters[11] = new SqlParameter("@encuestas", SqlDbType.Bit);
+            parameters[11].Value = 0;
+            //this.ChangeDataBase("ControlLechero");
+            this.ExecuteNonQuery("SP_GDM_CL_Controles", parameters);
            // this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles", parameters);
         }
         public void PrepareAgmEnviosRecibos(string remesaID)
         {
-            this.ExecuteNonQuery( 
-                "sp_GDM_CL_Recibos"
-                ,new SqlParameter[] { new SqlParameter("@RemesaID",remesaID)});
+           // this.ExecuteNonQuery("sp_GDM_CL_Recibos",new SqlParameter[] { new SqlParameter("@RemesaID",remesaID)});
 
         }
         public void PrepareAgmEnviosRCS()
         {
-            this.ExecuteNonQuery(
-               "sp_GDM_CL_RCS"
-               , null);
+         //   this.ExecuteNonQuery("sp_GDM_CL_RCS", null);
         }
         public void PrepareAgmEnviosCalificaciones(string codigoGanaderia)
         {
-            this.ChangeDataBase("reggen");
-            this.ExecuteNonQuery(
-               "SP_GDM_REG_Calificacion"
-               , new SqlParameter[1] {new SqlParameter("@ESTABLO",codigoGanaderia) });
+            //this.ChangeDataBase("reggen");
+            //this.ExecuteNonQuery("SP_GDM_REG_Calificacion", new SqlParameter[1] {new SqlParameter("@ESTABLO",codigoGanaderia) });
         }
         public void PrepareAgmEnviosCenso()
         {
-            this.ChangeDataBase("reggen");
-            this.ExecuteNonQuery(
-               "SP_GDM_REG_Censo"
-               , null);
+            //this.ChangeDataBase("reggen");
+            //this.ExecuteNonQuery("SP_GDM_REG_Censo", null);
         }
         public void PreparaAgmEnviosGenomica()
         {
-            this.ChangeDataBase("reggen");
-            this.ExecuteNonQuery(
-               "SP_GDM_REG_Genomica"
-               , null);
+            //this.ChangeDataBase("reggen");
+            //this.ExecuteNonQuery("SP_GDM_REG_Genomica", null);
         }
         public void PreparaAgmEnviosLactacionesHistorico()
         {
-            this.ChangeDataBase("reggen");
-            this.ExecuteNonQuery(
-               "SP_GDM_REG_LactacionesHistorico"
-               , null);
+            //this.ChangeDataBase("reggen");
+            //this.ExecuteNonQuery("SP_GDM_REG_LactacionesHistorico", null);
         }
         public AgmEnvioData GetAgmEnviosData()
         {

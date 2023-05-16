@@ -43,6 +43,7 @@ namespace Afca.Data.Access
 
             var parameter = JsonConvert.ToString(jsonData);
 
+            //var alfa = new StringContent(parameter, Encoding.UTF8, "application/json");
 
             var response = await ServerRepositoryHttpClient()
                                 .PutAsync(urlAction
@@ -68,14 +69,22 @@ namespace Afca.Data.Access
                     success = false,
                     value = setRoutine.value
                 };
+           
 
             var urlAction = UrlWebAPIController(dataHubController);
+
             //urlAction = string.Format("{0}{1}", urlAction, asociacionId);
+            //var response = await ServerRepositoryHttpClient()
+            //                        .GetAsync(urlAction)
+            //                        .ConfigureAwait(false);
 
-
+            urlAction = string.Concat(urlAction, "Runbook");
+            var parameter = JsonConvert.ToString("body");
             var response = await ServerRepositoryHttpClient()
-                                    .GetAsync(urlAction)
-                                    .ConfigureAwait(false);
+                              .PostAsync(urlAction
+                               , new StringContent(parameter, Encoding.UTF8, "application/json"))
+                          .ConfigureAwait(false);
+
 
             bool responseOk = HandleResponse(response);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
