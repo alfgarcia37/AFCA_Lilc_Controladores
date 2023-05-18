@@ -10,5 +10,7 @@ namespace Afca.Common.DataAccessor
     {
         Task<Result> UploadData(string ganaderiaId,string jsonData);
         Task<Result> ExecuteIndicadores();
+
+
     }
 }

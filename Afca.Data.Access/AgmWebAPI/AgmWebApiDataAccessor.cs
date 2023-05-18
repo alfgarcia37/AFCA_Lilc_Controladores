@@ -120,13 +120,9 @@ namespace Afca.Data.Access
             var url = ConfigurationManager.AppSettings["AgmWebApiUrl"];
 
             if (url != null)
-                //urlWebAPI = Encriptador.Decrypt(url,false);
-                urlWebAPI = @"https://agmwebapis2.azurewebsites.net/api";
-                //urlWebAPI = @"http://localhost/AGMWebAPI/api";
+                urlWebAPI = Encriptador.Decrypt(url, false);
             else
                 throw new Exception("Conexión con el Web API AGM no encontrada");
-
-            //urlWebAPI = @"http://localhost/AGMWebAPI/api";
         }
         void LoadWebApiCredentials()
         {

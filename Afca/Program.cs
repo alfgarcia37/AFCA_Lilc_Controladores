@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FrameworkForge.Common;
-
+using System.Diagnostics;
 
 namespace Afca
 {
@@ -18,27 +18,41 @@ namespace Afca
         [STAThread]
         static void Main()
         {
-            ConfigureAgmWebAPI();
             FrameworkForge.UI.ApplicationContext.Run();
             //Encrypt();
         }
         static void ConfigureAgmWebAPI()
         {
+            bool modifyConfig = false;
 
-            var url = Encriptador.Encrypt("http://localhost/AGMWebAPI/api",false);
-            var credentials = Encriptador.Encrypt("fernando@gmail.com;Pepona123",false);
+            string url = "https://agmwebapis2.azurewebsites.net/api";
+            string credentials = "fernando@gmail.com;Pepona123";
 
-            if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUrl") == null)
-                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUrl", url, @"C:\My Projects\VS2017\Production\AFCA_ControlLechero\Afca\bin\Debug");
-            else
-                ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUrl", url);
+            Debug.WriteLine($"Url:{url}");
+            Debug.WriteLine($"credentials:{credentials}");
 
-            if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUser") == null)
-                ConfigurationProvider.RegisterConfigEntry("AgmWebApiUser", credentials, @"C:\My Projects\VS2017\Production\AFCA_ControlLechero\Afca\bin\Debug");
-            else
-                ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUser", credentials);
+            url = Encriptador.Encrypt(url, false);
+            credentials = Encriptador.Encrypt(credentials, false);
+
+            Debug.WriteLine($"Url:{url}");
+            Debug.WriteLine($"credentials:{credentials}");
+
+            if (modifyConfig)
+            {
+                if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUrl") == null)
+                    ConfigurationProvider.RegisterConfigEntry("AgmWebApiUrl", url, @"C:\My Projects\VS2017\Production\AFCA_ControlLechero\Afca\bin\Debug");
+                else
+                    ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUrl", url);
+
+                if (ConfigurationProvider.GetConfigurationValue("AgmWebApiUser") == null)
+                    ConfigurationProvider.RegisterConfigEntry("AgmWebApiUser", credentials, @"C:\My Projects\VS2017\Production\AFCA_ControlLechero\Afca\bin\Debug");
+                else
+                    ConfigurationProvider.UpdateAppSettingValue("AgmWebApiUser", credentials);
+            }
+      
 
         }
+
         static void Encrypt()
         {
             // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
