@@ -118,6 +118,7 @@
       <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
     </Compile>
     <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Models\RCS.cs" />
     <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\LoginResponse.cs" />
     <Compile Include="Models\LoginToken.cs" />

@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace Afca.Data.Access
     {
         string loginController = "user";
         string dataHubController = "datahub";
+        string RCSController = "RCS";
 
         //load from app.config (encrypted saved)
         string email = "";
@@ -58,7 +60,6 @@ namespace Afca.Data.Access
                              ,value=responseOk?"":content};
         }
 
-
         public async Task<Result> ExecuteIndicadores()
         {
             var setRoutine = await SetConnectionContext();
@@ -92,6 +93,21 @@ namespace Afca.Data.Access
 
             return result ?? null;
 
+        }
+
+        //agc
+        public async Task<IEnumerable<Rcs>> DownloadData()
+        {
+            var urlAction = UrlWebAPIController(RCSController);
+            urlAction = string.Format("EnvioRCS/", urlAction);
+
+            var response = await ServerRepositoryHttpClient()
+                                .GetAsync(urlAction)
+                                .ConfigureAwait(false);
+
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var rcs = JsonConvert.DeserializeObject<List<Rcs>>(json);
+            return rcs ?? new List<Rcs>();
         }
 
         #endregion
