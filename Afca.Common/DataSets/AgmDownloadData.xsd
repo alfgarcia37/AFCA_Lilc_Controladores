@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AgmDownloadData" targetNamespace="http://tempuri.org/AgmDownloadData.xsd" xmlns:mstns="http://tempuri.org/AgmDownloadData.xsd" xmlns="http://tempuri.org/AgmDownloadData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AgmDownloadData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AgmDownloadData" msprop:Generator_UserDSName="AgmDownloadData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EntidadData" msprop:Generator_TableClassName="EntidadDataDataTable" msprop:Generator_TableVarName="tableEntidadData" msprop:Generator_RowChangedName="EntidadDataRowChanged" msprop:Generator_TablePropName="EntidadData" msprop:Generator_RowDeletingName="EntidadDataRowDeleting" msprop:Generator_RowChangingName="EntidadDataRowChanging" msprop:Generator_RowEvHandlerName="EntidadDataRowChangeEventHandler" msprop:Generator_RowDeletedName="EntidadDataRowDeleted" msprop:Generator_RowClassName="EntidadDataRow" msprop:Generator_UserTableName="EntidadData" msprop:Generator_RowEvArgName="EntidadDataRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AsociacionID" msprop:Generator_ColumnVarNameInTable="columnAsociacionID" msprop:Generator_ColumnPropNameInRow="AsociacionID" msprop:Generator_ColumnPropNameInTable="AsociacionIDColumn" msprop:Generator_UserColumnName="AsociacionID" type="xs:int" />
+              <xs:element name="Entidad" msprop:Generator_ColumnVarNameInTable="columnEntidad" msprop:Generator_ColumnPropNameInRow="Entidad" msprop:Generator_ColumnPropNameInTable="EntidadColumn" msprop:Generator_UserColumnName="Entidad" type="xs:string" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="InicioDescarga" msprop:Generator_ColumnVarNameInTable="columnInicioDescarga" msprop:Generator_ColumnPropNameInRow="InicioDescarga" msprop:Generator_ColumnPropNameInTable="InicioDescargaColumn" msprop:Generator_UserColumnName="InicioDescarga" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FinDescarga" msprop:Generator_ColumnVarNameInTable="columnFinDescarga" msprop:Generator_ColumnPropNameInRow="FinDescarga" msprop:Generator_ColumnPropNameInTable="FinDescargaColumn" msprop:Generator_UserColumnName="FinDescarga" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FechaDescarga" msprop:Generator_ColumnVarNameInTable="columnFechaDescarga" msprop:Generator_ColumnPropNameInRow="FechaDescarga" msprop:Generator_ColumnPropNameInTable="FechaDescargaColumn" msprop:Generator_UserColumnName="FechaDescarga" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Message" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_ColumnPropNameInRow="Message" msprop:Generator_ColumnPropNameInTable="MessageColumn" msprop:Generator_UserColumnName="Message" type="xs:string" minOccurs="0" />
+              <xs:element name="MessageSize" msprop:Generator_ColumnVarNameInTable="columnMessageSize" msprop:Generator_ColumnPropNameInRow="MessageSize" msprop:Generator_ColumnPropNameInTable="MessageSizeColumn" msprop:Generator_UserColumnName="MessageSize" type="xs:double" minOccurs="0" />
+              <xs:element name="Registros" msprop:Generator_ColumnVarNameInTable="columnRegistros" msprop:Generator_ColumnPropNameInRow="Registros" msprop:Generator_ColumnPropNameInTable="RegistrosColumn" msprop:Generator_UserColumnName="Registros" type="xs:int" minOccurs="0" />
+              <xs:element name="Result" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Asociacion_pk" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:EntidadData" />
+      <xs:field xpath="mstns:AsociacionID" />
+      <xs:field xpath="mstns:Entidad" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

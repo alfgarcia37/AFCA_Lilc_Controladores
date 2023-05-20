@@ -176,5 +176,10 @@ namespace Afca.Data.Access
            
 
         }
+
+        public AgmDownloadData DownloadAgmData(string entidad)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

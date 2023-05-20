@@ -107,6 +107,12 @@
     <Compile Include="AfcaFrameForm.Designer.cs">
       <DependentUpon>AfcaFrameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridControls\AgmDownloadPrincipalDataGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridControls\AgmDownloadPrincipalDataGridControl.Designer.cs">
+      <DependentUpon>AgmDownloadPrincipalDataGridControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataGridControls\AgmEnvioSecundarioDataGridControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,6 +192,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AfcaFrameForm.resx">
       <DependentUpon>AfcaFrameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridControls\AgmDownloadPrincipalDataGridControl.resx">
+      <DependentUpon>AgmDownloadPrincipalDataGridControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataGridControls\AgmEnvioPrincipalDataGridControl.resx">
       <DependentUpon>AgmEnvioPrincipalDataGridControl.cs</DependentUpon>

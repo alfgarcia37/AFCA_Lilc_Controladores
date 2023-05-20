@@ -434,6 +434,8 @@ namespace Afca.UI
         #endregion
 
         #region Agm
+
+        #region Envios
         public static void PrepareAgmEnviosPrincipales(ItemData itContainer)
         {
             try
@@ -640,7 +642,6 @@ namespace Afca.UI
                     e.Message);
             }
         }
-
         public static void AgmExecuteEnviosSecundarios(ItemData itContainer)
         {
             ItemMetaData itMetada = itContainer.MetaData;
@@ -664,6 +665,19 @@ namespace Afca.UI
                                , icon
                                , new AgmEnvioSecundarioDataGridControl(itContainer));
         }
+        #endregion
+
+        #region Descargas
+        public static void StartAgmDescargasPrincipales(ItemData itContainer)
+        {
+            ShowControlInForm(
+                                "AGM - Proceso de descarga"
+                                , "IconoFolderWindow"
+                                , new AgmEnvioPrincipalDataGridControl(itContainer));
+        }
+
+        #endregion
+
         #endregion
 
         #region Siluetas

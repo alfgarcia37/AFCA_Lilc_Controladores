@@ -1,11 +1,15 @@
 ﻿using Afca.Common;
 using Afca.Common.DataAccessor;
+using Afca.Common.DataSets;
 using Afca.Common.Models;
 using Microsoft.Practices.EnterpriseLibrary.Common;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -30,8 +34,6 @@ namespace Afca.Data.Access
         {
             InitializeHttpClient();
         }
-
-
         public async Task<Result> UploadData(string ganaderiaId, string jsonData)
         {
             var setRoutine = await SetConnectionContext();
@@ -59,7 +61,6 @@ namespace Afca.Data.Access
             return new Result {success=responseOk
                              ,value=responseOk?"":content};
         }
-
         public async Task<Result> ExecuteIndicadores()
         {
             var setRoutine = await SetConnectionContext();
@@ -94,9 +95,8 @@ namespace Afca.Data.Access
             return result ?? null;
 
         }
-
         //agc
-        public async Task<IEnumerable<Rcs>> DownloadData()
+        public async Task<string> DownloadRCSData()
         {
             var urlAction = UrlWebAPIController(RCSController);
             urlAction = string.Format("EnvioRCS/", urlAction);
@@ -105,14 +105,57 @@ namespace Afca.Data.Access
                                 .GetAsync(urlAction)
                                 .ConfigureAwait(false);
 
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            var rcs = JsonConvert.DeserializeObject<List<Rcs>>(json);
-            return rcs ?? new List<Rcs>();
+            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        }
+      
+        #region descargas
+        public async Task<AgmDownloadData> DownloadAgmData(string entidad)
+        {
+            DateTime start = DateTime.Now;
+            AgmDownloadData data = new AgmDownloadData();
+
+            switch (entidad.ToUpper())
+            {
+                case "RCS":
+                    var jsonRcsMessage = await DownloadRCSData();
+                    data.EntidadData.Rows.Add(
+                        MapDownloadedMessageToDataRow(entidad, jsonRcsMessage,start,DateTime.Now)
+                        );
+                    break;
+            }
+            return data;
         }
 
+        public Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga)
+        {
+            throw new NotImplementedException();
+        }
+        DataRow MapDownloadedMessageToDataRow(string entidad,string jsonMessage,DateTime startDateTime,DateTime endDateTime)
+        {
+            AgmDownloadData downloadedData = new AgmDownloadData();
+            DataRow mappedDataRow = downloadedData.EntidadData.NewRow();
+
+            //devolver del servidor un json con la siguiente estructura:
+            /*
+             * {
+             *   entidad:'RCS',
+             *   FechaDescarga:2023-5-20,
+             *   data:[{}] <- array de entidades
+             * 
+             * }
+             * */
+            DownloadedData jsonData = JsonConvert.DeserializeObject<DownloadedData>(entidad);
+            mappedDataRow["Entidad"] = jsonData.Entidad;
+            mappedDataRow["InicioDescarga"] = startDateTime;
+            mappedDataRow["FinDescarga"] = endDateTime;
+            mappedDataRow["FechaDescarga"] = jsonData.FechaDescarga;
+            mappedDataRow["Message"] = JsonConvert.SerializeObject(jsonData.Data);
+
+            return mappedDataRow;
+        }
         #endregion
 
-
+        #endregion
 
         #region http common interface methods
         readonly HttpClient httpClient = new HttpClient();
@@ -275,5 +318,7 @@ namespace Afca.Data.Access
             return result;
         }
         #endregion
+
+
     }
 }

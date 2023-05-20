@@ -499,8 +499,13 @@ namespace Afca.Common
             ItemMetaData agmEnviosNode = CreateAgmEnviosNode();
             agmNode.Children.Add(agmEnviosNode);
 
+            ItemMetaData agmDescargasNode = CreateAgmDescargasNode();
+            agmNode.Children.Add(agmDescargasNode);
+
             return agmNode;
         }
+
+        #region Envios
         static ItemMetaData CreateAgmEnviosNode()
         {
             ItemMetaData agmEnviosNode = new ItemMetaData("AgmEnvios");
@@ -572,7 +577,6 @@ namespace Afca.Common
 
             return envPrincipalNode;
         }
-
         static ItemMetaData CreateAgmEnviosSecundariosTree()
         {
             ItemMetaData envSecundariosNode = new ItemMetaData("AgmEnviosSecundarios");
@@ -826,6 +830,58 @@ namespace Afca.Common
         }
         #endregion
 
+        #region Descargas
+        static ItemMetaData CreateAgmDescargasNode()
+        {
+            ItemMetaData agmDescargasNode = new ItemMetaData("AgmDescargas");
+            agmDescargasNode.Text = "Descargas";
+            agmDescargasNode.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+
+            ItemMetaData principalesNode = CreateAgmDescargasPrincipalesTree();
+            agmDescargasNode.Children.Add(principalesNode);
+
+
+            return agmDescargasNode;
+        }
+        static ItemMetaData CreateAgmDescargasPrincipalesTree()
+        {
+            ItemMetaData downPrincipales = new ItemMetaData("AgmDescargasPrincipales");
+            downPrincipales.Text = "Principales";
+            downPrincipales.Icons.AddRange(new string[] { "IconoCarpeta", "IconoCarpetaOpen" });
+            downPrincipales.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                            "StartAgmDescargasPrincipales", "Descargar datos..."
+                                                            , ItemMethodType.GridEdit, "IconoGenerador"));
+            downPrincipales.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
+                                                          "AgmProcessDescargasPrincipales", "Procesar..."
+                                                          , ItemMethodType.GridEdit, "IconoPlay"));
+            ItemMetaData detallePrincipalesNode = CreateAgmDescargasPrincipalesNode();
+            downPrincipales.Children.Add(detallePrincipalesNode);
+
+            return downPrincipales;
+        }
+        static ItemMetaData CreateAgmDescargasPrincipalesNode()
+        {
+            ItemMetaData downPrincipalesNode = new ItemMetaData("AgmDescargaPrincipal");
+            downPrincipalesNode.ItemType = ItemType.Leaf;
+            downPrincipalesNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
+
+            downPrincipalesNode.LoadMethod = "IAgmService,GetAgmDescargaDataByParent";
+            downPrincipalesNode.DataTable = "Ganaderia";
+            downPrincipalesNode.SortCriteria = "GanaderiaID ASC";
+            downPrincipalesNode.ItemColumns.AddItemColumn(
+                            new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
+            downPrincipalesNode.ItemColumns.AddItemColumn(
+                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+            downPrincipalesNode.ItemColumns.AddItemColumn(
+                   new ItemColumn("RCS", "RCS", false, true));
+
+            return downPrincipalesNode;
+        }
+        #endregion
+
+
+        #endregion
+
         #region Gestor Cartas Nacimiento
         static ItemMetaData CreateSiluetasTree()
         {
@@ -875,7 +931,6 @@ namespace Afca.Common
             return siluetaNode;
         }
         #endregion
-
 
         #region Datos Configuracion
         static ItemMetaData CreateDatosConfiguracionFolderNode()
@@ -971,5 +1026,6 @@ namespace Afca.Common
             return controladorNode;
         }
         #endregion
+   
     }
 }

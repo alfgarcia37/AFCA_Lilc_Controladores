@@ -1,4 +1,5 @@
-﻿using Afca.Common.Models;
+﻿using Afca.Common.DataSets;
+using Afca.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,7 @@ namespace Afca.Common.DataAccessor
     {
         Task<Result> UploadData(string ganaderiaId,string jsonData);
         Task<Result> ExecuteIndicadores();
-        //agc
-        Task<IEnumerable<Rcs>> DownloadData();
-
-
+        Task<AgmDownloadData> DownloadAgmData(string entidad);
+        Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga);
     }
 }

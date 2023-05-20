@@ -65,6 +65,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\AgmDownloadData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgmDownloadData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\AgmEnvioData.cs">
       <DependentUpon>AgmEnvioData.xsd</DependentUpon>
     </Compile>
@@ -118,6 +123,7 @@
       <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
     </Compile>
     <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Models\DownloadedData.cs" />
     <Compile Include="Models\RCS.cs" />
     <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\LoginResponse.cs" />
@@ -178,6 +184,17 @@
     </None>
     <None Include="DataReports\CartaRegistroReportData.xss">
       <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\AgmDownloadData.xsc">
+      <DependentUpon>AgmDownloadData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\AgmDownloadData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AgmDownloadData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\AgmDownloadData.xss">
+      <DependentUpon>AgmDownloadData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\AgmEnvioData.xsc">
       <DependentUpon>AgmEnvioData.xsd</DependentUpon>

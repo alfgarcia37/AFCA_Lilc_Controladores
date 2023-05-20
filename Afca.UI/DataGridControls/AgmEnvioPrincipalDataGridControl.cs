@@ -20,8 +20,6 @@ namespace Afca.UI
     public partial class AgmEnvioPrincipalDataGridControl : DataGridControl
     {
         ItemData itemContainer;
-        Task uiTaskShow;
-        Task uiTaskHide;
         FileTracer fileTracer;
         ArrayList traceBuffer = new ArrayList();
         bool traceBufferFlushed = false;

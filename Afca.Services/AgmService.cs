@@ -29,6 +29,8 @@ namespace Afca.Services
                 agmWebAPI = Afca.Common.AfcaDataAccessorProvider.GetAgmWebApiDataAccessor("IAgmWebApiDataAccessor");
 
         }
+
+        #region Envios
         public void PrepareAgmEnvios(ItemData itemParent)
         {
             switch (itemParent.Name)
@@ -144,9 +146,6 @@ namespace Afca.Services
             return await agmWebAPI.ExecuteIndicadores().ConfigureAwait(false);
         }
 
-
-
-
         public bool MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message)
         {
             message = "";
@@ -174,7 +173,38 @@ namespace Afca.Services
                 return false;
             }
         }
+        #endregion
 
-
+        #region Descargas
+        public AgmEnvioData GetAgmDescargaDataByParent(ItemData itemParent)
+        {
+            switch (itemParent.Name)
+            {
+                case "AgmDescargasPrincipales":
+                    return agmDA.GetAgmEnviosData();
+                default:
+                    return null;
+            }
+        }
+        public async Task<AgmDownloadData> DownloadAgmPrincipalData(string entidad)
+        {
+            return await agmWebAPI.DownloadAgmData(entidad);
+        }
+        public Task<Result> SaveJsonDownloadedData(string entidad, string message)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga)
+        {
+            try
+            {
+                return await agmWebAPI.NotifyDescargaAsRecieved(entidad,fechaDescarga);
+            }
+            catch(Exception e)
+            {
+                return new Result(){ success = false, value = e.Message };
+            }
+        }
+        #endregion
     }
 }
