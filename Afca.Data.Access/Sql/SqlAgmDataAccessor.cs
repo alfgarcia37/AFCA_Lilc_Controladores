@@ -177,9 +177,15 @@ namespace Afca.Data.Access
 
         }
 
-        public AgmDownloadData DownloadAgmData(string entidad)
+        public int SaveDowloadedData(string entidad, DateTime fechaDescarga, string message)
         {
-            throw new NotImplementedException();
+            this.ChangeDataBase("gandmTemp");
+            return this.ExecuteNonQuery("", new SqlParameter[3]
+                                 {
+                                     new SqlParameter("@Entidad",entidad),
+                                     new SqlParameter("@FechaDescarga",fechaDescarga),
+                                      new SqlParameter("@jsonMessage",message)
+                                 });
         }
     }
 }

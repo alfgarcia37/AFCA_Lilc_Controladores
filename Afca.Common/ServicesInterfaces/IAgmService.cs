@@ -26,7 +26,7 @@ namespace Afca.Common.ServicesInterfaces
         bool MarkAgmEnvioAsNotSended(string ganaderiaID,string entidad, string error,out string message);
 
         Task<AgmDownloadData> DownloadAgmPrincipalData(string entidad);
-        Task<Result> SaveJsonDownloadedData(string entidad, string message);
+        Task<Result> SaveJsonDownloadedData(string entidad,DateTime fechaDescarga, string message);
         Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga);
     }
 }

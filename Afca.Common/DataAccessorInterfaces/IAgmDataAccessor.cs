@@ -29,5 +29,7 @@ namespace Afca.Common.DataAccessor
         void PreparaAgmEnviosGenomica();
         AgmEnvioData GetAgmEnviosSecundariosData(string entidad);
         void PreparaAgmEnviosLactacionesHistorico();
+
+        int SaveDowloadedData(string entidad, DateTime fechaDescarga,string message);
     }
 }

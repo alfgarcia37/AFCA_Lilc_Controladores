@@ -673,7 +673,7 @@ namespace Afca.UI
             ShowControlInForm(
                                 "AGM - Proceso de descarga"
                                 , "IconoFolderWindow"
-                                , new AgmEnvioPrincipalDataGridControl(itContainer));
+                                , new AgmDownloadPrincipalDataGridControl(itContainer));
         }
 
         #endregion

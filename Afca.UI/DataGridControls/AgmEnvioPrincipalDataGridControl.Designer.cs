@@ -297,6 +297,7 @@ namespace Afca.UI
             buttonTool4,
             buttonTool6});
             ultraToolbar1.Text = "Barra secundaria";
+            ultraToolbar1.Visible = false;
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
             ultraToolbar1});
             this.ultraToolbarsManager.ToolbarSettings.ForceSerialization = true;

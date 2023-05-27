@@ -113,13 +113,15 @@ namespace Afca.Data.Access
         {
             DateTime start = DateTime.Now;
             AgmDownloadData data = new AgmDownloadData();
+            DataRow mappedDataRow = data.EntidadData.NewRow();
 
             switch (entidad.ToUpper())
             {
                 case "RCS":
-                    var jsonRcsMessage = await DownloadRCSData();
+                    // var jsonRcsMessage = await DownloadRCSData();
+                    var jsonRcsMessage = "{ entidad:'RCS',fechaDescarga:'2023-05-27',data:[{rcs:1},{rcs:2}]}";
                     data.EntidadData.Rows.Add(
-                        MapDownloadedMessageToDataRow(entidad, jsonRcsMessage,start,DateTime.Now)
+                        MapDownloadedMessageToDataRow(entidad, jsonRcsMessage,start,DateTime.Now,mappedDataRow)
                         );
                     break;
             }
@@ -130,10 +132,9 @@ namespace Afca.Data.Access
         {
             throw new NotImplementedException();
         }
-        DataRow MapDownloadedMessageToDataRow(string entidad,string jsonMessage,DateTime startDateTime,DateTime endDateTime)
+        DataRow MapDownloadedMessageToDataRow(string entidad,string jsonMessage,DateTime startDateTime,DateTime endDateTime,DataRow row)
         {
-            AgmDownloadData downloadedData = new AgmDownloadData();
-            DataRow mappedDataRow = downloadedData.EntidadData.NewRow();
+          
 
             //devolver del servidor un json con la siguiente estructura:
             /*
@@ -144,14 +145,15 @@ namespace Afca.Data.Access
              * 
              * }
              * */
-            DownloadedData jsonData = JsonConvert.DeserializeObject<DownloadedData>(entidad);
-            mappedDataRow["Entidad"] = jsonData.Entidad;
-            mappedDataRow["InicioDescarga"] = startDateTime;
-            mappedDataRow["FinDescarga"] = endDateTime;
-            mappedDataRow["FechaDescarga"] = jsonData.FechaDescarga;
-            mappedDataRow["Message"] = JsonConvert.SerializeObject(jsonData.Data);
+            DownloadedData jsonData = JsonConvert.DeserializeObject<DownloadedData>(jsonMessage);
+            row["AsociacionID"] = 1;
+            row["Entidad"] = entidad;
+            row["InicioDescarga"] = startDateTime;
+            row["FinDescarga"] = endDateTime;
+            row["FechaDescarga"] = jsonData.FechaDescarga;
+            row["Message"] = JsonConvert.SerializeObject(jsonData.Data);
 
-            return mappedDataRow;
+            return row;
         }
         #endregion
 

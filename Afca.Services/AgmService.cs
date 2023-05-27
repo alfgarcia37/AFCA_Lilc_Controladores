@@ -188,11 +188,27 @@ namespace Afca.Services
         }
         public async Task<AgmDownloadData> DownloadAgmPrincipalData(string entidad)
         {
+            InitializeAgmWebApiDA();
             return await agmWebAPI.DownloadAgmData(entidad);
         }
-        public Task<Result> SaveJsonDownloadedData(string entidad, string message)
+        public  Task<Result> SaveJsonDownloadedData(string entidad,DateTime fechaDescarga, string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int rowsSaved = agmDA.SaveDowloadedData(entidad, fechaDescarga, message);
+                return Task.FromResult(new Result
+                {
+                    success=true
+                    ,value=rowsSaved.ToString()
+                });
+            }
+            catch(System.Exception e)
+            {
+                return Task.FromResult(new Result{
+                    success = false
+                    , value = e.Message 
+                });
+            }
         }
         public async Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga)
         {

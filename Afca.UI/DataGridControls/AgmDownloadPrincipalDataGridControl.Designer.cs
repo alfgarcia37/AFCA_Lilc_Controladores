@@ -32,6 +32,7 @@ namespace Afca.UI
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("EntidadData", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("AsociacionID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Entidad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Status");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("InicioDescarga");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FinDescarga");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaDescarga");
@@ -56,35 +57,41 @@ namespace Afca.UI
             ultraGridColumn2.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn2.Header.Editor = null;
             ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn10.Header.Editor = null;
+            ultraGridColumn10.Header.VisiblePosition = 2;
             ultraGridColumn3.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn3.Format = "dd/MM/yyyy hh:mm";
             ultraGridColumn3.Header.Caption = "Inicio Descarga";
             ultraGridColumn3.Header.Editor = null;
-            ultraGridColumn3.Header.VisiblePosition = 6;
+            ultraGridColumn3.Header.VisiblePosition = 7;
             ultraGridColumn4.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn4.Format = "dd/MM/yyyy hh:mm";
             ultraGridColumn4.Header.Caption = "Fin Descarga";
             ultraGridColumn4.Header.Editor = null;
-            ultraGridColumn4.Header.VisiblePosition = 7;
+            ultraGridColumn4.Header.VisiblePosition = 8;
             ultraGridColumn5.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn5.Format = "dd/MM/yyyy hh:mm";
             ultraGridColumn5.Header.Caption = "Fecha Descarga";
             ultraGridColumn5.Header.Editor = null;
-            ultraGridColumn5.Header.VisiblePosition = 2;
+            ultraGridColumn5.Header.VisiblePosition = 3;
             ultraGridColumn6.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn6.Header.Editor = null;
-            ultraGridColumn6.Header.VisiblePosition = 8;
+            ultraGridColumn6.Header.VisiblePosition = 9;
             ultraGridColumn6.Hidden = true;
             ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn7.Header.Caption = "Message Size";
             ultraGridColumn7.Header.Editor = null;
-            ultraGridColumn7.Header.VisiblePosition = 3;
+            ultraGridColumn7.Header.VisiblePosition = 4;
             ultraGridColumn8.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn8.Header.Editor = null;
-            ultraGridColumn8.Header.VisiblePosition = 4;
+            ultraGridColumn8.Header.VisiblePosition = 5;
             ultraGridColumn9.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn9.Header.Editor = null;
-            ultraGridColumn9.Header.VisiblePosition = 5;
+            ultraGridColumn9.Header.VisiblePosition = 6;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
+            ultraGridColumn10,
             ultraGridColumn3,
             ultraGridColumn4,
             ultraGridColumn5,
@@ -117,7 +124,10 @@ namespace Afca.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.DataMember = "EntidadData";
             this.DataSource = this.agmDownloadData;
+            this.LoadMethod = "";
             this.Name = "AgmDownloadPrincipalDataGridControl";
+            this.ServiceProvider = "IAgmService";
+            this.Load += new System.EventHandler(this.AgmDownloadPrincipalDataGridControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agmDownloadData)).EndInit();

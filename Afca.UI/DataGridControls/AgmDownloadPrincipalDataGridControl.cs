@@ -36,7 +36,10 @@ namespace Afca.UI
             itemContainer = argItemContainer;
             fileTracer = new FileTracer("agm_down_prin");
             InitializeData();
-            LoadData();
+        }
+        private async void AgmDownloadPrincipalDataGridControl_Load(object sender, EventArgs e)
+        {
+            await StartDownloadingTask();
         }
         void InitializeData()
         {
@@ -48,11 +51,7 @@ namespace Afca.UI
             base.InitializeAppearance();
             ControlsThemeBuilder.GridMakeUp(this.ultraGridData, ThemeColor.Amarillo);
             ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[0], ThemeColor.Amarillo);
-            ControlsThemeBuilder.GridBandMakeUp(this.ultraGridData.DisplayLayout.Bands[1], ThemeColor.Gris);
-
-            ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "tbbCheckSelected", "IconoSelectAll");
-            ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "tbbUncheckSelected", "IconoUnselectAll");
-            ControlsTasks.SetToolBarButtonImage(ultraToolbarsManager, "tbbSend", "IconoPlay");
+            
 
             foreach (string tbbkey in new string[] { "tbbAddNew", "tbbDelete", "tbbSave" })
                 ultraToolbarsManager.Tools[tbbkey].SharedProps.Enabled = false;
@@ -70,7 +69,11 @@ namespace Afca.UI
                     bi.PerformAutoResizeCards(false);
             }
         }
-        protected override  async void LoadData()
+        protected override void LoadData()
+        {
+           
+        }
+        async Task StartDownloadingTask()
         {
             if (agmDownloadData != null)
                 agmDownloadData.Clear();
@@ -101,7 +104,7 @@ namespace Afca.UI
         {
             ultraGridData.UpdateData();
 
-            IAgmService agmService = (IAgmService)Service;
+            IAgmService agmService = AfcaServiceProvider.GetAgmService();
 
             if (entidadesToDownload.Count() > 0)
                 WriteTraceBuffer();
@@ -110,18 +113,20 @@ namespace Afca.UI
 
             foreach (string entidad in entidadesToDownload)
             {
-
                 string traceText = "Starting trace";
 
                 traceText = AppendTraceText(traceText,string.Format("Entidad : {0}. downloading data...", entidad));
 
-                AgmDownloadData entidadDownloaded = await ((IAgmService)Service).DownloadAgmPrincipalData(entidad);
+                DateTime downloadStart = DateTime.Now;
+                AgmDownloadData entidadDownloaded = await agmService.DownloadAgmPrincipalData(entidad).ConfigureAwait(false);
+                DateTime downloadEnd = DateTime.Now;
 
                 if(entidadDownloaded!=null && entidadDownloaded.EntidadData.Rows.Count > 0)
                 {
                     traceText =AppendTraceText(traceText,string.Format("Entidad : {0}. downloaded data !!",entidad));
 
                     agmDownloadData.Merge(entidadDownloaded);
+                    this.ultraGridData.DataBind();
 
                     UltraGridRow gRow = ultraGridData.Rows
                        .Where(r => (string)r.Cells["Entidad"].Value == entidad).FirstOrDefault();
@@ -134,7 +139,7 @@ namespace Afca.UI
                     string status = "";
 
                     if (currentSavingRow == null)                    
-                        traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. no data to save", entidad));                    
+                        traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. no data to save", entidad));    
                     else
                     {
                         string message = dO.cls(gRow, "Message", String.Empty).ToString();
@@ -148,9 +153,14 @@ namespace Afca.UI
                                 traceText = AppendTraceText(traceText, string.Format("Entidad : {0}.  message to save", entidad));
                                 traceText = AppendTraceText(traceText, string.Format("{0}", message));
 
+                                currentSavingRow.Cells["InicioDescarga"].Value = downloadStart;
+                                currentSavingRow.Cells["FinDescarga"].Value = downloadEnd;
+
+                                DateTime fechaDescarga = Convert.ToDateTime(dO.cls(currentSavingRow, "FechaDescarga", DateTime.Now));
+
                                 await Task.Run(() => ShowUIProgressAction(currentSavingRow));
 
-                                Result result = await agmService.SaveJsonDownloadedData(entidad,message).ConfigureAwait(false);
+                                var result = await agmService.SaveJsonDownloadedData(entidad,fechaDescarga,message).ConfigureAwait(false);
 
                                 status = result.success ? "OK" : "ER";
                                 currentSavingRow.Cells["Result"].Value = result.success ? "Descarga guardada" : result.value;
@@ -159,9 +169,9 @@ namespace Afca.UI
                                 {
                                     traceText = AppendTraceText(traceText, string.Format("Entidad : {0}.  message saved", entidad));
 
-                                    DateTime fechaDescarga= Convert.ToDateTime(currentSavingRow.Cells["FechaDescarga"].Value);
+                                    currentSavingRow.Cells["Registros"].Value = Convert.ToInt32(result.value);
 
-                                    var notified = await agmService.NotifyDescargaAsRecieved(entidad,fechaDescarga);
+                                    var notified = await agmService.NotifyDescargaAsRecieved(entidad,fechaDescarga).ConfigureAwait(false);
 
                                     if (!notified.success)
                                     {
