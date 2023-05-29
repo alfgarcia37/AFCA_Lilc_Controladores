@@ -284,7 +284,9 @@ namespace Afca.UI
             this.ultraGridData.DisplayLayout.ValueLists.AddRange(new Infragistics.Win.ValueList[] {
             valueList1});
             this.ultraGridData.ImageList = this.imageList;
-            this.ultraGridData.Size = new System.Drawing.Size(788, 340);
+            this.ultraGridData.Location = new System.Drawing.Point(0, 59);
+            this.ultraGridData.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.ultraGridData.Size = new System.Drawing.Size(1051, 392);
             this.ultraGridData.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.ultraGridData_InitializeLayout);
             // 
             // ultraToolbarsManager
@@ -297,7 +299,6 @@ namespace Afca.UI
             buttonTool4,
             buttonTool6});
             ultraToolbar1.Text = "Barra secundaria";
-            ultraToolbar1.Visible = false;
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
             ultraToolbar1});
             this.ultraToolbarsManager.ToolbarSettings.ForceSerialization = true;
@@ -326,15 +327,15 @@ namespace Afca.UI
             // 
             // AgmEnvioPrincipalDataGridControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.DataMember = "Ganaderia";
             this.DataSource = this.agmEnvioData;
             this.LoadMethod = "GetAgmEnviosPrincipalesToSendData";
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "AgmEnvioPrincipalDataGridControl";
             this.ServiceProvider = "IAgmService";
-            this.Size = new System.Drawing.Size(788, 392);
+            this.Size = new System.Drawing.Size(1051, 482);
             this.ThemColor = FrameworkForge.Common.ThemeColor.Amarillo;
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).EndInit();

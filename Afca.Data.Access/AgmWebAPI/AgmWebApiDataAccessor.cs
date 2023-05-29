@@ -96,16 +96,30 @@ namespace Afca.Data.Access
 
         }
         //agc
-        public async Task<string> DownloadRCSData()
+        public async Task<Result> DownloadRCSData()
         {
+
+            var setRoutine = await SetConnectionContext();
+
+            if (!setRoutine.success)
+                return new Result
+                {
+                    success = false
+                                   ,
+                    value = setRoutine.value
+                };
+
             var urlAction = UrlWebAPIController(RCSController);
-            urlAction = string.Format("EnvioRCS/", urlAction);
+            urlAction = string.Concat(urlAction,"EnvioRCS" );
 
             var response = await ServerRepositoryHttpClient()
                                 .GetAsync(urlAction)
                                 .ConfigureAwait(false);
 
-            return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return new Result{
+                success=true,
+                value = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+            };
         }
       
         #region descargas
@@ -118,11 +132,15 @@ namespace Afca.Data.Access
             switch (entidad.ToUpper())
             {
                 case "RCS":
-                    // var jsonRcsMessage = await DownloadRCSData();
-                    var jsonRcsMessage = "{ entidad:'RCS',fechaDescarga:'2023-05-27',data:[{rcs:1},{rcs:2}]}";
-                    data.EntidadData.Rows.Add(
-                        MapDownloadedMessageToDataRow(entidad, jsonRcsMessage,start,DateTime.Now,mappedDataRow)
-                        );
+                    var rcsDownloadOperation = await DownloadRCSData();
+                    //var jsonRcsMessage = "{ entidad:'RCS',fechaDescarga:'2023-05-27',data:[{rcs:1},{rcs:2}]}";
+                    if(rcsDownloadOperation.success)
+                    {
+                        data.EntidadData.Rows.Add(
+                      MapDownloadedMessageToDataRow(entidad, rcsDownloadOperation.value, start, DateTime.Now, mappedDataRow)
+                      );
+                    }
+                  
                     break;
             }
             return data;

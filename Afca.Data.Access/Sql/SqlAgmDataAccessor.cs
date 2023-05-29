@@ -180,11 +180,11 @@ namespace Afca.Data.Access
         public int SaveDowloadedData(string entidad, DateTime fechaDescarga, string message)
         {
             this.ChangeDataBase("gandmTemp");
-            return this.ExecuteNonQuery("", new SqlParameter[3]
+            return this.ExecuteNonQuery("sp_SaveDownloadedData", new SqlParameter[3]
                                  {
                                      new SqlParameter("@Entidad",entidad),
                                      new SqlParameter("@FechaDescarga",fechaDescarga),
-                                      new SqlParameter("@jsonMessage",message)
+                                      new SqlParameter("@jsonData",message)
                                  });
         }
     }
