@@ -24,6 +24,7 @@ namespace Afca.Data.Access
         string loginController = "user";
         string dataHubController = "datahub";
         string RCSController = "RCS";
+        string NacimientoController = "Nacimiento";
 
         //load from app.config (encrypted saved)
         string email = "";
@@ -121,7 +122,32 @@ namespace Afca.Data.Access
                 value = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
             };
         }
-      
+        public async Task<Result> DownloadNacimientoData()
+        {
+
+            var setRoutine = await SetConnectionContext();
+
+            if (!setRoutine.success)
+                return new Result
+                {
+                    success = false
+                                   ,
+                    value = setRoutine.value
+                };
+
+            var urlAction = UrlWebAPIController(NacimientoController);
+            urlAction = string.Concat(urlAction, "EnvioNacimiento");
+
+            var response = await ServerRepositoryHttpClient()
+                                .GetAsync(urlAction)
+                                .ConfigureAwait(false);
+
+            return new Result
+            {
+                success = true,
+                value = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+            };
+        }
         #region descargas
         public async Task<AgmDownloadData> DownloadAgmData(string entidad)
         {
@@ -137,10 +163,18 @@ namespace Afca.Data.Access
                     if(rcsDownloadOperation.success)
                     {
                         data.EntidadData.Rows.Add(
-                      MapDownloadedMessageToDataRow(entidad, rcsDownloadOperation.value, start, DateTime.Now, mappedDataRow)
+                            MapDownloadedMessageToDataRow(entidad, rcsDownloadOperation.value, start, DateTime.Now, mappedDataRow)
                       );
                     }
                   
+                    break;
+                case "NACIMIENTO":
+                    var nacimientoDownloadOperation = await DownloadNacimientoData();
+                    if (nacimientoDownloadOperation.success)
+                    {
+                        data.EntidadData.Rows.Add(MapDownloadedMessageToDataRow(entidad, nacimientoDownloadOperation.value, start, DateTime.Now, mappedDataRow)                      );
+                    }
+
                     break;
             }
             return data;

@@ -43,7 +43,8 @@ namespace Afca.UI
         }
         void InitializeData()
         {
-            this.entidadesToDownload.Add("RCS");            
+            this.entidadesToDownload.Add("RCS");
+            this.entidadesToDownload.Add("Nacimiento");
         }
         protected override void InitializeAppearance()
         {
@@ -171,18 +172,18 @@ namespace Afca.UI
 
                                     currentSavingRow.Cells["Registros"].Value = Convert.ToInt32(result.value);
 
-                                    var notified = await agmService.NotifyDescargaAsRecieved(entidad,fechaDescarga).ConfigureAwait(false);
+                                    //var notified = await agmService.NotifyDescargaAsRecieved(entidad,fechaDescarga).ConfigureAwait(false);
 
-                                    if (!notified.success)
-                                    {
-                                        currentSavingRow.Cells["Result"].Value +=
-                                            "\n Descarga realizada y almacenada,sin embargo se ha producido un error al notificar al servidor central su recepción." +
-                                            "\n" + notified.value;
-                                        status = "ER";
-                                        traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ERROR when sending ACK to central server", entidad));
-                                    }
-                                    else                                    
-                                        traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ACK sended to central server", entidad));                                   
+                                    //if (!notified.success)
+                                    //{
+                                    //    currentSavingRow.Cells["Result"].Value +=
+                                    //        "\n Descarga realizada y almacenada,sin embargo se ha producido un error al notificar al servidor central su recepción." +
+                                    //        "\n" + notified.value;
+                                    //    status = "ER";
+                                    //    traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ERROR when sending ACK to central server", entidad));
+                                    //}
+                                    //else                                    
+                                    //    traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ACK sended to central server", entidad));                                   
                                 }
                                 else
                                 {
