@@ -675,7 +675,26 @@ namespace Afca.UI
                                 , "IconoFolderWindow"
                                 , new AgmDownloadPrincipalDataGridControl(itContainer));
         }
+        public static void ImportDownloadedData(ItemData itContainer)
+        {
+            try
+            {
+                IAgmService service = AfcaServiceProvider.GetAgmService();
+                var result  = service.InsertDownloadedData();
 
+                if(result.Result.success)
+                    DialogsManager.ShowSuccessInfo("Incorporar descargas", "Descargas incorporadas!");
+                else
+                    DialogsManager.ShowSuccessInfo("Incorporar descargas"
+                        , $"Incorporacion erronea:{result.Result.value.ToString()}");
+
+            }
+            catch (System.Exception e)
+            {
+                DialogsManager.ShowErrorDialog("Error",
+                    e.Message);
+            }
+        }
         #endregion
 
         #endregion

@@ -27,6 +27,7 @@ namespace Afca.Common.ServicesInterfaces
 
         Task<AgmDownloadData> DownloadAgmPrincipalData(string entidad);
         Task<Result> SaveJsonDownloadedData(string entidad,DateTime fechaDescarga, string message);
-        Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga);
+        Task<Result> NotifyDescargaAsRecieved(string entidad=null);
+        Task<Result> InsertDownloadedData();
     }
 }

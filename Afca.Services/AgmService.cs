@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using Afca.Common;
+using FrameworkForge.Common.Interfaces;
+using Afca.Common.Models;
 
 namespace Afca.Services
 {
@@ -176,12 +178,12 @@ namespace Afca.Services
         #endregion
 
         #region Descargas
-        public AgmEnvioData GetAgmDescargaDataByParent(ItemData itemParent)
+        public AgmDownloadData GetAgmDescargaDataByParent(ItemData itemParent)
         {
             switch (itemParent.Name)
             {
                 case "AgmDescargasPrincipales":
-                    return agmDA.GetAgmEnviosData();
+                    return agmDA.GetDownloadedData();
                 default:
                     return null;
             }
@@ -210,17 +212,67 @@ namespace Afca.Services
                 });
             }
         }
-        public async Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga)
+        public async Task<Result> NotifyDescargaAsRecieved(string entidad=null)
         {
             try
             {
-                return await agmWebAPI.NotifyDescargaAsRecieved(entidad,fechaDescarga);
-            }
+                //cojo los descargados en GandmTemp que no están confirmados en AZ
+                IAgmDataAccessor agmDataAccessor = AfcaDataAccessorProvider.GetAgmDataAccessor();
+                AgmDownloadData downloadedData =agmDataAccessor.GetDownloadedData(entidad,true);
+
+                string message = "";
+
+                if (downloadedData.EntidadData.Rows.Count > 0) {
+                    message += "{";
+                    foreach(var row in downloadedData.EntidadData)
+                    {
+                        if (!dO.EsNulo(row,"Message"))
+                        {
+                            string entidadMsg = row["Message"].ToString();
+
+                            entidadMsg = entidadMsg.Substring(1);
+                            entidadMsg = entidadMsg.Substring(0,entidadMsg.Length-1); 
+                            message += message.Length>1 ? $"{message},{entidadMsg}":entidadMsg;
+                        }
+                    }
+                    message += "}";
+                    var res = await agmWebAPI.NotifyDescargaAsRecieved(message);
+                    return res;
+                }
+                else                
+                    return 
+                        new Result {
+                            success = false 
+                        ,value="No pending data to be notified"
+                        };                            
+            } 
             catch(Exception e)
             {
                 return new Result(){ success = false, value = e.Message };
             }
         }
+
+        public async Task<Result> InsertDownloadedData()
+        {
+            try
+            {
+                var regs = await agmDA.InsertDownloadedData();
+                return (new Result
+                {
+                    success = true,
+                    value = regs.value
+                }); ;
+            }
+            catch (System.Exception e)
+            {
+                return (new Result
+                {
+                    success = false,
+                    value = e.Message
+                });
+            }
+        }
+
         #endregion
     }
 }

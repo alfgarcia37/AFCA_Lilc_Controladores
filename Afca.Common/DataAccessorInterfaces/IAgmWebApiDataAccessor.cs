@@ -13,6 +13,8 @@ namespace Afca.Common.DataAccessor
         Task<Result> UploadData(string ganaderiaId,string jsonData);
         Task<Result> ExecuteIndicadores();
         Task<AgmDownloadData> DownloadAgmData(string entidad);
-        Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga);
+        Task<Result> NotifyDescargaAsRecieved(string jsonData, string entidad = null);
+        
+        
     }
 }

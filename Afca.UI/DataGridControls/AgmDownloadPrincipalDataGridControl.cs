@@ -70,7 +70,7 @@ namespace Afca.UI
                     bi.PerformAutoResizeCards(false);
             }
         }
-        protected override void LoadData()
+        protected  override void LoadData()
         {
            
         }
@@ -127,7 +127,8 @@ namespace Afca.UI
                     traceText =AppendTraceText(traceText,string.Format("Entidad : {0}. downloaded data !!",entidad));
 
                     agmDownloadData.Merge(entidadDownloaded);
-                    this.ultraGridData.DataBind();
+                    Action dataBindGrid = DataBindGrid;
+                    Task t1 = Task.Run(DataBindGrid);
 
                     UltraGridRow gRow = ultraGridData.Rows
                        .Where(r => (string)r.Cells["Entidad"].Value == entidad).FirstOrDefault();
@@ -171,19 +172,24 @@ namespace Afca.UI
                                     traceText = AppendTraceText(traceText, string.Format("Entidad : {0}.  message saved", entidad));
 
                                     currentSavingRow.Cells["Registros"].Value = Convert.ToInt32(result.value);
+                                    // Por cada registro descargado notifico a AZ que ya descargaron OK (FechaIncorporacion) para que no
+                                    // vuelvan a descargar. Ahora será el proceso de Importación el que elimine estos regs. cuando se
+                                    //incorporen a la BBDD . Posterioremente (para RCS solo) cuando se reciban los resultados, se subirán a 
+                                    // AZ desde CL, no desde GandmTemp (ojo !!!).
+                                    //GandmTemp no puede ser nunca un gestor de información, solo es un buzón.
 
-                                    //var notified = await agmService.NotifyDescargaAsRecieved(entidad,fechaDescarga).ConfigureAwait(false);
+                                    var notified = await agmService.NotifyDescargaAsRecieved(entidad).ConfigureAwait(false);
 
-                                    //if (!notified.success)
-                                    //{
-                                    //    currentSavingRow.Cells["Result"].Value +=
-                                    //        "\n Descarga realizada y almacenada,sin embargo se ha producido un error al notificar al servidor central su recepción." +
-                                    //        "\n" + notified.value;
-                                    //    status = "ER";
-                                    //    traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ERROR when sending ACK to central server", entidad));
-                                    //}
-                                    //else                                    
-                                    //    traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ACK sended to central server", entidad));                                   
+                                    if (!notified.success)
+                                    {
+                                        currentSavingRow.Cells["Result"].Value +=
+                                            "\n Descarga realizada y almacenada,sin embargo se ha producido un error al notificar al servidor central su recepción." +
+                                            "\n" + notified.value;
+                                        status = "ER";
+                                        traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ERROR when sending ACK to central server", entidad));
+                                    }
+                                    else
+                                        traceText = AppendTraceText(traceText, string.Format("Entidad : {0}. ACK sended to central server", entidad));
                                 }
                                 else
                                 {
@@ -208,9 +214,23 @@ namespace Afca.UI
                     }
                 }
                 traceBuffer.Add(traceText);                
-            }         
-        }
+            }
+            //una vez haya descargado todo de AZ a GandnTemp meto todo en las BBDD
+            //Esto podría hacerlo tb. con un SP programado cada x horas
 
+        }
+        void DataBindGrid()
+        {
+            if(this.InvokeRequired)
+            {
+                Action doMethod = DataBindGrid;
+                this.Invoke(doMethod);
+            }
+            else
+            {
+                this.ultraGridData.DataBind();
+            }
+        }
         void ShowUIProgressAction(UltraGridRow gridRow)
         {
             Action showCursorAct = ShowCursor;

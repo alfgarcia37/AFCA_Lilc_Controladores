@@ -852,7 +852,7 @@ namespace Afca.Common
                                                             "StartAgmDescargasPrincipales", "Descargar datos..."
                                                             , ItemMethodType.GridEdit, "IconoGenerador"));
             downPrincipales.Methods.AddItemMethod(new ItemMethod("Afca.UI,ControlsProvider",
-                                                          "AgmProcessDescargasPrincipales", "Procesar..."
+                                                          "ImportDownloadedData", "Incorporar descargas.."
                                                           , ItemMethodType.GridEdit, "IconoPlay"));
             ItemMetaData detallePrincipalesNode = CreateAgmDescargasPrincipalesNode();
             downPrincipales.Children.Add(detallePrincipalesNode);
@@ -866,14 +866,14 @@ namespace Afca.Common
             downPrincipalesNode.Icons.AddRange(new string[] { "IconoLecturaNoLeida" });
 
             downPrincipalesNode.LoadMethod = "IAgmService,GetAgmDescargaDataByParent";
-            downPrincipalesNode.DataTable = "Ganaderia";
-            downPrincipalesNode.SortCriteria = "GanaderiaID ASC";
+            downPrincipalesNode.DataTable = "EntidadData";
+            downPrincipalesNode.SortCriteria = "Entidad ASC";
             downPrincipalesNode.ItemColumns.AddItemColumn(
                             new ItemColumn("AsociacionID", "AsociacionID", true, false, false));
             downPrincipalesNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("GanaderiaID", "Establo", true, true, true));
+                           new ItemColumn("Entidad", "Entidad", true, true, true));
             downPrincipalesNode.ItemColumns.AddItemColumn(
-                   new ItemColumn("RCS", "RCS", false, true));
+                   new ItemColumn("Registros", "Registros", false, true));
 
             return downPrincipalesNode;
         }

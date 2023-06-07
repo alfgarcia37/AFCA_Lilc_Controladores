@@ -1,9 +1,11 @@
 ﻿using Afca.Common.DataSets;
+using Afca.Common.Models;
 using FrameworkForge.Common.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,5 +33,8 @@ namespace Afca.Common.DataAccessor
         void PreparaAgmEnviosLactacionesHistorico();
 
         int SaveDowloadedData(string entidad, DateTime fechaDescarga,string message);
+        AgmDownloadData GetDownloadedData(string entidad = null, bool includeMessage = false);
+
+        Task<Result> InsertDownloadedData();
     }
 }

@@ -180,9 +180,44 @@ namespace Afca.Data.Access
             return data;
         }
 
-        public Task<Result> NotifyDescargaAsRecieved(string entidad, DateTime fechaDescarga)
+        public async Task<Result> NotifyDescargaAsRecieved(string jsondata, string entidad = null)
         {
-            throw new NotImplementedException();
+            //var parameter = JsonConvert.SerializeObject(jsondata);
+            var jsonDataStringified = JsonConvert.ToString(jsondata);
+            //ahora ya tengo
+
+            var setRoutine = await SetConnectionContext();
+
+            if (!setRoutine.success)
+                return new Result
+                {
+                    success = false
+                                   ,
+                    value = setRoutine.value
+                };
+           
+            var urlAction = UrlWebAPIController(dataHubController);
+            urlAction = string.Format("{0}Confirmacion", urlAction);
+
+            //var parameterprueba = "{\"RCS\":[{\"AsociacionID\":1,\"CodigoBarras\":\"69990024017999\",\"Nombre\":\"mixta\"},{\"AsociacionID\":1,\"GanaderiaID\":\"J390950   \",\"CodigoBarras\":\"69990024026913\",\"Nombre\":\"careta                        \",\"FechaDescarga\":\"2015-06-03T00:00:00\",\"FechaEntregaControlador\":\"2023-04-25T00:00:00\",\"FechaEntregaGanadero\":\"2015-06-01T00:00:00\",\"FechaAnalisis\":\"2023-04-26T00:00:00\",\"Celulas\":432,\"ControladorID\":24,\"FechaRegistro\":\"2023-06-01T13:27:58.860\",\"EstadoBuzon\":\"PDTE\"}]}";
+            //parameterprueba = JsonConvert.ToString(parameterprueba);
+
+            //var alfa = new StringContent(parameter, Encoding.UTF8, "application/json");
+
+            var response = await ServerRepositoryHttpClient()
+                                .PutAsync(urlAction
+                                 , new StringContent(jsonDataStringified, Encoding.UTF8, "application/json"))
+                            .ConfigureAwait(false);
+
+            bool responseOk = HandleResponse(response);
+
+            string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+
+
+
+            var res= new Result() { success = false, value = "" };
+            return res;
         }
         DataRow MapDownloadedMessageToDataRow(string entidad,string jsonMessage,DateTime startDateTime,DateTime endDateTime,DataRow row)
         {

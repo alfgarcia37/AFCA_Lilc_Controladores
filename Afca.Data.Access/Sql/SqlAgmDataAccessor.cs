@@ -1,6 +1,9 @@
-﻿using Afca.Common.DataAccessor;
+﻿using Afca.Common;
+using Afca.Common.DataAccessor;
 using Afca.Common.DataSets;
+using Afca.Common.Models;
 using FrameworkForge.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -179,6 +182,7 @@ namespace Afca.Data.Access
 
         public int SaveDowloadedData(string entidad, DateTime fechaDescarga, string message)
         {
+            //Guardo de AZ a GandnTemp
             this.ChangeDataBase("gandmTemp");
             return this.ExecuteNonQuery("sp_AgmSaveDownloadedData", new SqlParameter[3]
                                  {
@@ -187,5 +191,50 @@ namespace Afca.Data.Access
                                       new SqlParameter("@jsonData",message)
                                  });
         }
+        public AgmDownloadData GetDownloadedData(string entidad=null,bool includeMessage=false)
+        {
+            // Get registros descargados 'PDTE'  && FechaIncorporacion ==null 
+            // Subiré dichos registros para notificar a la Api que están incorporados
+            // Pondré el campo FechaIncorporación con GetDate()
+            this.ChangeDataBase("gandmTemp");
+
+            DataSet data = new AgmDownloadData();
+
+            SqlParameter param1 = new SqlParameter("@Entidad",SqlDbType.Char);
+            param1.Value = entidad;
+            SqlParameter param2 = new SqlParameter("@IncludeMessage",SqlDbType.Bit);
+            param2.Value = includeMessage?1:0;
+
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = param1;
+            parameters[1] = param2;
+
+            var datos= (AgmDownloadData)this.ExecuteDataSet(data
+                , "sp_AgmGetDownloadedData"
+                , CommandType.StoredProcedure
+                , parameters
+                , new string[] { "EntidadData" });
+
+
+
+            return datos;
+        }
+
+
+        public Task<Result> InsertDownloadedData()
+        {
+            // inserto los registros descargados 'PDTE' en CL,Reggen y los marco como 'DWN'
+            this.ChangeDataBase("gandmTemp");
+            //ExecuteScalar: Ejecuta la consulta y devuelve la primera columna de la primera fila
+            //del conjunto de resultados devueltos por la consulta. Las demás columnas o filas no se tienen en cuenta.
+            //var res = this.ExecuteScalar( CommandType.StoredProcedure, "sp_AgmInsertDownloadedData");
+           var res = this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_AgmInsertDownloadedData");
+            return Task.FromResult(new Result
+            {
+                success = true,
+                value = res.ToString()
+            });
+        }
     }
+   
 }

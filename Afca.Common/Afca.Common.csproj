@@ -65,6 +65,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CartaRegistroReportData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\AgmDownloadData.cs">
+      <DependentUpon>AgmDownloadData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\AgmDownloadData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
