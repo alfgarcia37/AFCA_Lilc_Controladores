@@ -31,7 +31,7 @@ namespace Afca.Data.Access
             SqlParameter[] parameters = new SqlParameter[12];
 
             parameters[0] = new SqlParameter("@controles",SqlDbType.Bit);
-            parameters[0].Value = 0;
+            parameters[0].Value = 1;
             parameters[1] = new SqlParameter("@lactaciones", SqlDbType.Bit);
             parameters[1].Value = 0;
             parameters[2] = new SqlParameter("@inseminaciones", SqlDbType.Bit);
