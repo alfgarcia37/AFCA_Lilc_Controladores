@@ -50,6 +50,10 @@ namespace Afca.Data.Access
 
             //var alfa = new StringContent(parameter, Encoding.UTF8, "application/json");
 
+            //cuando estoy dandole caña con SP's y subidas, peta por time out
+            // ServerRepositoryHttpClient().Timeout = TimeSpan.FromSeconds(60);
+
+
             var response = await ServerRepositoryHttpClient()
                                 .PutAsync(urlAction
                                  , new StringContent(parameter, Encoding.UTF8, "application/json"))
@@ -258,6 +262,7 @@ namespace Afca.Data.Access
         {
             httpClient.DefaultRequestHeaders.Accept.Add(
                new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.Timeout = TimeSpan.FromSeconds(1800);
             LoadWebServiceUrl();
             LoadWebApiCredentials();
         }
