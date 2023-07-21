@@ -317,6 +317,16 @@ namespace Afca.Laboratorio
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        { //openFileDialog1
+            //OpenFileDialog open = new OpenFileDialog();
+            if (openFileDialog1.ShowDialog() == DialogResult.OK && openFileDialog1.ToString() != " ")
+            {
+                //Movemos la ruta del archivo a nuestro Textbox creado para su posterior uso.
+                utePath.Text = openFileDialog1.FileName;
+            }
+        }
+
     }
 
 
