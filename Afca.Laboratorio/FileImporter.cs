@@ -16,6 +16,7 @@ using Infragistics.Win.Misc;
 
 namespace Afca.Laboratorio
 {
+
     public partial class FileImporter : Form
     {
         System.Timers.Timer timer = new System.Timers.Timer();
@@ -36,11 +37,14 @@ namespace Afca.Laboratorio
             InitializeVariables();
         }
         void InitializeVariables()
-        {
-            this.timer.Elapsed += Timer_Elapsed;
-            this.traceFileName = GetTraceFileName();
+        {   //agc.Quitar cuando funcione todo
+
+            //this.timer.Elapsed += Timer_Elapsed;
+            //this.traceFileName = GetTraceFileName();
             toSaveData = new BuzonLaboratorioData();
             _service = AfcaServiceProvider.GetBuzonLaboratorioService();
+            utePath.Text = @"C:\Laboratorio";
+            // utePath.Text = @"N:\Laboratorio\prueba.dat";
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -58,12 +62,12 @@ namespace Afca.Laboratorio
         void LimpiarPanel()
         {
             if (cicloActual % 10 == 0)
-                uteLog.Clear();           
+                uteLog.Clear();
         }
         void RealizarTrabajoPeriodico()
         {
             DeshabilitarControles();
-            if (LeerFicheros())
+            if (LeerFicheros(null))
                 GuardarDatos();
             HabilitarControles();
             this.timer.Interval = TimeSpan.FromMinutes(
@@ -85,181 +89,6 @@ namespace Afca.Laboratorio
             //    utbtnStart.Enabled =
             //    utbtnStop.Enabled = false;
         }
-        bool LeerFicheros()
-        {
-            AppendTraceText("Leyendo ficheros...");
-            
-            if (!String.IsNullOrEmpty(utePath.Text))
-            {
-                if (Directory.Exists(utePath.Text))
-                {
-                    var files = FindFiles(utePath.Text, "*.txt");
-
-                    if (files.Length > 0)
-                    {
-                        int oks = 0;
-                        foreach (FileInfo file in files)
-                        {
-                            oks = LeerFichero(file) ? oks + 1 : oks;
-                        }
-
-                        AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente"
-                                                        ,oks,files.Length));
-                        return true;
-                    }
-                    else
-                    {
-                        AppendTraceText("0 ficheros cargados");
-                        return false;
-                    }
-                }
-                else
-                {
-                    AppendTraceText("La ruta para buscar ficheros no existe o no es accesible");
-                    return false;
-                }
-            }
-            else
-            {
-                AppendTraceText("La ruta para buscar ficheros está vacia");
-                return false;
-            }
-        }
-
-        FileInfo[] FindFiles(string directoryPath, string patternName)
-        {
-            if (!Directory.Exists(directoryPath))
-            {
-                throw new Exception("El directorio especificado no existe.");
-            }
-
-            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
-            return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
-        }
-        bool LeerFichero(FileInfo file)
-        {
-            try
-            {
-                AppendTraceText(string.Format("Leyendo fichero: {0}",file.Name));
-                //leer información del fichero y guardarlo en un nuevo registro 
-                //en el dataset Buzon Laboratorio Data
-                int linea = 0;
-
-                if (linea==0)
-                {
-                    AppendTraceText("información del establo...");
-                }
-                return true;
-            }
-            catch(System.Exception e){
-                AppendTraceText(string.Format("letura de {0} incorrecta: {1}",file.Name,e.Message));
-                return false;
-            }
-        }
-        void GuardarDatos()
-        {
-            AppendTraceText("Guardando la informacion...");
-
-            try
-            {
-                //_service.UpdateBuzonLaboratorioData(toSaveData);
-                AppendTraceText("Información guardada correctamente");
-            }
-            catch (System.Exception e)
-            {
-                AppendTraceText(string.Format("Información NO GUARDADA. Error:{0}",e.Message));
-            }
-        }
-        public void AppendTraceText(string text)
-        {
-            text = DateTime.Now.ToString("dd/MM/yy-hh:mm:ss") + " " + text;
-
-            if (!String.IsNullOrEmpty(traceFileName))
-            {
-                using (StreamWriter sw = File.AppendText(this.traceFileName))
-                {
-                    sw.WriteLine(text);
-                    sw.Flush();
-                    sw.Close();
-                }
-                CheckTraceFileSizeLimit();
-            }
-
-            if (uteLog.InvokeRequired)
-            {
-                uteLog.Invoke(new SetTextDelegate(SetTextCallBack)
-                    ,new object[1] { text });
-            }
-            else
-            {
-                this.uteLog.AppendText(string.Format("{0}{1}", text, Environment.NewLine));
-                uteLog.Select(uteLog.Text.Length - 1, uteLog.Text.Length);
-                uteLog.ScrollToCaret();
-            }
-        }
-        void SetTextCallBack(string text)
-        {
-            this.uteLog.AppendText(string.Format("{0}{1}", text, Environment.NewLine));
-            uteLog.Select(uteLog.Text.Length-1,uteLog.Text.Length);
-            uteLog.ScrollToCaret();
-        }
-        void CheckTraceFileSizeLimit()
-        {
-
-            long lenght = new FileInfo(this.traceFileName).Length;
-            long sizeMB = lenght / 1000000;
-
-            if (sizeMB > traceFileSizeLimit)
-            {
-                this.traceFileName = GetTraceFileName();
-            }
-
-        }
-        string GetTraceFileName()
-        {
-            DateTime current = DateTime.Now;
-            return Environment.CurrentDirectory +
-                        "\\" + "LabLog" + current.ToString("_yyMMdd_hhmmss") + ".txt";
-        }
-        private void utbtnStart_Click(object sender, EventArgs e)
-        {
-            if (uneInterval.Value == null)
-            {
-                MessageBox.Show("Ha de establecer un valor para el intervalo de acutalización");
-                return;
-            }
-            else           
-                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
-            
-            if (String.IsNullOrEmpty(utePath.Text))
-            {
-                MessageBox.Show("Ha de establecer un valor para la ruta delos ficheros");
-                return;
-            }
-
-            AppendTraceText("Tarea arrancada");
-            IntervaloCumplido();//La primera vez se lanza manualmente
-        }
-        private void utbtnStop_Click(object sender, EventArgs e)
-        {
-            AppendTraceText("Tarea parada");
-            timer.Stop();
-        }
-        //FON
-        private void ultraButton1_Click(object sender, EventArgs e)
-        {
-            if (utePath.Text != "")
-            {
-                FileInfo file = new FileInfo(utePath.Text);
-                if (file.Exists)
-                {
-                    if (LeerFicheros(file))
-                        GuardarDatos();
-                }
-            }
-
-        }
-
         bool LeerFicheros(FileInfo mifileinfo)
         {
             AppendTraceText("Leyendo ficheros...");
@@ -314,6 +143,234 @@ namespace Afca.Laboratorio
 
             }
 
+
+        }
+
+        FileInfo[] FindFiles(string directoryPath, string patternName)
+        {
+            if (!Directory.Exists(directoryPath))
+            {
+                throw new Exception("El directorio especificado no existe.");
+            }
+
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+            return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
+        }
+        bool LeerFichero(FileInfo file)
+        {
+            try
+            {
+
+                //string fichero = file.OpenText();
+                StreamReader sr = new StreamReader(file.FullName);
+                string line;
+                int i = 0, MuestrasMal = 0;
+                //preproceso 
+                line = sr.ReadLine();
+                while (line != null)
+                {
+                    try
+                    {
+                        if (line.Substring(26, 5) == "00000")
+                            MuestrasMal = MuestrasMal + 1;
+                        i++;
+                    }
+                    catch (System.Exception e)
+                    {
+                        AppendTraceText(string.Format("Error al leer la linea {0} del fichero {1}:{2}",
+                            i, file.FullName, e.Message));
+
+                        continue;
+                    }
+                    line = sr.ReadLine();
+                }
+                var PorcentajeMal = Convert.ToDouble(MuestrasMal) * 100 / i;
+                PorcentajeMal = Math.Round(PorcentajeMal, 2);
+                AppendTraceText(string.Format("Muestras Malas {0} de {1} : Porcentaje {2}", MuestrasMal, i, PorcentajeMal));
+                //goto salto;
+
+                sr.DiscardBufferedData();
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                sr.BaseStream.Position = 0;
+                line = sr.ReadLine();
+                i = 0;
+                while (line != null)
+                {
+                    try
+                    {
+                        DataRow datarow = toSaveData.Tables["buzonLaboratorio"].NewRow();
+                        //string etiquetaID = line.Substring(0, 14);
+
+                        //lees los campos de la linea de texto y los metes en el campo correspondiene del datarow
+
+                        datarow["ID"] = "69" + line.Substring(5, 12);
+                        datarow["Grasa"] = decimal.Parse(line.Substring(17, 3)) / 100;
+                        datarow["Proteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
+                        datarow["Lactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
+                        datarow["RCS"] = int.Parse(line.Substring(26, 5));
+                        datarow["Acetona"] = decimal.Parse(line.Substring(31, 4)) / 1000;
+                        datarow["Bhb"] = decimal.Parse(line.Substring(35, 4)) / 1000;
+                        datarow["Urea"] = int.Parse(line.Substring(51, 3));
+                        datarow["FechaEntrega"] = line.Substring(45, 2) + "/" + line.Substring(47, 2) + "/" + line.Substring(49, 2);
+                        datarow["FechaAnalisis"] = line.Substring(39, 2) + "/" + line.Substring(41, 2) + "/" + line.Substring(43, 2);
+                        datarow["Controlador"] = int.Parse(line.Substring(9, 2));
+                        datarow["Fichero"] = file.Name;
+
+
+                        toSaveData.Tables[0].Rows.Add(datarow);
+                        //GuardarDatos();
+                        line = sr.ReadLine();
+                        i++;
+                    }
+                    catch (System.Exception e)
+                    {
+                        AppendTraceText(string.Format("Error al leer la linea {0} del fichero {1}:{2}",
+                            i, file.FullName, e.Message));
+                        i++;
+                        sr.Close();
+                        return false;
+
+                    }
+                }
+                sr.Close();
+                GuardarDatos();//quitarlo cuanod active todo
+
+            salto:
+
+                sr.Close();
+                int linea = 0;
+                //....Mover Ficheros a directorio Cargados
+
+
+                //...
+
+                if (linea == 0)
+                {
+                    AppendTraceText("información del establo...");
+                }
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                AppendTraceText(string.Format("letura de {0} incorrecta: {1}", file.Name, e.Message));
+                return false;
+            }
+        }
+        void GuardarDatos()
+        {
+            AppendTraceText("Guardando la informacion...");
+
+            try
+            {
+                _service.UpdateBuzonLaboratorioData(toSaveData);
+                toSaveData.AcceptChanges();
+                AppendTraceText("Información guardada correctamente");
+            }
+            catch (System.Exception e)
+            {
+                AppendTraceText(string.Format("Información NO GUARDADA. Error:{0}", e.Message));
+            }
+        }
+        public void AppendTraceText(string text)
+        {
+            text = DateTime.Now.ToString("dd/MM/yy-hh:mm:ss") + " " + text;
+
+            if (!String.IsNullOrEmpty(traceFileName))
+            {
+                using (StreamWriter sw = File.AppendText(this.traceFileName))
+                {
+                    sw.WriteLine(text);
+                    sw.Flush();
+                    sw.Close();
+                }
+                CheckTraceFileSizeLimit();
+            }
+
+            if (uteLog.InvokeRequired)
+            {
+                uteLog.Invoke(new SetTextDelegate(SetTextCallBack)
+                    , new object[1] { text });
+            }
+            else
+            {
+                this.uteLog.AppendText(string.Format("{0}{1}", text, Environment.NewLine));
+                uteLog.Select(uteLog.Text.Length - 1, uteLog.Text.Length);
+                uteLog.ScrollToCaret();
+            }
+        }
+        void SetTextCallBack(string text)
+        {
+            this.uteLog.AppendText(string.Format("{0}{1}", text, Environment.NewLine));
+            uteLog.Select(uteLog.Text.Length - 1, uteLog.Text.Length);
+            uteLog.ScrollToCaret();
+        }
+        void CheckTraceFileSizeLimit()
+        {
+
+            long lenght = new FileInfo(this.traceFileName).Length;
+            long sizeMB = lenght / 1000000;
+
+            if (sizeMB > traceFileSizeLimit)
+            {
+                this.traceFileName = GetTraceFileName();
+            }
+
+        }
+        string GetTraceFileName()
+        {
+            DateTime current = DateTime.Now;
+            return Environment.CurrentDirectory +
+                        "\\" + "LabLog" + current.ToString("_yyMMdd_hhmmss") + ".txt";
+        }
+        private void utbtnStart_Click(object sender, EventArgs e)
+        {
+            if (uneInterval.Value == null)
+            {
+                MessageBox.Show("Ha de establecer un valor para el intervalo de acutalización");
+                return;
+            }
+            else
+                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
+
+            if (String.IsNullOrEmpty(utePath.Text))
+            {
+                MessageBox.Show("Ha de establecer un valor para la ruta delos ficheros");
+                return;
+            }
+
+            AppendTraceText("Tarea arrancada");
+            IntervaloCumplido();//La primera vez se lanza manualmente
+        }
+        private void utbtnStop_Click(object sender, EventArgs e)
+        {
+            AppendTraceText("Tarea parada");
+            timer.Stop();
+        }
+
+        private void ultraButton1_Click(object sender, EventArgs e)
+        {
+            if (utePath.Text != "")
+            {
+                FileInfo file = new FileInfo(utePath.Text);
+                if (file.Exists)
+                {
+                    if (LeerFicheros(file))
+                        GuardarDatos();
+                }
+            }
+            //FileInfo file = new FileInfo(utePath.Text);
+            //LeerFichero(file);
+        }
+
+
+
+        private void ultraPanelTop_PaintClient(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
 
         }
 
