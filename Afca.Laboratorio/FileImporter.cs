@@ -245,6 +245,78 @@ namespace Afca.Laboratorio
             AppendTraceText("Tarea parada");
             timer.Stop();
         }
+        //FON
+        private void ultraButton1_Click(object sender, EventArgs e)
+        {
+            if (utePath.Text != "")
+            {
+                FileInfo file = new FileInfo(utePath.Text);
+                if (file.Exists)
+                {
+                    if (LeerFicheros(file))
+                        GuardarDatos();
+                }
+            }
+
+        }
+
+        bool LeerFicheros(FileInfo mifileinfo)
+        {
+            AppendTraceText("Leyendo ficheros...");
+
+            if (mifileinfo == null)
+            {
+                if (!String.IsNullOrEmpty(utePath.Text))
+                {
+                    if (Directory.Exists(utePath.Text))
+                    {
+                        var files = FindFiles(utePath.Text, "*.dat");
+                        if (files.Count() > 1)// de momento si hay mas de un fichero, raro,raro
+                        {
+                            AppendTraceText("Hay más de un fichero. Raro,raro.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (files.Length > 0)
+                            {
+                                int oks = 0;
+                                foreach (FileInfo file in files)
+                                {
+                                    oks = LeerFichero(file) ? oks + 1 : oks;
+                                }
+                                AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
+                                return true;
+                            }
+                            else
+                            {
+                                AppendTraceText("0 ficheros cargados");
+                                return false;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        AppendTraceText("La ruta para buscar ficheros no existe o no es accesible");
+                        return false;
+                    }
+                }
+                else
+                {
+                    AppendTraceText("La ruta para buscar ficheros está vacia");
+                    return false;
+                }
+            }
+            else
+            {
+
+                return LeerFichero(mifileinfo);
+
+            }
+
+
+        }
+
     }
 
 
