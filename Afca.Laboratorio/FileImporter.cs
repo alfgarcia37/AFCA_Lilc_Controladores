@@ -264,6 +264,7 @@ namespace Afca.Laboratorio
             {
                 _service.UpdateBuzonLaboratorioData(toSaveData);
                 toSaveData.AcceptChanges();
+                _service.UpdateBuzonLaboratorioEmparejar();
                 AppendTraceText("Información guardada correctamente");
             }
             catch (System.Exception e)

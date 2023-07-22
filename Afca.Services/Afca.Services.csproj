@@ -72,6 +72,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Services.dll"
 copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Release\Afca.Services.dll"
+copy  "$(TargetPath)" "$(SolutionDir)\Afca.Laboratorio\bin\Debug\Afca.Services.dll"
+copy  "$(TargetPath)" "$(SolutionDir)\Afca.Laboratorio\bin\Release\Afca.Services.dll"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>

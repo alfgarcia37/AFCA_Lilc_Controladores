@@ -85,6 +85,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Debug\Afca.Data.Access.dll"
 copy  "$(TargetPath)" "$(SolutionDir)\Afca\bin\Release\Afca.Data.Access.dll"
+copy  "$(TargetPath)" "$(SolutionDir)\Afca.Laboratorio\bin\Debug\Afca.Data.Access.dll"
+copy  "$(TargetPath)" "$(SolutionDir)\Afca.Laboratorio\bin\Release\Afca.Data.Access.dll"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>

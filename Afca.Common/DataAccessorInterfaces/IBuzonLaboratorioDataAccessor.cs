@@ -13,7 +13,8 @@ namespace Afca.Common.DataAccessor {
     using Afca.Common.DataSets;
     
     
-    public interface IBuzonLaboratorioDataAccessor : IDataAccessor {
+    public interface IBuzonLaboratorioDataAccessor : IDataAccessor 
+    {
         
         BuzonLaboratorioData LoadBuzonLaboratorioData();
         
@@ -22,5 +23,7 @@ namespace Afca.Common.DataAccessor {
         int DeleteBuzonLaboratorioDataByID(string argId);
         
         int UpdateBuzonLaboratorioData(BuzonLaboratorioData data);
+
+        int UpdateBuzonLaboratorioEmparejar();
     }
 }

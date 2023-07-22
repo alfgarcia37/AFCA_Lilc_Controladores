@@ -44,5 +44,14 @@ namespace Afca.Services {
         public int UpdateBuzonLaboratorioData(BuzonLaboratorioData data) {
             return buzonLaboratorioDA.UpdateBuzonLaboratorioData(data);
         }
+
+        public int UpdateBuzonLaboratorioEmparejar()
+        {
+            //return 1;
+            return buzonLaboratorioDA.UpdateBuzonLaboratorioEmparejar();
+        }
+
+
+
     }
 }

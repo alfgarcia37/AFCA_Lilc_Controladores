@@ -44,7 +44,7 @@ namespace Afca.Data.Access {
                                 "sp_BuzonLaboratorio_deleteByID"                                
                                 ,new SqlParameter[]{
                                         new SqlParameter("@Id",argId)
-});
+                                });
         }
         
         public int UpdateBuzonLaboratorioData(BuzonLaboratorioData data) {
@@ -56,5 +56,11 @@ namespace Afca.Data.Access {
                                 ,"sp_BuzonLaboratorio_delete"));
             return this.UpdateDataSet(updateInfo);
         }
-    }
+
+        public int UpdateBuzonLaboratorioEmparejar()
+        {
+            return this.ExecuteNonQuery(
+                                "SP_BuzonLaboratorioEmparejar", null);
+        }
+}
 }
