@@ -13,6 +13,7 @@ using Afca.Common.ServicesInterfaces;
 using Afca.Common.DataSets;
 using Afca.Common;
 using Infragistics.Win.Misc;
+using FrameworkForge.Common.Interfaces;
 
 namespace Afca.Laboratorio
 {
@@ -28,6 +29,9 @@ namespace Afca.Laboratorio
 
         IBuzonLaboratorioService _service;
         BuzonLaboratorioData toSaveData;
+        BuzonLaboratorioTanqueData toSaveTanqueData;
+        
+        
 
         public delegate void SetTextDelegate(string text);
 
@@ -100,13 +104,6 @@ namespace Afca.Laboratorio
                     if (Directory.Exists(utePath.Text))
                     {
                         var files = FindFiles(utePath.Text, "*.dat");
-                        if (files.Count() > 1)// de momento si hay mas de un fichero, raro,raro
-                        {
-                            AppendTraceText("Hay más de un fichero. Raro,raro.");
-                            return false;
-                        }
-                        else
-                        {
                             if (files.Length > 0)
                             {
                                 int oks = 0;
@@ -122,7 +119,7 @@ namespace Afca.Laboratorio
                                 AppendTraceText("0 ficheros cargados");
                                 return false;
                             }
-                        }
+                        
                     }
                     else
                     {
@@ -145,13 +142,53 @@ namespace Afca.Laboratorio
 
 
         }
+        bool LeerFicherosTanque(FileInfo mifileinfo)
+        {
+            AppendTraceText("Leyendo ficheros Tanque...");
 
+            if (mifileinfo != null)
+            {
+                if (!String.IsNullOrEmpty(utePath.Text))
+                {
+                    var files = FindFiles(utePath.Text, "*.txt");
+                    if (files.Length > 0)
+                    {
+                        int oks = 0;
+                        foreach (FileInfo file in files)
+                        {
+                            oks = LeerFicheroTanque(file) ? oks + 1 : oks;
+                        }
+                        AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
+                        return true;
+                    }
+                    else
+                    {
+                        AppendTraceText("0 ficheros cargados");
+                        return false;
+                    }
+                   
+                }
+                else
+                {
+                    AppendTraceText("La ruta para buscar ficheros está vacia");
+                    return false;
+                }
+            }
+            else
+            {
+
+                return LeerFichero(mifileinfo);
+
+            }
+
+
+        }
         FileInfo[] FindFiles(string directoryPath, string patternName)
         {
-            if (!Directory.Exists(directoryPath))
-            {
-                throw new Exception("El directorio especificado no existe.");
-            }
+            //if (!Directory.Exists(directoryPath))
+            //{
+            //    throw new Exception("El directorio especificado no existe.");
+            //}
 
             DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
             return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
@@ -256,6 +293,68 @@ namespace Afca.Laboratorio
                 return false;
             }
         }
+        bool LeerFicheroTanque(FileInfo file)
+        {
+            try
+            {
+                StreamReader sr = new StreamReader(file.FullName);
+                string line;
+                int i = 0;
+               ;
+
+                sr.DiscardBufferedData();
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
+                sr.BaseStream.Position = 0;
+                line = sr.ReadLine();
+                i = 0;
+                while (line != null)
+                {
+                    try
+                    {
+                        DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
+                        //lees los campos de la linea de texto y los metes en el campo correspondiene del datarow
+                        datarow["ID"] = "69" + line.Substring(5, 12);
+                        datarow["Grasa"] = decimal.Parse(line.Substring(17, 3)) / 100;
+                        datarow["Proteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
+                        datarow["Lactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
+                        datarow["RCS"] = int.Parse(line.Substring(26, 5));
+                        datarow["Acetona"] = decimal.Parse(line.Substring(31, 4)) / 1000;
+                        datarow["Bhb"] = decimal.Parse(line.Substring(35, 4)) / 1000;
+                        datarow["Urea"] = int.Parse(line.Substring(51, 3));
+                        datarow["FechaEntrega"] = line.Substring(45, 2) + "/" + line.Substring(47, 2) + "/" + line.Substring(49, 2);
+                        datarow["FechaAnalisis"] = line.Substring(39, 2) + "/" + line.Substring(41, 2) + "/" + line.Substring(43, 2);
+                        datarow["Controlador"] = int.Parse(line.Substring(9, 2));
+                        datarow["Fichero"] = file.Name;
+
+
+                        toSaveTanqueData.Tables[0].Rows.Add(datarow);
+                        //GuardarDatos();
+                        line = sr.ReadLine();
+                        i++;
+                    }
+                    catch (System.Exception e)
+                    {
+                        AppendTraceText(string.Format("Error al leer la linea {0} del fichero {1}:{2}",
+                            i, file.FullName, e.Message));
+                        i++;
+                        sr.Close();
+                        return false;
+
+                    }
+                }
+                sr.Close();
+                //....Mover Ficheros a directorio Cargados
+
+                //...
+                return true;
+            }
+            catch (System.Exception e)
+            {
+                AppendTraceText(string.Format("letura de {0} incorrecta: {1}", file.Name, e.Message));
+                return false;
+            }
+        }
+
         void GuardarDatos()
         {
             AppendTraceText("Guardando la informacion...");
@@ -265,6 +364,25 @@ namespace Afca.Laboratorio
                 _service.UpdateBuzonLaboratorioData(toSaveData);
                 toSaveData.AcceptChanges();
                 _service.UpdateBuzonLaboratorioEmparejar();
+                AppendTraceText("Información guardada correctamente");
+            }
+            catch (System.Exception e)
+            {
+                AppendTraceText(string.Format("Información NO GUARDADA. Error:{0}", e.Message));
+            }
+        }
+        void GuardarDatosTanque()
+        {
+            AppendTraceText("Guardando la informacion...");
+
+            try
+            {
+                //_service.UpdateBuzonLaboratorioData(toSaveData);
+                _service.UpdateBuzonLaboratorioTanqueData(toSaveTanqueData);
+                //toSaveData.AcceptChanges();
+                toSaveTanqueData.AcceptChanges();
+                //_service.UpdateBuzonLaboratorioEmparejar();
+                _service.UpdateBuzonLaboratorioTanqueEmparejar();
                 AppendTraceText("Información guardada correctamente");
             }
             catch (System.Exception e)
@@ -364,7 +482,6 @@ namespace Afca.Laboratorio
         }
 
 
-
         private void ultraPanelTop_PaintClient(object sender, PaintEventArgs e)
         {
 
@@ -385,6 +502,18 @@ namespace Afca.Laboratorio
             }
         }
 
+        private void ultraButton2_Click(object sender, EventArgs e)
+        {   //Tanques de LILC
+            if (utePath.Text != "")
+            {
+                FileInfo file = new FileInfo(utePath.Text);
+                if (file.Exists)
+                {
+                    if (LeerFicherosTanque(file))
+                        GuardarDatosTanque();
+                }
+            }
+        }
     }
 
 

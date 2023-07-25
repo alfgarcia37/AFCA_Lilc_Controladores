@@ -86,6 +86,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\BuzonLaboratorioTanqueData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BuzonLaboratorioTanqueData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\ControladorProgresoData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -220,6 +225,17 @@
     </None>
     <None Include="DataSets\BuzonLaboratorioData.xss">
       <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\BuzonLaboratorioTanqueData.xsc">
+      <DependentUpon>BuzonLaboratorioTanqueData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\BuzonLaboratorioTanqueData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BuzonLaboratorioTanqueData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\BuzonLaboratorioTanqueData.xss">
+      <DependentUpon>BuzonLaboratorioTanqueData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\ControladorData.xsc">
       <DependentUpon>ControladorData.xsd</DependentUpon>

@@ -25,7 +25,9 @@ namespace Afca.Common.ServicesInterfaces {
         int DeleteBuzonLaboratorioDataByID(string argId);
         
         int UpdateBuzonLaboratorioData(BuzonLaboratorioData data);
+        int UpdateBuzonLaboratorioTanqueData(BuzonLaboratorioTanqueData data);
 
         int UpdateBuzonLaboratorioEmparejar();
+        int UpdateBuzonLaboratorioTanqueEmparejar();
     }
 }

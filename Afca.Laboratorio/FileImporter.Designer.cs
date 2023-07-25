@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileImporter));
             this.ultraPanelTop = new Infragistics.Win.Misc.UltraPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.utePath = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
@@ -44,8 +46,8 @@
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraPanelDown = new Infragistics.Win.Misc.UltraPanel();
             this.uteLog = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
             this.ultraPanelTop.ClientArea.SuspendLayout();
             this.ultraPanelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utePath)).BeginInit();
@@ -60,6 +62,7 @@
             // 
             // ultraPanelTop.ClientArea
             // 
+            this.ultraPanelTop.ClientArea.Controls.Add(this.ultraButton2);
             this.ultraPanelTop.ClientArea.Controls.Add(this.button1);
             this.ultraPanelTop.ClientArea.Controls.Add(this.ultraButton1);
             this.ultraPanelTop.ClientArea.Controls.Add(this.ultraLabel3);
@@ -76,10 +79,20 @@
             this.ultraPanelTop.Size = new System.Drawing.Size(603, 202);
             this.ultraPanelTop.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(545, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 29);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Fich.";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ultraButton1
             // 
-            appearance1.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-            this.ultraButton1.Appearance = appearance1;
+            appearance2.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+            this.ultraButton1.Appearance = appearance2;
             this.ultraButton1.ImageSize = new System.Drawing.Size(32, 32);
             this.ultraButton1.Location = new System.Drawing.Point(438, 135);
             this.ultraButton1.Margin = new System.Windows.Forms.Padding(4);
@@ -91,8 +104,8 @@
             // 
             // ultraLabel3
             // 
-            appearance2.TextVAlignAsString = "Middle";
-            this.ultraLabel3.Appearance = appearance2;
+            appearance3.TextVAlignAsString = "Middle";
+            this.ultraLabel3.Appearance = appearance3;
             this.ultraLabel3.Location = new System.Drawing.Point(367, 73);
             this.ultraLabel3.Margin = new System.Windows.Forms.Padding(4);
             this.ultraLabel3.Name = "ultraLabel3";
@@ -110,8 +123,8 @@
             // 
             // utbtnStop
             // 
-            appearance3.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
-            this.utbtnStop.Appearance = appearance3;
+            appearance4.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
+            this.utbtnStop.Appearance = appearance4;
             this.utbtnStop.ImageSize = new System.Drawing.Size(32, 32);
             this.utbtnStop.Location = new System.Drawing.Point(184, 135);
             this.utbtnStop.Margin = new System.Windows.Forms.Padding(4);
@@ -123,8 +136,8 @@
             // 
             // utbtnStart
             // 
-            appearance4.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-            this.utbtnStart.Appearance = appearance4;
+            appearance5.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+            this.utbtnStart.Appearance = appearance5;
             this.utbtnStart.ImageSize = new System.Drawing.Size(32, 32);
             this.utbtnStart.Location = new System.Drawing.Point(76, 135);
             this.utbtnStart.Margin = new System.Windows.Forms.Padding(4);
@@ -184,19 +197,22 @@
             this.uteLog.Size = new System.Drawing.Size(603, 352);
             this.uteLog.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(545, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 29);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Fich.";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // ultraButton2
+            // 
+            appearance1.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+            this.ultraButton2.Appearance = appearance1;
+            this.ultraButton2.ImageSize = new System.Drawing.Size(32, 32);
+            this.ultraButton2.Location = new System.Drawing.Point(438, 78);
+            this.ultraButton2.Margin = new System.Windows.Forms.Padding(4);
+            this.ultraButton2.Name = "ultraButton2";
+            this.ultraButton2.Size = new System.Drawing.Size(152, 42);
+            this.ultraButton2.TabIndex = 8;
+            this.ultraButton2.Text = "Tanque manual";
+            this.ultraButton2.Click += new System.EventHandler(this.ultraButton2_Click);
             // 
             // FileImporter
             // 
@@ -239,5 +255,6 @@
         private Infragistics.Win.Misc.UltraButton ultraButton1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private Infragistics.Win.Misc.UltraButton ultraButton2;
     }
 }

@@ -11,19 +11,18 @@
 namespace Afca.Common.DataAccessor {
     using FrameworkForge.Common.Interfaces;
     using Afca.Common.DataSets;
-    
-    
+ 
     public interface IBuzonLaboratorioDataAccessor : IDataAccessor 
     {
         
         BuzonLaboratorioData LoadBuzonLaboratorioData();
         
         BuzonLaboratorioData LoadBuzonLaboratorioDataByID(string argId);
-        
         int DeleteBuzonLaboratorioDataByID(string argId);
-        
         int UpdateBuzonLaboratorioData(BuzonLaboratorioData data);
+        int UpdateBuzonLaboratorioTanqueData(BuzonLaboratorioTanqueData data);
 
         int UpdateBuzonLaboratorioEmparejar();
+        int UpdateBuzonLaboratorioTanqueEmparejar();
     }
 }

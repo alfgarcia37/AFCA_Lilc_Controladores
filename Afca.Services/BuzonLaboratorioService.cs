@@ -44,11 +44,20 @@ namespace Afca.Services {
         public int UpdateBuzonLaboratorioData(BuzonLaboratorioData data) {
             return buzonLaboratorioDA.UpdateBuzonLaboratorioData(data);
         }
+        public int UpdateBuzonLaboratorioTanqueData(BuzonLaboratorioTanqueData data)
+        {
+            return buzonLaboratorioDA.UpdateBuzonLaboratorioTanqueData(data);
+        }
 
         public int UpdateBuzonLaboratorioEmparejar()
         {
             //return 1;
             return buzonLaboratorioDA.UpdateBuzonLaboratorioEmparejar();
+        }
+        public int UpdateBuzonLaboratorioTanqueEmparejar()
+        {
+            //return 1;
+            return buzonLaboratorioDA.UpdateBuzonLaboratorioTanqueEmparejar();
         }
 
 

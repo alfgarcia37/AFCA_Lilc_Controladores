@@ -57,10 +57,27 @@ namespace Afca.Data.Access {
             return this.UpdateDataSet(updateInfo);
         }
 
+        public int UpdateBuzonLaboratorioTanqueData(BuzonLaboratorioTanqueData data)
+        {
+            DataUpdateInfo updateInfo = new DataUpdateInfo(data);
+            updateInfo.UpdateTable.Add(
+                                new DataUpdateTableInfo("BuzonLaboratorioTanque"
+                                , "sp_BuzonLaboratorioTanque_insert"
+                                , "sp_BuzonLaboratorioTanque_update"
+                                , "sp_BuzonLaboratorioTanque_delete"));
+            return this.UpdateDataSet(updateInfo);
+        }
+
+
         public int UpdateBuzonLaboratorioEmparejar()
         {
             return this.ExecuteNonQuery(
                                 "SP_BuzonLaboratorioEmparejar", null);
         }
-}
+        public int UpdateBuzonLaboratorioTanqueEmparejar()
+        {
+            return this.ExecuteNonQuery(
+                                "SP_BuzonLaboratorioTanqueEmparejar", null);
+        }
+    }
 }
