@@ -185,10 +185,10 @@ namespace Afca.Laboratorio
         }
         FileInfo[] FindFiles(string directoryPath, string patternName)
         {
-            //if (!Directory.Exists(directoryPath))
-            //{
-            //    throw new Exception("El directorio especificado no existe.");
-            //}
+            if (!Directory.Exists(directoryPath))
+            {
+                throw new Exception("El directorio especificado no existe.");
+            }
 
             DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
             return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
