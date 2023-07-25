@@ -70,10 +70,10 @@ namespace Afca.Laboratorio
             if (LeerFicheros(null))
                 GuardarDatos();
             HabilitarControles();
-            this.timer.Interval = TimeSpan.FromMinutes(
-                double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
+            //this.timer.Interval = TimeSpan.FromMinutes(
+            //    double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
 
-            timer.Start();
+            //timer.Start();
         }
         void HabilitarControles()
         {
@@ -233,7 +233,7 @@ namespace Afca.Laboratorio
                     }
                 }
                 sr.Close();
-                GuardarDatos();//quitarlo cuanod active todo
+               // GuardarDatos();//quitarlo cuanod active todo
 
             salto:
 
