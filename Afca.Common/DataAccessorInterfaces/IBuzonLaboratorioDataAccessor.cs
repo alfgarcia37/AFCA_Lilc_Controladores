@@ -16,8 +16,12 @@ namespace Afca.Common.DataAccessor {
     {
         
         BuzonLaboratorioData LoadBuzonLaboratorioData();
-        
+        BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData();
+
+
         BuzonLaboratorioData LoadBuzonLaboratorioDataByID(string argId);
+        BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueDataByID(string argId);
+
         int DeleteBuzonLaboratorioDataByID(string argId);
         int UpdateBuzonLaboratorioData(BuzonLaboratorioData data);
         int UpdateBuzonLaboratorioTanqueData(BuzonLaboratorioTanqueData data);

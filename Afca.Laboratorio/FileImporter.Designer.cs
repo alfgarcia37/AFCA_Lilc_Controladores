@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileImporter));
             this.ultraPanelTop = new Infragistics.Win.Misc.UltraPanel();
+            this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
             this.button1 = new System.Windows.Forms.Button();
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
@@ -47,7 +48,6 @@
             this.ultraPanelDown = new Infragistics.Win.Misc.UltraPanel();
             this.uteLog = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
             this.ultraPanelTop.ClientArea.SuspendLayout();
             this.ultraPanelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.utePath)).BeginInit();
@@ -78,6 +78,19 @@
             this.ultraPanelTop.Name = "ultraPanelTop";
             this.ultraPanelTop.Size = new System.Drawing.Size(603, 202);
             this.ultraPanelTop.TabIndex = 0;
+            // 
+            // ultraButton2
+            // 
+            appearance1.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+            this.ultraButton2.Appearance = appearance1;
+            this.ultraButton2.ImageSize = new System.Drawing.Size(32, 32);
+            this.ultraButton2.Location = new System.Drawing.Point(438, 78);
+            this.ultraButton2.Margin = new System.Windows.Forms.Padding(4);
+            this.ultraButton2.Name = "ultraButton2";
+            this.ultraButton2.Size = new System.Drawing.Size(152, 42);
+            this.ultraButton2.TabIndex = 8;
+            this.ultraButton2.Text = "Tanque manual";
+            this.ultraButton2.Click += new System.EventHandler(this.ultraButton2_Click);
             // 
             // button1
             // 
@@ -120,6 +133,7 @@
             this.utePath.Name = "utePath";
             this.utePath.Size = new System.Drawing.Size(469, 24);
             this.utePath.TabIndex = 4;
+            this.utePath.Text = "C:\\AFCA\\Contlech\\CL130623_228.txt";
             // 
             // utbtnStop
             // 
@@ -196,23 +210,11 @@
             this.uteLog.Scrollbars = System.Windows.Forms.ScrollBars.Both;
             this.uteLog.Size = new System.Drawing.Size(603, 352);
             this.uteLog.TabIndex = 0;
+            this.uteLog.ValueChanged += new System.EventHandler(this.uteLog_ValueChanged);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // ultraButton2
-            // 
-            appearance1.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-            this.ultraButton2.Appearance = appearance1;
-            this.ultraButton2.ImageSize = new System.Drawing.Size(32, 32);
-            this.ultraButton2.Location = new System.Drawing.Point(438, 78);
-            this.ultraButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.ultraButton2.Name = "ultraButton2";
-            this.ultraButton2.Size = new System.Drawing.Size(152, 42);
-            this.ultraButton2.TabIndex = 8;
-            this.ultraButton2.Text = "Tanque manual";
-            this.ultraButton2.Click += new System.EventHandler(this.ultraButton2_Click);
             // 
             // FileImporter
             // 

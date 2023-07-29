@@ -46,8 +46,11 @@ namespace Afca.Laboratorio
             //this.timer.Elapsed += Timer_Elapsed;
             //this.traceFileName = GetTraceFileName();
             toSaveData = new BuzonLaboratorioData();
+            toSaveTanqueData = new BuzonLaboratorioTanqueData();
             _service = AfcaServiceProvider.GetBuzonLaboratorioService();
-            utePath.Text = @"C:\Laboratorio";
+
+            
+            utePath.Text = @"C:\Afca\Laboratorio\CL130623_228.txt";
             // utePath.Text = @"N:\Laboratorio\prueba.dat";
         }
 
@@ -101,7 +104,7 @@ namespace Afca.Laboratorio
             {
                 if (!String.IsNullOrEmpty(utePath.Text))
                 {
-                    if (Directory.Exists(utePath.Text))
+                    //if (Directory.Exists(utePath.Text))
                     {
                         var files = FindFiles(utePath.Text, "*.dat");
                             if (files.Length > 0)
@@ -121,11 +124,11 @@ namespace Afca.Laboratorio
                             }
                         
                     }
-                    else
-                    {
-                        AppendTraceText("La ruta para buscar ficheros no existe o no es accesible");
-                        return false;
-                    }
+                    //else
+                    //{
+                    //    AppendTraceText("La ruta para buscar ficheros no existe o no es accesible");
+                    //    return false;
+                    //}
                 }
                 else
                 {
@@ -185,19 +188,29 @@ namespace Afca.Laboratorio
         }
         FileInfo[] FindFiles(string directoryPath, string patternName)
         {
-            if (!Directory.Exists(directoryPath))
+
+            FileInfo fileInfo = new FileInfo(directoryPath);
+
+            // Obtener el DirectoryInfo de la ruta del archivo
+            DirectoryInfo directoryInfo = fileInfo.Directory;
+
+            // Verificar si el directorio existe antes de realizar cualquier operación
+           // if (directoryInfo.Exists)
+
+
+
+                if (!directoryInfo.Exists)
             {
                 throw new Exception("El directorio especificado no existe.");
             }
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+           // DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
             return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
         }
         bool LeerFichero(FileInfo file)
         {
             try
             {
-
                 //string fichero = file.OpenText();
                 StreamReader sr = new StreamReader(file.FullName);
                 string line;
@@ -313,22 +326,44 @@ namespace Afca.Laboratorio
                     {
                         DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
                         //lees los campos de la linea de texto y los metes en el campo correspondiene del datarow
+                        datarow["AsociacionID"] = 1;
+                        datarow["LaboratorioID"] = "1";
                         datarow["ID"] = "69" + line.Substring(5, 12);
+                        datarow["Establo"] =  line.Substring(12, 6);
+                        datarow["Etiqueta"] = line.Substring(12, 6);
+                        datarow["Ruta"] = line.Substring(12, 6);
+                        datarow["FechaRecogida"] = line.Substring(45, 2) + "/" + line.Substring(47, 2) + "/" + line.Substring(49, 2);
                         datarow["Grasa"] = decimal.Parse(line.Substring(17, 3)) / 100;
-                        datarow["Proteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
-                        datarow["Lactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
-                        datarow["RCS"] = int.Parse(line.Substring(26, 5));
-                        datarow["Acetona"] = decimal.Parse(line.Substring(31, 4)) / 1000;
-                        datarow["Bhb"] = decimal.Parse(line.Substring(35, 4)) / 1000;
-                        datarow["Urea"] = int.Parse(line.Substring(51, 3));
-                        datarow["FechaEntrega"] = line.Substring(45, 2) + "/" + line.Substring(47, 2) + "/" + line.Substring(49, 2);
-                        datarow["FechaAnalisis"] = line.Substring(39, 2) + "/" + line.Substring(41, 2) + "/" + line.Substring(43, 2);
-                        datarow["Controlador"] = int.Parse(line.Substring(9, 2));
-                        datarow["Fichero"] = file.Name;
+
+                        //datarow["Proteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
+                        //datarow["Lactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
+                        //datarow["RCS"] = int.Parse(line.Substring(26, 5));
+                        //datarow["Bacterias"] = int.Parse(line.Substring(26, 5));
+                        //datarow["Urea"] = int.Parse(line.Substring(26, 5));
+                        //datarow["ExtractoSeco"] = decimal.Parse(line.Substring(31, 4)) / 100;
+                        //datarow["IgG"] = line.Substring(26, 6);
+                        //datarow["PC"] = int.Parse(line.Substring(26, 5));
+                        //datarow["VarPC"] = decimal.Parse(line.Substring(35, 6)) / 1000;
+                        //datarow["Inhibidores"] =int.Parse(line.Substring(35, 1));
+                        //datarow["NC"] = int.Parse(line.Substring(51, 80));
+                        //datarow["Cierre"] = line.Substring(51, 1));
+
+                        //datarow["MediaGrasa"] = decimal.Parse(line.Substring(17, 3)) / 100;
+                        //datarow["MediaProteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
+                        //datarow["MediaLactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
+                        //datarow["MediaRCS"] = int.Parse(line.Substring(26, 5));
+                        //datarow["MediaBacterias"] = int.Parse(line.Substring(26, 5));
+                        //datarow["MediaUrea"] = int.Parse(line.Substring(26, 5));
+                        //datarow["MediaExtractoSeco"] = decimal.Parse(line.Substring(31, 4)) / 100;
+                        //datarow["MediaPC"] = int.Parse(line.Substring(26, 5));
+
+                        //datarow["Ano"] =  int.Parse(line.Substring(51, 1));
+                        //datarow["Mes"] =  int.Parse(line.Substring(52, 1));
+                        //datarow["Fichero"] = file.Name;
 
 
                         toSaveTanqueData.Tables[0].Rows.Add(datarow);
-                        //GuardarDatos();
+                        GuardarDatosTanque();
                         line = sr.ReadLine();
                         i++;
                     }
@@ -513,6 +548,11 @@ namespace Afca.Laboratorio
                         GuardarDatosTanque();
                 }
             }
+        }
+
+        private void uteLog_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

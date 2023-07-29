@@ -24,7 +24,7 @@ namespace Afca.Common.DataSets {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class BuzonLaboratorioTanqueData : global::System.Data.DataSet {
         
-        private BuzonLaboratorioTanqueDataDataTable tableBuzonLaboratorioTanqueData;
+        private BuzonLaboratorioTanqueDataTable tableBuzonLaboratorioTanque;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace Afca.Common.DataSets {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["BuzonLaboratorioTanqueData"] != null)) {
-                    base.Tables.Add(new BuzonLaboratorioTanqueDataDataTable(ds.Tables["BuzonLaboratorioTanqueData"]));
+                if ((ds.Tables["BuzonLaboratorioTanque"] != null)) {
+                    base.Tables.Add(new BuzonLaboratorioTanqueDataTable(ds.Tables["BuzonLaboratorioTanque"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace Afca.Common.DataSets {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public BuzonLaboratorioTanqueDataDataTable _BuzonLaboratorioTanqueData {
+        public BuzonLaboratorioTanqueDataTable BuzonLaboratorioTanque {
             get {
-                return this.tableBuzonLaboratorioTanqueData;
+                return this.tableBuzonLaboratorioTanque;
             }
         }
         
@@ -152,8 +152,8 @@ namespace Afca.Common.DataSets {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["BuzonLaboratorioTanqueData"] != null)) {
-                    base.Tables.Add(new BuzonLaboratorioTanqueDataDataTable(ds.Tables["BuzonLaboratorioTanqueData"]));
+                if ((ds.Tables["BuzonLaboratorioTanque"] != null)) {
+                    base.Tables.Add(new BuzonLaboratorioTanqueDataTable(ds.Tables["BuzonLaboratorioTanque"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace Afca.Common.DataSets {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableBuzonLaboratorioTanqueData = ((BuzonLaboratorioTanqueDataDataTable)(base.Tables["BuzonLaboratorioTanqueData"]));
+            this.tableBuzonLaboratorioTanque = ((BuzonLaboratorioTanqueDataTable)(base.Tables["BuzonLaboratorioTanque"]));
             if ((initTable == true)) {
-                if ((this.tableBuzonLaboratorioTanqueData != null)) {
-                    this.tableBuzonLaboratorioTanqueData.InitVars();
+                if ((this.tableBuzonLaboratorioTanque != null)) {
+                    this.tableBuzonLaboratorioTanque.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace Afca.Common.DataSets {
             this.Namespace = "http://tempuri.org/BuzonLaboratorioTanqueData.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableBuzonLaboratorioTanqueData = new BuzonLaboratorioTanqueDataDataTable();
-            base.Tables.Add(this.tableBuzonLaboratorioTanqueData);
+            this.tableBuzonLaboratorioTanque = new BuzonLaboratorioTanqueDataTable();
+            base.Tables.Add(this.tableBuzonLaboratorioTanque);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerialize_BuzonLaboratorioTanqueData() {
+        private bool ShouldSerializeBuzonLaboratorioTanque() {
             return false;
         }
         
@@ -270,20 +270,26 @@ namespace Afca.Common.DataSets {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void BuzonLaboratorioTanqueDataRowChangeEventHandler(object sender, BuzonLaboratorioTanqueDataRowChangeEvent e);
+        public delegate void BuzonLaboratorioTanqueRowChangeEventHandler(object sender, BuzonLaboratorioTanqueRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class BuzonLaboratorioTanqueDataDataTable : global::System.Data.TypedTableBase<BuzonLaboratorioTanqueDataRow> {
+        public partial class BuzonLaboratorioTanqueDataTable : global::System.Data.TypedTableBase<BuzonLaboratorioTanqueRow> {
             
-            private global::System.Data.DataColumn columnId;
+            private global::System.Data.DataColumn columnAsociacionID;
             
-            private global::System.Data.DataColumn columnProcedencia;
+            private global::System.Data.DataColumn columnLaboratorioID;
+            
+            private global::System.Data.DataColumn columnID;
             
             private global::System.Data.DataColumn columnEstablo;
+            
+            private global::System.Data.DataColumn columnFechaRecogida;
+            
+            private global::System.Data.DataColumn columnEtiqueta;
             
             private global::System.Data.DataColumn columnRuta;
             
@@ -297,25 +303,21 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnBacterias;
             
+            private global::System.Data.DataColumn columnUrea;
+            
             private global::System.Data.DataColumn columnExtractoSeco;
-            
-            private global::System.Data.DataColumn columnVarPC;
-            
-            private global::System.Data.DataColumn columnPC;
-            
-            private global::System.Data.DataColumn columnInhibidores;
             
             private global::System.Data.DataColumn columnIgG;
             
+            private global::System.Data.DataColumn columnPC;
+            
+            private global::System.Data.DataColumn columnVarPC;
+            
+            private global::System.Data.DataColumn columnInhibidores;
+            
             private global::System.Data.DataColumn columnNC;
             
-            private global::System.Data.DataColumn columnEstado;
-            
-            private global::System.Data.DataColumn columnOrigen;
-            
-            private global::System.Data.DataColumn columnNaturaleza;
-            
-            private global::System.Data.DataColumn columnFechaRecogida;
+            private global::System.Data.DataColumn columnCierre;
             
             private global::System.Data.DataColumn columnMediaBacterias;
             
@@ -325,32 +327,22 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnMediaProteina;
             
-            private global::System.Data.DataColumn columnMediaExtractoSeco;
-            
             private global::System.Data.DataColumn columnMediaLactosa;
             
             private global::System.Data.DataColumn columnMediaUrea;
             
             private global::System.Data.DataColumn columnMediaPC;
             
-            private global::System.Data.DataColumn columnCalostros;
-            
-            private global::System.Data.DataColumn columnEtiqueta;
-            
-            private global::System.Data.DataColumn columnCEA;
-            
             private global::System.Data.DataColumn columnAno;
             
             private global::System.Data.DataColumn columnMes;
             
-            private global::System.Data.DataColumn columnCierre;
-            
-            private global::System.Data.DataColumn columnObservaciones;
+            private global::System.Data.DataColumn columnFichero;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataDataTable() {
-                this.TableName = "BuzonLaboratorioTanqueData";
+            public BuzonLaboratorioTanqueDataTable() {
+                this.TableName = "BuzonLaboratorioTanque";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -358,7 +350,7 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal BuzonLaboratorioTanqueDataDataTable(global::System.Data.DataTable table) {
+            internal BuzonLaboratorioTanqueDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -375,24 +367,32 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected BuzonLaboratorioTanqueDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected BuzonLaboratorioTanqueDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn IdColumn {
+            public global::System.Data.DataColumn AsociacionIDColumn {
                 get {
-                    return this.columnId;
+                    return this.columnAsociacionID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ProcedenciaColumn {
+            public global::System.Data.DataColumn LaboratorioIDColumn {
                 get {
-                    return this.columnProcedencia;
+                    return this.columnLaboratorioID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
                 }
             }
             
@@ -401,6 +401,22 @@ namespace Afca.Common.DataSets {
             public global::System.Data.DataColumn EstabloColumn {
                 get {
                     return this.columnEstablo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaRecogidaColumn {
+                get {
+                    return this.columnFechaRecogida;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EtiquetaColumn {
+                get {
+                    return this.columnEtiqueta;
                 }
             }
             
@@ -454,33 +470,17 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn UreaColumn {
+                get {
+                    return this.columnUrea;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn ExtractoSecoColumn {
                 get {
                     return this.columnExtractoSeco;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn VarPCColumn {
-                get {
-                    return this.columnVarPC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PCColumn {
-                get {
-                    return this.columnPC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn InhibidoresColumn {
-                get {
-                    return this.columnInhibidores;
                 }
             }
             
@@ -494,6 +494,30 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PCColumn {
+                get {
+                    return this.columnPC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VarPCColumn {
+                get {
+                    return this.columnVarPC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn InhibidoresColumn {
+                get {
+                    return this.columnInhibidores;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn NCColumn {
                 get {
                     return this.columnNC;
@@ -502,33 +526,9 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EstadoColumn {
+            public global::System.Data.DataColumn CierreColumn {
                 get {
-                    return this.columnEstado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn OrigenColumn {
-                get {
-                    return this.columnOrigen;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NaturalezaColumn {
-                get {
-                    return this.columnNaturaleza;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn FechaRecogidaColumn {
-                get {
-                    return this.columnFechaRecogida;
+                    return this.columnCierre;
                 }
             }
             
@@ -566,14 +566,6 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MediaExtractoSecoColumn {
-                get {
-                    return this.columnMediaExtractoSeco;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn MediaLactosaColumn {
                 get {
                     return this.columnMediaLactosa;
@@ -598,30 +590,6 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CalostrosColumn {
-                get {
-                    return this.columnCalostros;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EtiquetaColumn {
-                get {
-                    return this.columnEtiqueta;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CEAColumn {
-                get {
-                    return this.columnCEA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn AnoColumn {
                 get {
                     return this.columnAno;
@@ -638,17 +606,9 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CierreColumn {
+            public global::System.Data.DataColumn FicheroColumn {
                 get {
-                    return this.columnCierre;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ObservacionesColumn {
-                get {
-                    return this.columnObservaciones;
+                    return this.columnFichero;
                 }
             }
             
@@ -663,119 +623,104 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataRow this[int index] {
+            public BuzonLaboratorioTanqueRow this[int index] {
                 get {
-                    return ((BuzonLaboratorioTanqueDataRow)(this.Rows[index]));
+                    return ((BuzonLaboratorioTanqueRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event BuzonLaboratorioTanqueDataRowChangeEventHandler BuzonLaboratorioTanqueDataRowChanging;
+            public event BuzonLaboratorioTanqueRowChangeEventHandler BuzonLaboratorioTanqueRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event BuzonLaboratorioTanqueDataRowChangeEventHandler BuzonLaboratorioTanqueDataRowChanged;
+            public event BuzonLaboratorioTanqueRowChangeEventHandler BuzonLaboratorioTanqueRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event BuzonLaboratorioTanqueDataRowChangeEventHandler BuzonLaboratorioTanqueDataRowDeleting;
+            public event BuzonLaboratorioTanqueRowChangeEventHandler BuzonLaboratorioTanqueRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event BuzonLaboratorioTanqueDataRowChangeEventHandler BuzonLaboratorioTanqueDataRowDeleted;
+            public event BuzonLaboratorioTanqueRowChangeEventHandler BuzonLaboratorioTanqueRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddBuzonLaboratorioTanqueDataRow(BuzonLaboratorioTanqueDataRow row) {
+            public void AddBuzonLaboratorioTanqueRow(BuzonLaboratorioTanqueRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataRow AddBuzonLaboratorioTanqueDataRow(
-                        string Id, 
-                        string Procedencia, 
+            public BuzonLaboratorioTanqueRow AddBuzonLaboratorioTanqueRow(
+                        string AsociacionID, 
+                        string LaboratorioID, 
+                        string ID, 
                         string Establo, 
-                        string Ruta, 
-                        float Grasa, 
-                        float Proteina, 
-                        float Lactosa, 
-                        float RCS, 
-                        string Bacterias, 
-                        string ExtractoSeco, 
-                        string VarPC, 
-                        string PC, 
-                        string Inhibidores, 
-                        string IgG, 
-                        string NC, 
-                        string Estado, 
-                        string Origen, 
-                        string Naturaleza, 
                         string FechaRecogida, 
+                        string Etiqueta, 
+                        string Ruta, 
+                        string Grasa, 
+                        string Proteina, 
+                        string Lactosa, 
+                        string RCS, 
+                        string Bacterias, 
+                        string Urea, 
+                        string ExtractoSeco, 
+                        string IgG, 
+                        string PC, 
+                        string VarPC, 
+                        string Inhibidores, 
+                        string NC, 
+                        string Cierre, 
                         string MediaBacterias, 
                         string MediaRCS, 
-                        float MediaGrasa, 
-                        float MediaProteina, 
-                        float MediaExtractoSeco, 
+                        string MediaGrasa, 
+                        string MediaProteina, 
                         string MediaLactosa, 
                         string MediaUrea, 
                         string MediaPC, 
-                        string Calostros, 
-                        string Etiqueta, 
-                        string CEA, 
                         string Ano, 
                         string Mes, 
-                        string Cierre, 
-                        string Observaciones) {
-                BuzonLaboratorioTanqueDataRow rowBuzonLaboratorioTanqueDataRow = ((BuzonLaboratorioTanqueDataRow)(this.NewRow()));
+                        string Fichero) {
+                BuzonLaboratorioTanqueRow rowBuzonLaboratorioTanqueRow = ((BuzonLaboratorioTanqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
-                        Procedencia,
+                        AsociacionID,
+                        LaboratorioID,
+                        ID,
                         Establo,
+                        FechaRecogida,
+                        Etiqueta,
                         Ruta,
                         Grasa,
                         Proteina,
                         Lactosa,
                         RCS,
                         Bacterias,
+                        Urea,
                         ExtractoSeco,
-                        VarPC,
-                        PC,
-                        Inhibidores,
                         IgG,
+                        PC,
+                        VarPC,
+                        Inhibidores,
                         NC,
-                        Estado,
-                        Origen,
-                        Naturaleza,
-                        FechaRecogida,
+                        Cierre,
                         MediaBacterias,
                         MediaRCS,
                         MediaGrasa,
                         MediaProteina,
-                        MediaExtractoSeco,
                         MediaLactosa,
                         MediaUrea,
                         MediaPC,
-                        Calostros,
-                        Etiqueta,
-                        CEA,
                         Ano,
                         Mes,
-                        Cierre,
-                        Observaciones};
-                rowBuzonLaboratorioTanqueDataRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowBuzonLaboratorioTanqueDataRow);
-                return rowBuzonLaboratorioTanqueDataRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataRow FindById(string Id) {
-                return ((BuzonLaboratorioTanqueDataRow)(this.Rows.Find(new object[] {
-                            Id})));
+                        Fichero};
+                rowBuzonLaboratorioTanqueRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBuzonLaboratorioTanqueRow);
+                return rowBuzonLaboratorioTanqueRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                BuzonLaboratorioTanqueDataDataTable cln = ((BuzonLaboratorioTanqueDataDataTable)(base.Clone()));
+                BuzonLaboratorioTanqueDataTable cln = ((BuzonLaboratorioTanqueDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -783,151 +728,133 @@ namespace Afca.Common.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new BuzonLaboratorioTanqueDataDataTable();
+                return new BuzonLaboratorioTanqueDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnId = base.Columns["Id"];
-                this.columnProcedencia = base.Columns["Procedencia"];
+                this.columnAsociacionID = base.Columns["AsociacionID"];
+                this.columnLaboratorioID = base.Columns["LaboratorioID"];
+                this.columnID = base.Columns["ID"];
                 this.columnEstablo = base.Columns["Establo"];
+                this.columnFechaRecogida = base.Columns["FechaRecogida"];
+                this.columnEtiqueta = base.Columns["Etiqueta"];
                 this.columnRuta = base.Columns["Ruta"];
                 this.columnGrasa = base.Columns["Grasa"];
                 this.columnProteina = base.Columns["Proteina"];
                 this.columnLactosa = base.Columns["Lactosa"];
                 this.columnRCS = base.Columns["RCS"];
                 this.columnBacterias = base.Columns["Bacterias"];
+                this.columnUrea = base.Columns["Urea"];
                 this.columnExtractoSeco = base.Columns["ExtractoSeco"];
-                this.columnVarPC = base.Columns["VarPC"];
-                this.columnPC = base.Columns["PC"];
-                this.columnInhibidores = base.Columns["Inhibidores"];
                 this.columnIgG = base.Columns["IgG"];
+                this.columnPC = base.Columns["PC"];
+                this.columnVarPC = base.Columns["VarPC"];
+                this.columnInhibidores = base.Columns["Inhibidores"];
                 this.columnNC = base.Columns["NC"];
-                this.columnEstado = base.Columns["Estado"];
-                this.columnOrigen = base.Columns["Origen"];
-                this.columnNaturaleza = base.Columns["Naturaleza"];
-                this.columnFechaRecogida = base.Columns["FechaRecogida"];
+                this.columnCierre = base.Columns["Cierre"];
                 this.columnMediaBacterias = base.Columns["MediaBacterias"];
                 this.columnMediaRCS = base.Columns["MediaRCS"];
                 this.columnMediaGrasa = base.Columns["MediaGrasa"];
                 this.columnMediaProteina = base.Columns["MediaProteina"];
-                this.columnMediaExtractoSeco = base.Columns["MediaExtractoSeco"];
                 this.columnMediaLactosa = base.Columns["MediaLactosa"];
                 this.columnMediaUrea = base.Columns["MediaUrea"];
                 this.columnMediaPC = base.Columns["MediaPC"];
-                this.columnCalostros = base.Columns["Calostros"];
-                this.columnEtiqueta = base.Columns["Etiqueta"];
-                this.columnCEA = base.Columns["CEA"];
                 this.columnAno = base.Columns["Ano"];
                 this.columnMes = base.Columns["Mes"];
-                this.columnCierre = base.Columns["Cierre"];
-                this.columnObservaciones = base.Columns["Observaciones"];
+                this.columnFichero = base.Columns["Fichero"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnId);
-                this.columnProcedencia = new global::System.Data.DataColumn("Procedencia", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProcedencia);
+                this.columnAsociacionID = new global::System.Data.DataColumn("AsociacionID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAsociacionID);
+                this.columnLaboratorioID = new global::System.Data.DataColumn("LaboratorioID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLaboratorioID);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnEstablo = new global::System.Data.DataColumn("Establo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstablo);
+                this.columnFechaRecogida = new global::System.Data.DataColumn("FechaRecogida", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaRecogida);
+                this.columnEtiqueta = new global::System.Data.DataColumn("Etiqueta", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEtiqueta);
                 this.columnRuta = new global::System.Data.DataColumn("Ruta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRuta);
-                this.columnGrasa = new global::System.Data.DataColumn("Grasa", typeof(float), null, global::System.Data.MappingType.Element);
+                this.columnGrasa = new global::System.Data.DataColumn("Grasa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGrasa);
-                this.columnProteina = new global::System.Data.DataColumn("Proteina", typeof(float), null, global::System.Data.MappingType.Element);
+                this.columnProteina = new global::System.Data.DataColumn("Proteina", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProteina);
-                this.columnLactosa = new global::System.Data.DataColumn("Lactosa", typeof(float), null, global::System.Data.MappingType.Element);
+                this.columnLactosa = new global::System.Data.DataColumn("Lactosa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLactosa);
-                this.columnRCS = new global::System.Data.DataColumn("RCS", typeof(float), null, global::System.Data.MappingType.Element);
+                this.columnRCS = new global::System.Data.DataColumn("RCS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRCS);
                 this.columnBacterias = new global::System.Data.DataColumn("Bacterias", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBacterias);
+                this.columnUrea = new global::System.Data.DataColumn("Urea", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUrea);
                 this.columnExtractoSeco = new global::System.Data.DataColumn("ExtractoSeco", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExtractoSeco);
-                this.columnVarPC = new global::System.Data.DataColumn("VarPC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVarPC);
-                this.columnPC = new global::System.Data.DataColumn("PC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPC);
-                this.columnInhibidores = new global::System.Data.DataColumn("Inhibidores", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInhibidores);
                 this.columnIgG = new global::System.Data.DataColumn("IgG", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIgG);
+                this.columnPC = new global::System.Data.DataColumn("PC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPC);
+                this.columnVarPC = new global::System.Data.DataColumn("VarPC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVarPC);
+                this.columnInhibidores = new global::System.Data.DataColumn("Inhibidores", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInhibidores);
                 this.columnNC = new global::System.Data.DataColumn("NC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNC);
-                this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEstado);
-                this.columnOrigen = new global::System.Data.DataColumn("Origen", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOrigen);
-                this.columnNaturaleza = new global::System.Data.DataColumn("Naturaleza", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNaturaleza);
-                this.columnFechaRecogida = new global::System.Data.DataColumn("FechaRecogida", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaRecogida);
+                this.columnCierre = new global::System.Data.DataColumn("Cierre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCierre);
                 this.columnMediaBacterias = new global::System.Data.DataColumn("MediaBacterias", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaBacterias);
                 this.columnMediaRCS = new global::System.Data.DataColumn("MediaRCS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaRCS);
-                this.columnMediaGrasa = new global::System.Data.DataColumn("MediaGrasa", typeof(float), null, global::System.Data.MappingType.Element);
+                this.columnMediaGrasa = new global::System.Data.DataColumn("MediaGrasa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaGrasa);
-                this.columnMediaProteina = new global::System.Data.DataColumn("MediaProteina", typeof(float), null, global::System.Data.MappingType.Element);
+                this.columnMediaProteina = new global::System.Data.DataColumn("MediaProteina", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaProteina);
-                this.columnMediaExtractoSeco = new global::System.Data.DataColumn("MediaExtractoSeco", typeof(float), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMediaExtractoSeco);
                 this.columnMediaLactosa = new global::System.Data.DataColumn("MediaLactosa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaLactosa);
                 this.columnMediaUrea = new global::System.Data.DataColumn("MediaUrea", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaUrea);
                 this.columnMediaPC = new global::System.Data.DataColumn("MediaPC", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaPC);
-                this.columnCalostros = new global::System.Data.DataColumn("Calostros", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCalostros);
-                this.columnEtiqueta = new global::System.Data.DataColumn("Etiqueta", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEtiqueta);
-                this.columnCEA = new global::System.Data.DataColumn("CEA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCEA);
                 this.columnAno = new global::System.Data.DataColumn("Ano", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAno);
                 this.columnMes = new global::System.Data.DataColumn("Mes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMes);
-                this.columnCierre = new global::System.Data.DataColumn("Cierre", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCierre);
-                this.columnObservaciones = new global::System.Data.DataColumn("Observaciones", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnObservaciones);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("BuzonLaboratorio_pk", new global::System.Data.DataColumn[] {
-                                this.columnId}, true));
-                this.columnId.AllowDBNull = false;
-                this.columnId.Unique = true;
-                this.ExtendedProperties.Add("Generator_TablePropName", "_BuzonLaboratorioTanqueData");
-                this.ExtendedProperties.Add("Generator_UserTableName", "BuzonLaboratorioTanqueData");
+                this.columnFichero = new global::System.Data.DataColumn("Fichero", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFichero);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataRow NewBuzonLaboratorioTanqueDataRow() {
-                return ((BuzonLaboratorioTanqueDataRow)(this.NewRow()));
+            public BuzonLaboratorioTanqueRow NewBuzonLaboratorioTanqueRow() {
+                return ((BuzonLaboratorioTanqueRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new BuzonLaboratorioTanqueDataRow(builder);
+                return new BuzonLaboratorioTanqueRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(BuzonLaboratorioTanqueDataRow);
+                return typeof(BuzonLaboratorioTanqueRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.BuzonLaboratorioTanqueDataRowChanged != null)) {
-                    this.BuzonLaboratorioTanqueDataRowChanged(this, new BuzonLaboratorioTanqueDataRowChangeEvent(((BuzonLaboratorioTanqueDataRow)(e.Row)), e.Action));
+                if ((this.BuzonLaboratorioTanqueRowChanged != null)) {
+                    this.BuzonLaboratorioTanqueRowChanged(this, new BuzonLaboratorioTanqueRowChangeEvent(((BuzonLaboratorioTanqueRow)(e.Row)), e.Action));
                 }
             }
             
@@ -935,8 +862,8 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.BuzonLaboratorioTanqueDataRowChanging != null)) {
-                    this.BuzonLaboratorioTanqueDataRowChanging(this, new BuzonLaboratorioTanqueDataRowChangeEvent(((BuzonLaboratorioTanqueDataRow)(e.Row)), e.Action));
+                if ((this.BuzonLaboratorioTanqueRowChanging != null)) {
+                    this.BuzonLaboratorioTanqueRowChanging(this, new BuzonLaboratorioTanqueRowChangeEvent(((BuzonLaboratorioTanqueRow)(e.Row)), e.Action));
                 }
             }
             
@@ -944,8 +871,8 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.BuzonLaboratorioTanqueDataRowDeleted != null)) {
-                    this.BuzonLaboratorioTanqueDataRowDeleted(this, new BuzonLaboratorioTanqueDataRowChangeEvent(((BuzonLaboratorioTanqueDataRow)(e.Row)), e.Action));
+                if ((this.BuzonLaboratorioTanqueRowDeleted != null)) {
+                    this.BuzonLaboratorioTanqueRowDeleted(this, new BuzonLaboratorioTanqueRowChangeEvent(((BuzonLaboratorioTanqueRow)(e.Row)), e.Action));
                 }
             }
             
@@ -953,14 +880,14 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.BuzonLaboratorioTanqueDataRowDeleting != null)) {
-                    this.BuzonLaboratorioTanqueDataRowDeleting(this, new BuzonLaboratorioTanqueDataRowChangeEvent(((BuzonLaboratorioTanqueDataRow)(e.Row)), e.Action));
+                if ((this.BuzonLaboratorioTanqueRowDeleting != null)) {
+                    this.BuzonLaboratorioTanqueRowDeleting(this, new BuzonLaboratorioTanqueRowChangeEvent(((BuzonLaboratorioTanqueRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveBuzonLaboratorioTanqueDataRow(BuzonLaboratorioTanqueDataRow row) {
+            public void RemoveBuzonLaboratorioTanqueRow(BuzonLaboratorioTanqueRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -987,7 +914,7 @@ namespace Afca.Common.DataSets {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "BuzonLaboratorioTanqueDataDataTable";
+                attribute2.FixedValue = "BuzonLaboratorioTanqueDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1031,42 +958,64 @@ namespace Afca.Common.DataSets {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class BuzonLaboratorioTanqueDataRow : global::System.Data.DataRow {
+        public partial class BuzonLaboratorioTanqueRow : global::System.Data.DataRow {
             
-            private BuzonLaboratorioTanqueDataDataTable tableBuzonLaboratorioTanqueData;
+            private BuzonLaboratorioTanqueDataTable tableBuzonLaboratorioTanque;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal BuzonLaboratorioTanqueDataRow(global::System.Data.DataRowBuilder rb) : 
+            internal BuzonLaboratorioTanqueRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableBuzonLaboratorioTanqueData = ((BuzonLaboratorioTanqueDataDataTable)(this.Table));
+                this.tableBuzonLaboratorioTanque = ((BuzonLaboratorioTanqueDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Id {
-                get {
-                    return ((string)(this[this.tableBuzonLaboratorioTanqueData.IdColumn]));
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.IdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Procedencia {
+            public string AsociacionID {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.ProcedenciaColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.AsociacionIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Procedencia\' de la tabla \'BuzonLaboratorioTanqueData\' es " +
-                                "DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AsociacionID\' de la tabla \'BuzonLaboratorioTanque\' es DBN" +
+                                "ull.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.ProcedenciaColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.AsociacionIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string LaboratorioID {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.LaboratorioIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LaboratorioID\' de la tabla \'BuzonLaboratorioTanque\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.LaboratorioIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ID\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.IDColumn] = value;
                 }
             }
             
@@ -1075,266 +1024,14 @@ namespace Afca.Common.DataSets {
             public string Establo {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.EstabloColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.EstabloColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Establo\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNu" +
-                                "ll.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Establo\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.EstabloColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Ruta {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.RutaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ruta\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.RutaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float Grasa {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.GrasaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Grasa\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.GrasaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float Proteina {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.ProteinaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Proteina\' de la tabla \'BuzonLaboratorioTanqueData\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.ProteinaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float Lactosa {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.LactosaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Lactosa\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.LactosaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float RCS {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.RCSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RCS\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.RCSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Bacterias {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.BacteriasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Bacterias\' de la tabla \'BuzonLaboratorioTanqueData\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.BacteriasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ExtractoSeco {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.ExtractoSecoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ExtractoSeco\' de la tabla \'BuzonLaboratorioTanqueData\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.ExtractoSecoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string VarPC {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.VarPCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VarPC\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.VarPCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PC {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.PCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PC\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.PCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Inhibidores {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.InhibidoresColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Inhibidores\' de la tabla \'BuzonLaboratorioTanqueData\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.InhibidoresColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string IgG {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.IgGColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IgG\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.IgGColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string NC {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.NCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NC\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.NCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Estado {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.EstadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Estado\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.EstadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Origen {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.OrigenColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Origen\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.OrigenColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Naturaleza {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.NaturalezaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Naturaleza\' de la tabla \'BuzonLaboratorioTanqueData\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.NaturalezaColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.EstabloColumn] = value;
                 }
             }
             
@@ -1343,168 +1040,15 @@ namespace Afca.Common.DataSets {
             public string FechaRecogida {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.FechaRecogidaColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.FechaRecogidaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRecogida\' de la tabla \'BuzonLaboratorioTanqueData\' e" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.FechaRecogidaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MediaBacterias {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.MediaBacteriasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaBacterias\' de la tabla \'BuzonLaboratorioTanqueData\' " +
-                                "es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaBacteriasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MediaRCS {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.MediaRCSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaRCS\' de la tabla \'BuzonLaboratorioTanqueData\' es DBN" +
-                                "ull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaRCSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float MediaGrasa {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.MediaGrasaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaGrasa\' de la tabla \'BuzonLaboratorioTanqueData\' es D" +
-                                "BNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaGrasaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float MediaProteina {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.MediaProteinaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaProteina\' de la tabla \'BuzonLaboratorioTanqueData\' e" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaProteinaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public float MediaExtractoSeco {
-                get {
-                    try {
-                        return ((float)(this[this.tableBuzonLaboratorioTanqueData.MediaExtractoSecoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaExtractoSeco\' de la tabla \'BuzonLaboratorioTanqueDat" +
-                                "a\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaExtractoSecoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MediaLactosa {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.MediaLactosaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaLactosa\' de la tabla \'BuzonLaboratorioTanqueData\' es" +
-                                " DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaLactosaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MediaUrea {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.MediaUreaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaUrea\' de la tabla \'BuzonLaboratorioTanqueData\' es DB" +
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRecogida\' de la tabla \'BuzonLaboratorioTanque\' es DB" +
                                 "Null.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaUreaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MediaPC {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.MediaPCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaPC\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.MediaPCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Calostros {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.CalostrosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Calostros\' de la tabla \'BuzonLaboratorioTanqueData\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanqueData.CalostrosColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.FechaRecogidaColumn] = value;
                 }
             }
             
@@ -1513,63 +1057,227 @@ namespace Afca.Common.DataSets {
             public string Etiqueta {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.EtiquetaColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.EtiquetaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Etiqueta\' de la tabla \'BuzonLaboratorioTanqueData\' es DBN" +
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Etiqueta\' de la tabla \'BuzonLaboratorioTanque\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.EtiquetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Ruta {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.RutaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ruta\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.RutaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Grasa {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.GrasaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Grasa\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.GrasaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Proteina {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.ProteinaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Proteina\' de la tabla \'BuzonLaboratorioTanque\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.ProteinaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Lactosa {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.LactosaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Lactosa\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.LactosaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string RCS {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.RCSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RCS\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.RCSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Bacterias {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.BacteriasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Bacterias\' de la tabla \'BuzonLaboratorioTanque\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.BacteriasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Urea {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.UreaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Urea\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.UreaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string ExtractoSeco {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.ExtractoSecoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ExtractoSeco\' de la tabla \'BuzonLaboratorioTanque\' es DBN" +
                                 "ull.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.EtiquetaColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.ExtractoSecoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CEA {
+            public string IgG {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.CEAColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.IgGColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CEA\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IgG\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.CEAColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.IgGColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Ano {
+            public string PC {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.AnoColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.PCColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ano\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'PC\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.AnoColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.PCColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Mes {
+            public string VarPC {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.MesColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.VarPCColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Mes\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VarPC\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.MesColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.VarPCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Inhibidores {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.InhibidoresColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Inhibidores\' de la tabla \'BuzonLaboratorioTanque\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.InhibidoresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NC {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.NCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NC\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.NCColumn] = value;
                 }
             }
             
@@ -1578,429 +1286,541 @@ namespace Afca.Common.DataSets {
             public string Cierre {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.CierreColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.CierreColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cierre\' de la tabla \'BuzonLaboratorioTanqueData\' es DBNul" +
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cierre\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.CierreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MediaBacterias {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaBacteriasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaBacterias\' de la tabla \'BuzonLaboratorioTanque\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MediaBacteriasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MediaRCS {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaRCSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaRCS\' de la tabla \'BuzonLaboratorioTanque\' es DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MediaRCSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MediaGrasa {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaGrasaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaGrasa\' de la tabla \'BuzonLaboratorioTanque\' es DBNul" +
                                 "l.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.CierreColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.MediaGrasaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Observaciones {
+            public string MediaProteina {
                 get {
                     try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanqueData.ObservacionesColumn]));
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaProteinaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Observaciones\' de la tabla \'BuzonLaboratorioTanqueData\' e" +
-                                "s DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaProteina\' de la tabla \'BuzonLaboratorioTanque\' es DB" +
+                                "Null.", e);
                     }
                 }
                 set {
-                    this[this.tableBuzonLaboratorioTanqueData.ObservacionesColumn] = value;
+                    this[this.tableBuzonLaboratorioTanque.MediaProteinaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsProcedenciaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.ProcedenciaColumn);
+            public string MediaLactosa {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaLactosaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaLactosa\' de la tabla \'BuzonLaboratorioTanque\' es DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MediaLactosaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetProcedenciaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.ProcedenciaColumn] = global::System.Convert.DBNull;
+            public string MediaUrea {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaUreaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaUrea\' de la tabla \'BuzonLaboratorioTanque\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MediaUreaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MediaPC {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaPCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaPC\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MediaPCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Ano {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.AnoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Ano\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.AnoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Mes {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Mes\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Fichero {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.FicheroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Fichero\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.FicheroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAsociacionIDNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.AsociacionIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAsociacionIDNull() {
+                this[this.tableBuzonLaboratorioTanque.AsociacionIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLaboratorioIDNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.LaboratorioIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLaboratorioIDNull() {
+                this[this.tableBuzonLaboratorioTanque.LaboratorioIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIDNull() {
+                this[this.tableBuzonLaboratorioTanque.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEstabloNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.EstabloColumn);
+                return this.IsNull(this.tableBuzonLaboratorioTanque.EstabloColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetEstabloNull() {
-                this[this.tableBuzonLaboratorioTanqueData.EstabloColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsRutaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.RutaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetRutaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.RutaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsGrasaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.GrasaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetGrasaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.GrasaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsProteinaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.ProteinaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetProteinaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.ProteinaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsLactosaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.LactosaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetLactosaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.LactosaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsRCSNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.RCSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetRCSNull() {
-                this[this.tableBuzonLaboratorioTanqueData.RCSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsBacteriasNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.BacteriasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetBacteriasNull() {
-                this[this.tableBuzonLaboratorioTanqueData.BacteriasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsExtractoSecoNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.ExtractoSecoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetExtractoSecoNull() {
-                this[this.tableBuzonLaboratorioTanqueData.ExtractoSecoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsVarPCNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.VarPCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetVarPCNull() {
-                this[this.tableBuzonLaboratorioTanqueData.VarPCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPCNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.PCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPCNull() {
-                this[this.tableBuzonLaboratorioTanqueData.PCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInhibidoresNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.InhibidoresColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInhibidoresNull() {
-                this[this.tableBuzonLaboratorioTanqueData.InhibidoresColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIgGNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.IgGColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIgGNull() {
-                this[this.tableBuzonLaboratorioTanqueData.IgGColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNCNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.NCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNCNull() {
-                this[this.tableBuzonLaboratorioTanqueData.NCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEstadoNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.EstadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEstadoNull() {
-                this[this.tableBuzonLaboratorioTanqueData.EstadoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsOrigenNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.OrigenColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetOrigenNull() {
-                this[this.tableBuzonLaboratorioTanqueData.OrigenColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNaturalezaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.NaturalezaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNaturalezaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.NaturalezaColumn] = global::System.Convert.DBNull;
+                this[this.tableBuzonLaboratorioTanque.EstabloColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsFechaRecogidaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.FechaRecogidaColumn);
+                return this.IsNull(this.tableBuzonLaboratorioTanque.FechaRecogidaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFechaRecogidaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.FechaRecogidaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaBacteriasNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaBacteriasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaBacteriasNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaBacteriasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaRCSNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaRCSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaRCSNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaRCSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaGrasaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaGrasaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaGrasaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaGrasaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaProteinaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaProteinaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaProteinaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaProteinaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaExtractoSecoNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaExtractoSecoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaExtractoSecoNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaExtractoSecoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaLactosaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaLactosaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaLactosaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaLactosaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaUreaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaUreaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaUreaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaUreaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMediaPCNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MediaPCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMediaPCNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MediaPCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCalostrosNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.CalostrosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCalostrosNull() {
-                this[this.tableBuzonLaboratorioTanqueData.CalostrosColumn] = global::System.Convert.DBNull;
+                this[this.tableBuzonLaboratorioTanque.FechaRecogidaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEtiquetaNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.EtiquetaColumn);
+                return this.IsNull(this.tableBuzonLaboratorioTanque.EtiquetaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetEtiquetaNull() {
-                this[this.tableBuzonLaboratorioTanqueData.EtiquetaColumn] = global::System.Convert.DBNull;
+                this[this.tableBuzonLaboratorioTanque.EtiquetaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsCEANull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.CEAColumn);
+            public bool IsRutaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.RutaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetCEANull() {
-                this[this.tableBuzonLaboratorioTanqueData.CEAColumn] = global::System.Convert.DBNull;
+            public void SetRutaNull() {
+                this[this.tableBuzonLaboratorioTanque.RutaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAnoNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.AnoColumn);
+            public bool IsGrasaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.GrasaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAnoNull() {
-                this[this.tableBuzonLaboratorioTanqueData.AnoColumn] = global::System.Convert.DBNull;
+            public void SetGrasaNull() {
+                this[this.tableBuzonLaboratorioTanque.GrasaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMesNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.MesColumn);
+            public bool IsProteinaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.ProteinaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMesNull() {
-                this[this.tableBuzonLaboratorioTanqueData.MesColumn] = global::System.Convert.DBNull;
+            public void SetProteinaNull() {
+                this[this.tableBuzonLaboratorioTanque.ProteinaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsLactosaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.LactosaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetLactosaNull() {
+                this[this.tableBuzonLaboratorioTanque.LactosaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsRCSNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.RCSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetRCSNull() {
+                this[this.tableBuzonLaboratorioTanque.RCSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsBacteriasNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.BacteriasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetBacteriasNull() {
+                this[this.tableBuzonLaboratorioTanque.BacteriasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsUreaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.UreaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetUreaNull() {
+                this[this.tableBuzonLaboratorioTanque.UreaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsExtractoSecoNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.ExtractoSecoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetExtractoSecoNull() {
+                this[this.tableBuzonLaboratorioTanque.ExtractoSecoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIgGNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.IgGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIgGNull() {
+                this[this.tableBuzonLaboratorioTanque.IgGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPCNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.PCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPCNull() {
+                this[this.tableBuzonLaboratorioTanque.PCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVarPCNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.VarPCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVarPCNull() {
+                this[this.tableBuzonLaboratorioTanque.VarPCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsInhibidoresNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.InhibidoresColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetInhibidoresNull() {
+                this[this.tableBuzonLaboratorioTanque.InhibidoresColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNCNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.NCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNCNull() {
+                this[this.tableBuzonLaboratorioTanque.NCColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCierreNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.CierreColumn);
+                return this.IsNull(this.tableBuzonLaboratorioTanque.CierreColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCierreNull() {
-                this[this.tableBuzonLaboratorioTanqueData.CierreColumn] = global::System.Convert.DBNull;
+                this[this.tableBuzonLaboratorioTanque.CierreColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsObservacionesNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanqueData.ObservacionesColumn);
+            public bool IsMediaBacteriasNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaBacteriasColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetObservacionesNull() {
-                this[this.tableBuzonLaboratorioTanqueData.ObservacionesColumn] = global::System.Convert.DBNull;
+            public void SetMediaBacteriasNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaBacteriasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaRCSNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaRCSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaRCSNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaRCSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaGrasaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaGrasaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaGrasaNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaGrasaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaProteinaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaProteinaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaProteinaNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaProteinaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaLactosaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaLactosaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaLactosaNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaLactosaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaUreaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaUreaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaUreaNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaUreaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaPCNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaPCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaPCNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaPCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAnoNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.AnoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAnoNull() {
+                this[this.tableBuzonLaboratorioTanque.AnoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMesNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMesNull() {
+                this[this.tableBuzonLaboratorioTanque.MesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFicheroNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.FicheroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFicheroNull() {
+                this[this.tableBuzonLaboratorioTanque.FicheroColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2008,22 +1828,22 @@ namespace Afca.Common.DataSets {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class BuzonLaboratorioTanqueDataRowChangeEvent : global::System.EventArgs {
+        public class BuzonLaboratorioTanqueRowChangeEvent : global::System.EventArgs {
             
-            private BuzonLaboratorioTanqueDataRow eventRow;
+            private BuzonLaboratorioTanqueRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataRowChangeEvent(BuzonLaboratorioTanqueDataRow row, global::System.Data.DataRowAction action) {
+            public BuzonLaboratorioTanqueRowChangeEvent(BuzonLaboratorioTanqueRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BuzonLaboratorioTanqueDataRow Row {
+            public BuzonLaboratorioTanqueRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -17,11 +17,14 @@ namespace Afca.Common.ServicesInterfaces {
     public interface IBuzonLaboratorioService : IService {
         
         BuzonLaboratorioData LoadBuzonLaboratorioData();
-        
+        BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData();
+
         BuzonLaboratorioData LoadBuzonLaboratorioDataByID(string argId);
-        
+        BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueDataByID(string argId);
+
         BuzonLaboratorioData LoadBuzonLaboratorioData(ItemData itemParent);
-        
+        BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData(ItemData itemParent);
+
         int DeleteBuzonLaboratorioDataByID(string argId);
         
         int UpdateBuzonLaboratorioData(BuzonLaboratorioData data);

@@ -28,7 +28,16 @@ namespace Afca.Data.Access {
                                 ,null
                                 ,new string[]{"BuzonLaboratorio"});
         }
-        
+
+        public BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData()
+        {
+            return (BuzonLaboratorioTanqueData)this.ExecuteDataSet(new BuzonLaboratorioTanqueData()
+                                , "sp_BuzonLaboratorioTanque_select"
+                                , CommandType.StoredProcedure
+                                , null
+                                , new string[] { "BuzonLaboratorioTanque" });
+        }
+
         public BuzonLaboratorioData LoadBuzonLaboratorioDataByID(string argId) {
             return (BuzonLaboratorioData) this.ExecuteDataSet(new BuzonLaboratorioData()
                                 ,"sp_BuzonLaboratorio_selectByID"
@@ -38,7 +47,18 @@ namespace Afca.Data.Access {
 }
                                 ,new string[]{"BuzonLaboratorio"});
         }
-        
+
+        public BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueDataByID(string argId)
+        {
+            return (BuzonLaboratorioTanqueData)this.ExecuteDataSet(new BuzonLaboratorioTanqueData()
+                                , "sp_BuzonLaboratorioTanque_selectByID"
+                                , CommandType.StoredProcedure
+                                , new SqlParameter[]{
+                                        new SqlParameter("@Id",argId)
+}
+                                , new string[] { "BuzonLaboratorioTanque" });
+        }
+
         public int DeleteBuzonLaboratorioDataByID(string argId) {
             return  this.ExecuteNonQuery(
                                 "sp_BuzonLaboratorio_deleteByID"                                

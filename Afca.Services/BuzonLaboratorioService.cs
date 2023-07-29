@@ -28,15 +28,32 @@ namespace Afca.Services {
         public BuzonLaboratorioData LoadBuzonLaboratorioData() {
             return buzonLaboratorioDA.LoadBuzonLaboratorioData();
         }
-        
+        public BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData()
+        {
+            return buzonLaboratorioDA.LoadBuzonLaboratorioTanqueData();
+        }
+
+
         public BuzonLaboratorioData LoadBuzonLaboratorioDataByID(string argId) {
             return buzonLaboratorioDA.LoadBuzonLaboratorioDataByID(argId);
         }
-        
+        public BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueDataByID(string argId)
+        {
+            return buzonLaboratorioDA.LoadBuzonLaboratorioTanqueDataByID(argId);
+        }
+
+
+
         public BuzonLaboratorioData LoadBuzonLaboratorioData(ItemData itemParent) {
             return buzonLaboratorioDA.LoadBuzonLaboratorioData();
         }
-        
+        public BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData(ItemData itemParent)
+        {
+            return buzonLaboratorioDA.LoadBuzonLaboratorioTanqueData();
+        }
+
+
+
         public int DeleteBuzonLaboratorioDataByID(string argId) {
             return buzonLaboratorioDA.DeleteBuzonLaboratorioDataByID(argId);
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar2 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("toolBarPrincipal");
+            Infragistics.Win.UltraWinToolbars.UltraToolbar ultraToolbar1 = new Infragistics.Win.UltraWinToolbars.UltraToolbar("toolBarPrincipal");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorer");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool4 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorerDetails");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("tbbExplorer");
@@ -52,40 +52,45 @@
             // 
             // _FrameFormAutoHideControl
             // 
-            this._FrameFormAutoHideControl.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormAutoHideControl.Size = new System.Drawing.Size(0, 755);
+            this._FrameFormAutoHideControl.Location = new System.Drawing.Point(0, 33);
+            this._FrameFormAutoHideControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormAutoHideControl.Size = new System.Drawing.Size(0, 929);
             // 
             // _FrameFormUnpinnedTabAreaBottom
             // 
-            this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 782);
-            this._FrameFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1088, 0);
+            this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 963);
+            this._FrameFormUnpinnedTabAreaBottom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1451, 0);
             // 
             // _FrameFormUnpinnedTabAreaTop
             // 
             this._FrameFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1088, 0);
+            this._FrameFormUnpinnedTabAreaTop.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1451, 0);
             // 
             // _FrameFormUnpinnedTabAreaRight
             // 
-            this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1088, 27);
-            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 755);
+            this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1451, 27);
+            this._FrameFormUnpinnedTabAreaRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 936);
             // 
             // _FrameFormUnpinnedTabAreaLeft
             // 
             this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 755);
+            this._FrameFormUnpinnedTabAreaLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 936);
             // 
             // ultraToolbarsManager
             // 
             this.ultraToolbarsManager.MenuSettings.ForceSerialization = true;
-            ultraToolbar2.DockedColumn = 0;
-            ultraToolbar2.DockedRow = 0;
-            ultraToolbar2.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ultraToolbar1.DockedColumn = 0;
+            ultraToolbar1.DockedRow = 0;
+            ultraToolbar1.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool3,
             buttonTool4});
-            ultraToolbar2.Text = "Barra principal";
+            ultraToolbar1.Text = "Barra principal";
             this.ultraToolbarsManager.Toolbars.AddRange(new Infragistics.Win.UltraWinToolbars.UltraToolbar[] {
-            ultraToolbar2});
+            ultraToolbar1});
             this.ultraToolbarsManager.ToolbarSettings.ToolOrientation = Infragistics.Win.UltraWinToolbars.ToolOrientation.Horizontal;
             buttonTool1.SharedPropsInternal.Caption = "Ver explorador";
             buttonTool2.SharedPropsInternal.Caption = "Ver detalles del explorador";
@@ -109,9 +114,10 @@
             // 
             // AfcaFrameForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 805);
+            this.ClientSize = new System.Drawing.Size(1451, 991);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "AfcaFrameForm";
             this.Text = "AFCA";
             this.Load += new System.EventHandler(this.AfcaFrameForm_Load);
