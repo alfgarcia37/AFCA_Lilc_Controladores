@@ -53,31 +53,31 @@
             // _FrameFormAutoHideControl
             // 
             this._FrameFormAutoHideControl.Location = new System.Drawing.Point(0, 33);
-            this._FrameFormAutoHideControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormAutoHideControl.Margin = new System.Windows.Forms.Padding(5);
             this._FrameFormAutoHideControl.Size = new System.Drawing.Size(0, 929);
             // 
             // _FrameFormUnpinnedTabAreaBottom
             // 
             this._FrameFormUnpinnedTabAreaBottom.Location = new System.Drawing.Point(0, 963);
-            this._FrameFormUnpinnedTabAreaBottom.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaBottom.Margin = new System.Windows.Forms.Padding(5);
             this._FrameFormUnpinnedTabAreaBottom.Size = new System.Drawing.Size(1451, 0);
             // 
             // _FrameFormUnpinnedTabAreaTop
             // 
             this._FrameFormUnpinnedTabAreaTop.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormUnpinnedTabAreaTop.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaTop.Margin = new System.Windows.Forms.Padding(5);
             this._FrameFormUnpinnedTabAreaTop.Size = new System.Drawing.Size(1451, 0);
             // 
             // _FrameFormUnpinnedTabAreaRight
             // 
             this._FrameFormUnpinnedTabAreaRight.Location = new System.Drawing.Point(1451, 27);
-            this._FrameFormUnpinnedTabAreaRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaRight.Margin = new System.Windows.Forms.Padding(5);
             this._FrameFormUnpinnedTabAreaRight.Size = new System.Drawing.Size(0, 936);
             // 
             // _FrameFormUnpinnedTabAreaLeft
             // 
             this._FrameFormUnpinnedTabAreaLeft.Location = new System.Drawing.Point(0, 27);
-            this._FrameFormUnpinnedTabAreaLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this._FrameFormUnpinnedTabAreaLeft.Margin = new System.Windows.Forms.Padding(5);
             this._FrameFormUnpinnedTabAreaLeft.Size = new System.Drawing.Size(0, 936);
             // 
             // ultraToolbarsManager
@@ -117,7 +117,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1451, 991);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AfcaFrameForm";
             this.Text = "AFCA";
             this.Load += new System.EventHandler(this.AfcaFrameForm_Load);

@@ -14,6 +14,8 @@ using Afca.Common.DataSets;
 using Afca.Common;
 using Infragistics.Win.Misc;
 using FrameworkForge.Common.Interfaces;
+using static Infragistics.Win.OSVersionUtilities;
+//using static System.Net.WebRequestMethods;
 
 namespace Afca.Laboratorio
 {
@@ -50,7 +52,7 @@ namespace Afca.Laboratorio
             _service = AfcaServiceProvider.GetBuzonLaboratorioService();
 
             
-            utePath.Text = @"C:\Afca\Laboratorio\CL130623_228.txt";
+            utePath.Text = @"C:\Afca\Laboratorio\ejemlab.txt";
             // utePath.Text = @"N:\Laboratorio\prueba.dat";
         }
 
@@ -152,23 +154,25 @@ namespace Afca.Laboratorio
             if (mifileinfo != null)
             {
                 if (!String.IsNullOrEmpty(utePath.Text))
-                {
-                    var files = FindFiles(utePath.Text, "*.txt");
-                    if (files.Length > 0)
-                    {
-                        int oks = 0;
-                        foreach (FileInfo file in files)
-                        {
-                            oks = LeerFicheroTanque(file) ? oks + 1 : oks;
-                        }
-                        AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
-                        return true;
-                    }
-                    else
-                    {
-                        AppendTraceText("0 ficheros cargados");
-                        return false;
-                    }
+                {   //Esto es para automatico
+                    //var files = FindFiles(utePath.Text, "*.txt");
+                    //if (files.Length > 0)
+                    //{
+                    //    int oks = 0;
+                    //    foreach (FileInfo file in files)
+                    //    {
+                    //        oks = LeerFicheroTanque(file) ? oks + 1 : oks;
+                    //    }
+                    //    AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
+                    //    return true;
+                    //}
+                    return LeerFicheroTanque(mifileinfo) ;
+
+                    //else
+                    //{
+                    //    AppendTraceText("0 ficheros cargados");
+                    //    return false;
+                    //}
                    
                 }
                 else
@@ -279,20 +283,16 @@ namespace Afca.Laboratorio
                         i++;
                         sr.Close();
                         return false;
-
                     }
                 }
                 sr.Close();
                // GuardarDatos();//quitarlo cuanod active todo
-
-            salto:
-
                 sr.Close();
                 int linea = 0;
                 //....Mover Ficheros a directorio Cargados
-
-
-                //...
+                string nombreCarpeta = Path.GetDirectoryName(file.FullName) + "\\old";
+                string rutaCarpetaDestino = Path.Combine(nombreCarpeta, file.Name);
+                File.Move(file.FullName, rutaCarpetaDestino);
 
                 if (linea == 0)
                 {
@@ -313,8 +313,7 @@ namespace Afca.Laboratorio
                 StreamReader sr = new StreamReader(file.FullName);
                 string line;
                 int i = 0;
-               ;
-
+              
                 sr.DiscardBufferedData();
                 sr.BaseStream.Seek(0, SeekOrigin.Begin);
                 sr.BaseStream.Position = 0;
@@ -324,46 +323,57 @@ namespace Afca.Laboratorio
                 {
                     try
                     {
+                        // Origen y Naturaleza?
                         DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
-                        //lees los campos de la linea de texto y los metes en el campo correspondiene del datarow
                         datarow["AsociacionID"] = 1;
                         datarow["LaboratorioID"] = "1";
-                        datarow["ID"] = "69" + line.Substring(5, 12);
-                        datarow["Establo"] =  line.Substring(12, 6);
-                        datarow["Etiqueta"] = line.Substring(12, 6);
-                        datarow["Ruta"] = line.Substring(12, 6);
-                        datarow["FechaRecogida"] = line.Substring(45, 2) + "/" + line.Substring(47, 2) + "/" + line.Substring(49, 2);
-                        datarow["Grasa"] = decimal.Parse(line.Substring(17, 3)) / 100;
-
-                        //datarow["Proteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
-                        //datarow["Lactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
-                        //datarow["RCS"] = int.Parse(line.Substring(26, 5));
-                        //datarow["Bacterias"] = int.Parse(line.Substring(26, 5));
-                        //datarow["Urea"] = int.Parse(line.Substring(26, 5));
-                        //datarow["ExtractoSeco"] = decimal.Parse(line.Substring(31, 4)) / 100;
-                        //datarow["IgG"] = line.Substring(26, 6);
-                        //datarow["PC"] = int.Parse(line.Substring(26, 5));
-                        //datarow["VarPC"] = decimal.Parse(line.Substring(35, 6)) / 1000;
-                        //datarow["Inhibidores"] =int.Parse(line.Substring(35, 1));
-                        //datarow["NC"] = int.Parse(line.Substring(51, 80));
-                        //datarow["Cierre"] = line.Substring(51, 1));
-
-                        //datarow["MediaGrasa"] = decimal.Parse(line.Substring(17, 3)) / 100;
-                        //datarow["MediaProteina"] = decimal.Parse(line.Substring(20, 3)) / 100;
-                        //datarow["MediaLactosa"] = decimal.Parse(line.Substring(23, 3)) / 100;
-                        //datarow["MediaRCS"] = int.Parse(line.Substring(26, 5));
-                        //datarow["MediaBacterias"] = int.Parse(line.Substring(26, 5));
-                        //datarow["MediaUrea"] = int.Parse(line.Substring(26, 5));
-                        //datarow["MediaExtractoSeco"] = decimal.Parse(line.Substring(31, 4)) / 100;
-                        //datarow["MediaPC"] = int.Parse(line.Substring(26, 5));
-
-                        //datarow["Ano"] =  int.Parse(line.Substring(51, 1));
-                        //datarow["Mes"] =  int.Parse(line.Substring(52, 1));
-                        //datarow["Fichero"] = file.Name;
-
+                        datarow["ID"] =line.Substring(0, 16).TrimStart('0');
+                        //chemi Ruta,naturaleza,Urea y Origen
+                        datarow["Ruta"] = "Ruta 6";
+                        datarow["Naturaleza"] ="N";
+                        datarow["Origen"] = "O";
+                        datarow["Urea"] = 111;
+                        //fin chemi
+                        //procedencia 2 :CA (todos son de Cantabria)
+                        datarow["Establo"] =  line.Substring(19, 7);
+                        datarow["FechaRecogida"] = line.Substring(26, 2) + "/" + line.Substring(28, 2) + "/" + line.Substring(30, 4);
+                        datarow["Bacterias"] = int.Parse(line.Substring(34, 6));
+                        datarow["RCS"] = int.Parse(line.Substring(40, 6));
+                        datarow["Grasa"] = decimal.Parse(line.Substring(46, 6)) / 100;
+                        datarow["Proteina"] = decimal.Parse(line.Substring(52, 6)) / 100;
+                        datarow["ExtractoSeco"] = decimal.Parse(line.Substring(58, 6)) / 100;
+                        //SNF? (6)
+                        datarow["Lactosa"] = decimal.Parse(line.Substring(70, 6)) / 100;
+                        datarow["VarPC"] = decimal.Parse(line.Substring(76, 6)) / 100000;
+                        datarow["PC"] = int.Parse(line.Substring(82, 6));
+                        //Bitricos? (6)
+                        datarow["Inhibidores"] = line.Substring(94, 1) =="S" ? true:false;
+                        datarow["Urea"] = int.Parse(line.Substring(95, 5));
+                        datarow["MediaBacterias"] = int.Parse(line.Substring(100, 6));
+                        datarow["MediaRCS"] = int.Parse(line.Substring(106, 6));
+                        datarow["MediaGrasa"] = decimal.Parse(line.Substring(113, 6)) / 100;
+                        datarow["MediaProteina"] = decimal.Parse(line.Substring(119, 6)) / 100;
+                        datarow["MediaExtractoSeco"] = decimal.Parse(line.Substring(125, 6)) / 100;
+                        datarow["MediaLactosa"] = decimal.Parse(line.Substring(131, 6)) / 100;
+                        datarow["MediaPC"] = int.Parse(line.Substring(137, 6));
+                        datarow["MediaUrea"] = int.Parse(line.Substring(143, 6));
+                        datarow["IgG"] = line.Substring(149, 7);
+                        //calostros (156,6)
+                        //Aflatoxinas (162,6)
+                        //Quinolonas (168,6)
+                        //Mezcla (174,10)
+                        datarow["Industria"] = line.Substring(184, 6); //Ruta o Industria
+                        datarow["CodEnIndustria"] = line.Substring(190, 14); //Ruta o Industria
+                        datarow["Etiqueta"] = line.Substring(204, 6); //Ruta o Industria
+                        datarow["CEA"] = line.Substring(210, 14);//Cod en Industria
+                        datarow["Mes"] = int.Parse(line.Substring(224, 2));
+                        datarow["Ano"] = int.Parse(line.Substring(226, 4));
+                        datarow["Cierre"] = line.Substring(230, 1) == "S" ? true : false;
+                        datarow["NC"] = line.Substring(231, 10);
+                        datarow["Fichero"] = file.Name;
 
                         toSaveTanqueData.Tables[0].Rows.Add(datarow);
-                        GuardarDatosTanque();
+                        //GuardarDatosTanque();
                         line = sr.ReadLine();
                         i++;
                     }
@@ -374,13 +384,14 @@ namespace Afca.Laboratorio
                         i++;
                         sr.Close();
                         return false;
-
                     }
                 }
                 sr.Close();
                 //....Mover Ficheros a directorio Cargados
+                string nombreCarpeta = Path.GetDirectoryName(file.FullName) + "\\old";
+                string rutaCarpetaDestino = Path.Combine(nombreCarpeta, file.Name);
+                File.Move(file.FullName, rutaCarpetaDestino);
 
-                //...
                 return true;
             }
             catch (System.Exception e)
@@ -412,12 +423,9 @@ namespace Afca.Laboratorio
 
             try
             {
-                //_service.UpdateBuzonLaboratorioData(toSaveData);
                 _service.UpdateBuzonLaboratorioTanqueData(toSaveTanqueData);
-                //toSaveData.AcceptChanges();
                 toSaveTanqueData.AcceptChanges();
-                //_service.UpdateBuzonLaboratorioEmparejar();
-                _service.UpdateBuzonLaboratorioTanqueEmparejar();
+               // _service.UpdateBuzonLaboratorioTanqueEmparejar();
                 AppendTraceText("Información guardada correctamente");
             }
             catch (System.Exception e)

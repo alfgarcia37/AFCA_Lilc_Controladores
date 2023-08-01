@@ -86,6 +86,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BuzonLaboratorioData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\BuzonLaboratorioTanqueData.cs">
+      <DependentUpon>BuzonLaboratorioTanqueData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\BuzonLaboratorioTanqueData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

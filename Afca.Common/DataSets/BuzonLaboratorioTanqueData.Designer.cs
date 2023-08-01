@@ -287,9 +287,19 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnEstablo;
             
+            private global::System.Data.DataColumn columnCEA;
+            
             private global::System.Data.DataColumn columnFechaRecogida;
             
             private global::System.Data.DataColumn columnEtiqueta;
+            
+            private global::System.Data.DataColumn columnCodEnIndustria;
+            
+            private global::System.Data.DataColumn columnIndustria;
+            
+            private global::System.Data.DataColumn columnNaturaleza;
+            
+            private global::System.Data.DataColumn columnOrigen;
             
             private global::System.Data.DataColumn columnRuta;
             
@@ -315,8 +325,6 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnInhibidores;
             
-            private global::System.Data.DataColumn columnNC;
-            
             private global::System.Data.DataColumn columnCierre;
             
             private global::System.Data.DataColumn columnMediaBacterias;
@@ -329,6 +337,8 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnMediaLactosa;
             
+            private global::System.Data.DataColumn columnMediaExtractoSeco;
+            
             private global::System.Data.DataColumn columnMediaUrea;
             
             private global::System.Data.DataColumn columnMediaPC;
@@ -336,6 +346,8 @@ namespace Afca.Common.DataSets {
             private global::System.Data.DataColumn columnAno;
             
             private global::System.Data.DataColumn columnMes;
+            
+            private global::System.Data.DataColumn columnNC;
             
             private global::System.Data.DataColumn columnFichero;
             
@@ -406,6 +418,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CEAColumn {
+                get {
+                    return this.columnCEA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn FechaRecogidaColumn {
                 get {
                     return this.columnFechaRecogida;
@@ -417,6 +437,38 @@ namespace Afca.Common.DataSets {
             public global::System.Data.DataColumn EtiquetaColumn {
                 get {
                     return this.columnEtiqueta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CodEnIndustriaColumn {
+                get {
+                    return this.columnCodEnIndustria;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn IndustriaColumn {
+                get {
+                    return this.columnIndustria;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NaturalezaColumn {
+                get {
+                    return this.columnNaturaleza;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OrigenColumn {
+                get {
+                    return this.columnOrigen;
                 }
             }
             
@@ -518,14 +570,6 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NCColumn {
-                get {
-                    return this.columnNC;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn CierreColumn {
                 get {
                     return this.columnCierre;
@@ -574,6 +618,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn MediaExtractoSecoColumn {
+                get {
+                    return this.columnMediaExtractoSeco;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn MediaUreaColumn {
                 get {
                     return this.columnMediaUrea;
@@ -601,6 +653,14 @@ namespace Afca.Common.DataSets {
             public global::System.Data.DataColumn MesColumn {
                 get {
                     return this.columnMes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn NCColumn {
+                get {
+                    return this.columnNC;
                 }
             }
             
@@ -654,8 +714,13 @@ namespace Afca.Common.DataSets {
                         string LaboratorioID, 
                         string ID, 
                         string Establo, 
+                        string CEA, 
                         string FechaRecogida, 
                         string Etiqueta, 
+                        string CodEnIndustria, 
+                        string Industria, 
+                        string Naturaleza, 
+                        string Origen, 
                         string Ruta, 
                         string Grasa, 
                         string Proteina, 
@@ -668,17 +733,18 @@ namespace Afca.Common.DataSets {
                         string PC, 
                         string VarPC, 
                         string Inhibidores, 
-                        string NC, 
                         string Cierre, 
                         string MediaBacterias, 
                         string MediaRCS, 
                         string MediaGrasa, 
                         string MediaProteina, 
                         string MediaLactosa, 
+                        string MediaExtractoSeco, 
                         string MediaUrea, 
                         string MediaPC, 
                         string Ano, 
                         string Mes, 
+                        string NC, 
                         string Fichero) {
                 BuzonLaboratorioTanqueRow rowBuzonLaboratorioTanqueRow = ((BuzonLaboratorioTanqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -686,8 +752,13 @@ namespace Afca.Common.DataSets {
                         LaboratorioID,
                         ID,
                         Establo,
+                        CEA,
                         FechaRecogida,
                         Etiqueta,
+                        CodEnIndustria,
+                        Industria,
+                        Naturaleza,
+                        Origen,
                         Ruta,
                         Grasa,
                         Proteina,
@@ -700,17 +771,18 @@ namespace Afca.Common.DataSets {
                         PC,
                         VarPC,
                         Inhibidores,
-                        NC,
                         Cierre,
                         MediaBacterias,
                         MediaRCS,
                         MediaGrasa,
                         MediaProteina,
                         MediaLactosa,
+                        MediaExtractoSeco,
                         MediaUrea,
                         MediaPC,
                         Ano,
                         Mes,
+                        NC,
                         Fichero};
                 rowBuzonLaboratorioTanqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBuzonLaboratorioTanqueRow);
@@ -738,8 +810,13 @@ namespace Afca.Common.DataSets {
                 this.columnLaboratorioID = base.Columns["LaboratorioID"];
                 this.columnID = base.Columns["ID"];
                 this.columnEstablo = base.Columns["Establo"];
+                this.columnCEA = base.Columns["CEA"];
                 this.columnFechaRecogida = base.Columns["FechaRecogida"];
                 this.columnEtiqueta = base.Columns["Etiqueta"];
+                this.columnCodEnIndustria = base.Columns["CodEnIndustria"];
+                this.columnIndustria = base.Columns["Industria"];
+                this.columnNaturaleza = base.Columns["Naturaleza"];
+                this.columnOrigen = base.Columns["Origen"];
                 this.columnRuta = base.Columns["Ruta"];
                 this.columnGrasa = base.Columns["Grasa"];
                 this.columnProteina = base.Columns["Proteina"];
@@ -752,17 +829,18 @@ namespace Afca.Common.DataSets {
                 this.columnPC = base.Columns["PC"];
                 this.columnVarPC = base.Columns["VarPC"];
                 this.columnInhibidores = base.Columns["Inhibidores"];
-                this.columnNC = base.Columns["NC"];
                 this.columnCierre = base.Columns["Cierre"];
                 this.columnMediaBacterias = base.Columns["MediaBacterias"];
                 this.columnMediaRCS = base.Columns["MediaRCS"];
                 this.columnMediaGrasa = base.Columns["MediaGrasa"];
                 this.columnMediaProteina = base.Columns["MediaProteina"];
                 this.columnMediaLactosa = base.Columns["MediaLactosa"];
+                this.columnMediaExtractoSeco = base.Columns["MediaExtractoSeco"];
                 this.columnMediaUrea = base.Columns["MediaUrea"];
                 this.columnMediaPC = base.Columns["MediaPC"];
                 this.columnAno = base.Columns["Ano"];
                 this.columnMes = base.Columns["Mes"];
+                this.columnNC = base.Columns["NC"];
                 this.columnFichero = base.Columns["Fichero"];
             }
             
@@ -777,10 +855,20 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnID);
                 this.columnEstablo = new global::System.Data.DataColumn("Establo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstablo);
+                this.columnCEA = new global::System.Data.DataColumn("CEA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCEA);
                 this.columnFechaRecogida = new global::System.Data.DataColumn("FechaRecogida", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFechaRecogida);
                 this.columnEtiqueta = new global::System.Data.DataColumn("Etiqueta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEtiqueta);
+                this.columnCodEnIndustria = new global::System.Data.DataColumn("CodEnIndustria", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodEnIndustria);
+                this.columnIndustria = new global::System.Data.DataColumn("Industria", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIndustria);
+                this.columnNaturaleza = new global::System.Data.DataColumn("Naturaleza", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNaturaleza);
+                this.columnOrigen = new global::System.Data.DataColumn("Origen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrigen);
                 this.columnRuta = new global::System.Data.DataColumn("Ruta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRuta);
                 this.columnGrasa = new global::System.Data.DataColumn("Grasa", typeof(string), null, global::System.Data.MappingType.Element);
@@ -805,8 +893,6 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnVarPC);
                 this.columnInhibidores = new global::System.Data.DataColumn("Inhibidores", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInhibidores);
-                this.columnNC = new global::System.Data.DataColumn("NC", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNC);
                 this.columnCierre = new global::System.Data.DataColumn("Cierre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCierre);
                 this.columnMediaBacterias = new global::System.Data.DataColumn("MediaBacterias", typeof(string), null, global::System.Data.MappingType.Element);
@@ -819,6 +905,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnMediaProteina);
                 this.columnMediaLactosa = new global::System.Data.DataColumn("MediaLactosa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaLactosa);
+                this.columnMediaExtractoSeco = new global::System.Data.DataColumn("MediaExtractoSeco", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMediaExtractoSeco);
                 this.columnMediaUrea = new global::System.Data.DataColumn("MediaUrea", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMediaUrea);
                 this.columnMediaPC = new global::System.Data.DataColumn("MediaPC", typeof(string), null, global::System.Data.MappingType.Element);
@@ -827,6 +915,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnAno);
                 this.columnMes = new global::System.Data.DataColumn("Mes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMes);
+                this.columnNC = new global::System.Data.DataColumn("NC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNC);
                 this.columnFichero = new global::System.Data.DataColumn("Fichero", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFichero);
             }
@@ -1037,6 +1127,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string CEA {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.CEAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CEA\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.CEAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string FechaRecogida {
                 get {
                     try {
@@ -1066,6 +1172,73 @@ namespace Afca.Common.DataSets {
                 }
                 set {
                     this[this.tableBuzonLaboratorioTanque.EtiquetaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string CodEnIndustria {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.CodEnIndustriaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CodEnIndustria\' de la tabla \'BuzonLaboratorioTanque\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.CodEnIndustriaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Industria {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.IndustriaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Industria\' de la tabla \'BuzonLaboratorioTanque\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.IndustriaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Naturaleza {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.NaturalezaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Naturaleza\' de la tabla \'BuzonLaboratorioTanque\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.NaturalezaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Origen {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.OrigenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Origen\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.OrigenColumn] = value;
                 }
             }
             
@@ -1267,22 +1440,6 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string NC {
-                get {
-                    try {
-                        return ((string)(this[this.tableBuzonLaboratorioTanque.NCColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NC\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableBuzonLaboratorioTanque.NCColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Cierre {
                 get {
                     try {
@@ -1384,6 +1541,23 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string MediaExtractoSeco {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.MediaExtractoSecoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'MediaExtractoSeco\' de la tabla \'BuzonLaboratorioTanque\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.MediaExtractoSecoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string MediaUrea {
                 get {
                     try {
@@ -1444,6 +1618,22 @@ namespace Afca.Common.DataSets {
                 }
                 set {
                     this[this.tableBuzonLaboratorioTanque.MesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string NC {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.NCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NC\' de la tabla \'BuzonLaboratorioTanque\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.NCColumn] = value;
                 }
             }
             
@@ -1513,6 +1703,18 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCEANull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.CEAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCEANull() {
+                this[this.tableBuzonLaboratorioTanque.CEAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsFechaRecogidaNull() {
                 return this.IsNull(this.tableBuzonLaboratorioTanque.FechaRecogidaColumn);
             }
@@ -1533,6 +1735,54 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetEtiquetaNull() {
                 this[this.tableBuzonLaboratorioTanque.EtiquetaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCodEnIndustriaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.CodEnIndustriaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCodEnIndustriaNull() {
+                this[this.tableBuzonLaboratorioTanque.CodEnIndustriaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsIndustriaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.IndustriaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetIndustriaNull() {
+                this[this.tableBuzonLaboratorioTanque.IndustriaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNaturalezaNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.NaturalezaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNaturalezaNull() {
+                this[this.tableBuzonLaboratorioTanque.NaturalezaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOrigenNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.OrigenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOrigenNull() {
+                this[this.tableBuzonLaboratorioTanque.OrigenColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1681,18 +1931,6 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNCNull() {
-                return this.IsNull(this.tableBuzonLaboratorioTanque.NCColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNCNull() {
-                this[this.tableBuzonLaboratorioTanque.NCColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCierreNull() {
                 return this.IsNull(this.tableBuzonLaboratorioTanque.CierreColumn);
             }
@@ -1765,6 +2003,18 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsMediaExtractoSecoNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.MediaExtractoSecoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetMediaExtractoSecoNull() {
+                this[this.tableBuzonLaboratorioTanque.MediaExtractoSecoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsMediaUreaNull() {
                 return this.IsNull(this.tableBuzonLaboratorioTanque.MediaUreaColumn);
             }
@@ -1809,6 +2059,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetMesNull() {
                 this[this.tableBuzonLaboratorioTanque.MesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsNCNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.NCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetNCNull() {
+                this[this.tableBuzonLaboratorioTanque.NCColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
