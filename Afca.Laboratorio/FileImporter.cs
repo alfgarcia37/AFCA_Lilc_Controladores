@@ -43,17 +43,15 @@ namespace Afca.Laboratorio
             InitializeVariables();
         }
         void InitializeVariables()
-        {   //agc.Quitar cuando funcione todo
-
-            //this.timer.Elapsed += Timer_Elapsed;
-            //this.traceFileName = GetTraceFileName();
+        {   
+            this.timer.Elapsed += Timer_Elapsed;
+            this.traceFileName = GetTraceFileName();
             toSaveData = new BuzonLaboratorioData();
             toSaveTanqueData = new BuzonLaboratorioTanqueData();
             _service = AfcaServiceProvider.GetBuzonLaboratorioService();
 
-            
-            utePath.Text = @"C:\Afca\Laboratorio\ejemlab.txt";
-            // utePath.Text = @"N:\Laboratorio\prueba.dat";
+            //utePath.Text = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
+            utePath.Text = @"C:\Afca\Laboratorio\";
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -62,11 +60,13 @@ namespace Afca.Laboratorio
         }
         void IntervaloCumplido()
         {
-            this.timer.Stop();
+            AppendTraceText(DateTime.Now.ToString());
+            //this.timer.Stop();
             toSaveData.Clear();
+            cicloActual = cicloActual + 1;
             LimpiarPanel();
             RealizarTrabajoPeriodico();
-            cicloActual++;
+           
         }
         void LimpiarPanel()
         {
@@ -76,27 +76,33 @@ namespace Afca.Laboratorio
         void RealizarTrabajoPeriodico()
         {
             DeshabilitarControles();
-            if (LeerFicheros(null))
-                GuardarDatos();
-            HabilitarControles();
+            //if (LeerFicheros(null))
+            //    GuardarDatos();
+            if (LeerFicherosTanque(null))
+            {
+                GuardarDatosTanque();
+                HabilitarControles();
+                timer.Stop();
+            }
+                
             //this.timer.Interval = TimeSpan.FromMinutes(
-            //    double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
+            //    double.Parse(uneInterval.Value.ToString())).TotalMilliseconds/10;
 
             //timer.Start();
         }
         void HabilitarControles()
         {
-            //uneInterval.Enabled =
-            //    utePath.Enabled = 
-            //    utbtnStart.Enabled =
-            //    utbtnStop.Enabled = true;
+            uneInterval.Enabled =
+                utePath.Enabled =
+                utbtnStart.Enabled =
+                utbtnStop.Enabled = true;
         }
         void DeshabilitarControles()
         {
-            //uneInterval.Enabled =
-            //    utePath.Enabled =
-            //    utbtnStart.Enabled =
-            //    utbtnStop.Enabled = false;
+            uneInterval.Enabled =
+                utePath.Enabled =
+                utbtnStart.Enabled =
+                utbtnStop.Enabled = false;
         }
         bool LeerFicheros(FileInfo mifileinfo)
         {
@@ -151,29 +157,11 @@ namespace Afca.Laboratorio
         {
             AppendTraceText("Leyendo ficheros Tanque...");
 
-            if (mifileinfo != null)
+            if (mifileinfo != null)//Leo desde el path
             {
                 if (!String.IsNullOrEmpty(utePath.Text))
-                {   //Esto es para automatico
-                    //var files = FindFiles(utePath.Text, "*.txt");
-                    //if (files.Length > 0)
-                    //{
-                    //    int oks = 0;
-                    //    foreach (FileInfo file in files)
-                    //    {
-                    //        oks = LeerFicheroTanque(file) ? oks + 1 : oks;
-                    //    }
-                    //    AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
-                    //    return true;
-                    //}
+                {   
                     return LeerFicheroTanque(mifileinfo) ;
-
-                    //else
-                    //{
-                    //    AppendTraceText("0 ficheros cargados");
-                    //    return false;
-                    //}
-                   
                 }
                 else
                 {
@@ -181,33 +169,33 @@ namespace Afca.Laboratorio
                     return false;
                 }
             }
-            else
+            else//lectura Automatica
             {
-
-                return LeerFichero(mifileinfo);
-
+                
+                var files = FindFiles(utePath.Text, "LILC_AFCA*.*");
+                if (files.Length > 0)
+                {
+                    int oks = 0;
+                    foreach (FileInfo file in files)
+                    {
+                        oks = LeerFicheroTanque(file) ? oks + 1 : oks;
+                    }
+                    AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
+                    return true;
+                }
+                return false;
             }
-
-
         }
         FileInfo[] FindFiles(string directoryPath, string patternName)
         {
-
             FileInfo fileInfo = new FileInfo(directoryPath);
-
             // Obtener el DirectoryInfo de la ruta del archivo
             DirectoryInfo directoryInfo = fileInfo.Directory;
-
             // Verificar si el directorio existe antes de realizar cualquier operación
-           // if (directoryInfo.Exists)
-
-
-
-                if (!directoryInfo.Exists)
+            if (!directoryInfo.Exists)
             {
                 throw new Exception("El directorio especificado no existe.");
             }
-
            // DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
             return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
         }
@@ -327,16 +315,13 @@ namespace Afca.Laboratorio
                         DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
                         datarow["AsociacionID"] = 1;
                         datarow["LaboratorioID"] = "1";
-                        datarow["ID"] =line.Substring(0, 16).TrimStart('0');
+                        datarow["ID"] =line.Substring(0, 16).Trim();
                         //chemi Ruta,naturaleza,Urea y Origen
-                        datarow["Ruta"] = "Ruta 6";
-                        datarow["Naturaleza"] ="N";
-                        datarow["Origen"] = "O";
-                        datarow["Urea"] = 111;
+                        datarow["Ruta"] = "Ruta";
                         //fin chemi
                         //procedencia 2 :CA (todos son de Cantabria)
-                        datarow["Establo"] =  line.Substring(19, 7);
-                        datarow["FechaRecogida"] = line.Substring(26, 2) + "/" + line.Substring(28, 2) + "/" + line.Substring(30, 4);
+                        datarow["Establo"] =  line.Substring(18, 7);
+                        datarow["FechaRecogida"] = line.Substring(32, 2) + "/" + line.Substring(30, 2) + "/" + line.Substring(26, 4);
                         datarow["Bacterias"] = int.Parse(line.Substring(34, 6));
                         datarow["RCS"] = int.Parse(line.Substring(40, 6));
                         datarow["Grasa"] = decimal.Parse(line.Substring(46, 6)) / 100;
@@ -348,29 +333,34 @@ namespace Afca.Laboratorio
                         datarow["PC"] = int.Parse(line.Substring(82, 6));
                         //Bitricos? (6)
                         datarow["Inhibidores"] = line.Substring(94, 1) =="S" ? true:false;
-                        datarow["Urea"] = int.Parse(line.Substring(95, 5));
-                        datarow["MediaBacterias"] = int.Parse(line.Substring(100, 6));
-                        datarow["MediaRCS"] = int.Parse(line.Substring(106, 6));
+                        datarow["Urea"] = int.Parse(line.Substring(95, 6));
+
+                        datarow["MediaBacterias"] = int.Parse(line.Substring(101, 6)); 
+                        datarow["MediaRCS"] = int.Parse(line.Substring(107, 6));
                         datarow["MediaGrasa"] = decimal.Parse(line.Substring(113, 6)) / 100;
                         datarow["MediaProteina"] = decimal.Parse(line.Substring(119, 6)) / 100;
                         datarow["MediaExtractoSeco"] = decimal.Parse(line.Substring(125, 6)) / 100;
                         datarow["MediaLactosa"] = decimal.Parse(line.Substring(131, 6)) / 100;
-                        datarow["MediaPC"] = int.Parse(line.Substring(137, 6));
-                        datarow["MediaUrea"] = int.Parse(line.Substring(143, 6));
-                        datarow["IgG"] = line.Substring(149, 7);
-                        //calostros (156,6)
-                        //Aflatoxinas (162,6)
-                        //Quinolonas (168,6)
-                        //Mezcla (174,10)
-                        datarow["Industria"] = line.Substring(184, 6); //Ruta o Industria
-                        datarow["CodEnIndustria"] = line.Substring(190, 14); //Ruta o Industria
-                        datarow["Etiqueta"] = line.Substring(204, 6); //Ruta o Industria
-                        datarow["CEA"] = line.Substring(210, 14);//Cod en Industria
-                        datarow["Mes"] = int.Parse(line.Substring(224, 2));
-                        datarow["Ano"] = int.Parse(line.Substring(226, 4));
-                        datarow["Cierre"] = line.Substring(230, 1) == "S" ? true : false;
-                        datarow["NC"] = line.Substring(231, 10);
+                        datarow["MediaPC"] = (int)decimal.Parse(line.Substring(137, 6));
+                        datarow["MediaUrea"] = (int)decimal.Parse(line.Substring(143, 6));
+
+                        datarow["IgG"] = line.Substring(149, 6);//calostros (155,6)
+                        //Aflatoxinas (155,6)
+                        //Quinolonas (161,6)
+                        //Mezcla (167,10)
+                        datarow["Industria"] = line.Substring(177, 6).ToString(); //Ruta o Industria
+                        datarow["CodEnIndustria"] = line.Substring(183, 14).ToString(); //Ruta o Industria
+                        datarow["Etiqueta"] = line.Substring(197, 6).ToString(); //Ruta o Industria
+                        datarow["CEA"] = line.Substring(203, 14);//Cod en Industria
+                        datarow["Mes"] = int.Parse(line.Substring(217, 2));
+                        datarow["Ano"] = int.Parse(line.Substring(219, 4));
+                        datarow["Cierre"] = line.Substring(223, 1) == "S" ? true : false;
+                        datarow["Origen"] = line.Substring(224, 1);
+                        datarow["Naturaleza"] = line.Substring(225, 1);
+
+                        datarow["NC"] = line.Substring(226, 10).ToString();
                         datarow["Fichero"] = file.Name;
+                        datarow["FechaRegistro"] = DateTime.Now;
 
                         toSaveTanqueData.Tables[0].Rows.Add(datarow);
                         //GuardarDatosTanque();
@@ -425,7 +415,7 @@ namespace Afca.Laboratorio
             {
                 _service.UpdateBuzonLaboratorioTanqueData(toSaveTanqueData);
                 toSaveTanqueData.AcceptChanges();
-               // _service.UpdateBuzonLaboratorioTanqueEmparejar();
+                _service.UpdateBuzonLaboratorioTanqueEmparejar();
                 AppendTraceText("Información guardada correctamente");
             }
             catch (System.Exception e)
@@ -492,16 +482,16 @@ namespace Afca.Laboratorio
                 return;
             }
             else
-                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds;
+                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds/10;
 
             if (String.IsNullOrEmpty(utePath.Text))
             {
                 MessageBox.Show("Ha de establecer un valor para la ruta delos ficheros");
                 return;
             }
-
+            timer.Start();
             AppendTraceText("Tarea arrancada");
-            IntervaloCumplido();//La primera vez se lanza manualmente
+            //IntervaloCumplido();//La primera vez se lanza manualmente
         }
         private void utbtnStop_Click(object sender, EventArgs e)
         {

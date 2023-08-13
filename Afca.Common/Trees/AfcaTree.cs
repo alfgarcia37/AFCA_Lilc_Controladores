@@ -572,7 +572,11 @@ namespace Afca.Common
             envPrincipalNode.ItemColumns.AddItemColumn(
                   new ItemColumn("Nacimientos", "Nacimientos", false, true));
             envPrincipalNode.ItemColumns.AddItemColumn(
-                           new ItemColumn("Recesivos", "Recesivos", false, true));
+                new ItemColumn("Recesivos", "Recesivos", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                new ItemColumn("LaboratorioTanque", "LaboratorioTanque", false, true));
+            envPrincipalNode.ItemColumns.AddItemColumn(
+                new ItemColumn("LaboratorioMensual", "LaboratorioMensual", false, true));
 
 
             return envPrincipalNode;

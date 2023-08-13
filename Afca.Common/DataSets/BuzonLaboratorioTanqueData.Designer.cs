@@ -351,6 +351,8 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnFichero;
             
+            private global::System.Data.DataColumn columnFechaRegistro;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BuzonLaboratorioTanqueDataTable() {
@@ -674,6 +676,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FechaRegistroColumn {
+                get {
+                    return this.columnFechaRegistro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -745,7 +755,8 @@ namespace Afca.Common.DataSets {
                         string Ano, 
                         string Mes, 
                         string NC, 
-                        string Fichero) {
+                        string Fichero, 
+                        string FechaRegistro) {
                 BuzonLaboratorioTanqueRow rowBuzonLaboratorioTanqueRow = ((BuzonLaboratorioTanqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         AsociacionID,
@@ -783,7 +794,8 @@ namespace Afca.Common.DataSets {
                         Ano,
                         Mes,
                         NC,
-                        Fichero};
+                        Fichero,
+                        FechaRegistro};
                 rowBuzonLaboratorioTanqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBuzonLaboratorioTanqueRow);
                 return rowBuzonLaboratorioTanqueRow;
@@ -842,6 +854,7 @@ namespace Afca.Common.DataSets {
                 this.columnMes = base.Columns["Mes"];
                 this.columnNC = base.Columns["NC"];
                 this.columnFichero = base.Columns["Fichero"];
+                this.columnFechaRegistro = base.Columns["FechaRegistro"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -919,6 +932,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnNC);
                 this.columnFichero = new global::System.Data.DataColumn("Fichero", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFichero);
+                this.columnFechaRegistro = new global::System.Data.DataColumn("FechaRegistro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaRegistro);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1655,6 +1670,23 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FechaRegistro {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorioTanque.FechaRegistroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaRegistro\' de la tabla \'BuzonLaboratorioTanque\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorioTanque.FechaRegistroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsAsociacionIDNull() {
                 return this.IsNull(this.tableBuzonLaboratorioTanque.AsociacionIDColumn);
             }
@@ -2083,6 +2115,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetFicheroNull() {
                 this[this.tableBuzonLaboratorioTanque.FicheroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFechaRegistroNull() {
+                return this.IsNull(this.tableBuzonLaboratorioTanque.FechaRegistroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFechaRegistroNull() {
+                this[this.tableBuzonLaboratorioTanque.FechaRegistroColumn] = global::System.Convert.DBNull;
             }
         }
         

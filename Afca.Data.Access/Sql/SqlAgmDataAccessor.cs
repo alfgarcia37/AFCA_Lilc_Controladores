@@ -28,24 +28,24 @@ namespace Afca.Data.Access
         // Hay posibilidad de crear un seleccionador en pantalla para poner a 1 ó 0 los sqlParameters (@controles,@lactaciones......)?
         public void PrepareAgmEnviosPrincipales()
         {
-            SqlParameter[] parameters = new SqlParameter[12];
+            SqlParameter[] parameters = new SqlParameter[13];
 
             parameters[0] = new SqlParameter("@controles",SqlDbType.Bit);
-            parameters[0].Value = 1;
+            parameters[0].Value = 0;
             parameters[1] = new SqlParameter("@lactaciones", SqlDbType.Bit);
-            parameters[1].Value = 1;
+            parameters[1].Value = 0;
             parameters[2] = new SqlParameter("@inseminaciones", SqlDbType.Bit);
-            parameters[2].Value = 1;
+            parameters[2].Value = 0;
 
             parameters[3] = new SqlParameter("@reproductivo", SqlDbType.Bit);
             parameters[3].Value = 0;
             parameters[4] = new SqlParameter("@partos", SqlDbType.Bit);
-            parameters[4].Value = 1;
+            parameters[4].Value = 0;
             parameters[5] = new SqlParameter("@rcs", SqlDbType.Bit);
-            parameters[5].Value = 1;
+            parameters[5].Value = 0;
 
             parameters[6] = new SqlParameter("@censo", SqlDbType.Bit);
-            parameters[6].Value = 1;
+            parameters[6].Value = 0;
             parameters[7] = new SqlParameter("@genomica", SqlDbType.Bit);
             parameters[7].Value = 0;
             parameters[8] = new SqlParameter("@calificacion", SqlDbType.Bit);
@@ -57,6 +57,8 @@ namespace Afca.Data.Access
             parameters[10].Value = 0;
             parameters[11] = new SqlParameter("@encuestas", SqlDbType.Bit);
             parameters[11].Value = 0;
+            parameters[12] = new SqlParameter("@laboratorio", SqlDbType.Bit);
+            parameters[12].Value = 1;
             //this.ChangeDataBase("ControlLechero");
             this.ExecuteNonQuery("SP_GDM_CL_Controles", parameters);
            // this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles", parameters);
