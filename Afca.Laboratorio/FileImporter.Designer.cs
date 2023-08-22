@@ -177,6 +177,7 @@
             this.uneInterval.Name = "uneInterval";
             this.uneInterval.Size = new System.Drawing.Size(123, 24);
             this.uneInterval.TabIndex = 1;
+            this.uneInterval.ValueChanged += new System.EventHandler(this.uneInterval_ValueChanged);
             // 
             // ultraLabel1
             // 

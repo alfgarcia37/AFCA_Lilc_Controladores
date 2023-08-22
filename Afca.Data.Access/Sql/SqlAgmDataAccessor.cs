@@ -2,6 +2,7 @@
 using Afca.Common.DataAccessor;
 using Afca.Common.DataSets;
 using Afca.Common.Models;
+using FrameworkForge.Common;
 using FrameworkForge.Data;
 using Newtonsoft.Json;
 using System;
@@ -29,36 +30,36 @@ namespace Afca.Data.Access
         public void PrepareAgmEnviosPrincipales()
         {
             SqlParameter[] parameters = new SqlParameter[13];
-
+           
             parameters[0] = new SqlParameter("@controles",SqlDbType.Bit);
-            parameters[0].Value = 0;
+            parameters[0].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("controles")); 
             parameters[1] = new SqlParameter("@lactaciones", SqlDbType.Bit);
-            parameters[1].Value = 0;
+            parameters[1].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("lactaciones")); 
             parameters[2] = new SqlParameter("@inseminaciones", SqlDbType.Bit);
-            parameters[2].Value = 0;
+            parameters[2].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("inseminaciones")); 
 
             parameters[3] = new SqlParameter("@reproductivo", SqlDbType.Bit);
-            parameters[3].Value = 0;
+            parameters[3].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("reproductivo")); 
             parameters[4] = new SqlParameter("@partos", SqlDbType.Bit);
-            parameters[4].Value = 0;
+            parameters[4].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("partos")); 
             parameters[5] = new SqlParameter("@rcs", SqlDbType.Bit);
-            parameters[5].Value = 0;
+            parameters[5].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("rcs")); 
 
             parameters[6] = new SqlParameter("@censo", SqlDbType.Bit);
-            parameters[6].Value = 0;
+            parameters[6].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("censo")); 
             parameters[7] = new SqlParameter("@genomica", SqlDbType.Bit);
-            parameters[7].Value = 0;
+            parameters[7].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("genomica")); 
             parameters[8] = new SqlParameter("@calificacion", SqlDbType.Bit);
-            parameters[8].Value = 0;
+            parameters[8].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("calificacion")); 
 
             parameters[9] = new SqlParameter("@ico", SqlDbType.Bit);
-            parameters[9].Value = 0;
+            parameters[9].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("ico")); 
             parameters[10] = new SqlParameter("@recesivos", SqlDbType.Bit);
-            parameters[10].Value = 0;
+            parameters[10].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("recesivos")); 
             parameters[11] = new SqlParameter("@encuestas", SqlDbType.Bit);
-            parameters[11].Value = 0;
+            parameters[11].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("encuestas")); 
             parameters[12] = new SqlParameter("@laboratorio", SqlDbType.Bit);
-            parameters[12].Value = 1;
+            parameters[12].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("laboratorio")); 
             //this.ChangeDataBase("ControlLechero");
             this.ExecuteNonQuery("SP_GDM_CL_Controles", parameters);
            // this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles", parameters);

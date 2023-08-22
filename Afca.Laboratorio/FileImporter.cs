@@ -15,6 +15,7 @@ using Afca.Common;
 using Infragistics.Win.Misc;
 using FrameworkForge.Common.Interfaces;
 using static Infragistics.Win.OSVersionUtilities;
+using FrameworkForge.Common;
 //using static System.Net.WebRequestMethods;
 
 namespace Afca.Laboratorio
@@ -32,8 +33,8 @@ namespace Afca.Laboratorio
         IBuzonLaboratorioService _service;
         BuzonLaboratorioData toSaveData;
         BuzonLaboratorioTanqueData toSaveTanqueData;
-        
-        
+
+
 
         public delegate void SetTextDelegate(string text);
 
@@ -43,15 +44,16 @@ namespace Afca.Laboratorio
             InitializeVariables();
         }
         void InitializeVariables()
-        {   
+        {
             this.timer.Elapsed += Timer_Elapsed;
             this.traceFileName = GetTraceFileName();
             toSaveData = new BuzonLaboratorioData();
             toSaveTanqueData = new BuzonLaboratorioTanqueData();
             _service = AfcaServiceProvider.GetBuzonLaboratorioService();
 
-            //utePath.Text = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
-            utePath.Text = @"C:\Afca\Laboratorio\";
+            var utePathText = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
+            utePath.Text = ConfigurationProvider.GetConfigurationValue("pathLaboratorio");
+            //uneInterval.Value = 1;
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -66,7 +68,7 @@ namespace Afca.Laboratorio
             cicloActual = cicloActual + 1;
             LimpiarPanel();
             RealizarTrabajoPeriodico();
-           
+
         }
         void LimpiarPanel()
         {
@@ -84,7 +86,7 @@ namespace Afca.Laboratorio
                 HabilitarControles();
                 timer.Stop();
             }
-                
+
             //this.timer.Interval = TimeSpan.FromMinutes(
             //    double.Parse(uneInterval.Value.ToString())).TotalMilliseconds/10;
 
@@ -115,22 +117,22 @@ namespace Afca.Laboratorio
                     //if (Directory.Exists(utePath.Text))
                     {
                         var files = FindFiles(utePath.Text, "*.dat");
-                            if (files.Length > 0)
+                        if (files.Length > 0)
+                        {
+                            int oks = 0;
+                            foreach (FileInfo file in files)
                             {
-                                int oks = 0;
-                                foreach (FileInfo file in files)
-                                {
-                                    oks = LeerFichero(file) ? oks + 1 : oks;
-                                }
-                                AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
-                                return true;
+                                oks = LeerFichero(file) ? oks + 1 : oks;
                             }
-                            else
-                            {
-                                AppendTraceText("0 ficheros cargados");
-                                return false;
-                            }
-                        
+                            AppendTraceText(string.Format(@"{0} de {1} ficheros leidos correctamente", oks, files.Length));
+                            return true;
+                        }
+                        else
+                        {
+                            AppendTraceText("0 ficheros cargados");
+                            return false;
+                        }
+
                     }
                     //else
                     //{
@@ -160,8 +162,8 @@ namespace Afca.Laboratorio
             if (mifileinfo != null)//Leo desde el path
             {
                 if (!String.IsNullOrEmpty(utePath.Text))
-                {   
-                    return LeerFicheroTanque(mifileinfo) ;
+                {
+                    return LeerFicheroTanque(mifileinfo);
                 }
                 else
                 {
@@ -171,7 +173,7 @@ namespace Afca.Laboratorio
             }
             else//lectura Automatica
             {
-                
+
                 var files = FindFiles(utePath.Text, "LILC_AFCA*.*");
                 if (files.Length > 0)
                 {
@@ -188,6 +190,11 @@ namespace Afca.Laboratorio
         }
         FileInfo[] FindFiles(string directoryPath, string patternName)
         {
+            try
+            {
+
+
+           
             FileInfo fileInfo = new FileInfo(directoryPath);
             // Obtener el DirectoryInfo de la ruta del archivo
             DirectoryInfo directoryInfo = fileInfo.Directory;
@@ -196,8 +203,13 @@ namespace Afca.Laboratorio
             {
                 throw new Exception("El directorio especificado no existe.");
             }
-           // DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+            // DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
             return directoryInfo.GetFiles(string.Format("{0}", patternName), SearchOption.TopDirectoryOnly);
+            }
+            catch
+            {
+                throw new Exception("El directorio especificado no existe.");
+            }
         }
         bool LeerFichero(FileInfo file)
         {
@@ -274,7 +286,7 @@ namespace Afca.Laboratorio
                     }
                 }
                 sr.Close();
-               // GuardarDatos();//quitarlo cuanod active todo
+                // GuardarDatos();//quitarlo cuanod active todo
                 sr.Close();
                 int linea = 0;
                 //....Mover Ficheros a directorio Cargados
@@ -301,7 +313,7 @@ namespace Afca.Laboratorio
                 StreamReader sr = new StreamReader(file.FullName);
                 string line;
                 int i = 0;
-              
+
                 sr.DiscardBufferedData();
                 sr.BaseStream.Seek(0, SeekOrigin.Begin);
                 sr.BaseStream.Position = 0;
@@ -315,12 +327,12 @@ namespace Afca.Laboratorio
                         DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
                         datarow["AsociacionID"] = 1;
                         datarow["LaboratorioID"] = "1";
-                        datarow["ID"] =line.Substring(0, 16).Trim();
+                        datarow["ID"] = line.Substring(0, 16).Trim();
                         //chemi Ruta,naturaleza,Urea y Origen
                         datarow["Ruta"] = "Ruta";
                         //fin chemi
                         //procedencia 2 :CA (todos son de Cantabria)
-                        datarow["Establo"] =  line.Substring(18, 7);
+                        datarow["Establo"] = line.Substring(18, 7);
                         datarow["FechaRecogida"] = line.Substring(32, 2) + "/" + line.Substring(30, 2) + "/" + line.Substring(26, 4);
                         datarow["Bacterias"] = int.Parse(line.Substring(34, 6));
                         datarow["RCS"] = int.Parse(line.Substring(40, 6));
@@ -332,10 +344,10 @@ namespace Afca.Laboratorio
                         datarow["VarPC"] = decimal.Parse(line.Substring(76, 6)) / 100000;
                         datarow["PC"] = int.Parse(line.Substring(82, 6));
                         //Bitricos? (6)
-                        datarow["Inhibidores"] = line.Substring(94, 1) =="S" ? true:false;
+                        datarow["Inhibidores"] = line.Substring(94, 1) == "S" ? true : false;
                         datarow["Urea"] = int.Parse(line.Substring(95, 6));
 
-                        datarow["MediaBacterias"] = int.Parse(line.Substring(101, 6)); 
+                        datarow["MediaBacterias"] = int.Parse(line.Substring(101, 6));
                         datarow["MediaRCS"] = int.Parse(line.Substring(107, 6));
                         datarow["MediaGrasa"] = decimal.Parse(line.Substring(113, 6)) / 100;
                         datarow["MediaProteina"] = decimal.Parse(line.Substring(119, 6)) / 100;
@@ -417,6 +429,8 @@ namespace Afca.Laboratorio
                 toSaveTanqueData.AcceptChanges();
                 _service.UpdateBuzonLaboratorioTanqueEmparejar();
                 AppendTraceText("Información guardada correctamente");
+                timer.Stop();
+                //timer.Interval = 0;
             }
             catch (System.Exception e)
             {
@@ -482,7 +496,7 @@ namespace Afca.Laboratorio
                 return;
             }
             else
-                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds/10;
+                this.timer.Interval = TimeSpan.FromMinutes(double.Parse(uneInterval.Value.ToString())).TotalMilliseconds / 10;
 
             if (String.IsNullOrEmpty(utePath.Text))
             {
@@ -497,6 +511,7 @@ namespace Afca.Laboratorio
         {
             AppendTraceText("Tarea parada");
             timer.Stop();
+            timer.Interval = 0;
         }
 
         private void ultraButton1_Click(object sender, EventArgs e)
@@ -514,16 +529,8 @@ namespace Afca.Laboratorio
             //LeerFichero(file);
         }
 
-
         private void ultraPanelTop_PaintClient(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
+        { }
 
         private void button1_Click(object sender, EventArgs e)
         { //openFileDialog1
@@ -552,7 +559,10 @@ namespace Afca.Laboratorio
         {
 
         }
+        private void uneInterval_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
-
-
 }
