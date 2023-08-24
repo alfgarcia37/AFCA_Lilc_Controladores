@@ -290,7 +290,7 @@ namespace Afca.Laboratorio
                 sr.Close();
                 int linea = 0;
                 //....Mover Ficheros a directorio Cargados
-                string nombreCarpeta = Path.GetDirectoryName(file.FullName) + "\\old";
+                string nombreCarpeta = Path.GetDirectoryName(file.FullName) + "\\Cargados";
                 string rutaCarpetaDestino = Path.Combine(nombreCarpeta, file.Name);
                 File.Move(file.FullName, rutaCarpetaDestino);
 
