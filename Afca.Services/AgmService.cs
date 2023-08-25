@@ -81,7 +81,7 @@ namespace Afca.Services
                 new string[] { 
                 "Controles", "Lecturas","Censo","Genomica",
                 "Inseminaciones", "Lactaciones", "Calificaciones",
-                "Parametros", "Partos","Rcs","Nacimientos","Recesivos","LaboratorioTanque","laboratorioMensual" }
+                "Parametros", "Partos","Rcs","Nacimientos","Recesivos","LaboratorioTanque","LaboratorioMensual" }
                 : new string[] { entidad};
 
             AgmEnvioData data = entidades.Length==1?
