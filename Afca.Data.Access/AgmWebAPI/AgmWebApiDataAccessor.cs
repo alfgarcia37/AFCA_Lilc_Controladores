@@ -211,17 +211,19 @@ namespace Afca.Data.Access
             var response = await ServerRepositoryHttpClient()
                                 .PutAsync(urlAction
                                  , new StringContent(jsonDataStringified, Encoding.UTF8, "application/json"))
-                            .ConfigureAwait(false);
-
+                                .ConfigureAwait(false);
+            
             bool responseOk = HandleResponse(response);
 
-            string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = JsonConvert.DeserializeObject<Result>(json);
 
+            //var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            //var result = JsonConvert.DeserializeObject<Result>(json);
+            //return result;
 
-
-
-            var res= new Result() { success = false, value = "" };
-            return res;
+            //var res= new Result() { success = false, value = "" };
+            return result;
         }
         DataRow MapDownloadedMessageToDataRow(string entidad,string jsonMessage,DateTime startDateTime,DateTime endDateTime,DataRow row)
         {

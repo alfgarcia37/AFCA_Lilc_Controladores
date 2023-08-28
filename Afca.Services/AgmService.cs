@@ -198,6 +198,9 @@ namespace Afca.Services
             try
             {
                 int rowsSaved = agmDA.SaveDowloadedData(entidad, fechaDescarga, message);
+                //agc puedo cambiar el SP y poner un valor de output para saber los regs afectados
+                // se que siempre son /2 porque inserto en @RcsIn y luego vuelco @RcsIn en GanDMTemp..Down_Rcs (osea x2)
+                rowsSaved = rowsSaved / 2;
                 return Task.FromResult(new Result
                 {
                     success=true
