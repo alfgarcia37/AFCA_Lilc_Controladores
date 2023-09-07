@@ -370,7 +370,7 @@ namespace Afca.Laboratorio
                         datarow["Origen"] = line.Substring(224, 1);
                         datarow["Naturaleza"] = line.Substring(225, 1);
 
-                        datarow["NC"] = line.Substring(226, 10).ToString();
+                        datarow["NC"] = line.Substring(226).Trim().ToString();
                         datarow["Fichero"] = file.Name;
                         datarow["FechaRegistro"] = DateTime.Now;
 

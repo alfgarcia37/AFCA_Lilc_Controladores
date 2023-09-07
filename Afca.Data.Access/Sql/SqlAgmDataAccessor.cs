@@ -29,7 +29,7 @@ namespace Afca.Data.Access
         // Hay posibilidad de crear un seleccionador en pantalla para poner a 1 ó 0 los sqlParameters (@controles,@lactaciones......)?
         public void PrepareAgmEnviosPrincipales()
         {
-            SqlParameter[] parameters = new SqlParameter[13];
+            SqlParameter[] parameters = new SqlParameter[14];
            
             parameters[0] = new SqlParameter("@controles",SqlDbType.Bit);
             parameters[0].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("controles")); 
@@ -59,7 +59,9 @@ namespace Afca.Data.Access
             parameters[11] = new SqlParameter("@encuestas", SqlDbType.Bit);
             parameters[11].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("encuestas")); 
             parameters[12] = new SqlParameter("@laboratorio", SqlDbType.Bit);
-            parameters[12].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("laboratorio")); 
+            parameters[12].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("laboratorio"));
+            parameters[13] = new SqlParameter("@nacimiento", SqlDbType.Bit);
+            parameters[13].Value = int.Parse(ConfigurationProvider.GetConfigurationValue("nacimiento"));
             //this.ChangeDataBase("ControlLechero");
             this.ExecuteNonQuery("SP_GDM_CL_Controles", parameters);
            // this.ExecuteNonQuery(CommandType.StoredProcedure, "sp_GDM_CL_Controles", parameters);
