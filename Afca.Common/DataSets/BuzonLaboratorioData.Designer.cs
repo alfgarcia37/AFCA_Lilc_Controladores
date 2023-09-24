@@ -326,6 +326,14 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnCruzado;
             
+            private global::System.Data.DataColumn columnAC26;
+            
+            private global::System.Data.DataColumn columnAC27;
+            
+            private global::System.Data.DataColumn columnAC28;
+            
+            private global::System.Data.DataColumn columnAC29;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BuzonLaboratorioDataTable() {
@@ -553,6 +561,38 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AC26Column {
+                get {
+                    return this.columnAC26;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AC27Column {
+                get {
+                    return this.columnAC27;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AC28Column {
+                get {
+                    return this.columnAC28;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn AC29Column {
+                get {
+                    return this.columnAC29;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -612,7 +652,11 @@ namespace Afca.Common.DataSets {
                         float Bhb, 
                         float Urea, 
                         string FechaRegistro, 
-                        string Cruzado) {
+                        string Cruzado, 
+                        string AC26, 
+                        string AC27, 
+                        string AC28, 
+                        string AC29) {
                 BuzonLaboratorioRow rowBuzonLaboratorioRow = ((BuzonLaboratorioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -638,7 +682,11 @@ namespace Afca.Common.DataSets {
                         Bhb,
                         Urea,
                         FechaRegistro,
-                        Cruzado};
+                        Cruzado,
+                        AC26,
+                        AC27,
+                        AC28,
+                        AC29};
                 rowBuzonLaboratorioRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBuzonLaboratorioRow);
                 return rowBuzonLaboratorioRow;
@@ -692,6 +740,10 @@ namespace Afca.Common.DataSets {
                 this.columnUrea = base.Columns["Urea"];
                 this.columnFechaRegistro = base.Columns["FechaRegistro"];
                 this.columnCruzado = base.Columns["Cruzado"];
+                this.columnAC26 = base.Columns["AC26"];
+                this.columnAC27 = base.Columns["AC27"];
+                this.columnAC28 = base.Columns["AC28"];
+                this.columnAC29 = base.Columns["AC29"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -745,6 +797,14 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnFechaRegistro);
                 this.columnCruzado = new global::System.Data.DataColumn("Cruzado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCruzado);
+                this.columnAC26 = new global::System.Data.DataColumn("AC26", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAC26);
+                this.columnAC27 = new global::System.Data.DataColumn("AC27", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAC27);
+                this.columnAC28 = new global::System.Data.DataColumn("AC28", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAC28);
+                this.columnAC29 = new global::System.Data.DataColumn("AC29", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAC29);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("BuzonLaboratorio_pk", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -1270,6 +1330,70 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AC26 {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorio.AC26Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AC26\' de la tabla \'BuzonLaboratorio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorio.AC26Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AC27 {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorio.AC27Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AC27\' de la tabla \'BuzonLaboratorio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorio.AC27Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AC28 {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorio.AC28Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AC28\' de la tabla \'BuzonLaboratorio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorio.AC28Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string AC29 {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorio.AC29Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'AC29\' de la tabla \'BuzonLaboratorio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorio.AC29Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEstabloNull() {
                 return this.IsNull(this.tableBuzonLaboratorio.EstabloColumn);
             }
@@ -1542,6 +1666,54 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCruzadoNull() {
                 this[this.tableBuzonLaboratorio.CruzadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAC26Null() {
+                return this.IsNull(this.tableBuzonLaboratorio.AC26Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAC26Null() {
+                this[this.tableBuzonLaboratorio.AC26Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAC27Null() {
+                return this.IsNull(this.tableBuzonLaboratorio.AC27Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAC27Null() {
+                this[this.tableBuzonLaboratorio.AC27Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAC28Null() {
+                return this.IsNull(this.tableBuzonLaboratorio.AC28Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAC28Null() {
+                this[this.tableBuzonLaboratorio.AC28Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAC29Null() {
+                return this.IsNull(this.tableBuzonLaboratorio.AC29Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAC29Null() {
+                this[this.tableBuzonLaboratorio.AC29Column] = global::System.Convert.DBNull;
             }
         }
         

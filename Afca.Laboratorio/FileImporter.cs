@@ -265,6 +265,12 @@ namespace Afca.Laboratorio
                         datarow["Acetona"] = decimal.Parse(line.Substring(31, 4)) / 1000;
                         datarow["Bhb"] = decimal.Parse(line.Substring(35, 4)) / 1000;
                         datarow["Urea"] = int.Parse(line.Substring(51, 3));
+
+                        datarow["AC26"] = decimal.Parse(line.Substring(54, 5)) / 100;
+                        datarow["AC27"] = decimal.Parse(line.Substring(59, 5)) / 100;
+                        datarow["AC28"] = decimal.Parse(line.Substring(64, 5)) / 100;
+                        datarow["AC29"] = decimal.Parse(line.Substring(69, 5)) / 100;
+
                         datarow["FechaEntrega"] = line.Substring(45, 2) + "/" + line.Substring(47, 2) + "/" + line.Substring(49, 2);
                         datarow["FechaAnalisis"] = line.Substring(39, 2) + "/" + line.Substring(41, 2) + "/" + line.Substring(43, 2);
                         datarow["Controlador"] = int.Parse(line.Substring(9, 2));
