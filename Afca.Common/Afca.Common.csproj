@@ -115,6 +115,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NacimientoSiluetasQueryData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\ParametroValorData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParametroValorData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\XmlData.cs">
       <DependentUpon>XmlData.xsd</DependentUpon>
     </Compile>
@@ -282,6 +287,17 @@
     </None>
     <None Include="DataSets\NacimientoSiluetasQueryData.xss">
       <DependentUpon>NacimientoSiluetasQueryData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\ParametroValorData.xsc">
+      <DependentUpon>ParametroValorData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\ParametroValorData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ParametroValorData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\ParametroValorData.xss">
+      <DependentUpon>ParametroValorData.xsd</DependentUpon>
     </None>
     <None Include="DataSets\XmlData.xsc">
       <DependentUpon>XmlData.xsd</DependentUpon>
