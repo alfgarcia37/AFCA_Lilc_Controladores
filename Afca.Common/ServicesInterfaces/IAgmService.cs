@@ -29,5 +29,6 @@ namespace Afca.Common.ServicesInterfaces
         Task<Result> SaveJsonDownloadedData(string entidad,DateTime fechaDescarga, string message);
         Task<Result> NotifyDescargaAsRecieved(string entidad=null);
         Task<Result> InsertDownloadedData();
-    }
+        Task<Result> ExecuteNotificacionesFirebase();
+  }
 }

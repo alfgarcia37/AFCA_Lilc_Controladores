@@ -111,5 +111,18 @@ namespace Afca.Common {
                 throw e;
             }
         }
-    }
+
+        public static IMuestrasService GetMuestrasService()
+        {
+          try
+          {
+            return (IMuestrasService)ServiceProvider.GetServiceInstance("IMuestrasService");
+          }
+          catch (SystemException e)
+          {
+            throw e;
+          }
+        }
+
+  }
 }

@@ -230,10 +230,12 @@ namespace Afca.UI
                 await Task.Run(() => HideUIProgressAction(currentSendingRow));
             }
             var resultado = await agmService.ExecuteIndicadores().ConfigureAwait(false);
-            //string statusSP = resultado.success ? "OK" : "ER";
+            //Ahora tengo que ejecutar del AGMwebApi... UserController
+            //[HttpGet("FirebaseToken")]
+            resultado = await agmService.ExecuteNotificacionesFirebase().ConfigureAwait(false);
 
 
-            HideCursor();
+      HideCursor();
         }
         void ShowUIProgressAction(UltraGridRow gridRow)
         {

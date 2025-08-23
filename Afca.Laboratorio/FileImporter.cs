@@ -1,7 +1,14 @@
-﻿using System;
+﻿using Afca.Common;
+using Afca.Common.DataSets;
+using Afca.Common.ServicesInterfaces;
+using FrameworkForge.Common;
+using FrameworkForge.Common.Interfaces;
+using Infragistics.Win.Misc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,18 +16,14 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Afca.Common.ServicesInterfaces;
-using Afca.Common.DataSets;
-using Afca.Common;
-using Infragistics.Win.Misc;
-using FrameworkForge.Common.Interfaces;
 using static Infragistics.Win.OSVersionUtilities;
-using FrameworkForge.Common;
 //using static System.Net.WebRequestMethods;
+// Add this namespace at the top of the file to resolve the ConfigurationManager issue
+using System.Configuration;
+
 
 namespace Afca.Laboratorio
 {
-
     public partial class FileImporter : Form
     {
         System.Timers.Timer timer = new System.Timers.Timer();
@@ -31,10 +34,9 @@ namespace Afca.Laboratorio
         long traceFileSizeLimit = 40;    //Maximun size of trace file in MB
 
         IBuzonLaboratorioService _service;
+        IMuestrasService _serviceMuestras;
         BuzonLaboratorioData toSaveData;
         BuzonLaboratorioTanqueData toSaveTanqueData;
-
-
 
         public delegate void SetTextDelegate(string text);
 
@@ -50,12 +52,13 @@ namespace Afca.Laboratorio
             toSaveData = new BuzonLaboratorioData();
             toSaveTanqueData = new BuzonLaboratorioTanqueData();
             _service = AfcaServiceProvider.GetBuzonLaboratorioService();
+            _serviceMuestras= AfcaServiceProvider.GetMuestrasService();
 
-            var utePathText = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
+      
+      var utePathText = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
             utePath.Text = ConfigurationProvider.GetConfigurationValue("pathLaboratorio");
             //uneInterval.Value = 1;
         }
-
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             IntervaloCumplido();
@@ -68,7 +71,6 @@ namespace Afca.Laboratorio
             cicloActual = cicloActual + 1;
             LimpiarPanel();
             RealizarTrabajoPeriodico();
-
         }
         void LimpiarPanel()
         {
@@ -86,11 +88,6 @@ namespace Afca.Laboratorio
                 HabilitarControles();
                 timer.Stop();
             }
-
-            //this.timer.Interval = TimeSpan.FromMinutes(
-            //    double.Parse(uneInterval.Value.ToString())).TotalMilliseconds/10;
-
-            //timer.Start();
         }
         void HabilitarControles()
         {
@@ -148,12 +145,8 @@ namespace Afca.Laboratorio
             }
             else
             {
-
                 return LeerFichero(mifileinfo);
-
             }
-
-
         }
         bool LeerFicherosTanque(FileInfo mifileinfo)
         {
@@ -409,7 +402,6 @@ namespace Afca.Laboratorio
                 return false;
             }
         }
-
         void GuardarDatos()
         {
             AppendTraceText("Guardando la informacion...");
@@ -520,7 +512,6 @@ namespace Afca.Laboratorio
             timer.Stop();
             timer.Interval = 0;
         }
-
         private void ultraButton1_Click(object sender, EventArgs e)
         {
             if (utePath.Text != "")
@@ -535,10 +526,8 @@ namespace Afca.Laboratorio
             //FileInfo file = new FileInfo(utePath.Text);
             //LeerFichero(file);
         }
-
         private void ultraPanelTop_PaintClient(object sender, PaintEventArgs e)
         { }
-
         private void button1_Click(object sender, EventArgs e)
         { //openFileDialog1
             //OpenFileDialog open = new OpenFileDialog();
@@ -548,7 +537,6 @@ namespace Afca.Laboratorio
                 utePath.Text = openFileDialog1.FileName;
             }
         }
-
         private void ultraButton2_Click(object sender, EventArgs e)
         {   //Tanques de LILC
             if (utePath.Text != "")
@@ -561,15 +549,84 @@ namespace Afca.Laboratorio
                 }
             }
         }
-
-        private void uteLog_ValueChanged(object sender, EventArgs e)
+      private  async void botonAPI_Click(object sender, EventArgs e)
+      {
+        //1. Cargar el fichero de configuración de la API
+        string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPath");
+        if (string.IsNullOrEmpty(apiConfigPath) )
         {
-
+          MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
+          return;
         }
-        private void uneInterval_ValueChanged(object sender, EventArgs e)
+        //2.Me conecto a la BD de CL para ver las muestras de analitica sin cruzar
+        try
         {
+          //var alfa = await _serviceMuestras.GetMuestrasCruzadas();
+          var valor=await   _serviceMuestras.GetMuestrasCruzadas();  
+          var MuestrasTotal = valor.Count();
+          var MuestrasMal= valor.Count(m => m.RCS == 0);
+          var PorcentajeMal = Convert.ToDouble(MuestrasMal/MuestrasTotal) * 100 ;
+          PorcentajeMal = Math.Round(PorcentajeMal, 2);
+          AppendTraceText(string.Format("Muestras Malas {0} de {1} : Porcentaje {2}", MuestrasMal, MuestrasTotal, PorcentajeMal));
+          foreach (var muestra in valor)
+            {
+              DataRow datarow = toSaveData.Tables["buzonLaboratorio"].NewRow();
 
+              datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
+              datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value;
+              datarow["Proteina"] = muestra?.Proteina ?? (object)DBNull.Value;
+              datarow["Lactosa"] = muestra?.Lactosa ?? (object)DBNull.Value;
+              datarow["RCS"] = muestra?.RCS ?? (object)DBNull.Value;
+              datarow["Acetona"] = muestra?.Acetona ?? (object)DBNull.Value;
+              datarow["Bhb"] = muestra?.Bhb ?? (object)DBNull.Value;
+              datarow["Urea"] = muestra?.Urea ?? (object)DBNull.Value;
+              datarow["AC26"] = muestra?.AC26 ?? (object)DBNull.Value;
+              datarow["AC27"] = muestra?.AC27 ?? (object)DBNull.Value;
+              datarow["AC28"] = muestra?.AC28 ?? (object)DBNull.Value;
+              datarow["AC29"] = muestra?.AC29 ?? (object)DBNull.Value;
+              datarow["Caseina"] = muestra?.Caseina ?? (object)DBNull.Value;
+              datarow["FechaEntrega"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
+              datarow["FechaAnalisis"] = muestra?.FechaAnalisis ?? (object)DBNull.Value;
+              datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
+              toSaveData.Tables[0].Rows.Add(datarow);
+            }
+          GuardarDatos();
         }
+        catch (Exception ex)
+        {
+          AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+        }
+        //3. Llamar a la API con el JSON creado y recibir la respuesta
+        try
+        {
+          // Aquí deberías implementar la lógica para llamar a la API con el JSON creado
+          // y manejar la respuesta. Por ejemplo, usando HttpClient para enviar una solicitud POST.
+          AppendTraceText("Llamada a la API realizada correctamente.");
+        }
+      catch (Exception ex)
+      {
+        AppendTraceText($"Error al llamar a la API: {ex.Message}");
+      }
+
 
     }
+
+
+    private async void botonAPI1_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        var alfa = await _serviceMuestras.GetMuestrasCruzadas();
+
+        foreach (var item in alfa)
+        {
+          Console.WriteLine(item.CodigoBarras);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Error: {ex.Message}");
+      }
+    }
+  }
 }

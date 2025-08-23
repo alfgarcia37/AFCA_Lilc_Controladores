@@ -18,15 +18,17 @@ namespace Afca
         [STAThread]
         static void Main()
         {
-            FrameworkForge.UI.ApplicationContext.Run();
-            //Encrypt();
+         //Encrypt();
+         FrameworkForge.UI.ApplicationContext.Run();
+            
         }
         static void ConfigureAgmWebAPI()
         {
             bool modifyConfig = false;
-
-            string url = "https://agmwebapis2.azurewebsites.net/api";
-            string credentials = "fernando@gmail.com;Pepona123";
+         //string url = "https://agmwebapi202411-a3b4aqh0e7a0gsgr.westeurope-01.azurewebsites.net/api";
+         string url = "https://agmwebdeveloper.azurewebsites.net/api";
+         //string url = "https://agmwebapis2.azurewebsites.net/api";
+         string credentials = "fernando@gmail.com;Pepona123";
 
             Debug.WriteLine($"Url:{url}");
             Debug.WriteLine($"credentials:{credentials}");
@@ -55,9 +57,12 @@ namespace Afca
 
         static void Encrypt()
         {
-            // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
+         // fon
+            //string apiweb = Encriptador.Encrypt("https://agmwebapi202411-a3b4aqh0e7a0gsgr.westeurope-01.azurewebsites.net/api", false);
+         string apiweb = Encriptador.Encrypt("https://agmwebdeveloper.azurewebsites.net/api", false);
+         // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
 
-            string conectionString = @"Server=CTXSQL\SQL14_2019;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+         string conectionString = @"Server=CTXSQL\SQL14_2019;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
             string conectionString1 = @"Server=localhost\SQLE_2K17;Database=controllechero_dev;Integrated Security=True;";
 
             //string conectionString = @"Data Source=CTX2011\CTXSQL2011;Initial Catalog=CLM2;Persist Security Info=true;User ID=alfonsog;Password=afca37

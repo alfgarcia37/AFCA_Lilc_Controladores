@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Afca.Services {
+namespace Afca.Services 
+{
     using System.Data;
     using Afca.Common.DataAccessor;
     using Afca.Common.ServicesInterfaces;

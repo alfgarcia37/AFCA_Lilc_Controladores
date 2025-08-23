@@ -14,7 +14,8 @@ namespace Afca.Common.DataAccessor
         Task<Result> ExecuteIndicadores();
         Task<AgmDownloadData> DownloadAgmData(string entidad);
         Task<Result> NotifyDescargaAsRecieved(string jsonData, string entidad = null);
-        
-        
-    }
+        Task<Result> ExecuteNotificacionesFirebase();
+
+
+  }
 }

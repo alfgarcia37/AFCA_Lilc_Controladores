@@ -80,27 +80,43 @@ namespace Afca.Data.Access
 
             var urlAction = UrlWebAPIController(dataHubController);
 
-            //urlAction = string.Format("{0}{1}", urlAction, asociacionId);
-            //var response = await ServerRepositoryHttpClient()
-            //                        .GetAsync(urlAction)
-            //                        .ConfigureAwait(false);
-
             urlAction = string.Concat(urlAction, "Runbook");
             var parameter = JsonConvert.ToString("body");
-            var response = await ServerRepositoryHttpClient()
-                              .PostAsync(urlAction
-                               , new StringContent(parameter, Encoding.UTF8, "application/json"))
+            var response = await ServerRepositoryHttpClient().PostAsync(urlAction, new StringContent(parameter, Encoding.UTF8, "application/json"))
                           .ConfigureAwait(false);
-
 
             bool responseOk = HandleResponse(response);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var result = JsonConvert.DeserializeObject<Result>(json);
 
             return result ?? null;
-
         }
-        //agc
+
+        public async Task<Result> ExecuteNotificacionesFirebase()
+        {
+          var setRoutine = await SetConnectionContext();
+
+          if (!setRoutine.success)
+            return new Result
+            {
+              success = false
+                               ,
+              value = setRoutine.value
+            };
+
+            var urlAction = UrlWebAPIController(dataHubController);
+            urlAction = string.Concat(urlAction, "FirebaseToken");
+            urlAction = "http://localhost/AGMWebAPI/api/Datahub/FirebaseToken";
+            var response = await ServerRepositoryHttpClient().GetAsync(urlAction).ConfigureAwait(false);
+
+            bool responseOk = HandleResponse(response);
+
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = JsonConvert.DeserializeObject<Result>(json);
+       
+            return result;
+    }
+
         public async Task<Result> DownloadRCSData()
         {
 
@@ -317,55 +333,36 @@ namespace Afca.Data.Access
         {
             if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
-                //throw exception and loggoff
-                //ex = new Exception(RGlobal.HTTP_401_Message)
-                //{
-                //    InternalMessage = RGlobal.HTTP_401_Internal
-                //};
+                
                 return false;
             }
             if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return false;
-                //throw new vException(RGlobal.HTTP_404_Message)
-                //{
-                //    InternalMessage = RGlobal.HTTP_404_Internal
-                //};
+               
             }
             if (response.StatusCode == System.Net.HttpStatusCode.Forbidden)
             {
                 return false;
-                //throw new vException(RGlobal.HTTP_403_Message)
-                //{
-                //    InternalMessage = RGlobal.HTTP_403_Internal
-                //};
+                
             }
 
             if (response.StatusCode == System.Net.HttpStatusCode.RequestEntityTooLarge)
             {
                 return false;
-                //throw new vException(RGlobal.HTTP_413_Message)
-                //{
-                //    InternalMessage = RGlobal.HTTP_413_Internal
-                //};
+               
             }
             if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 return false;
-                //throw new vException(RGlobal.HTTP_413_Message)
-                //{
-                //    InternalMessage = RGlobal.HTTP_413_Internal
-                //};
+               
             }
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK
                     && response.StatusCode != System.Net.HttpStatusCode.Accepted
                     && response.StatusCode != System.Net.HttpStatusCode.Created)
             {
-                //throw new vException(RGlobal.HTTP_Other)
-                //{
-                //    InternalMessage = response.StatusCode.ToString()
-                //};
+                
                 return false;
             }
             return true;

@@ -13,8 +13,8 @@ namespace Afca.Common.ServicesInterfaces {
     using FrameworkForge.Common.DataStructures;
     using Afca.Common.DataSets;
     
-    
-    public interface IBuzonLaboratorioService : IService {
+    public interface IBuzonLaboratorioService : IService 
+        {
         
         BuzonLaboratorioData LoadBuzonLaboratorioData();
         BuzonLaboratorioTanqueData LoadBuzonLaboratorioTanqueData();
