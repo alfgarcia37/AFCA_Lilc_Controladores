@@ -106,7 +106,7 @@ namespace Afca.Data.Access
 
             var urlAction = UrlWebAPIController(dataHubController);
             urlAction = string.Concat(urlAction, "FirebaseToken");
-            urlAction = "http://localhost/AGMWebAPI/api/Datahub/FirebaseToken";
+            //urlAction = "http://localhost/AGMWebAPI/api/Datahub/FirebaseToken";
             var response = await ServerRepositoryHttpClient().GetAsync(urlAction).ConfigureAwait(false);
 
             bool responseOk = HandleResponse(response);
@@ -289,11 +289,11 @@ namespace Afca.Data.Access
             //load from app.config (encrypted saved)
 
             var url = ConfigurationManager.AppSettings["AgmWebApiUrl"];
-
-            if (url != null)
-                urlWebAPI = Encriptador.Decrypt(url, false);
-            else
-                throw new Exception("Conexión con el Web API AGM no encontrada");
+            urlWebAPI = url;
+            //if (url != null)
+            //    urlWebAPI = Encriptador.Decrypt(url, false);
+            //else
+            //    throw new Exception("Conexión con el Web API AGM no encontrada");
         }
         void LoadWebApiCredentials()
         {

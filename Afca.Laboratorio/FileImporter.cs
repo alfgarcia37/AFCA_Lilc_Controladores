@@ -573,6 +573,7 @@ namespace Afca.Laboratorio
               DataRow datarow = toSaveData.Tables["buzonLaboratorio"].NewRow();
 
               datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
+              datarow["Establo"] = muestra?.Establo ?? (object)DBNull.Value;
               datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value;
               datarow["Proteina"] = muestra?.Proteina ?? (object)DBNull.Value;
               datarow["Lactosa"] = muestra?.Lactosa ?? (object)DBNull.Value;
@@ -586,8 +587,10 @@ namespace Afca.Laboratorio
               datarow["AC29"] = muestra?.AC29 ?? (object)DBNull.Value;
               datarow["Caseina"] = muestra?.Caseina ?? (object)DBNull.Value;
               datarow["FechaEntrega"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
-              datarow["FechaAnalisis"] = muestra?.FechaAnalisis ?? (object)DBNull.Value;
-              datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
+              //cambiar cuando la tengamos
+              //datarow["FechaAnalisis"] = muestra?.FechaAnalisis ?? (object)DBNull.Value;
+              datarow["FechaAnalisis"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
+          datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
               toSaveData.Tables[0].Rows.Add(datarow);
             }
           GuardarDatos();

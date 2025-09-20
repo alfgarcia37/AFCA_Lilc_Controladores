@@ -60,8 +60,8 @@ namespace Afca.Services
       {
         connectionString = ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString;
 
-        string query = $"SELECT TOP 1 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' and res_ab='a' and res_trc=0";
-        string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990000000001'";
+        //string query = $"SELECT TOP 1 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' and res_ab='a' and res_trc=0";
+        string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990021079860'";
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
           await connection.OpenAsync();
@@ -96,50 +96,39 @@ namespace Afca.Services
         var e = ex.Message;
         return new List<MuestraCruzada>(); // Retorna una lista vacía en caso de error
       }
-
       //Encabezadso con Basic authenticator. Construye el string de autenticación en Base64
       string authString = $"{usuario}:{pass}";
       string base64Auth = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(authString));
       client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Auth);
 
-      //string baseUrl = client.BaseAddress.ToString(); //https://resapi.lilc.es:3081/api/
-      //baseUrl = baseUrl + $"INSControllechero/cruzarmuestras/";//{FechaDesde}/{FechaHasta}";
-      //comentar para local
-     
+      string baseUrl = client.BaseAddress.ToString(); //https://resapi.lilc.es:3083/api/
+      baseUrl = baseUrl + $"Controllechero/cruzarmuestras/";//{FechaDesde}/{FechaHasta}";
+      //string baseUrl = "https://localhost:44347/api/controllechero/cruzarmuestras";
       try
       {
-        string baseUrl = "https://localhost:44347/api/controllechero/cruzarmuestras";
-         
         var json = JsonConvert.SerializeObject(ListaMuestras);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await client.PostAsync(baseUrl, content).ConfigureAwait(false);
         //var test = "https://agmwebapi.azurewebsites.net/api/values"; // Test URL for debugging
         //var responsetest = await client.GetAsync(test).ConfigureAwait(false);
         //string body = await responsetest.Content.ReadAsStringAsync();
-
         if (!response.IsSuccessStatusCode)
         {
           var errorBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
           throw new HttpRequestException($"Error en la llamada API: {response.StatusCode}, Detalles: {errorBody}");
         }
-
         // Si todo va bien, leer contenido
         var result = response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
         //var response = await client.PostAsJsonAsync(baseUrl, ListaMuestras);
         string responseBody = await response.Content.ReadAsStringAsync();
         List<MuestraCruzada> listaCruzada = JsonConvert.DeserializeObject<List<MuestraCruzada>>(responseBody);
-
         return listaCruzada ?? new List<MuestraCruzada>();
       }
-
       catch (Exception ex)
       {
         Console.WriteLine(ex.Message);
-
       }
       return new List<MuestraCruzada>();
-
     }
   }
 }
