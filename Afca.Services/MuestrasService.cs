@@ -21,9 +21,10 @@ namespace Afca.Services
   {
     public HttpClient client= new HttpClient();
     public List<Muestra> ListaMuestras = new List<Muestra>();
+    //public List<MuestraIndustria> ListaIndustria = new List<MuestraIndustria>();
     public string FechaDesde { get; set; }
     public string FechaHasta { get; set; }
-    string connectionString = ConfigurationManager.ConnectionStrings["controllechero"].ConnectionString;
+    string connectionString = ConfigurationManager.ConnectionStrings["controllechero_dev"].ConnectionString;
     // connectionString ="https://localhost:44347/api/"
 
     string usuario = "Lilc@1900";
@@ -45,7 +46,7 @@ namespace Afca.Services
     {
       if (string.IsNullOrEmpty(FechaHasta))
       {
-        FechaHasta = DateTime.Now.AddDays(1).ToString("dd-MM-yyyy");
+        FechaHasta = DateTime.Now.AddDays(3).ToString("dd-MM-yyyy");
       }
       if (string.IsNullOrEmpty(FechaDesde))
       {
@@ -59,13 +60,13 @@ namespace Afca.Services
       try
       {
         connectionString = ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString;
-
-        //string query = $"SELECT TOP 1 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' and res_ab='a' and res_trc=0";
-        string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990021079860'";
+        // dentro de un mes , quitar and res_trc=0 pr res_factu ya tendra valor
+        string query = $"SELECT TOP 50 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' and res_ab='a' and res_trc=0 and res_factu is null";
+        string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990021084401' and res_fprev between '{FechaDesde}' and '{FechaHasta}'";
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
           await connection.OpenAsync();
-          using (SqlCommand command = new SqlCommand(query_fake, connection))
+          using (SqlCommand command = new SqlCommand(query, connection))
           {
             using (SqlDataReader reader = await command.ExecuteReaderAsync())
             {
@@ -129,6 +130,39 @@ namespace Afca.Services
         Console.WriteLine(ex.Message);
       }
       return new List<MuestraCruzada>();
+    }
+    public async Task<List<MuestraIndustria>> GetMuestrasIndustria()
+    {
+      
+      string authString = $"{usuario}:{pass}";
+      string base64Auth = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(authString));
+      client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Auth);
+
+      string baseUrl = client.BaseAddress.ToString(); //https://resapi.lilc.es:3083/api/
+      baseUrl = baseUrl + $"Industria/GetMuestrasIndustria"; 
+      
+      try
+      {
+       
+        var response = await client.GetAsync(baseUrl).ConfigureAwait(false);
+
+        if (!response.IsSuccessStatusCode)
+        {
+          var errorBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+          throw new HttpRequestException($"Error en la llamada API: {response.StatusCode}, Detalles: {errorBody}");
+        }
+        // Si todo va bien, leer contenido
+        var result = response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        //var response = await client.PostAsJsonAsync(baseUrl, ListaMuestras);
+        string responseBody = await response.Content.ReadAsStringAsync();
+        List<MuestraIndustria> listaindustria = JsonConvert.DeserializeObject<List<MuestraIndustria>>(responseBody);
+        return listaindustria ?? new List<MuestraIndustria>();
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex.Message);
+      }
+      return new List<MuestraIndustria>();
     }
   }
 }

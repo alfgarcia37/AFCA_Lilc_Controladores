@@ -12,5 +12,6 @@ namespace Afca.Common.ServicesInterfaces
     public interface IMuestrasService : IService
     {
       Task<List<MuestraCruzada>> GetMuestrasCruzadas();
-    }
+      Task<List<MuestraIndustria>> GetMuestrasIndustria();
+  }
 }

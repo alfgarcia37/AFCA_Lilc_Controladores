@@ -146,6 +146,7 @@
       <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
     </Compile>
     <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Models\ClsMuestraIndustria.cs" />
     <Compile Include="Models\ClsMuestraCruzada.cs" />
     <Compile Include="Models\DownloadedData.cs" />
     <Compile Include="Models\ClsMuestra.cs" />
