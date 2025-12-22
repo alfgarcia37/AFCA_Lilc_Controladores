@@ -1,5 +1,6 @@
 ﻿using Afca.Common;
 using Afca.Common.DataSets;
+using Afca.Common.Models;
 using Afca.Common.ServicesInterfaces;
 using FrameworkForge.Common;
 using FrameworkForge.Common.Interfaces;
@@ -7,6 +8,9 @@ using Infragistics.Win.Misc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+//using static System.Net.WebRequestMethods;
+// Add this namespace at the top of the file to resolve the ConfigurationManager issue
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -17,9 +21,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Infragistics.Win.OSVersionUtilities;
-//using static System.Net.WebRequestMethods;
-// Add this namespace at the top of the file to resolve the ConfigurationManager issue
-using System.Configuration;
 
 
 namespace Afca.Laboratorio
@@ -55,7 +56,7 @@ namespace Afca.Laboratorio
             _serviceMuestras= AfcaServiceProvider.GetMuestrasService();
 
       
-      var utePathText = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
+            //utePath.Text = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
             utePath.Text = ConfigurationProvider.GetConfigurationValue("pathLaboratorio");
             //uneInterval.Value = 1;
         }
@@ -402,6 +403,10 @@ namespace Afca.Laboratorio
                 return false;
             }
         }
+
+
+
+
         void GuardarDatos()
         {
             AppendTraceText("Guardando la informacion...");
@@ -410,7 +415,7 @@ namespace Afca.Laboratorio
             {
                 _service.UpdateBuzonLaboratorioData(toSaveData);
                 toSaveData.AcceptChanges();
-                _service.UpdateBuzonLaboratorioEmparejar();
+                //_service.UpdateBuzonLaboratorioEmparejar();
                 AppendTraceText("Información guardada correctamente");
             }
             catch (System.Exception e)
@@ -426,7 +431,7 @@ namespace Afca.Laboratorio
             {
                 _service.UpdateBuzonLaboratorioTanqueData(toSaveTanqueData);
                 toSaveTanqueData.AcceptChanges();
-                _service.UpdateBuzonLaboratorioTanqueEmparejar();
+                //_service.UpdateBuzonLaboratorioTanqueEmparejar();
                 AppendTraceText("Información guardada correctamente");
                 timer.Stop();
                 //timer.Interval = 0;
@@ -471,15 +476,12 @@ namespace Afca.Laboratorio
         }
         void CheckTraceFileSizeLimit()
         {
-
             long lenght = new FileInfo(this.traceFileName).Length;
             long sizeMB = lenght / 1000000;
-
             if (sizeMB > traceFileSizeLimit)
             {
                 this.traceFileName = GetTraceFileName();
             }
-
         }
         string GetTraceFileName()
         {
@@ -529,111 +531,122 @@ namespace Afca.Laboratorio
         private void ultraPanelTop_PaintClient(object sender, PaintEventArgs e)
         { }
         private void button1_Click(object sender, EventArgs e)
-        { //openFileDialog1
-            //OpenFileDialog open = new OpenFileDialog();
+        {
             if (openFileDialog1.ShowDialog() == DialogResult.OK && openFileDialog1.ToString() != " ")
             {
-                //Movemos la ruta del archivo a nuestro Textbox creado para su posterior uso.
                 utePath.Text = openFileDialog1.FileName;
             }
         }
+       
         private void ultraButton2_Click(object sender, EventArgs e)
-        {   //Tanques de LILC
-            if (utePath.Text != "")
-            {
-                FileInfo file = new FileInfo(utePath.Text);
-                if (file.Exists)
+            {   //Tanques de LILC
+                if (utePath.Text != "")
                 {
-                    if (LeerFicherosTanque(file))
-                        GuardarDatosTanque();
+                    FileInfo file = new FileInfo(utePath.Text);
+                    if (file.Exists)
+                    {
+                        if (LeerFicherosTanque(file))
+                            GuardarDatosTanque();
+                    }
                 }
             }
-        }
-      private  async void botonAPI_Click(object sender, EventArgs e)
-      {
-        //1. Cargar el fichero de configuración de la API
-        string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPath");
-        if (string.IsNullOrEmpty(apiConfigPath) )
+        private  async void botonAPI_Click(object sender, EventArgs e)
         {
-          MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
-          return;
-        }
-        //2.Me conecto a la BD de CL para ver las muestras de analitica sin cruzar
-        try
-        {
-          var muestrasCruzadas=await  _serviceMuestras.GetMuestrasCruzadas();
-          //solo me intersan las que se han analizado estado='F';
-          muestrasCruzadas = muestrasCruzadas.Where(m => m.Estado == "F").ToList();
-          double MuestrasTotal = muestrasCruzadas.Count();
-          double MuestrasMal = muestrasCruzadas.Count(m => m.RCS == 0);
-          var porcmal=  (MuestrasMal) * 100 / MuestrasTotal;
-          double PorcentajeMal = Convert.ToDouble(MuestrasMal/MuestrasTotal) * 100 ;
-          PorcentajeMal = Math.Round(PorcentajeMal, 2);
-          AppendTraceText(string.Format("Muestras Malas {0} de {1} : Porcentaje {2}", MuestrasMal, MuestrasTotal, PorcentajeMal));
-          foreach (var muestra in muestrasCruzadas)
-            {
-              DataRow datarow = toSaveData.Tables["buzonLaboratorio"].NewRow();
-              datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
-              datarow["Establo"] = muestra?.Establo ?? (object)DBNull.Value;
-              datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value;
-              datarow["Proteina"] = muestra?.Proteina ?? (object)DBNull.Value;
-              datarow["Lactosa"] = muestra?.Lactosa ?? (object)DBNull.Value;
-              datarow["RCS"] = muestra?.RCS ?? (object)DBNull.Value;
-              datarow["Acetona"] = muestra?.Acetona ?? (object)DBNull.Value;
-              datarow["Bhb"] = muestra?.Bhb ?? (object)DBNull.Value;
-              datarow["Urea"] = muestra?.Urea ?? (object)DBNull.Value;
-              datarow["AC26"] = muestra?.AC26 ?? (object)DBNull.Value;
-              datarow["AC27"] = muestra?.AC27 ?? (object)DBNull.Value;
-              datarow["AC28"] = muestra?.AC28 ?? (object)DBNull.Value;
-              datarow["AC29"] = muestra?.AC29 ?? (object)DBNull.Value;
-              datarow["Caseina"] = muestra?.Caseina ?? (object)DBNull.Value;
-              datarow["FechaEntrega"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
-              //cambiar cuando la tengamos
-              //datarow["FechaAnalisis"] = muestra?.FechaAnalisis ?? (object)DBNull.Value;
-              datarow["FechaAnalisis"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
-              datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
-              toSaveData.Tables[0].Rows.Add(datarow);
-            }
-          GuardarDatos();
-        }
+          //1. Cargar el fichero de configuración de la API
+          string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPath");
+          if (string.IsNullOrEmpty(apiConfigPath) )
+          {
+            MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
+            return;
+          }
+          //2.Me conecto a la BD de CL para ver las muestras de analitica sin cruzar
+          try
+          {
+            var muestrasCruzadas=await  _serviceMuestras.GetMuestrasCruzadas();
+            if (muestrasCruzadas == null || muestrasCruzadas.Count() == 0)
+              {
+                AppendTraceText(string.Format("No hay muestras cruzadas para enviar a la API. o hay error en la cadena de conexion . {0} .... ", ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString.Substring(0,30)));
+                return;
+              }
+
+            //solo me intersan las que se han analizado estado='F';
+            muestrasCruzadas = muestrasCruzadas.Where(m => m.Estado == "F").ToList();
+            double MuestrasTotal = muestrasCruzadas.Count();
+            double MuestrasMal = muestrasCruzadas.Count(m => m.RCS == 0);
+            var porcmal=  (MuestrasMal) * 100 / MuestrasTotal;
+            double PorcentajeMal = Convert.ToDouble(MuestrasMal/MuestrasTotal) * 100 ;
+            PorcentajeMal = Math.Round(PorcentajeMal, 2);
+            AppendTraceText(string.Format("Muestras Malas {0} de {1} : Porcentaje {2}", MuestrasMal, MuestrasTotal, PorcentajeMal));
+            foreach (var muestra in muestrasCruzadas)
+              {
+                DataRow datarow = toSaveData.Tables["buzonLaboratorio"].NewRow();
+                datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
+                datarow["Establo"] = muestra?.Establo ?? (object)DBNull.Value;
+                datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value;
+                datarow["Proteina"] = muestra?.Proteina ?? (object)DBNull.Value;
+                datarow["Lactosa"] = muestra?.Lactosa ?? (object)DBNull.Value;
+                datarow["RCS"] = muestra?.RCS ?? (object)DBNull.Value;
+                datarow["Acetona"] = muestra?.Acetona ?? (object)DBNull.Value;
+                datarow["Bhb"] = muestra?.Bhb ?? (object)DBNull.Value;
+                datarow["Urea"] = muestra?.Urea ?? (object)DBNull.Value;
+                datarow["AC26"] = muestra?.AC26 ?? (object)DBNull.Value;
+                datarow["AC27"] = muestra?.AC27 ?? (object)DBNull.Value;
+                datarow["AC28"] = muestra?.AC28 ?? (object)DBNull.Value;
+                datarow["AC29"] = muestra?.AC29 ?? (object)DBNull.Value;
+                datarow["Caseina"] = muestra?.Caseina ?? (object)DBNull.Value;
+                datarow["FechaEntrega"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
+                datarow["FechaAnalisis"] = muestra?.FechaAnalisis ?? (object)DBNull.Value;
+                datarow["Controlador"] = int.Parse(muestra?.CodigoBarras.Substring(6, 2)) ;
+                datarow["Fichero"] = "mediante API";
+            //datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
+
+            toSaveData.Tables[0].Rows.Add(datarow);
+              }
+            GuardarDatos();
+          }
+          catch (Exception ex)
+          {
+            AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+          }
+          //3. Llamar a la API con el JSON creado y recibir la respuesta
+          try
+          {
+            // Aquí deberías implementar la lógica para llamar a la API con el JSON creado
+            // y manejar la respuesta. Por ejemplo, usando HttpClient para enviar una solicitud POST.
+            AppendTraceText("Llamada a la API realizada correctamente.");
+          }
         catch (Exception ex)
         {
-          AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+          AppendTraceText($"Error al llamar a la API: {ex.Message}");
         }
-        //3. Llamar a la API con el JSON creado y recibir la respuesta
-        try
+  }
+
+
+        private async void API_Industria_Click(object sender, EventArgs e)
         {
-          // Aquí deberías implementar la lógica para llamar a la API con el JSON creado
-          // y manejar la respuesta. Por ejemplo, usando HttpClient para enviar una solicitud POST.
+          List<MuestraIndustria> muestrasIndustria =new List<MuestraIndustria>();
+          //1. Cargar el fichero de configuración de la API
+          string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPath");
+          if (string.IsNullOrEmpty(apiConfigPath))
+          {
+            MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
+            return;
+          }
+      
+          try
+        {
+          if( CheckFechas.Checked==false)
+            muestrasIndustria = await _serviceMuestras.GetMuestrasIndustria(TextEstablo.Text, null, null);
+          else
+              muestrasIndustria = await _serviceMuestras.GetMuestrasIndustria(TextEstablo.Text,FDesde.Value, FHasta.Value);
+
           AppendTraceText("Llamada a la API realizada correctamente.");
-        }
-      catch (Exception ex)
-      {
-        AppendTraceText($"Error al llamar a la API: {ex.Message}");
-      }
-
-
-    }
-
-    private async void API_Industria_Click(object sender, EventArgs e)
-    {
-      //1. Cargar el fichero de configuración de la API
-      string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPath");
-      if (string.IsNullOrEmpty(apiConfigPath))
-      {
-        MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
-        return;
-      }
-      //2.Me conecto a la BD de CL para ver las muestras de analitica sin cruzar
-      try
-      {
-        var muestrasIndustria = await _serviceMuestras.GetMuestrasIndustria();
-        double MuestrasTotal = muestrasIndustria.Count();
-        AppendTraceText(string.Format("Muestras Recuperadas {0} ",  MuestrasTotal));
-        foreach (var muestra in muestrasIndustria)
-        {
-          // Origen y Naturaleza?
-          DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
+          double MuestrasTotal = muestrasIndustria.Count();
+          AppendTraceText(string.Format("Muestras Recuperadas {0} ",  MuestrasTotal));
+          foreach (var muestra in muestrasIndustria.Take(10))
+          {
+            // Origen y Naturaleza?
+            DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
           datarow["AsociacionID"] = 1;
           datarow["LaboratorioID"] = "1";
           datarow["Ruta"] = "Ruta";
@@ -642,9 +655,93 @@ namespace Afca.Laboratorio
 
           datarow["Establo"] = muestra?.Establo ?? (object)DBNull.Value;
           datarow["FechaRecogida"] = muestra?.FechaRecogida ?? (object)DBNull.Value; ;
-          datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value; 
-                         
-          datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value; 
+          datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
+
+          datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value;
+          datarow["Proteina"] = muestra?.Proteina ?? (object)DBNull.Value;
+          datarow["Lactosa"] = muestra?.Lactosa ?? (object)DBNull.Value;
+          datarow["ExtractoSeco"] = muestra?.Extracto ?? (object)DBNull.Value;
+          datarow["Bacterias"] = muestra?.Bacterias ?? (object)DBNull.Value;
+          datarow["RCS"] = muestra?.RCS ?? (object)DBNull.Value;
+          datarow["Inhibidores"] = muestra?.Inhibidor == "S" ? true : false;
+          datarow["PC"] = muestra?.PuntoCrioscopico ?? (object)DBNull.Value;
+          //      datarow["VarPC"] = muestra?.p ?? (object)DBNull.Value;  
+          datarow["Urea"] = muestra?.Urea ?? (object)DBNull.Value;
+          datarow["NC"] = muestra?.Observaciones ?? (object)DBNull.Value;
+
+          datarow["FechaRegistro"] = DateTime.Now;
+          datarow["Mes"] = 0;
+          datarow["Ano"] = 0;
+
+          //datarow["MediaBacterias"] = muestra?.MediaBacterias ?? (object)DBNull.Value;
+          //datarow["MediaRCS"] = muestra?.MediaCS ?? (object)DBNull.Value;
+          //datarow["MediaGrasa"] = muestra?.MediaGrasa ?? (object)DBNull.Value;
+          //datarow["MediaProteina"] = muestra?.MediaProteina ?? (object)DBNull.Value;
+          //datarow["MediaExtractoSeco"] = muestra?.MediaExtracto ?? (object)DBNull.Value;
+          //datarow["MediaLactosa"] = muestra?.MediaLactosa ?? (object)DBNull.Value;
+          //datarow["MediaPC"] = muestra?.MediaPuntoCrioscopico ?? (object)DBNull.Value;
+          //datarow["MediaUrea"] = muestra?.MediaUrea ?? (object)DBNull.Value;
+
+          datarow["Industria"] = muestra?.Industria ?? (object)DBNull.Value; //Ruta o Industria
+          datarow["CodEnIndustria"] = muestra?.CodEnIndustria ?? (object)DBNull.Value; //Ruta o Industria
+          datarow["Etiqueta"] = muestra?.Etiqueta ?? (object)DBNull.Value; //Ruta o Industria
+          datarow["CEA"] = muestra?.CEA ?? (object)DBNull.Value; //Cod en Industria
+          //datarow["Cierre"] = muestra?.c != "" ? true : false; // PREGUNTAR TXEMI SI PONER CAMPO PARA CIERRE
+
+          //datarow["Cierre"] = muestra?.c == "S" ? true : false;
+          datarow["Fichero"] = "mediante API";
+
+            toSaveTanqueData.Tables[0].Rows.Add(datarow);
+          
+          }
+          GuardarDatosTanque();
+        }
+        catch (Exception ex)
+        {
+          AppendTraceText($"Error al conectar a la BD ó llamada a la API : {ex.Message}");
+        }
+      
+
+      }
+
+        private async void API_Medias_Click(object sender, EventArgs e)
+      {
+
+        List<MuestraIndustria> muestrasIndustria = new List<MuestraIndustria>();
+        //1. Cargar el fichero de configuración de la API
+        string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPath");
+        if (string.IsNullOrEmpty(apiConfigPath))
+        {
+          MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
+          return;
+        }
+
+        try
+        {
+          if (CheckFechas.Checked == false)
+            muestrasIndustria = await _serviceMuestras.GetMediasIndustria(TextEstablo.Text, null, null);
+          else
+            muestrasIndustria = await _serviceMuestras.GetMediasIndustria(TextEstablo.Text,FDesde.Value, FHasta.Value);
+
+          AppendTraceText("Llamada a la API realizada correctamente.");
+          double MuestrasTotal = muestrasIndustria.Count();
+          AppendTraceText(string.Format("Muestras Recuperadas {0} ", MuestrasTotal));
+          foreach (var muestra in muestrasIndustria.Take(15))
+          {
+            // Origen y Naturaleza?
+            DataRow datarow = toSaveTanqueData.Tables["buzonLaboratorioTanque"].NewRow();
+            datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
+            datarow["AsociacionID"] = 1;
+            datarow["LaboratorioID"] = "1";
+            datarow["Ruta"] = "Ruta";
+            datarow["Origen"] = muestra?.Origen ?? (object)DBNull.Value;
+            datarow["Naturaleza"] = muestra?.Naturaleza ?? (object)DBNull.Value;
+
+            datarow["Establo"] = muestra?.Establo ?? (object)DBNull.Value;
+            datarow["FechaRecogida"] = muestra?.FechaRecogida ?? (object)DBNull.Value; ;
+
+
+          datarow["Grasa"] = muestra?.Grasa ?? (object)DBNull.Value;
           datarow["Proteina"] = muestra?.Proteina ?? (object)DBNull.Value;
           datarow["Lactosa"] = muestra?.Lactosa ?? (object)DBNull.Value;
           datarow["ExtractoSeco"] = muestra?.Extracto ?? (object)DBNull.Value;
@@ -657,51 +754,55 @@ namespace Afca.Laboratorio
           datarow["NC"] = muestra?.Observaciones ?? (object)DBNull.Value;
 
           datarow["FechaRegistro"] = DateTime.Now;
-          //datarow["MediaBacterias"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaRCS"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaGrasa"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaProteina"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaExtractoSeco"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaLactosa"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaPC"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["MediaUrea"] = muestra?.Grasa ?? (object)DBNull.Value;
+          datarow["Mes"] = int.Parse(muestra.Periodo.Substring(0, 2));
+          datarow["Ano"] = int.Parse(muestra.Periodo.Substring(3, 4));
 
-          //datarow["Industria"] = muestra?.Grasa ?? (object)DBNull.Value; //Ruta o Industria
-          //datarow["CodEnIndustria"] = muestra?.Etiqueta  ?? (object)DBNull.Value; //Ruta o Industria
-          //datarow["Etiqueta"] = muestra?.Etiqueta ?? (object)DBNull.Value; //Ruta o Industria
+          datarow["MediaBacterias"] = muestra?.MediaBacterias != null   ? (int)muestra.MediaBacterias  : 0;
+          datarow["MediaRCS"] = muestra?.MediaCS  != null ? (int)muestra.MediaCS : 0;
+          datarow["MediaGrasa"] = muestra?.MediaGrasa ?? (object)DBNull.Value;
+          datarow["MediaProteina"] = muestra?.MediaProteina ?? (object)DBNull.Value;
+          datarow["MediaExtractoSeco"] = muestra?.MediaExtracto ?? (object)DBNull.Value;
+          datarow["MediaLactosa"] = muestra?.MediaLactosa ?? (object)DBNull.Value;
+          datarow["MediaPC"] = muestra?.MediaPuntoCrioscopico != null ? (int)muestra.MediaPuntoCrioscopico : 0;
+          datarow["MediaUrea"] = muestra?.MediaUrea != null ? (int)muestra.MediaUrea : 0;
+
+          datarow["Industria"] = muestra?.Industria ?? (object)DBNull.Value; //Ruta o Industria
+          datarow["CodEnIndustria"] = muestra?.CodEnIndustria ?? (object)DBNull.Value; //Ruta o Industria
+          datarow["Etiqueta"] = muestra?.Etiqueta ?? (object)DBNull.Value; //Ruta o Industria
           datarow["CEA"] = muestra?.CEA ?? (object)DBNull.Value; //Cod en Industria
-          //datarow["Mes"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["Ano"] = muestra?.Grasa ?? (object)DBNull.Value;
-          //datarow["Cierre"] = muestra?.c == "S" ? true : false;
+          datarow["Cierre"] = muestra?.Periodo != "" ? true : false; // PREGUNTAR TXEMI SI PONER CAMPO PARA CIERRE
 
-          //datarow["Fichero"] = file.Name;
+          ////datarow["Cierre"] = muestra?.c == "S" ? true : false;
+          datarow["Fichero"] = "mediante API";
 
           toSaveTanqueData.Tables[0].Rows.Add(datarow);
-          //GuardarDatosTanque();
-          /*
-           variacion del punto crioscopico
-           Etiqueta (creo que es la industria)
 
-           * */
+          }
+          GuardarDatosTanque();
+        }
+        catch (Exception ex)
+        {
+          AppendTraceText($"Error al conectar a la BD ó llamada a la API : {ex.Message}");
+        }
+
+
+
+
+
+      }
+
+        private void ultraLabel4_Click(object sender, EventArgs e)
+        {
 
         }
-        GuardarDatosTanque();
-      }
-      catch (Exception ex)
-      {
-        AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
-      }
-      //3. Llamar a la API con el JSON creado y recibir la respuesta
-      try
-      {
-        // Aquí deberías implementar la lógica para llamar a la API con el JSON creado
-        // y manejar la respuesta. Por ejemplo, usando HttpClient para enviar una solicitud POST.
-        AppendTraceText("Llamada a la API realizada correctamente.");
-      }
-      catch (Exception ex)
-      {
-        AppendTraceText($"Error al llamar a la API: {ex.Message}");
-      }
+
+    private void TextEstablo_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void CheckFechas_CheckedChanged(object sender, EventArgs e)
+    {
 
     }
   }

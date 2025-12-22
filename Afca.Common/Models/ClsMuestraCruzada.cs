@@ -27,7 +27,7 @@ namespace Afca.Common.Models
     [JsonProperty("fechaControlador")]
     public string FechaEntrega { get; set; }
     [JsonProperty("nombreControlador")]
-    public int? Controlador { get; set; }
+    public string Controlador { get; set; }
     public string Estado { get; set; }
   }
 }

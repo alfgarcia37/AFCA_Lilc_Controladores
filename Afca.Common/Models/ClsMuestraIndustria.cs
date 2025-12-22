@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,13 @@ namespace Afca.Common.Models
     public string NombreGanadero { get; set; }
     public string Origen { get; set; }
     public string Naturaleza { get; set; }
+    //public int Ano { get; set; }
+    //public int Mes { get; set; }
+    public string? Periodo { get; set; }
+    public string? Etiqueta { get; set; }
+    public string? Industria { get; set; }
+    public string? CodEnIndustria { get; set; }
+    
     public string? FechaRecogida { get; set; }
     public string? FechaRecepcion { get; set; }
     public string? FechaAnalisis { get; set; }

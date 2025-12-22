@@ -11,6 +11,7 @@ namespace Afca.Common.Models
     public string CodigoBarras { get; set; }
     public string? Establo { get; set; }// "J"
     public string? NombreControlador { get; set; }
+
     public string? FechaRegistro { get; set; }
 
     public string?FechaControlador { get; set; }
