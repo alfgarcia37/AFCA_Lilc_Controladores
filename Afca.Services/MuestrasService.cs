@@ -21,7 +21,7 @@ namespace Afca.Services
   {
     public HttpClient client= new HttpClient();
     public List<Muestra> ListaMuestras = new List<Muestra>();
-    //public List<MuestraIndustria> ListaIndustria = new List<MuestraIndustria>();
+    public List<MuestraIndustria> Listaindustria = new List<MuestraIndustria>();
     public string FechaDesde { get; set; }
     public string FechaHasta { get; set; }
     string connectionString = ConfigurationManager.ConnectionStrings["controllechero"].ConnectionString;
@@ -66,12 +66,13 @@ namespace Afca.Services
       {
         connectionString = ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString;
         // dentro de un mes , quitar and res_trc=0 pr res_factu ya tendra valor
-        string query = $"SELECT TOP 1 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' and res_ab='a' and res_trc=0 and res_factu is null";
-        string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990024025187' order by res_fprev desc";// and res_fprev between '{FechaDesde}' and '{FechaHasta}'";
+        string query = $"SELECT TOP 2200 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' " +
+          $"and res_ab='a' and res_trc=0 and res_factu is null order by res_ord";
+        //string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990024025187' order by res_fprev desc";// and res_fprev between '{FechaDesde}' and '{FechaHasta}'";
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
           await connection.OpenAsync();
-          using (SqlCommand command = new SqlCommand(query_fake, connection))
+          using (SqlCommand command = new SqlCommand(query, connection))
           {
             using (SqlDataReader reader = await command.ExecuteReaderAsync())
             {
@@ -108,8 +109,8 @@ namespace Afca.Services
       client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Auth);
 
       string baseUrl = client.BaseAddress.ToString(); //https://resapi.lilc.es:3083/api/
-      baseUrl = baseUrl + $"Controllechero/cruzarmuestras/";//{FechaDesde}/{FechaHasta}";
-      baseUrl = "http://localhost:33947/api/Controllechero/cruzarmuestras/";
+      baseUrl = baseUrl + $"/controllechero/cruzarmuestras";//{FechaDesde}/{FechaHasta}";
+      //baseUrl = "http://localhost:33947/api/Controllechero/cruzarmuestras/";
       try
       {
         var json = JsonConvert.SerializeObject(ListaMuestras);
@@ -141,19 +142,25 @@ namespace Afca.Services
     // MUESTRAS INDUSTRIA DIARIAS
     public async Task<List<MuestraIndustria>> GetMuestrasIndustria(string Establo,DateTime? FDesde,DateTime? FHasta)
     {
-       
+      if (Listaindustria.Count > 0)
+        Listaindustria.Clear(); 
       string authString = $"{usuario}:{pass}";
       string base64Auth = Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(authString));
       client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Auth);
 
       string baseUrl = client.BaseAddress.ToString(); //https://resapi.lilc.es:3083/api/
       if (FDesde.HasValue && FHasta.HasValue)
-        baseUrl = baseUrl + $"Industria/GetMuestrasIndustria/{Establo}/{FDesde}/{FHasta}";
+      {
+        FechaDesde = FDesde.Value.ToString("dd-MM-yyyy").Replace("/", "-");
+        FechaHasta = FHasta.Value.ToString("dd-MM-yyyy").Replace("/", "-");
+        baseUrl = baseUrl + $"/Industria/GetMuestrasIndustria/{Establo}/{FechaDesde}/{FechaHasta}";
+      }
       else
-        baseUrl = baseUrl + $"Industria/GetMuestrasIndustria";
+      {
+        baseUrl = baseUrl + $"/Industria/GetMuestrasIndustria";
+      }
       try
       {
-       
         var response = await client.GetAsync(baseUrl).ConfigureAwait(false);
 
         if (!response.IsSuccessStatusCode)
@@ -163,10 +170,9 @@ namespace Afca.Services
         }
         // Si todo va bien, leer contenido
         var result = response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        //var response = await client.PostAsJsonAsync(baseUrl, ListaMuestras);
         string responseBody = await response.Content.ReadAsStringAsync();
-        List<MuestraIndustria> listaindustria = JsonConvert.DeserializeObject<List<MuestraIndustria>>(responseBody);
-        return listaindustria ?? new List<MuestraIndustria>();
+        Listaindustria = JsonConvert.DeserializeObject<List<MuestraIndustria>>(responseBody);
+        return Listaindustria ?? new List<MuestraIndustria>();
       }
       catch (Exception ex)
       {
@@ -214,11 +220,6 @@ namespace Afca.Services
       }
       return new List<MuestraIndustria>();
     }
-
-
-
-
-
 
 
   }

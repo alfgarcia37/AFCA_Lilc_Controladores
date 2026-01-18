@@ -108,7 +108,7 @@ namespace Afca.Laboratorio
       this.ultraLabel4.Size = new System.Drawing.Size(155, 28);
       this.ultraLabel4.TabIndex = 16;
       this.ultraLabel4.Text = "Establo (J39xxxx)";
-      this.ultraLabel4.Click += new System.EventHandler(this.ultraLabel4_Click);
+     
       // 
       // TextEstablo
       // 
@@ -118,7 +118,7 @@ namespace Afca.Laboratorio
       this.TextEstablo.Name = "TextEstablo";
       this.TextEstablo.Size = new System.Drawing.Size(139, 22);
       this.TextEstablo.TabIndex = 15;
-      this.TextEstablo.TextChanged += new System.EventHandler(this.TextEstablo_TextChanged);
+      
       // 
       // CheckFechas
       // 
@@ -130,7 +130,7 @@ namespace Afca.Laboratorio
       this.CheckFechas.TabIndex = 14;
       this.CheckFechas.Text = "Usar Fechas";
       this.CheckFechas.UseVisualStyleBackColor = true;
-      this.CheckFechas.CheckedChanged += new System.EventHandler(this.CheckFechas_CheckedChanged);
+    
       // 
       // FHasta
       // 

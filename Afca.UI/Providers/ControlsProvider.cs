@@ -402,19 +402,19 @@ namespace Afca.UI
                // if (resultado1!=null && resultado1.success == true && showMessages)
                 {
                     
-                    bool validate = bool.Parse(ConfigurationProvider.GetConfigurationValue("ValidacionAutomatica"));
-                    if (validate)
-                    {
-                        resultado1 = iSvrImportar.GetLaunchAutoERP();
-                        if (resultado1 != null && resultado1.success == true)
-                            MessageBox.Show("LaunchERP con éxito", " que tengas buen día");
-                        else
-                            DialogsManager.ShowErrorDialog("Error en LaunchERP", " Revise todos los procesos");
-                    }
-
-
-                    DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
-                 
+                  bool validate = bool.Parse(ConfigurationProvider.GetConfigurationValue("ValidacionAutomatica"));
+                  if (validate)
+                  {
+                      resultado1 = iSvrImportar.GetLaunchAutoERP();
+                      if (resultado1 != null && resultado1.success == true)
+                        {
+                          var mensaje = " que tengas buen día";
+                          //MessageBox.Show("LaunchERP con éxito", mensaje);
+                        }
+                  else
+                    DialogsManager.ShowErrorDialog("Error en LaunchERP", " Revise todos los procesos");
+                  }
+                  DialogResult dr3 = MessageBox.Show(resultado1.value + "\n" + "Importación OK", "proceso Importación", MessageBoxButtons.OK);
                 }
                 return new LecturaControlData();
             }
