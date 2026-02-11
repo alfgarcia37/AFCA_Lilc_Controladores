@@ -30,5 +30,6 @@ namespace Afca.Common.ServicesInterfaces
         Task<Result> NotifyDescargaAsRecieved(string entidad=null);
         Task<Result> InsertDownloadedData();
         Task<Result> ExecuteNotificacionesFirebase();
+        Task<Result> ExecuteSendWhatsApp();
   }
 }

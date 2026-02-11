@@ -12,7 +12,7 @@ namespace Afca.Common.ServicesInterfaces
 
     public interface IMuestrasService : IService
     {
-      Task<List<MuestraCruzada>> GetMuestrasCruzadas();
+      Task<List<MuestraCruzada>> GetMuestrasCruzadas(string establo);
       Task<List<MuestraIndustria>> GetMuestrasIndustria(string Establo,DateTime? FDesde,DateTime? FHasta);
       Task<List<MuestraIndustria>> GetMediasIndustria(string Establo, DateTime? FDesde, DateTime? FHasta);
      

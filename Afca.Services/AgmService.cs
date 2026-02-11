@@ -152,6 +152,11 @@ namespace Afca.Services
           InitializeAgmWebApiDA();
           return await agmWebAPI.ExecuteNotificacionesFirebase().ConfigureAwait(false);
         }
+        public async Task<Result> ExecuteSendWhatsApp()
+        {
+          InitializeAgmWebApiDA();
+          return await agmWebAPI.ExecuteSendWhatsApp().ConfigureAwait(false);
+        }
 
     public bool MarkAgmEnviosAsSended(string ganaderiaID, ArrayList entidadesIncluded,out string message)
         {

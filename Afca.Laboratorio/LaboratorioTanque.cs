@@ -9,7 +9,7 @@ using System.Linq;
 
 public static class LaboratorioTanqueRepository
 {
-  public static void InsertarTanquePorSP( IEnumerable<MuestraIndustria> muestrasIndustria)
+  public static void InsertarMuestrasTanquePorSP( IEnumerable<MuestraIndustria> muestrasIndustria)
   {
     SqlConnection cn = null;
 
@@ -137,6 +137,158 @@ public static class LaboratorioTanqueRepository
       SqlCommand cmd1 = new SqlCommand("SP_BuzonLaboratorioTanqueEmparejar", cn);
       cmd1.CommandType = CommandType.StoredProcedure;
       cmd1 .ExecuteNonQuery();
+      if (cmd1 != null)
+      {
+        cmd1.Dispose();
+      }
+    }
+    finally
+    {
+      if (cn != null)
+      {
+        cn.Dispose();
+      }
+    }
+  }
+
+  public static void InsertarMediasTanquePorSP(IEnumerable<MuestraIndustria> muestrasIndustria)
+  {
+    SqlConnection cn = null;
+
+    try
+    {
+      var constring = ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString;
+      cn = new SqlConnection(constring);
+      cn.Open();
+
+      foreach (var muestra in muestrasIndustria.Take(5000))
+      {
+        // Variables tipadas (valores reales del modelo)
+        short asociacionId = 1;
+        string laboratorioId = "1";
+        string ruta = "Ruta";
+        string fichero = "mediante API";
+        DateTime fechaRegistro = DateTime.Now;
+
+        string id = (muestra != null) ? muestra.CodigoBarras : null;
+        string establo = (muestra != null) ? muestra.Establo : null;
+        string cea = (muestra != null) ? muestra.CEA : null;
+
+        string etiqueta = (muestra != null) ? muestra.Etiqueta : null;
+
+        string industria = (muestra != null) ? muestra.CodEnIndustria : null;
+        string codEnIndustria = "";
+
+        string naturaleza = (muestra != null) ? muestra.Naturaleza : null;
+        string origen = (muestra != null) ? muestra.Origen : null;
+
+        DateTime? fechaRecogida = ParseFecha((muestra != null) ? muestra.FechaRecogida : null);
+
+        double? grasa = (muestra != null) ? muestra.Grasa : null;
+        double? proteina = (muestra != null) ? muestra.Proteina : null;
+        double? lactosa = (muestra != null) ? muestra.Lactosa : null;
+        double? extractoSeco = (muestra != null) ? muestra.Extracto : null;
+
+        double? mediagrasa= (muestra != null) ? muestra.MediaGrasa : null;
+        double? mediaproteina = (muestra != null) ? muestra.MediaProteina : null;
+        double? medialactosa = (muestra != null) ? muestra.MediaLactosa : null;
+        
+        double? mediarcs = (muestra != null) ? muestra.MediaCS : null;
+        double? mediabacterias = (muestra != null) ? muestra.MediaBacterias : null;
+        double? mediaurea = (muestra != null) ? muestra.MediaUrea : null;
+
+        double? mediaextracto = (muestra != null) ? muestra.MediaExtracto : null;
+        double? mediapc = (muestra != null) ? muestra.MediaPuntoCrioscopico : null;
+
+        double? rcs = (muestra != null) ? muestra.RCS : null;
+        double? bacterias = (muestra != null) ? muestra.Bacterias : null;
+        double? urea = (muestra != null) ? muestra.Urea : null;
+
+        double? pc = (muestra != null) ? muestra.PuntoCrioscopico : null;
+        double varPc = 0;
+        string igg = "0";
+
+        bool inhibidores = (muestra != null && muestra.Inhibidor == "S");
+        bool cierre = false;
+     
+        int ano = int.Parse(muestra.Periodo.Substring(3, 4));
+        int mes = int.Parse(muestra.Periodo.Substring(0, 2)); ;
+
+        string nc = "0";
+
+        SqlCommand cmd = null;
+
+        try
+        {
+          cmd = new SqlCommand("dbo.sp_BuzonLaboratorioTanque_insert", cn);
+          cmd.CommandType = CommandType.StoredProcedure;
+
+          // --- Parámetros ---
+          cmd.Parameters.Add("@AsociacionID", SqlDbType.SmallInt).Value = asociacionId;
+          cmd.Parameters.Add("@LaboratorioID", SqlDbType.Char, 1).Value = laboratorioId;
+
+          cmd.Parameters.Add("@Id", SqlDbType.Char, 14).Value = DbStr(id);
+          cmd.Parameters.Add("@Establo", SqlDbType.Char, 7).Value = DbStr(establo);
+          cmd.Parameters.Add("@CEA", SqlDbType.Char, 14).Value = DbStr(cea);
+          cmd.Parameters.Add("@FechaRecogida", SqlDbType.SmallDateTime).Value = DbDate(fechaRecogida);
+
+          cmd.Parameters.Add("@Etiqueta", SqlDbType.VarChar, 14).Value = DbStr(etiqueta);
+          cmd.Parameters.Add("@Industria", SqlDbType.VarChar, 6).Value = DbStr(industria);
+          cmd.Parameters.Add("@CodEnIndustria", SqlDbType.VarChar, 14).Value = DbStr(codEnIndustria);
+
+          cmd.Parameters.Add("@Naturaleza", SqlDbType.Char, 1).Value = DbStr(naturaleza);
+          cmd.Parameters.Add("@Origen", SqlDbType.Char, 1).Value = DbStr(origen);
+          cmd.Parameters.Add("@Ruta", SqlDbType.VarChar, 50).Value = ruta;
+
+          cmd.Parameters.Add("@Grasa", SqlDbType.Real).Value = DbReal(grasa);
+          cmd.Parameters.Add("@Proteina", SqlDbType.Real).Value = DbReal(proteina);
+          cmd.Parameters.Add("@Lactosa", SqlDbType.Real).Value = DbReal(lactosa);
+
+          cmd.Parameters.Add("@Rcs", SqlDbType.Int).Value = DbInt(rcs);
+          cmd.Parameters.Add("@Bacterias", SqlDbType.Int).Value = DbInt(bacterias);
+
+          cmd.Parameters.Add("@Urea", SqlDbType.Int).Value = DbInt(urea);
+          cmd.Parameters.Add("@ExtractoSeco", SqlDbType.Real).Value = DbReal(extractoSeco);
+
+          cmd.Parameters.Add("@MediaGrasa", SqlDbType.Real).Value = DbReal(mediagrasa);
+          cmd.Parameters.Add("@MediaProteina", SqlDbType.Real).Value = DbReal(mediaproteina);
+          cmd.Parameters.Add("@MediaLactosa", SqlDbType.Real).Value = DbReal(medialactosa);
+
+          cmd.Parameters.Add("@MediaRcs", SqlDbType.Int).Value = DbInt(mediarcs);
+          cmd.Parameters.Add("@MediaBacterias", SqlDbType.Int).Value = DbInt(mediabacterias);
+          cmd.Parameters.Add("@MediaUrea", SqlDbType.Int).Value = DbInt(mediaurea);
+
+          cmd.Parameters.Add("@MediaExtractoSeco", SqlDbType.Real).Value = DbReal(mediaextracto);
+          cmd.Parameters.Add("@MediaPC", SqlDbType.Int).Value = DbInt(mediapc);
+
+          cmd.Parameters.Add("@IgG", SqlDbType.VarChar, 6).Value = igg;
+          cmd.Parameters.Add("@PC", SqlDbType.Int).Value = DbInt(pc);
+          cmd.Parameters.Add("@VarPC", SqlDbType.Real).Value = (float)varPc;
+
+          cmd.Parameters.Add("@Inhibidores", SqlDbType.Bit).Value = inhibidores;
+          cmd.Parameters.Add("@Cierre", SqlDbType.Bit).Value = cierre;
+
+          cmd.Parameters.Add("@Ano", SqlDbType.Int).Value = ano;
+          cmd.Parameters.Add("@Mes", SqlDbType.Int).Value = mes;
+
+          cmd.Parameters.Add("@NC", SqlDbType.VarChar, 500).Value = DbStr(nc);
+          cmd.Parameters.Add("@Fichero", SqlDbType.VarChar, 50).Value = fichero;
+          cmd.Parameters.Add("@FechaRegistro", SqlDbType.DateTime).Value = fechaRegistro;
+
+          cmd.ExecuteNonQuery();
+        }
+        finally
+        {
+          if (cmd != null)
+          {
+            cmd.Dispose();
+          }
+        }
+      }
+      //fin for -> emparejo laboratorio tanque
+      SqlCommand cmd1 = new SqlCommand("SP_BuzonLaboratorioTanqueEmparejar", cn);
+      cmd1.CommandType = CommandType.StoredProcedure;
+      cmd1.ExecuteNonQuery();
       if (cmd1 != null)
       {
         cmd1.Dispose();

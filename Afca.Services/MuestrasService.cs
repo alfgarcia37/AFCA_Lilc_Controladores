@@ -45,7 +45,7 @@ namespace Afca.Services
     }
 
     // MUESTRAS DE CONTROL LECHERO CRUZADAS
-    public async Task<List<MuestraCruzada>> GetMuestrasCruzadas()
+    public async Task<List<MuestraCruzada>> GetMuestrasCruzadas(string establo)
     {
       if (ListaMuestras.Count > 0)
         ListaMuestras.Clear();
@@ -53,10 +53,13 @@ namespace Afca.Services
       {
         FechaHasta = DateTime.Now.AddDays(3).ToString("dd-MM-yyyy");
       }
-      if (string.IsNullOrEmpty(FechaDesde))
+      //if (string.IsNullOrEmpty(FechaDesde))
       {
         FechaDesde = DateTime.Now.AddDays(-10).ToString("dd-MM-yyyy");
       }
+      if (establo.Trim()!="")
+        FechaDesde = DateTime.Now.AddDays(-25).ToString("dd-MM-yyyy");
+
       FechaDesde = FechaDesde.Replace("/", "-");
       FechaHasta = FechaHasta.Replace("/", "-");
 
@@ -66,8 +69,10 @@ namespace Afca.Services
       {
         connectionString = ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString;
         // dentro de un mes , quitar and res_trc=0 pr res_factu ya tendra valor
-        string query = $"SELECT TOP 2200 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' " +
-          $"and res_ab='a' and res_trc=0 and res_factu is null order by res_ord";
+        string query = $@"SELECT TOP 2500 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' 
+          and res_ab='a' and res_trc=0 and res_factu is null    
+          and (res_tit='{establo}' or '{establo}'='')  
+          order by res_ord";
         //string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990024025187' order by res_fprev desc";// and res_fprev between '{FechaDesde}' and '{FechaHasta}'";
         using (SqlConnection connection = new SqlConnection(connectionString))
         {

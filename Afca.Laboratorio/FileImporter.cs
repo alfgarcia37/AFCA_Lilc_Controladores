@@ -483,8 +483,7 @@ namespace Afca.Laboratorio
         string GetTraceFileName()
         {
             DateTime current = DateTime.Now;
-            return Environment.CurrentDirectory +
-                        "\\" + "LabLog" + current.ToString("_yyMMdd_hhmmss") + ".txt";
+            return Environment.CurrentDirectory +  "\\LabLog\\" + "Log_" + current.ToString("_yyMMdd_hhmmss") + ".txt";
         }
         private void utbtnStart_Click(object sender, EventArgs e)
         {
@@ -560,7 +559,7 @@ namespace Afca.Laboratorio
           //2.Me conecto a la BD de CL para ver las muestras de analitica sin cruzar
           try
           {
-            var muestrasCruzadas=await  _serviceMuestras.GetMuestrasCruzadas();
+            var muestrasCruzadas=await  _serviceMuestras.GetMuestrasCruzadas(TextEstablo.Text);
             if (muestrasCruzadas == null || muestrasCruzadas.Count() == 0)
               {
                 AppendTraceText(string.Format("No hay muestras cruzadas para enviar a la API. o hay error en la cadena de conexion . {0} .... ", ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString.Substring(0,30)));
@@ -706,7 +705,7 @@ namespace Afca.Laboratorio
         else
           muestrasIndustria = await _serviceMuestras.GetMuestrasIndustria(TextEstablo.Text, FDesde.Value, FHasta.Value);
 
-        LaboratorioTanqueRepository.InsertarTanquePorSP(muestrasIndustria);
+        LaboratorioTanqueRepository.InsertarMuestrasTanquePorSP(muestrasIndustria);
 
         AppendTraceText("Llamada a la API realizada correctamente.");
         double MuestrasTotal = muestrasIndustria.Count();

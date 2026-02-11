@@ -115,7 +115,35 @@ namespace Afca.Data.Access
             var result = JsonConvert.DeserializeObject<Result>(json);
        
             return result;
-    }
+        }
+
+        public async Task<Result> ExecuteSendWhatsApp()
+        {
+          var setRoutine = await SetConnectionContext();
+
+          if (!setRoutine.success)
+            return new Result
+            {
+              success = false
+                               ,
+              value = setRoutine.value
+            };
+
+            var urlAction = UrlWebAPIController(dataHubController);
+            urlAction = string.Concat(urlAction, "SendWhatsApp");
+            //urlAction = "http://localhost/AGMWebAPI/api/Datahub/SendWhatsApp";
+            var response = await ServerRepositoryHttpClient().GetAsync(urlAction).ConfigureAwait(false);
+
+            bool responseOk = HandleResponse(response);
+
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var result = JsonConvert.DeserializeObject<Result>(json);
+       
+            return result;
+        }
+
+
+
 
         public async Task<Result> DownloadRCSData()
         {
