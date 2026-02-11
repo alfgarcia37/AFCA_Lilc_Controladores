@@ -233,6 +233,7 @@ namespace Afca.UI
             //Ahora tengo que ejecutar del AGMwebApi... UserController
             //[HttpGet("FirebaseToken")]
             resultado = await agmService.ExecuteNotificacionesFirebase().ConfigureAwait(false);
+            resultado=await agmService.ExecuteSendWhatsApp().ConfigureAwait(false);
 
 
       HideCursor();
