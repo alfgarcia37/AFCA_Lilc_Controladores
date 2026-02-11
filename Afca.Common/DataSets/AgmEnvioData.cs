@@ -2,7 +2,7 @@
 {
 
 
-    partial class AgmEnvioData
-    {
-    }
+  partial class AgmEnvioData
+  {
+  }
 }

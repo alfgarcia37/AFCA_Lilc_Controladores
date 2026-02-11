@@ -47,14 +47,15 @@ namespace Afca.Data.Access
             urlAction = string.Format("{0}{1}", urlAction, ganaderiaId);
 
             var parameter = JsonConvert.ToString(jsonData);
+            
 
-            //var alfa = new StringContent(parameter, Encoding.UTF8, "application/json");
+      //var alfa = new StringContent(parameter, Encoding.UTF8, "application/json");
 
-            //cuando estoy dandole caña con SP's y subidas, peta por time out
-            // ServerRepositoryHttpClient().Timeout = TimeSpan.FromSeconds(60);
+      //cuando estoy dandole caña con SP's y subidas, peta por time out
+      // ServerRepositoryHttpClient().Timeout = TimeSpan.FromSeconds(60);
 
 
-            var response = await ServerRepositoryHttpClient()
+      var response = await ServerRepositoryHttpClient()
                                 .PutAsync(urlAction
                                  , new StringContent(parameter, Encoding.UTF8, "application/json"))
                             .ConfigureAwait(false);

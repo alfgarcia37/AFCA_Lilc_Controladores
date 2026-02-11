@@ -140,6 +140,7 @@ namespace Afca.Services
         public async Task<Result> SendJsonMessageEnvio(string ganaderiaID, string jsonMessage)
         {
             InitializeAgmWebApiDA();
+             
             return await agmWebAPI.UploadData(ganaderiaID,jsonMessage).ConfigureAwait(false);
         }
         public async Task<Result> ExecuteIndicadores()

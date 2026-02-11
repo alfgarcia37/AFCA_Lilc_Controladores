@@ -18,20 +18,20 @@ namespace Afca
         [STAThread]
         static void Main()
         {
-         //Encrypt();
-         FrameworkForge.UI.ApplicationContext.Run();
-            
-        }
+      //Encrypt();
+      FrameworkForge.UI.ApplicationContext.Run();
+
+    }
         static void ConfigureAgmWebAPI()
         {
             bool modifyConfig = false;
          //string url = "https://agmwebapi202411-a3b4aqh0e7a0gsgr.westeurope-01.azurewebsites.net/api";
-         string url = "https://agmwebdeveloper.azurewebsites.net/api";
+         string url = "https://agmwebapi202601-gdesd7a3f0fugzda.westeurope-01.azurewebsites.net/apiiiiiii";
          //string url = "https://agmwebapis2.azurewebsites.net/api";
          string credentials = "fernando@gmail.com;Pepona123";
 
-            Debug.WriteLine($"Url:{url}");
-            Debug.WriteLine($"credentials:{credentials}");
+            //Debug.WriteLine($"Url:{url}");
+            //Debug.WriteLine($"credentials:{credentials}");
 
             url = Encriptador.Encrypt(url, false);
             credentials = Encriptador.Encrypt(credentials, false);
@@ -59,21 +59,21 @@ namespace Afca
         {
          // fon
             //string apiweb = Encriptador.Encrypt("https://agmwebapi202411-a3b4aqh0e7a0gsgr.westeurope-01.azurewebsites.net/api", false);
-         string apiweb = Encriptador.Encrypt("https://agmwebdeveloper.azurewebsites.net/api", false);
+         string apiweb = Encriptador.Encrypt("https://agmwebapi202601-gdesd7a3f0fugzda.westeurope-01.azurewebsites.net/api", false);
          // fer....   string conectionString = @"Server=CTXSQL\SQL14_2019;Database=CLM2;Integrated Security=True;";
 
-         string conectionString = @"Server=CTXSQL\SQL14_2019;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
-            string conectionString1 = @"Server=localhost\SQLE_2K17;Database=controllechero_dev;Integrated Security=True;";
+         //string conectionString = @"Server=CTXSQL\SQL14_2019;Database=controllechero;Persist Security Info=true;User ID=alfonsog;Password=afca37;";
+         //   string conectionString1 = @"Server=localhost\SQLE_2K17;Database=controllechero_dev;Integrated Security=True;";
 
             //string conectionString = @"Data Source=CTX2011\CTXSQL2011;Initial Catalog=CLM2;Persist Security Info=true;User ID=alfonsog;Password=afca37
-            string cencrypted = Encriptador.Encrypt(conectionString, false);
-            string cencrypted1 = Encriptador.Encrypt(conectionString1, false);
+            //string cencrypted = Encriptador.Encrypt(conectionString, false);
+            string cencrypted1 = Encriptador.Encrypt(apiweb, false);
             //ctxsql14
             //A01AAP/PXELFLDbJ/DXp88DrLt0YmD5zuQhQM3QGTmqtZwO8P2TlVtbKqAoG0WDylShtFavNgOTriei3KYp7yd08w56lzKGOFtPhcwEKXKG80kWM6MVfAmcPd7Mj5NvtK19/7ZoaEQz24skai4Bxzg==
             //A01AAP/PXELFLDbJ/DXp88DrLt0YmD5zuQhQM3QGTmpPle + aoUAXOGENlcjK74hcByUraWAslquBEi3ICR4jpTOJ6QGqN9dJpILVIvW6tYM + WJGicMInHFuKSNavLWOQPfl5t40QOx4PVO3M/IpH/g==
             
 
-                              Console.WriteLine(cencrypted);
+                              //Console.WriteLine(cencrypted);
             Console.WriteLine(cencrypted1);
             Console.ReadLine();
         }
