@@ -55,7 +55,7 @@ namespace Afca.Services
       }
       //if (string.IsNullOrEmpty(FechaDesde))
       {
-        FechaDesde = DateTime.Now.AddDays(-10).ToString("dd-MM-yyyy");
+        FechaDesde = DateTime.Now.AddDays(-15).ToString("dd-MM-yyyy");
       }
       if (establo.Trim()!="")
         FechaDesde = DateTime.Now.AddDays(-25).ToString("dd-MM-yyyy");
@@ -69,11 +69,11 @@ namespace Afca.Services
       {
         connectionString = ConfigurationManager.ConnectionStrings["controllechero"]?.ConnectionString;
         // dentro de un mes , quitar and res_trc=0 pr res_factu ya tendra valor
-        string query = $@"SELECT TOP 2500 * FROM control where res_fprev between '{FechaDesde}' and '{FechaHasta}' 
+        string query = $@"SELECT TOP 2500 * FROM control where res_fctr between '{FechaDesde}' and '{FechaHasta}' 
           and res_ab='a' and res_trc=0 and res_factu is null    
           and (res_tit='{establo}' or '{establo}'='')  
           order by res_ord";
-        //string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990024025187' order by res_fprev desc";// and res_fprev between '{FechaDesde}' and '{FechaHasta}'";
+        string query_fake = $"SELECT TOP 1 * FROM control where res_ord='69990008019011' order by res_fprev desc";// and res_fprev between '{FechaDesde}' and '{FechaHasta}'";
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
           await connection.OpenAsync();
@@ -94,6 +94,37 @@ namespace Afca.Services
                     NombreControlador = reader["Controlador"]?.ToString(),
                     Recombi = "1",
                     FechaControlador = Convert.ToDateTime(reader["Res_Fctr"]).ToString("yyyy/MM/dd"),
+                    Ptecombi = "1"
+                  };
+                  ListaMuestras.Add(registro);
+                }
+              }
+            }
+          }
+        }
+
+        //ahora meto las de RCS individuales.
+        query = $@"SELECT TOP 50 * FROM RCS  where FRegistroRcs between '{FechaDesde}' and '{FechaHasta}' 
+        and FechaCargaAzure is null";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+          await connection.OpenAsync();
+          using (SqlCommand command = new SqlCommand(query, connection))
+          {
+            using (SqlDataReader reader = await command.ExecuteReaderAsync())
+            {
+              while (await reader.ReadAsync())
+              {
+                var codigo = reader["Barras"]?.ToString();
+                if (codigo != null)
+                {
+                  var registro = new Muestra(codigo)
+                  {
+                    FechaRegistro = DateTime.Now.Date.ToString("yyyy/MM/dd"),
+                    Establo = reader["ESTABLO"]?.ToString(),
+                    NombreControlador = reader["Controlador"]?.ToString(),
+                    Recombi = "1",
+                    FechaControlador = Convert.ToDateTime(reader["FEntregaControlador"]).ToString("yyyy/MM/dd"),
                     Ptecombi = "1"
                   };
                   ListaMuestras.Add(registro);
@@ -188,7 +219,7 @@ namespace Afca.Services
 
 
     //MEDIAS DE INDUSTRIA MENSUALES
-    public async Task<List<MuestraIndustria>> GetMediasIndustria(string establo, DateTime? FDesde, DateTime? FHasta)
+    public async Task<List<MuestraIndustria>> GetMediasIndustria(string establo, string mes, string ano)
     {
 
       string authString = $"{usuario}:{pass}";
@@ -196,10 +227,10 @@ namespace Afca.Services
       client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", base64Auth);
 
       string baseUrl = client.BaseAddress.ToString(); //https://resapi.lilc.es:3083/api/
-      if (FDesde.HasValue && FHasta.HasValue)
-        baseUrl = baseUrl + $"Industria/GetByFechas/GetMediasIndustria/{establo}/{FDesde}/{FHasta}";
+      if (!string.IsNullOrEmpty(mes) && !string.IsNullOrEmpty(ano))
+        baseUrl = baseUrl + $"/Industria/GetMediasIndustria/{establo}/{mes}/{ano}";
       else
-        baseUrl = baseUrl + $"Industria/GetMediasIndustria";
+        baseUrl = baseUrl + $"/Industria/GetMediasIndustria";
      
 
       try

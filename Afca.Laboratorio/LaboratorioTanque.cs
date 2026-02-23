@@ -33,10 +33,8 @@ public static class LaboratorioTanqueRepository
         string cea = (muestra != null) ? muestra.CEA : null;
 
         string etiqueta = (muestra != null) ? muestra.Etiqueta : null;
-
-     
-        string industria = (muestra != null) ? muestra.CodEnIndustria : null;
-        string codEnIndustria = "";
+        string industria = (muestra != null) ? muestra.Industria : null;
+        string codEnIndustria = (muestra != null) ? muestra.CodEnIndustria : null;
 
         string naturaleza = (muestra != null) ? muestra.Naturaleza : null;
         string origen = (muestra != null) ? muestra.Origen : null;
@@ -161,7 +159,7 @@ public static class LaboratorioTanqueRepository
       cn = new SqlConnection(constring);
       cn.Open();
 
-      foreach (var muestra in muestrasIndustria.Take(5000))
+      foreach (var muestra in muestrasIndustria.Take(2000))
       {
         // Variables tipadas (valores reales del modelo)
         short asociacionId = 1;
@@ -170,46 +168,43 @@ public static class LaboratorioTanqueRepository
         string fichero = "mediante API";
         DateTime fechaRegistro = DateTime.Now;
 
-        string id = (muestra != null) ? muestra.CodigoBarras : null;
-        string establo = (muestra != null) ? muestra.Establo : null;
-        string cea = (muestra != null) ? muestra.CEA : null;
+        string id = (muestra.CodigoBarras != null) ? muestra.CodigoBarras : null;
+        string establo = (muestra.Establo != null) ? muestra.Establo : null;
+        string cea = (muestra.CEA != null) ? muestra.CEA : null;
 
-        string etiqueta = (muestra != null) ? muestra.Etiqueta : null;
-
-        string industria = (muestra != null) ? muestra.CodEnIndustria : null;
-        string codEnIndustria = "";
-
-        string naturaleza = (muestra != null) ? muestra.Naturaleza : null;
-        string origen = (muestra != null) ? muestra.Origen : null;
+        string etiqueta = (muestra.Etiqueta != null) ? muestra.Etiqueta : null;
+        string industria = (muestra.Industria != null) ? muestra.Industria : null;
+        string codEnIndustria = (muestra.CodEnIndustria != null) ? muestra.CodEnIndustria : null;
+        string naturaleza = (muestra.Naturaleza != null) ? muestra.Naturaleza : null;
+        string origen = (muestra.Origen != null) ? muestra.Origen : null;
 
         DateTime? fechaRecogida = ParseFecha((muestra != null) ? muestra.FechaRecogida : null);
 
-        double? grasa = (muestra != null) ? muestra.Grasa : null;
-        double? proteina = (muestra != null) ? muestra.Proteina : null;
-        double? lactosa = (muestra != null) ? muestra.Lactosa : null;
-        double? extractoSeco = (muestra != null) ? muestra.Extracto : null;
+        double? grasa = (muestra.Grasa != null) ? muestra.Grasa : null;
+        double? proteina = (muestra.Proteina != null) ? muestra.Proteina : null;
+        double? lactosa = (muestra.Lactosa != null) ? muestra.Lactosa : null;
+        double? extractoSeco = (muestra.Extracto != null) ? muestra.Extracto : 0;
 
-        double? mediagrasa= (muestra != null) ? muestra.MediaGrasa : null;
-        double? mediaproteina = (muestra != null) ? muestra.MediaProteina : null;
-        double? medialactosa = (muestra != null) ? muestra.MediaLactosa : null;
+        double? mediagrasa= (muestra.MediaGrasa != null) ? muestra.MediaGrasa : 0;
+        double? mediaproteina = (muestra.MediaProteina != null) ? muestra.MediaProteina : 0;
+        double? medialactosa = (muestra.MediaLactosa != null) ? muestra.MediaLactosa : 0;
         
-        double? mediarcs = (muestra != null) ? muestra.MediaCS : null;
-        double? mediabacterias = (muestra != null) ? muestra.MediaBacterias : null;
-        double? mediaurea = (muestra != null) ? muestra.MediaUrea : null;
+        double? mediarcs = (muestra.MediaCS != null) ? muestra.MediaCS : 0;
+        double? mediabacterias = (muestra.MediaBacterias != null) ? muestra.MediaBacterias : 0;
+        double? mediaurea = (muestra.MediaUrea != null) ? muestra.MediaUrea : 0;
+        double? mediaextracto = (muestra.MediaExtracto != null) ? muestra.MediaExtracto : 0;
+        double? mediapc = (muestra.MediaPuntoCrioscopico != null) ? muestra.MediaPuntoCrioscopico : 0;
 
-        double? mediaextracto = (muestra != null) ? muestra.MediaExtracto : null;
-        double? mediapc = (muestra != null) ? muestra.MediaPuntoCrioscopico : null;
+        double? rcs = (muestra.RCS != null) ? muestra.RCS : null;
+        double? bacterias = (muestra.Bacterias != null) ? muestra.Bacterias : null;
+        double? urea = (muestra.Urea != null) ? muestra.Urea : null;
 
-        double? rcs = (muestra != null) ? muestra.RCS : null;
-        double? bacterias = (muestra != null) ? muestra.Bacterias : null;
-        double? urea = (muestra != null) ? muestra.Urea : null;
-
-        double? pc = (muestra != null) ? muestra.PuntoCrioscopico : null;
+        double? pc = (muestra.PuntoCrioscopico != null) ? muestra.PuntoCrioscopico : null;
         double varPc = 0;
         string igg = "0";
 
-        bool inhibidores = (muestra != null && muestra.Inhibidor == "S");
-        bool cierre = false;
+        bool inhibidores = (muestra.Inhibidor != null && muestra.Inhibidor == "S");
+        bool cierre = true;
      
         int ano = int.Parse(muestra.Periodo.Substring(3, 4));
         int mes = int.Parse(muestra.Periodo.Substring(0, 2)); ;
