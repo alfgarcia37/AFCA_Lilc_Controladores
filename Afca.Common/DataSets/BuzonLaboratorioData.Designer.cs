@@ -336,6 +336,8 @@ namespace Afca.Common.DataSets {
             
             private global::System.Data.DataColumn columnCaseina;
             
+            private global::System.Data.DataColumn columnObservaciones;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BuzonLaboratorioDataTable() {
@@ -603,6 +605,14 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ObservacionesColumn {
+                get {
+                    return this.columnObservaciones;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -667,7 +677,8 @@ namespace Afca.Common.DataSets {
                         string AC27, 
                         string AC28, 
                         string AC29, 
-                        string Caseina) {
+                        string Caseina, 
+                        string Observaciones) {
                 BuzonLaboratorioRow rowBuzonLaboratorioRow = ((BuzonLaboratorioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
@@ -698,7 +709,8 @@ namespace Afca.Common.DataSets {
                         AC27,
                         AC28,
                         AC29,
-                        Caseina};
+                        Caseina,
+                        Observaciones};
                 rowBuzonLaboratorioRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBuzonLaboratorioRow);
                 return rowBuzonLaboratorioRow;
@@ -757,6 +769,7 @@ namespace Afca.Common.DataSets {
                 this.columnAC28 = base.Columns["AC28"];
                 this.columnAC29 = base.Columns["AC29"];
                 this.columnCaseina = base.Columns["Caseina"];
+                this.columnObservaciones = base.Columns["Observaciones"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -820,6 +833,8 @@ namespace Afca.Common.DataSets {
                 base.Columns.Add(this.columnAC29);
                 this.columnCaseina = new global::System.Data.DataColumn("Caseina", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCaseina);
+                this.columnObservaciones = new global::System.Data.DataColumn("Observaciones", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObservaciones);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("BuzonLaboratorio_pk", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AllowDBNull = false;
@@ -1425,6 +1440,22 @@ namespace Afca.Common.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Observaciones {
+                get {
+                    try {
+                        return ((string)(this[this.tableBuzonLaboratorio.ObservacionesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Observaciones\' de la tabla \'BuzonLaboratorio\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBuzonLaboratorio.ObservacionesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEstabloNull() {
                 return this.IsNull(this.tableBuzonLaboratorio.EstabloColumn);
             }
@@ -1757,6 +1788,18 @@ namespace Afca.Common.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCaseinaNull() {
                 this[this.tableBuzonLaboratorio.CaseinaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsObservacionesNull() {
+                return this.IsNull(this.tableBuzonLaboratorio.ObservacionesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetObservacionesNull() {
+                this[this.tableBuzonLaboratorio.ObservacionesColumn] = global::System.Convert.DBNull;
             }
         }
         

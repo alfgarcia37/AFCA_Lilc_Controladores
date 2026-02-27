@@ -23,6 +23,7 @@ namespace Afca.Common.Models
     public double? AC28 { get; set; }
     public double? AC29 { get; set; }
     public double? Caseina { get; set; }
+    public string Observaciones { get; set; }
     public string? FechaAnalisis { get; set; }
 
     [JsonProperty("fechaRegistro")]

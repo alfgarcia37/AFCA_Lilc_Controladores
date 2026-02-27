@@ -583,7 +583,7 @@ namespace Afca.Laboratorio
             double PorcentajeMal = Convert.ToDouble(MuestrasMal/MuestrasTotal) * 100 ;
             PorcentajeMal = Math.Round(PorcentajeMal, 2);
             AppendTraceText(string.Format("Muestras Malas {0} de {1} : Porcentaje {2}", MuestrasMal, MuestrasTotal, PorcentajeMal));
-            foreach (var muestra in muestrasCruzadas)
+            foreach (var muestra in muestrasCruzadas.Take(3000))
               {
                 DataRow datarow = toSaveData.Tables["buzonLaboratorio"].NewRow();
                 datarow["ID"] = muestra?.CodigoBarras ?? (object)DBNull.Value;
@@ -600,13 +600,14 @@ namespace Afca.Laboratorio
                 datarow["AC28"] = muestra?.AC28 ?? (object)DBNull.Value;
                 datarow["AC29"] = muestra?.AC29 ?? (object)DBNull.Value;
                 datarow["Caseina"] = muestra?.Caseina ?? (object)DBNull.Value;
+                datarow["Observaciones"] = muestra?.Observaciones ?? (object)DBNull.Value;
                 datarow["FechaEntrega"] = muestra?.FechaEntrega ?? (object)DBNull.Value;
                 datarow["FechaAnalisis"] = muestra?.FechaAnalisis ?? (object)DBNull.Value;
                 datarow["Controlador"] = int.Parse(muestra?.CodigoBarras.Substring(6, 2)) ;
                 datarow["Fichero"] = "mediante API";
-            //datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
+                //datarow["Controlador"] = muestra?.Controlador ?? (object)DBNull.Value;
 
-            toSaveData.Tables[0].Rows.Add(datarow);
+                toSaveData.Tables[0].Rows.Add(datarow);
               }
             GuardarDatos();
           }
@@ -673,7 +674,7 @@ namespace Afca.Laboratorio
             else
               muestrasIndustria = await _serviceMuestras.GetMediasIndustria(TextEstablo.Text, FDesde.Value.Month.ToString("D2"), FDesde.Value.Year.ToString());
 
-            LaboratorioTanqueRepository.InsertarMediasTanquePorSP(muestrasIndustria);
+            LaboratorioTanqueRepository.InsertarMediasTanquePorSP(muestrasIndustria.Take(1000));
 
             AppendTraceText("Llamada a la API realizada correctamente.");
             double MuestrasTotal = muestrasIndustria.Count();
