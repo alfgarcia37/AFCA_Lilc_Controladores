@@ -123,6 +123,18 @@ namespace Afca.Common {
             throw e;
           }
         }
+    public static IConafeService GetConafeService()
+    {
+      try
+      {
+        return (IConafeService)ServiceProvider.GetServiceInstance("IConafeService");
+      }
+      catch (SystemException e)
+      {
+        var ee=e.Message;
+        throw e;
+      }
+    }
 
   }
 }

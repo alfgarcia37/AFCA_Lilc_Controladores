@@ -37,6 +37,7 @@ namespace Afca.Laboratorio
 
         IBuzonLaboratorioService _service;
         IMuestrasService _serviceMuestras;
+        IConafeService _serviceConafe;
         BuzonLaboratorioData toSaveData;
         BuzonLaboratorioTanqueData toSaveTanqueData;
 
@@ -64,14 +65,14 @@ namespace Afca.Laboratorio
             Directory.CreateDirectory(labLogPath);
           }
 
-      toSaveData = new BuzonLaboratorioData();
-            toSaveTanqueData = new BuzonLaboratorioTanqueData();
-            _service = AfcaServiceProvider.GetBuzonLaboratorioService();
-            _serviceMuestras= AfcaServiceProvider.GetMuestrasService();
+          toSaveData = new BuzonLaboratorioData();
+          toSaveTanqueData = new BuzonLaboratorioTanqueData();
+          _service = AfcaServiceProvider.GetBuzonLaboratorioService();
+          _serviceMuestras= AfcaServiceProvider.GetMuestrasService();
+          _serviceConafe= AfcaServiceProvider.GetConafeService();
 
-      
-            //utePath.Text = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
-            utePath.Text = ConfigurationProvider.GetConfigurationValue("pathLaboratorio");
+      //utePath.Text = @"C:\Afca\Laboratorio\LILC_AFCA_230807_010212.I00043";
+      utePath.Text = ConfigurationProvider.GetConfigurationValue("pathLaboratorio");
             //uneInterval.Value = 1;
         }
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -674,7 +675,7 @@ namespace Afca.Laboratorio
             else
               muestrasIndustria = await _serviceMuestras.GetMediasIndustria(TextEstablo.Text, FDesde.Value.Month.ToString("D2"), FDesde.Value.Year.ToString());
 
-            LaboratorioTanqueRepository.InsertarMediasTanquePorSP(muestrasIndustria.Take(1000));
+            LaboratorioTanqueRepository.InsertarMediasTanquePorSP(muestrasIndustria.Take(20000));
 
             AppendTraceText("Llamada a la API realizada correctamente.");
             double MuestrasTotal = muestrasIndustria.Count();
@@ -685,7 +686,138 @@ namespace Afca.Laboratorio
             AppendTraceText($"Error al conectar a la BD ó llamada a la API : {ex.Message}");
           }
         }
-   
-   
-  }
+
+        private async void botonAPI_Conafe_Click(object sender, EventArgs e)
+        {
+          //1. Cargar el fichero de configuración de la API de CONAFE
+          string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPathConafe");
+          if (string.IsNullOrEmpty(apiConfigPath))
+          {
+            MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
+            return;
+          }
+           
+          if (checkAnimales.Checked == true)
+              {
+                try
+                {
+                  var RespuestaConafe = await _serviceConafe.GetRegistrosConafe();
+                  if ( RespuestaConafe.Errores.Count != 0)
+                  {
+                    AppendTraceText(string.Format("Error en el envio .... " + RespuestaConafe.Errores[0].Mensaje));
+                    return;
+                  }
+                  else
+                  {
+                    AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
+                    AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
+                    AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
+                    return;
+                  }
+                }
+                catch (Exception ex)
+                {
+                  AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+                }
+              }
+
+          if (checkLactaciones.Checked == true)
+              {
+                try
+                {
+                  var RespuestaConafe = await _serviceConafe.GetLactacionesConafe();
+                  if (RespuestaConafe.Errores.Count != 0)
+                  {
+                    AppendTraceText(string.Format("Error en el envio  " + RespuestaConafe.Errores[0].Mensaje));
+                    return;
+                  }
+                  else
+                  {
+                    AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
+                    AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
+                    AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
+                    return;
+                  }
+                }
+                catch (Exception ex)
+                {
+                  AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+                }
+              }
+
+          if (checkControles.Checked == true)
+        {
+          try
+          {
+            var RespuestaConafe = await _serviceConafe.GetControlesConafe();
+            if (RespuestaConafe.Errores.Count != 0)
+            {
+              AppendTraceText(string.Format("Error en el envio  " + RespuestaConafe.Errores[0].Mensaje));
+              return;
+            }
+          else
+          {
+            AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
+            AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
+            AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
+            return;
+          }
+          }
+
+          catch (Exception ex)
+          {
+            AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+          }
+        }
+
+          if (checkPartos.Checked == true)
+              {
+                try
+                {
+                  var RespuestaConafe = await _serviceConafe.GetPartosConafe();
+                  if (RespuestaConafe.Errores.Count != 0)
+                  {
+                    AppendTraceText(string.Format("Error en el envio .... " + RespuestaConafe.Errores[0].Mensaje));
+                    return;
+                  }
+                  else
+                  {
+                    AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
+                    AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
+                    AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
+                    return;
+                  }
+                }
+                catch (Exception ex)
+                {
+                  AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+                }
+              }
+
+          if (checkCubriciones.Checked == true)
+            {
+              try
+              {
+                var RespuestaConafe = await _serviceConafe.GetCubricionesConafe();
+                if (RespuestaConafe.Errores.Count != 0)
+                {
+                  AppendTraceText(string.Format("Error en el envio .... " + RespuestaConafe.Errores[0].Mensaje));
+                  return;
+                }
+                else
+                {
+                  AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
+                  AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
+                  AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
+                  return;
+                }
+              }
+
+              catch (Exception ex)
+              {
+                AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+              }
+            }
+        }
+    }
 }

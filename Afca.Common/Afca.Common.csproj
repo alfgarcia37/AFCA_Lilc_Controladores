@@ -45,6 +45,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -146,6 +147,7 @@
       <DependentUpon>GanaderiaDomainData.xsd</DependentUpon>
     </Compile>
     <Compile Include="Enumerations\Enums.cs" />
+    <Compile Include="Models\ClsRegistroConafe.cs" />
     <Compile Include="Models\ClsMuestraIndustria.cs" />
     <Compile Include="Models\ClsMuestraCruzada.cs" />
     <Compile Include="Models\DownloadedData.cs" />
@@ -161,13 +163,16 @@
     </Compile>
     <Compile Include="ServicesInterfaces\IAgmService.cs" />
     <Compile Include="ServicesInterfaces\IBuzonLaboratorioService.cs" />
+    <Compile Include="ServicesInterfaces\IConafeService.cs" />
     <Compile Include="ServicesInterfaces\IMuestrasService.cs" />
     <Compile Include="ServicesInterfaces\IImportarService.cs" />
     <Compile Include="ServicesInterfaces\IGenerarService.cs" />
     <Compile Include="ServicesInterfaces\INacimientoSiluetasService.cs" />
     <Compile Include="Utilities\ClsResult.cs" />
     <Compile Include="Utilities\DataMapper.cs" />
+    <Compile Include="Utilities\ConafeConfig.cs" />
     <Compile Include="Utilities\FileTracer.cs" />
+    <Compile Include="Utilities\StringUtils.cs" />
     <Compile Include="Utilities\IconMapper.cs" />
     <Compile Include="ServicesInterfaces\IEstadoLecturaService.cs" />
     <Compile Include="ServicesInterfaces\IGanaderiaService.cs" />

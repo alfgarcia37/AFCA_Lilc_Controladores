@@ -1,6 +1,7 @@
 ﻿using Afca.Common;
 using Afca.Common.Models;
 using Afca.Common.ServicesInterfaces;
+using Afca.Common.Utilities;
 using FrameworkForge.Common;
 using Newtonsoft.Json; // Asegúrate de tener este using
 using System;
@@ -21,6 +22,7 @@ namespace Afca.Services
   {
     public HttpClient client= new HttpClient();
     public List<Muestra> ListaMuestras = new List<Muestra>();
+    public List<RegistroConafe> ListaRegistrosConafe = new List<RegistroConafe>();
     public List<MuestraIndustria> Listaindustria = new List<MuestraIndustria>();
     public string FechaDesde { get; set; }
     public string FechaHasta { get; set; }
@@ -257,6 +259,7 @@ namespace Afca.Services
       return new List<MuestraIndustria>();
     }
 
+   
 
   }
 }

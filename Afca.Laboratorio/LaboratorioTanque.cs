@@ -159,7 +159,7 @@ public static class LaboratorioTanqueRepository
       cn = new SqlConnection(constring);
       cn.Open();
 
-      foreach (var muestra in muestrasIndustria.Take(2000))
+      foreach (var muestra in muestrasIndustria.Take(20000))
       {
         // Variables tipadas (valores reales del modelo)
         short asociacionId = 1;
