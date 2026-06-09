@@ -52,9 +52,15 @@ namespace Afca.Laboratorio
         {
             this.timer.Elapsed += Timer_Elapsed;
             this.traceFileName = GetTraceFileName();
+            checkAnimales.Checked = ConfigurationProvider.GetConfigurationValue("checkconafeanimales") == "true" ? true : false;
+            checkLactaciones.Checked = ConfigurationProvider.GetConfigurationValue("checkconafelactaciones") == "true" ? true : false;
+            checkControles.Checked = ConfigurationProvider.GetConfigurationValue("checkconafecontroles") == "true" ? true : false;
+            checkPartos.Checked = ConfigurationProvider.GetConfigurationValue("checkconafepartos") == "true" ? true : false;
+            checkCubriciones.Checked = ConfigurationProvider.GetConfigurationValue("checkconafecubriciones") == "true" ? true : false;
 
-          // Ruta base de ejecución (bin/Debug, bin/Release, etc.)
-          string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+      // Ruta base de ejecución (bin/Debug, bin/Release, etc.)
+      string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
           // Ruta completa del directorio
           string labLogPath = Path.Combine(basePath, "LabLog");
@@ -689,8 +695,14 @@ namespace Afca.Laboratorio
 
         private async void botonAPI_Conafe_Click(object sender, EventArgs e)
         {
-          //1. Cargar el fichero de configuración de la API de CONAFE
-          string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPathConafe");
+          Task<RespuestaConafe> taskRegistros = null;
+          Task<RespuestaConafe> taskLactaciones = null;
+          Task<RespuestaConafe> taskControles = null;
+          Task<RespuestaConafe> taskPartos = null;
+          Task<RespuestaConafe> taskCubriciones = null;
+      //1. Cargar el fichero de configuración de la API de CONAFE
+      string apiConfigPath = ConfigurationProvider.GetConfigurationValue("ApiConfigPathConafe");
+         
           if (string.IsNullOrEmpty(apiConfigPath))
           {
             MessageBox.Show("El fichero de configuración de la API no se encuentra o está vacío.");
@@ -701,92 +713,44 @@ namespace Afca.Laboratorio
               {
                 try
                 {
-                  var RespuestaConafe = await _serviceConafe.GetRegistrosConafe();
-                  if ( RespuestaConafe.Errores.Count != 0)
-                  {
-                    AppendTraceText(string.Format("Error en el envio .... " + RespuestaConafe.Errores[0].Mensaje));
-                    return;
-                  }
-                  else
-                  {
-                    AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
-                    AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
-                    AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
-                    return;
-                  }
+                  taskRegistros =  _serviceConafe.GetRegistrosConafe();
                 }
                 catch (Exception ex)
                 {
-                  AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+                  AppendTraceText($"Error al conectar GetRegistrosConafe: {ex.Message}");
                 }
               }
-
+          
           if (checkLactaciones.Checked == true)
               {
                 try
                 {
-                  var RespuestaConafe = await _serviceConafe.GetLactacionesConafe();
-                  if (RespuestaConafe.Errores.Count != 0)
-                  {
-                    AppendTraceText(string.Format("Error en el envio  " + RespuestaConafe.Errores[0].Mensaje));
-                    return;
-                  }
-                  else
-                  {
-                    AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
-                    AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
-                    AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
-                    return;
-                  }
+                  taskLactaciones =  _serviceConafe.GetLactacionesConafe();
                 }
                 catch (Exception ex)
                 {
-                  AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+                  AppendTraceText($"Error al conectar GetLactacionesConafe: {ex.Message}");
                 }
               }
 
           if (checkControles.Checked == true)
-        {
-          try
-          {
-            var RespuestaConafe = await _serviceConafe.GetControlesConafe();
-            if (RespuestaConafe.Errores.Count != 0)
             {
-              AppendTraceText(string.Format("Error en el envio  " + RespuestaConafe.Errores[0].Mensaje));
-              return;
-            }
-          else
-          {
-            AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
-            AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
-            AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
-            return;
-          }
-          }
+              try
+              {
+                taskControles =  _serviceConafe.GetControlesConafe();
+              }
 
-          catch (Exception ex)
-          {
-            AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
-          }
-        }
+              catch (Exception ex)
+              {
+                AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
+              }
+            }
 
           if (checkPartos.Checked == true)
               {
                 try
                 {
-                  var RespuestaConafe = await _serviceConafe.GetPartosConafe();
-                  if (RespuestaConafe.Errores.Count != 0)
-                  {
-                    AppendTraceText(string.Format("Error en el envio .... " + RespuestaConafe.Errores[0].Mensaje));
-                    return;
-                  }
-                  else
-                  {
-                    AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
-                    AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
-                    AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
-                    return;
-                  }
+                  taskPartos =  _serviceConafe.GetPartosConafe();
                 }
                 catch (Exception ex)
                 {
@@ -798,26 +762,118 @@ namespace Afca.Laboratorio
             {
               try
               {
-                var RespuestaConafe = await _serviceConafe.GetCubricionesConafe();
-                if (RespuestaConafe.Errores.Count != 0)
-                {
-                  AppendTraceText(string.Format("Error en el envio .... " + RespuestaConafe.Errores[0].Mensaje));
-                  return;
-                }
-                else
-                {
-                  AppendTraceText(string.Format("Recibidos  " + RespuestaConafe.TotalRecibidos.ToString()));
-                  AppendTraceText(string.Format("Insertados  " + RespuestaConafe.Insertados.ToString()));
-                  AppendTraceText(string.Format("Rechazados  " + RespuestaConafe.Rechazados.ToString()));
-                  return;
-                }
+                taskCubriciones =   _serviceConafe.GetCubricionesConafe();
               }
-
               catch (Exception ex)
               {
                 AppendTraceText($"Error al conectar a la BD de CL: {ex.Message}");
               }
             }
+
+      var tareas = new List<Task>();
+
+      if (taskRegistros != null)
+        tareas.Add(taskRegistros);
+
+      if (taskLactaciones != null)
+        tareas.Add(taskLactaciones);
+
+      if (taskControles != null)
+        tareas.Add(taskControles);
+
+      if (taskPartos != null)
+        tareas.Add(taskPartos);
+
+      if (taskCubriciones != null)
+        tareas.Add(taskCubriciones);
+
+
+      await Task.WhenAll(tareas);
+
+      if (taskRegistros != null)
+          {
+            var respuestaRegistros = await taskRegistros;
+            if (respuestaRegistros.Errores?.Count > 0)
+            {
+              AppendTraceText(string.Format("Error en el envio Registros " + respuestaRegistros.Errores[0].Mensaje));
+            }
+            else
+            {
+              AppendTraceText("REGISTROS");
+              AppendTraceText(string.Format("Recibidos  " + respuestaRegistros.TotalRecibidos.ToString()));
+              AppendTraceText(string.Format("Insertados  " + respuestaRegistros.Insertados.ToString()));
+              AppendTraceText(string.Format("Rechazados  " + respuestaRegistros.Rechazados.ToString()));
+            }
+          }
+
+      if (taskLactaciones != null)
+        {
+          var respuestaRegistros = await taskLactaciones;
+
+          if (respuestaRegistros.Errores?.Count > 0)
+          {
+            AppendTraceText(string.Format("Error en el envio de Lactaciones .... " + respuestaRegistros.Errores[0].Mensaje));
+          }
+          else
+          {
+            AppendTraceText("LACTACIONES");
+            AppendTraceText(string.Format("Recibidos  " + respuestaRegistros.TotalRecibidos.ToString()));
+            AppendTraceText(string.Format("Insertados  " + respuestaRegistros.Insertados.ToString()));
+            AppendTraceText(string.Format("Rechazados  " + respuestaRegistros.Rechazados.ToString()));
+          }
         }
+
+      if (taskControles != null)
+        {
+          var respuestaRegistros = await taskControles;
+
+          if (respuestaRegistros.Errores?.Count > 0)
+          {
+            AppendTraceText(string.Format("Error en el envio de Controles .... " + respuestaRegistros.Errores[0].Mensaje));
+          }
+          else
+          {
+            AppendTraceText("CONTROLES");
+          AppendTraceText(string.Format("Recibidos  " + respuestaRegistros.TotalRecibidos.ToString()));
+            AppendTraceText(string.Format("Insertados  " + respuestaRegistros.Insertados.ToString()));
+            AppendTraceText(string.Format("Rechazados  " + respuestaRegistros.Rechazados.ToString()));
+          }
+        }
+
+      if (taskPartos != null)
+      {
+        var respuestaRegistros = await taskPartos;
+
+        if (respuestaRegistros.Errores?.Count > 0)
+        {
+          AppendTraceText(string.Format("Error en el envio de Partos .... " + respuestaRegistros.Errores[0].Mensaje));
+        }
+        else
+        {
+          AppendTraceText("PARTOS");
+          AppendTraceText(string.Format("Recibidos  " + respuestaRegistros.TotalRecibidos.ToString()));
+          AppendTraceText(string.Format("Insertados  " + respuestaRegistros.Insertados.ToString()));
+          AppendTraceText(string.Format("Rechazados  " + respuestaRegistros.Rechazados.ToString()));
+        }
+      }
+
+      if (taskCubriciones != null)
+          {
+            var respuestaRegistros = await taskCubriciones;
+
+            if (respuestaRegistros.Errores?.Count > 0)
+            {
+              AppendTraceText(string.Format("Error en el envio .... " + respuestaRegistros.Errores[0].Mensaje));
+            }
+            else
+            {
+              AppendTraceText("CUBRICIONES");
+              AppendTraceText(string.Format("Recibidos  " + respuestaRegistros.TotalRecibidos.ToString()));
+              AppendTraceText(string.Format("Insertados  " + respuestaRegistros.Insertados.ToString()));
+              AppendTraceText(string.Format("Rechazados  " + respuestaRegistros.Rechazados.ToString()));
+            }
+          }
+
+    }     
     }
 }

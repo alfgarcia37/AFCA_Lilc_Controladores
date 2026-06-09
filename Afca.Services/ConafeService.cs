@@ -105,7 +105,7 @@ namespace Afca.Services
         }
         var requestBody = new
         {
-          animales = ListaRegistrosConafe.Take(1)
+          animales = ListaRegistrosConafe
         };
         var json = JsonConvert.SerializeObject(requestBody);
         if (!Directory.Exists(directorioPayload))
@@ -239,7 +239,7 @@ namespace Afca.Services
       }
     }
     public async Task<RespuestaConafe> GetControlesConafe()
-    {
+    { object alfa  ;
       string baseUrl = client.BaseAddress.ToString(); //https://sinbad.conafe.com/GESLIBEntradaAPI
       baseUrl = baseUrl + $"/controles/lote";
       try
@@ -270,11 +270,16 @@ namespace Afca.Services
                   Urea = reader["urea"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["urea"]),
                   Bhb = reader["bhb"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["bhb"]),
                   Acetona = reader["acetona"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["acetona"]),
-                  Fana = reader["fana"] == DBNull.Value ?  "" : reader["fana"].ToString().Trim(),
-                  Incidencia = reader["incidencia"] == DBNull.Value ? (byte)0 : Convert.ToByte(reader["incidencia"]),
-                  Controlador = reader["controlador"] == DBNull.Value ? 0 : Convert.ToInt64(reader["controlador"]),
-                  Ganlact = reader["ganlact"] == DBNull.Value ? "" : reader["ganlact"].ToString().Trim()
+                  Fana = reader["fana"] == DBNull.Value ? "" : Convert.ToDateTime(reader["fana"]).ToString("yyyy-MM-dd"),
+                 Controlador = reader["controlador"] == DBNull.Value ? 0 : Convert.ToInt64(reader["controlador"]),
+                 Ganlact = reader["ganlact"] == DBNull.Value ? "" : reader["ganlact"].ToString().Trim()
                 };
+                if (reader["incidencia"] != DBNull.Value && !string.IsNullOrEmpty(reader["incidencia"].ToString().Trim()))
+                {
+                  alfa= reader["incidencia"];
+                  registro.Incidencia = Convert.ToByte(reader["incidencia"].ToString().Trim());
+                }
+                 
                 ListaControlesConafe.Add(registro);
               }
             }
@@ -282,7 +287,7 @@ namespace Afca.Services
         }
         var requestBody = new
         {
-          controles = ListaControlesConafe
+          controles = ListaControlesConafe // Enviar en lotes de 1000 registros para evitar problemas de tamaño
         };
         var json = JsonConvert.SerializeObject(requestBody);
         if (!Directory.Exists(directorioPayload))

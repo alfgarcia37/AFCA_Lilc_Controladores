@@ -166,7 +166,7 @@ namespace Afca.Common.Models
     public string Fana { get; set; }
 
     [JsonProperty("incidencia")]
-    public byte? Incidencia { get; set; }
+    public int? Incidencia { get; set; }
 
     [JsonProperty("controlador")]
     public long? Controlador { get; set; }

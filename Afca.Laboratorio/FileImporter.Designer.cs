@@ -31,12 +31,12 @@ namespace Afca.Laboratorio
         private void InitializeComponent()
         {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileImporter));
-      Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
       this.ultraPanelTop = new Infragistics.Win.Misc.UltraPanel();
       this.checkAnimales = new System.Windows.Forms.CheckBox();
       this.checkCubriciones = new System.Windows.Forms.CheckBox();
@@ -106,15 +106,13 @@ namespace Afca.Laboratorio
       this.ultraPanelTop.Dock = System.Windows.Forms.DockStyle.Top;
       this.ultraPanelTop.Location = new System.Drawing.Point(0, 0);
       this.ultraPanelTop.Name = "ultraPanelTop";
-      this.ultraPanelTop.Size = new System.Drawing.Size(486, 379);
+      this.ultraPanelTop.Size = new System.Drawing.Size(486, 428);
       this.ultraPanelTop.TabIndex = 0;
       // 
       // checkAnimales
       // 
       this.checkAnimales.AutoSize = true;
-      this.checkAnimales.Checked = true;
-      this.checkAnimales.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.checkAnimales.Location = new System.Drawing.Point(33, 320);
+      this.checkAnimales.Location = new System.Drawing.Point(13, 308);
       this.checkAnimales.Name = "checkAnimales";
       this.checkAnimales.Size = new System.Drawing.Size(68, 17);
       this.checkAnimales.TabIndex = 22;
@@ -124,7 +122,7 @@ namespace Afca.Laboratorio
       // checkCubriciones
       // 
       this.checkCubriciones.AutoSize = true;
-      this.checkCubriciones.Location = new System.Drawing.Point(232, 320);
+      this.checkCubriciones.Location = new System.Drawing.Point(198, 307);
       this.checkCubriciones.Name = "checkCubriciones";
       this.checkCubriciones.Size = new System.Drawing.Size(81, 17);
       this.checkCubriciones.TabIndex = 21;
@@ -134,7 +132,7 @@ namespace Afca.Laboratorio
       // checkPartos
       // 
       this.checkPartos.AutoSize = true;
-      this.checkPartos.Location = new System.Drawing.Point(161, 320);
+      this.checkPartos.Location = new System.Drawing.Point(106, 308);
       this.checkPartos.Name = "checkPartos";
       this.checkPartos.Size = new System.Drawing.Size(56, 17);
       this.checkPartos.TabIndex = 20;
@@ -144,7 +142,7 @@ namespace Afca.Laboratorio
       // checkControles
       // 
       this.checkControles.AutoSize = true;
-      this.checkControles.Location = new System.Drawing.Point(243, 343);
+      this.checkControles.Location = new System.Drawing.Point(198, 330);
       this.checkControles.Name = "checkControles";
       this.checkControles.Size = new System.Drawing.Size(70, 17);
       this.checkControles.TabIndex = 19;
@@ -154,7 +152,7 @@ namespace Afca.Laboratorio
       // checkLactaciones
       // 
       this.checkLactaciones.AutoSize = true;
-      this.checkLactaciones.Location = new System.Drawing.Point(161, 343);
+      this.checkLactaciones.Location = new System.Drawing.Point(108, 330);
       this.checkLactaciones.Name = "checkLactaciones";
       this.checkLactaciones.Size = new System.Drawing.Size(84, 17);
       this.checkLactaciones.TabIndex = 18;
@@ -165,7 +163,7 @@ namespace Afca.Laboratorio
       // 
       this.botonAPI_Conafe.Image = ((System.Drawing.Image)(resources.GetObject("botonAPI_Conafe.Image")));
       this.botonAPI_Conafe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.botonAPI_Conafe.Location = new System.Drawing.Point(327, 320);
+      this.botonAPI_Conafe.Location = new System.Drawing.Point(304, 307);
       this.botonAPI_Conafe.Margin = new System.Windows.Forms.Padding(2);
       this.botonAPI_Conafe.Name = "botonAPI_Conafe";
       this.botonAPI_Conafe.Size = new System.Drawing.Size(148, 39);
@@ -177,9 +175,9 @@ namespace Afca.Laboratorio
       // 
       // ultraLabel4
       // 
-      appearance1.TextVAlignAsString = "Middle";
-      this.ultraLabel4.Appearance = appearance1;
-      this.ultraLabel4.Location = new System.Drawing.Point(144, 233);
+      appearance7.TextVAlignAsString = "Middle";
+      this.ultraLabel4.Appearance = appearance7;
+      this.ultraLabel4.Location = new System.Drawing.Point(163, 158);
       this.ultraLabel4.Name = "ultraLabel4";
       this.ultraLabel4.Size = new System.Drawing.Size(116, 23);
       this.ultraLabel4.TabIndex = 16;
@@ -187,7 +185,7 @@ namespace Afca.Laboratorio
       // 
       // TextEstablo
       // 
-      this.TextEstablo.Location = new System.Drawing.Point(33, 233);
+      this.TextEstablo.Location = new System.Drawing.Point(52, 158);
       this.TextEstablo.MaxLength = 7;
       this.TextEstablo.Name = "TextEstablo";
       this.TextEstablo.Size = new System.Drawing.Size(105, 20);
@@ -196,7 +194,7 @@ namespace Afca.Laboratorio
       // CheckFechas
       // 
       this.CheckFechas.AutoSize = true;
-      this.CheckFechas.Location = new System.Drawing.Point(138, 259);
+      this.CheckFechas.Location = new System.Drawing.Point(157, 184);
       this.CheckFechas.Name = "CheckFechas";
       this.CheckFechas.Size = new System.Drawing.Size(86, 17);
       this.CheckFechas.TabIndex = 14;
@@ -206,7 +204,7 @@ namespace Afca.Laboratorio
       // FHasta
       // 
       this.FHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-      this.FHasta.Location = new System.Drawing.Point(33, 285);
+      this.FHasta.Location = new System.Drawing.Point(52, 210);
       this.FHasta.Name = "FHasta";
       this.FHasta.Size = new System.Drawing.Size(99, 20);
       this.FHasta.TabIndex = 13;
@@ -214,7 +212,7 @@ namespace Afca.Laboratorio
       // FDesde
       // 
       this.FDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-      this.FDesde.Location = new System.Drawing.Point(33, 259);
+      this.FDesde.Location = new System.Drawing.Point(52, 184);
       this.FDesde.Name = "FDesde";
       this.FDesde.Size = new System.Drawing.Size(99, 20);
       this.FDesde.TabIndex = 12;
@@ -263,8 +261,8 @@ namespace Afca.Laboratorio
       // 
       // ultraButton2
       // 
-      appearance2.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-      this.ultraButton2.Appearance = appearance2;
+      appearance8.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+      this.ultraButton2.Appearance = appearance8;
       this.ultraButton2.ImageSize = new System.Drawing.Size(32, 32);
       this.ultraButton2.Location = new System.Drawing.Point(328, 63);
       this.ultraButton2.Name = "ultraButton2";
@@ -286,8 +284,8 @@ namespace Afca.Laboratorio
       // 
       // ultraButton1
       // 
-      appearance3.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-      this.ultraButton1.Appearance = appearance3;
+      appearance9.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+      this.ultraButton1.Appearance = appearance9;
       this.ultraButton1.ImageSize = new System.Drawing.Size(32, 32);
       this.ultraButton1.Location = new System.Drawing.Point(328, 110);
       this.ultraButton1.Name = "ultraButton1";
@@ -298,8 +296,8 @@ namespace Afca.Laboratorio
       // 
       // ultraLabel3
       // 
-      appearance4.TextVAlignAsString = "Middle";
-      this.ultraLabel3.Appearance = appearance4;
+      appearance10.TextVAlignAsString = "Middle";
+      this.ultraLabel3.Appearance = appearance10;
       this.ultraLabel3.Location = new System.Drawing.Point(275, 59);
       this.ultraLabel3.Name = "ultraLabel3";
       this.ultraLabel3.Size = new System.Drawing.Size(64, 23);
@@ -316,8 +314,8 @@ namespace Afca.Laboratorio
       // 
       // utbtnStop
       // 
-      appearance5.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
-      this.utbtnStop.Appearance = appearance5;
+      appearance11.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
+      this.utbtnStop.Appearance = appearance11;
       this.utbtnStop.ImageSize = new System.Drawing.Size(32, 32);
       this.utbtnStop.Location = new System.Drawing.Point(138, 110);
       this.utbtnStop.Name = "utbtnStop";
@@ -328,8 +326,8 @@ namespace Afca.Laboratorio
       // 
       // utbtnStart
       // 
-      appearance6.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-      this.utbtnStart.Appearance = appearance6;
+      appearance12.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+      this.utbtnStart.Appearance = appearance12;
       this.utbtnStart.ImageSize = new System.Drawing.Size(32, 32);
       this.utbtnStart.Location = new System.Drawing.Point(57, 110);
       this.utbtnStart.Name = "utbtnStart";
@@ -369,9 +367,9 @@ namespace Afca.Laboratorio
       // 
       this.ultraPanelDown.ClientArea.Controls.Add(this.uteLog);
       this.ultraPanelDown.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ultraPanelDown.Location = new System.Drawing.Point(0, 379);
+      this.ultraPanelDown.Location = new System.Drawing.Point(0, 428);
       this.ultraPanelDown.Name = "ultraPanelDown";
-      this.ultraPanelDown.Size = new System.Drawing.Size(486, 227);
+      this.ultraPanelDown.Size = new System.Drawing.Size(486, 178);
       this.ultraPanelDown.TabIndex = 1;
       // 
       // uteLog
@@ -381,7 +379,7 @@ namespace Afca.Laboratorio
       this.uteLog.Multiline = true;
       this.uteLog.Name = "uteLog";
       this.uteLog.Scrollbars = System.Windows.Forms.ScrollBars.Both;
-      this.uteLog.Size = new System.Drawing.Size(486, 227);
+      this.uteLog.Size = new System.Drawing.Size(486, 178);
       this.uteLog.TabIndex = 0;
       this.uteLog.ValueChanged += new System.EventHandler(this.uteLog_ValueChanged);
       // 
