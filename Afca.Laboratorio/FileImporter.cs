@@ -696,6 +696,7 @@ namespace Afca.Laboratorio
         private async void botonAPI_Conafe_Click(object sender, EventArgs e)
         {
           Task<RespuestaConafe> taskRegistros = null;
+          Task<RespuestaConafe> taskCenso = null;
           Task<RespuestaConafe> taskLactaciones = null;
           Task<RespuestaConafe> taskControles = null;
           Task<RespuestaConafe> taskPartos = null;
@@ -720,8 +721,19 @@ namespace Afca.Laboratorio
                   AppendTraceText($"Error al conectar GetRegistrosConafe: {ex.Message}");
                 }
               }
-          
-          if (checkLactaciones.Checked == true)
+      if (checkCenso.Checked == true)
+      {
+        try
+        {
+          taskCenso = _serviceConafe.GetCensoConafe();
+        }
+        catch (Exception ex)
+        {
+          AppendTraceText($"Error al conectar GetCensoConafe: {ex.Message}");
+        }
+      }
+
+      if (checkLactaciones.Checked == true)
               {
                 try
                 {
@@ -775,6 +787,9 @@ namespace Afca.Laboratorio
       if (taskRegistros != null)
         tareas.Add(taskRegistros);
 
+      if (taskCenso != null)
+        tareas.Add(taskCenso);
+
       if (taskLactaciones != null)
         tareas.Add(taskLactaciones);
 
@@ -805,7 +820,21 @@ namespace Afca.Laboratorio
               AppendTraceText(string.Format("Rechazados  " + respuestaRegistros.Rechazados.ToString()));
             }
           }
-
+      if (taskCenso != null)
+      {
+        var respuestaCenso = await taskCenso;
+        if (respuestaCenso.Errores?.Count > 0)
+        {
+          AppendTraceText(string.Format("Error en el envio Censo " + respuestaCenso.Errores[0].Mensaje));
+        }
+        else
+        {
+          AppendTraceText("CENSO");
+          AppendTraceText(string.Format("Recibidos  " + respuestaCenso.TotalRecibidos.ToString()));
+          AppendTraceText(string.Format("Insertados  " + respuestaCenso.Insertados.ToString()));
+          AppendTraceText(string.Format("Rechazados  " + respuestaCenso .Rechazados.ToString()));
+        }
+      }
       if (taskLactaciones != null)
         {
           var respuestaRegistros = await taskLactaciones;

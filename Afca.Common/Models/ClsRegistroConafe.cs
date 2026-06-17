@@ -71,9 +71,57 @@ namespace Afca.Common.Models
 
     [JsonProperty("esModif", Required = Required.Always)]
     public string EsModif { get; set; }
+  }
 
+
+  public class CensoConafe
+  {
+    [JsonProperty("numero", Required = Required.Always)]
+    public string Numero { get; set; }
+
+    [JsonProperty("sexo")]
+    public string Sexo { get; set; }
+
+    [JsonProperty("sexoge")]
+    public string Sexoge { get; set; }
+
+    [JsonProperty("capa")]
+    public string Capa { get; set; }
+
+    [JsonProperty("et")]
+    public string Et { get; set; }
+
+    [JsonProperty("pureza")]
+    public string Pureza { get; set; }
+
+    [JsonProperty("nombre")]
+    public string Nombre { get; set; }
+
+    [JsonProperty("nupadre")]
+    public string Padre { get; set; }
+
+    [JsonProperty("numadre")]
+    public string Madre { get; set; }
+
+    [JsonProperty("ganacr")]
+    public string Ganacr { get; set; }
+
+    [JsonProperty("fnac")]
+    public string Fnac { get; set; }
+
+    [JsonProperty("collar")]
+    public string Collar { get; set; }
+
+    [JsonProperty("ganapr")]
+    public string Ganapr { get; set; }
+
+    [JsonProperty("cib")]
+    public string Cib { get; set; }
 
   }
+
+
+
 
   public class LactacionesConafe
   {

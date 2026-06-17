@@ -15,7 +15,6 @@ namespace Afca.Common.Utilities
 { 
   public static class Constants
     {
-      
       public static string MiTokenLelyGlobal = "";
       public static string user = "sg1246";
       public static string pass = "NF3s9SG8YAxn$Kg3";

@@ -31,12 +31,12 @@ namespace Afca.Laboratorio
         private void InitializeComponent()
         {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FileImporter));
-      Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-      Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+      Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
       this.ultraPanelTop = new Infragistics.Win.Misc.UltraPanel();
       this.checkAnimales = new System.Windows.Forms.CheckBox();
       this.checkCubriciones = new System.Windows.Forms.CheckBox();
@@ -65,6 +65,7 @@ namespace Afca.Laboratorio
       this.ultraPanelDown = new Infragistics.Win.Misc.UltraPanel();
       this.uteLog = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
       this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+      this.checkCenso = new System.Windows.Forms.CheckBox();
       this.ultraPanelTop.ClientArea.SuspendLayout();
       this.ultraPanelTop.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.utePath)).BeginInit();
@@ -79,6 +80,7 @@ namespace Afca.Laboratorio
       // 
       // ultraPanelTop.ClientArea
       // 
+      this.ultraPanelTop.ClientArea.Controls.Add(this.checkCenso);
       this.ultraPanelTop.ClientArea.Controls.Add(this.checkAnimales);
       this.ultraPanelTop.ClientArea.Controls.Add(this.checkCubriciones);
       this.ultraPanelTop.ClientArea.Controls.Add(this.checkPartos);
@@ -175,8 +177,8 @@ namespace Afca.Laboratorio
       // 
       // ultraLabel4
       // 
-      appearance7.TextVAlignAsString = "Middle";
-      this.ultraLabel4.Appearance = appearance7;
+      appearance1.TextVAlignAsString = "Middle";
+      this.ultraLabel4.Appearance = appearance1;
       this.ultraLabel4.Location = new System.Drawing.Point(163, 158);
       this.ultraLabel4.Name = "ultraLabel4";
       this.ultraLabel4.Size = new System.Drawing.Size(116, 23);
@@ -261,8 +263,8 @@ namespace Afca.Laboratorio
       // 
       // ultraButton2
       // 
-      appearance8.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-      this.ultraButton2.Appearance = appearance8;
+      appearance2.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+      this.ultraButton2.Appearance = appearance2;
       this.ultraButton2.ImageSize = new System.Drawing.Size(32, 32);
       this.ultraButton2.Location = new System.Drawing.Point(328, 63);
       this.ultraButton2.Name = "ultraButton2";
@@ -284,8 +286,8 @@ namespace Afca.Laboratorio
       // 
       // ultraButton1
       // 
-      appearance9.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-      this.ultraButton1.Appearance = appearance9;
+      appearance3.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+      this.ultraButton1.Appearance = appearance3;
       this.ultraButton1.ImageSize = new System.Drawing.Size(32, 32);
       this.ultraButton1.Location = new System.Drawing.Point(328, 110);
       this.ultraButton1.Name = "ultraButton1";
@@ -296,8 +298,8 @@ namespace Afca.Laboratorio
       // 
       // ultraLabel3
       // 
-      appearance10.TextVAlignAsString = "Middle";
-      this.ultraLabel3.Appearance = appearance10;
+      appearance4.TextVAlignAsString = "Middle";
+      this.ultraLabel3.Appearance = appearance4;
       this.ultraLabel3.Location = new System.Drawing.Point(275, 59);
       this.ultraLabel3.Name = "ultraLabel3";
       this.ultraLabel3.Size = new System.Drawing.Size(64, 23);
@@ -314,8 +316,8 @@ namespace Afca.Laboratorio
       // 
       // utbtnStop
       // 
-      appearance11.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
-      this.utbtnStop.Appearance = appearance11;
+      appearance5.Image = global::Afca.Laboratorio.Properties.Resources.bullet_square_red;
+      this.utbtnStop.Appearance = appearance5;
       this.utbtnStop.ImageSize = new System.Drawing.Size(32, 32);
       this.utbtnStop.Location = new System.Drawing.Point(138, 110);
       this.utbtnStop.Name = "utbtnStop";
@@ -326,8 +328,8 @@ namespace Afca.Laboratorio
       // 
       // utbtnStart
       // 
-      appearance12.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
-      this.utbtnStart.Appearance = appearance12;
+      appearance6.Image = global::Afca.Laboratorio.Properties.Resources.bullet_triangle_green;
+      this.utbtnStart.Appearance = appearance6;
       this.utbtnStart.ImageSize = new System.Drawing.Size(32, 32);
       this.utbtnStart.Location = new System.Drawing.Point(57, 110);
       this.utbtnStart.Name = "utbtnStart";
@@ -386,6 +388,16 @@ namespace Afca.Laboratorio
       // openFileDialog1
       // 
       this.openFileDialog1.FileName = "openFileDialog1";
+      // 
+      // checkCenso
+      // 
+      this.checkCenso.AutoSize = true;
+      this.checkCenso.Location = new System.Drawing.Point(13, 331);
+      this.checkCenso.Name = "checkCenso";
+      this.checkCenso.Size = new System.Drawing.Size(56, 17);
+      this.checkCenso.TabIndex = 23;
+      this.checkCenso.Text = "Censo";
+      this.checkCenso.UseVisualStyleBackColor = true;
       // 
       // FileImporter
       // 
@@ -452,5 +464,6 @@ namespace Afca.Laboratorio
     private System.Windows.Forms.CheckBox checkLactaciones;
     private System.Windows.Forms.CheckBox checkCubriciones;
     private System.Windows.Forms.CheckBox checkAnimales;
+    private System.Windows.Forms.CheckBox checkCenso;
   }
 }

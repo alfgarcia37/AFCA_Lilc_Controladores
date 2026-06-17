@@ -13,6 +13,7 @@ namespace Afca.Common.ServicesInterfaces
     public interface IConafeService : IService
     {
       Task<RespuestaConafe> GetRegistrosConafe( );
+      Task<RespuestaConafe> GetCensoConafe();
       Task<RespuestaConafe> GetLactacionesConafe();
       Task<RespuestaConafe> GetControlesConafe();
       Task<RespuestaConafe> GetPartosConafe();

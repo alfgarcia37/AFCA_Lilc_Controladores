@@ -149,6 +149,104 @@ namespace Afca.Services
       }
     }
 
+    public async Task<RespuestaConafe> GetCensoConafe()
+    {
+      string json = "";
+      //string baseUrl = client.BaseAddress.ToString(); //https://sinbad.conafe.com/GESLIBSalidaPI
+      string baseUrl = "https://sinbad.conafe.com/GESLIBSalidaAPI/censos/J";
+      try
+      {
+       
+
+        var response = await client.GetAsync(baseUrl).ConfigureAwait(false);
+        if (response.IsSuccessStatusCode)
+        {
+
+          json = await response.Content.ReadAsStringAsync();
+          var result = JsonConvert.DeserializeObject<List<CensoConafe>>(json);
+
+          // Insertar registros en la tabla Reggen..CensoConafe
+          if (result != null && result.Count > 0)
+          {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+              await connection.OpenAsync();
+              // Primero, limpiar la tabla
+              using (SqlCommand cmdDelete = new SqlCommand("DELETE FROM Reggen..CensoConafe", connection))
+              {
+                await cmdDelete.ExecuteNonQueryAsync();
+              }
+
+              // Insertar los registros
+              string insertQuery = @"
+                INSERT INTO Reggen..CensoConafe 
+                  (numero, sexo, sexoge, capa, et, pureza, nombre, nupadre, numadre, ganacr, fnac, collar, ganapr, cib)
+                VALUES 
+                  (@numero, @sexo, @sexoge, @capa, @et, @pureza, @nombre, @nupadre, @numadre, @ganacr, @fnac, @collar, @ganapr, @cib)";
+
+              foreach (var censo in result)
+              {
+                using (SqlCommand cmdInsert = new SqlCommand(insertQuery, connection))
+                {
+                  cmdInsert.Parameters.Add("@numero", SqlDbType.Char, 14).Value = censo.Numero ?? (object)DBNull.Value;
+                  cmdInsert.Parameters.Add("@sexo", SqlDbType.Char, 1).Value = string.IsNullOrEmpty(censo.Sexo) ? (object)DBNull.Value : censo.Sexo;
+                  cmdInsert.Parameters.Add("@sexoge", SqlDbType.Char, 1).Value = string.IsNullOrEmpty(censo.Sexoge) ? (object)DBNull.Value : censo.Sexoge;
+                  cmdInsert.Parameters.Add("@capa", SqlDbType.VarChar, 10).Value = string.IsNullOrEmpty(censo.Capa) ? (object)DBNull.Value : censo.Capa;
+                  cmdInsert.Parameters.Add("@et", SqlDbType.Char, 1).Value = string.IsNullOrEmpty(censo.Et) ? (object)DBNull.Value : censo.Et;
+                  cmdInsert.Parameters.Add("@pureza", SqlDbType.Char, 2).Value = string.IsNullOrEmpty(censo.Pureza) ? (object)DBNull.Value : censo.Pureza;
+                  cmdInsert.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = string.IsNullOrEmpty(censo.Nombre) ? (object)DBNull.Value : censo.Nombre;
+                  cmdInsert.Parameters.Add("@nupadre", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(censo.Padre) ? (object)DBNull.Value : censo.Padre;
+                  cmdInsert.Parameters.Add("@numadre", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(censo.Madre) ? (object)DBNull.Value : censo.Madre;
+                  cmdInsert.Parameters.Add("@ganacr", SqlDbType.Char, 7).Value = string.IsNullOrEmpty(censo.Ganacr) ? (object)DBNull.Value : censo.Ganacr;
+
+                  // Convertir fecha de string a DateTime
+                  if (!string.IsNullOrEmpty(censo.Fnac) && DateTime.TryParse(censo.Fnac, out DateTime fnac))
+                  {
+                    cmdInsert.Parameters.Add("@fnac", SqlDbType.SmallDateTime).Value = fnac;
+                  }
+                  else
+                  {
+                    cmdInsert.Parameters.Add("@fnac", SqlDbType.SmallDateTime).Value = DBNull.Value;
+                  }
+
+                  cmdInsert.Parameters.Add("@collar", SqlDbType.VarChar, 10).Value = string.IsNullOrEmpty(censo.Collar) ? (object)DBNull.Value : censo.Collar;
+                  cmdInsert.Parameters.Add("@ganapr", SqlDbType.Char, 7).Value = string.IsNullOrEmpty(censo.Ganapr) ? (object)DBNull.Value : censo.Ganapr;
+                  cmdInsert.Parameters.Add("@cib", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(censo.Cib) ? (object)DBNull.Value : censo.Cib;
+
+                  await cmdInsert.ExecuteNonQueryAsync();
+                }
+              }
+            }
+
+            return new RespuestaConafe 
+            { 
+              TotalRecibidos = result.Count,
+              Insertados = result.Count,
+              Rechazados = 0
+            };
+          }
+        }
+        else
+        {
+          var errorBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+          throw new HttpRequestException($"Error en la llamada API Censo: {response.StatusCode}, Detalles: {errorBody}");
+        }
+
+        // Si no hay registros
+        return new RespuestaConafe 
+        { 
+          TotalRecibidos = 0,
+          Insertados = 0,
+          Rechazados = 0
+        };
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex.Message);
+        return new RespuestaConafe();
+      }
+    }
+
     public async Task<RespuestaConafe> GetLactacionesConafe()
     {
       string baseUrl = client.BaseAddress.ToString(); //https://sinbad.conafe.com/GESLIBEntradaAPI
