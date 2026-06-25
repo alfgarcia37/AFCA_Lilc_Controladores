@@ -721,23 +721,23 @@ namespace Afca.Laboratorio
                   AppendTraceText($"Error al conectar GetRegistrosConafe: {ex.Message}");
                 }
               }
-      if (checkCenso.Checked == true)
-      {
-        try
-        {
-          taskCenso = _serviceConafe.GetCensoConafe();
-        }
-        catch (Exception ex)
-        {
-          AppendTraceText($"Error al conectar GetCensoConafe: {ex.Message}");
-        }
-      }
+          if (checkCenso.Checked == true)
+          {
+            try
+            {
+              taskCenso = _serviceConafe.GetCensoConafe();
+            }
+            catch (Exception ex)
+            {
+              AppendTraceText($"Error al conectar GetCensoConafe: {ex.Message}");
+            }
+          }
 
-      if (checkLactaciones.Checked == true)
+          if (checkLactaciones.Checked == true)
               {
                 try
                 {
-                  taskLactaciones =  _serviceConafe.GetLactacionesConafe();
+                  taskLactaciones =  _serviceConafe.GetLactacionesConafe(txtVaca.Text);
                 }
                 catch (Exception ex)
                 {
@@ -749,7 +749,7 @@ namespace Afca.Laboratorio
             {
               try
               {
-                taskControles =  _serviceConafe.GetControlesConafe();
+                taskControles =  _serviceConafe.GetControlesConafe(txtVaca.Text);
               }
 
               catch (Exception ex)
@@ -762,7 +762,7 @@ namespace Afca.Laboratorio
               {
                 try
                 {
-                  taskPartos =  _serviceConafe.GetPartosConafe();
+                  taskPartos =  _serviceConafe.GetPartosConafe(txtVaca.Text);
                 }
                 catch (Exception ex)
                 {
@@ -774,7 +774,7 @@ namespace Afca.Laboratorio
             {
               try
               {
-                taskCubriciones =   _serviceConafe.GetCubricionesConafe();
+                taskCubriciones =   _serviceConafe.GetCubricionesConafe(txtVaca.Text);
               }
               catch (Exception ex)
               {

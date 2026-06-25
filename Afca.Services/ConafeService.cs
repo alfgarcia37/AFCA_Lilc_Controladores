@@ -247,7 +247,7 @@ namespace Afca.Services
       }
     }
 
-    public async Task<RespuestaConafe> GetLactacionesConafe()
+    public async Task<RespuestaConafe> GetLactacionesConafe(string vaca)
     {
       string baseUrl = client.BaseAddress.ToString(); //https://sinbad.conafe.com/GESLIBEntradaAPI
       baseUrl = baseUrl + $"/lactaciones/lote";
@@ -259,6 +259,7 @@ namespace Afca.Services
           using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Lactaciones", connection))
           {
             command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca ;
             command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 0;
             using (SqlDataReader reader = await command.ExecuteReaderAsync())
             {
@@ -336,7 +337,7 @@ namespace Afca.Services
         return new RespuestaConafe();
       }
     }
-    public async Task<RespuestaConafe> GetControlesConafe()
+    public async Task<RespuestaConafe> GetControlesConafe(string vaca)
     { object alfa  ;
       string baseUrl = client.BaseAddress.ToString(); //https://sinbad.conafe.com/GESLIBEntradaAPI
       baseUrl = baseUrl + $"/controles/lote";
@@ -348,6 +349,7 @@ namespace Afca.Services
           using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Controles", connection))
           {
             command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
             command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 0;
             using (SqlDataReader reader = await command.ExecuteReaderAsync())
             {
@@ -412,7 +414,7 @@ namespace Afca.Services
         return new RespuestaConafe();
       }
     }
-    public async Task<RespuestaConafe> GetPartosConafe()
+    public async Task<RespuestaConafe> GetPartosConafe(string vaca)
     {
       string baseUrl = client.BaseAddress.ToString(); //https://sinbad.conafe.com/GESLIBEntradaWS
       baseUrl = baseUrl + $"/partos/lote";
@@ -424,6 +426,7 @@ namespace Afca.Services
           using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Partos", connection))
           {
             command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
             command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 0;
             using (SqlDataReader reader = await command.ExecuteReaderAsync())
             {
@@ -491,7 +494,7 @@ namespace Afca.Services
         return new RespuestaConafe();
       }
     }
-    public async Task<RespuestaConafe> GetCubricionesConafe()
+    public async Task<RespuestaConafe> GetCubricionesConafe(string vaca)
     {
       string baseUrl = client.BaseAddress.ToString(); 
       baseUrl = baseUrl + $"/cubriciones/lote";
@@ -503,6 +506,7 @@ namespace Afca.Services
           using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Cubriciones", connection))
           {
             command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
             command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 0;
             using (SqlDataReader reader = await command.ExecuteReaderAsync())
             {

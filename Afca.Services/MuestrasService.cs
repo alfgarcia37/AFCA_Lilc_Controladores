@@ -234,10 +234,8 @@ namespace Afca.Services
       else
         baseUrl = baseUrl + $"/Industria/GetMediasIndustria";
      
-
       try
       {
-
         var response = await client.GetAsync(baseUrl).ConfigureAwait(false);
 
         if (!response.IsSuccessStatusCode)
