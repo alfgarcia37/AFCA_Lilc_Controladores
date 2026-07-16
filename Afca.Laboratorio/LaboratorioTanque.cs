@@ -47,7 +47,8 @@ public static class LaboratorioTanqueRepository
         double? extractoSeco = (muestra != null) ? muestra.Extracto : null;
 
         double? rcs = (muestra != null) ? muestra.RCS : null;
-        double? bacterias = (muestra != null) ? muestra.Bacterias : null;
+        double? bacterias = (muestra != null) ? 
+                            (muestra.Bacterias >= 1000 ? 999 : muestra.Bacterias) : null;
         double? urea = (muestra != null) ? muestra.Urea : null;
 
         double? pc = (muestra != null) ? muestra.PuntoCrioscopico : null;
@@ -196,7 +197,8 @@ public static class LaboratorioTanqueRepository
         double? mediapc = (muestra.MediaPuntoCrioscopico != null) ? muestra.MediaPuntoCrioscopico : 0;
 
         double? rcs = (muestra.RCS != null) ? muestra.RCS : null;
-        double? bacterias = (muestra.Bacterias != null) ? muestra.Bacterias : null;
+        double? bacterias = (muestra.Bacterias != null) ? 
+                            (muestra.Bacterias >= 1000 ? 999 : muestra.Bacterias) : null;
         double? urea = (muestra.Urea != null) ? muestra.Urea : null;
 
         double? pc = (muestra.PuntoCrioscopico != null) ? muestra.PuntoCrioscopico : null;

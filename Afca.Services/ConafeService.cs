@@ -156,15 +156,11 @@ namespace Afca.Services
       string baseUrl = "https://sinbad.conafe.com/GESLIBSalidaAPI/censos/J";
       try
       {
-       
-
         var response = await client.GetAsync(baseUrl).ConfigureAwait(false);
         if (response.IsSuccessStatusCode)
         {
-
           json = await response.Content.ReadAsStringAsync();
           var result = JsonConvert.DeserializeObject<List<CensoConafe>>(json);
-
           // Insertar registros en la tabla Reggen..CensoConafe
           if (result != null && result.Count > 0)
           {
@@ -316,13 +312,14 @@ namespace Afca.Services
             using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Lactaciones", connection))
             {
               command.CommandType = CommandType.StoredProcedure;
+              command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
               command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 1; // Marcar como enviados
               await command.ExecuteNonQueryAsync();
             }
           }
         }
         else
-          {
+        {
           var errorBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
           throw new HttpRequestException($"Error en la llamada API Lactaciones: {response.StatusCode}, Detalles: {errorBody}");
         }
@@ -361,7 +358,7 @@ namespace Afca.Services
                   Numero = reader["numero"] == DBNull.Value ? "" : reader["numero"].ToString().Trim(),
                   Numpar = reader["numpar"] == DBNull.Value ? (byte)0 : Convert.ToByte(reader["numpar"]),
                   Fcontrol = reader["fcontrol"] == DBNull.Value ? "" : Convert.ToDateTime(reader["fcontrol"]).ToString("yyyy-MM-dd"),
-                  Metodo = reader["metodo"] == DBNull.Value ? "" : reader["metodo"].ToString().Trim(),
+                  Metodo = reader["metodo"] == DBNull.Value || string.IsNullOrWhiteSpace(reader["metodo"].ToString()) ? "1M" : reader["metodo"].ToString().Trim(),
                   Leche = reader["leche"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["leche"]),
                   Grasa = reader["grasa"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["grasa"]),
                   Proteina = reader["proteina"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["proteina"]),
@@ -399,7 +396,21 @@ namespace Afca.Services
         File.WriteAllText(rutaFichero, json, Encoding.UTF8);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
         var response = await client.PostAsync(baseUrl, content).ConfigureAwait(false);
-        if (!response.IsSuccessStatusCode)
+        if (response.IsSuccessStatusCode)
+        {
+          using (SqlConnection connection = new SqlConnection(connectionString))
+          {
+            await connection.OpenAsync();
+            using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Controles", connection))
+            {
+              command.CommandType = CommandType.StoredProcedure;
+              command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
+              command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 1; // Marcar como enviados
+              await command.ExecuteNonQueryAsync();
+            }
+          }
+        }
+        else
         {
           var errorBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
           throw new HttpRequestException($"Error en la llamada API controles: {response.StatusCode}, Detalles: {errorBody}");
@@ -438,8 +449,15 @@ namespace Afca.Services
                   Numero = reader["numero"] == DBNull.Value ? "" : reader["numero"].ToString().Trim(),
                   Numpar = reader["numpar"] == DBNull.Value ? (byte)0 : Convert.ToByte(reader["numpar"]),
                   Fpar = reader["fpar"] == DBNull.Value ? "" : Convert.ToDateTime(reader["fpar"]).ToString("yyyy-MM-dd"),
-                  Facpar = reader["facpar"] == DBNull.Value ? (byte)0 : Convert.ToByte(reader["facpar"]),
-                  Tamcria = reader["tamcria"] == DBNull.Value ? (byte)0 : Convert.ToByte(reader["tamcria"]),
+                  Facpar = reader["facpar"] == DBNull.Value ? (byte)0 : 
+                    byte.TryParse(
+                      reader["facpar"].ToString().Trim(), out byte facpar)  
+                    ? facpar  : (byte)0,
+
+                  Tamcria = reader["tamcria"] == DBNull.Value ? (byte)0 :
+                    byte.TryParse(
+                      reader["tamcria"].ToString().Trim(),
+                      out byte tamcria) ? tamcria : (byte)0,
                   Retplacenta = reader["retplacenta"] == DBNull.Value ? "" : reader["retplacenta"].ToString().Trim(),
                   Ganpar = reader["ganpar"] == DBNull.Value ? "" : reader["ganpar"].ToString().Trim()
                 };
@@ -467,18 +485,19 @@ namespace Afca.Services
         var response = await client.PostAsync(baseUrl, content).ConfigureAwait(false);
         
           if (response.IsSuccessStatusCode)
-        {
-          using (SqlConnection connection = new SqlConnection(connectionString))
           {
-            await connection.OpenAsync();
-            using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Partos", connection))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-              command.CommandType = CommandType.StoredProcedure;
-              command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 1; // Marcar como enviados
-              await command.ExecuteNonQueryAsync();
+              await connection.OpenAsync();
+              using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Partos", connection))
+              {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
+                command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 1; // Marcar como enviados
+                await command.ExecuteNonQueryAsync();
+              }
             }
           }
-        }
         else
         {
           var errorBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -552,9 +571,10 @@ namespace Afca.Services
           using (SqlConnection connection = new SqlConnection(connectionString))
           {
             await connection.OpenAsync();
-            using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Partos", connection))
+            using (SqlCommand command = new SqlCommand("SP_ConafeAPI_Cubriciones", connection))
             {
               command.CommandType = CommandType.StoredProcedure;
+              command.Parameters.Add("@vaca", SqlDbType.Char, 14).Value = string.IsNullOrEmpty(vaca) ? (object)DBNull.Value : vaca;
               command.Parameters.Add("@updateregs", SqlDbType.Bit).Value = 1; // Marcar como enviados
               await command.ExecuteNonQueryAsync();
             }
@@ -567,6 +587,9 @@ namespace Afca.Services
         }
         string responseBody = await response.Content.ReadAsStringAsync();
         var respuesta = JsonConvert.DeserializeObject<RespuestaConafe>(responseBody);
+
+      
+
         return respuesta ?? new RespuestaConafe();
       }
       catch (Exception ex)
