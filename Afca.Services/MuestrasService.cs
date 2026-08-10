@@ -236,6 +236,7 @@ namespace Afca.Services
      
       try
       {
+        client.Timeout = TimeSpan.FromMinutes(5);
         var response = await client.GetAsync(baseUrl).ConfigureAwait(false);
 
         if (!response.IsSuccessStatusCode)
