@@ -73,6 +73,14 @@ namespace Afca.Services
             {
               while (await reader.ReadAsync())
               {
+                var ganapr = reader["ganapr"] == DBNull.Value ? "" : reader["ganapr"].ToString().Trim();
+                var tipomov = reader["tipomov"] == DBNull.Value ? "" : reader["tipomov"].ToString().Trim();
+
+                if (!string.IsNullOrEmpty(ganapr) && (ganapr.StartsWith("V") || ganapr.StartsWith("M")))
+                {
+                  tipomov = "03";
+                }
+
                 var registro = new RegistroConafe()
                 {
                   Aut = reader["aut"] == DBNull.Value ? "" : reader["aut"].ToString().Trim(),
@@ -80,10 +88,10 @@ namespace Afca.Services
                   Nombre = reader["nombre"] == DBNull.Value ? "" : reader["nombre"].ToString().Trim(),
                   Fnac = reader["fnac"] == DBNull.Value ? "" : reader["fnac"].ToString().Trim(),
                   Ganacr = reader["ganacr"] == DBNull.Value ? "" : reader["ganacr"].ToString().Trim(),
-                  Ganapr = reader["ganapr"] == DBNull.Value ? "" : reader["ganapr"].ToString().Trim(),
+                  Ganapr = ganapr,
                   Padre = reader["padre"] == DBNull.Value ? "" : reader["padre"].ToString().Trim(),
                   Madre  = reader["madre"] == DBNull.Value ? "" : reader["madre"].ToString().Trim(),
-                  Tipomov = reader["tipomov"] == DBNull.Value ? "" : reader["tipomov"].ToString().Trim(),
+                  Tipomov = tipomov,
                   FechaMov = reader["fechaMov"] == DBNull.Value ? "" : reader["fechaMov"].ToString().Trim(),
                   Numtran = reader["numtran"] == DBNull.Value ? "" : reader["numtran"].ToString().Trim(),
                   Pureza = reader["pureza"] == DBNull.Value ? "" : reader["pureza"].ToString().Trim(),

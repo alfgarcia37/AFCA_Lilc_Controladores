@@ -721,6 +721,7 @@ namespace Afca.Laboratorio
                   AppendTraceText($"Error al conectar GetRegistrosConafe: {ex.Message}");
                 }
               }
+
           if (checkCenso.Checked == true)
           {
             try
