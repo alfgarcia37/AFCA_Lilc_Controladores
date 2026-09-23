@@ -459,7 +459,7 @@ namespace Afca.Laboratorio
       this.Margin = new System.Windows.Forms.Padding(4);
       this.MaximizeBox = false;
       this.Name = "FileImporter";
-      this.Text = "Proceso importación ficheros laboratorio";
+      this.Text = "Proceso importación ficheros laboratorio 22/09";
       this.ultraPanelTop.ClientArea.ResumeLayout(false);
       this.ultraPanelTop.ClientArea.PerformLayout();
       this.ultraPanelTop.ResumeLayout(false);

@@ -75,10 +75,12 @@ namespace Afca.Services
               {
                 var ganapr = reader["ganapr"] == DBNull.Value ? "" : reader["ganapr"].ToString().Trim();
                 var tipomov = reader["tipomov"] == DBNull.Value ? "" : reader["tipomov"].ToString().Trim();
+                var esModif = reader["esModif"] == DBNull.Value ? "" : reader["esModif"].ToString().Trim();
 
                 if (!string.IsNullOrEmpty(ganapr) && (ganapr.StartsWith("V") || ganapr.StartsWith("M")))
                 {
                   tipomov = "03";
+                  esModif = "N";
                 }
 
                 var registro = new RegistroConafe()
@@ -104,7 +106,7 @@ namespace Afca.Services
                   Cib = reader["cib"] == DBNull.Value ? "" : reader["cib"].ToString().Trim(),
                   Collar = reader["collar"] == DBNull.Value ? "" : reader["collar"].ToString().Trim(),
                   FechaDoc = reader["fechaDoc"] == DBNull.Value ? "" : reader["fechaDoc"].ToString().Trim(),
-                  EsModif = reader["esModif"] == DBNull.Value ? "" : reader["esModif"].ToString().Trim()
+                  EsModif = esModif
                 };
                 ListaRegistrosConafe.Add(registro);
               }
