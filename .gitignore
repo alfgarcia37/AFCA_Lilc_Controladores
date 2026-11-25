@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /Afca/Infragistics
+/Afca/com.afca.clm2.apk
