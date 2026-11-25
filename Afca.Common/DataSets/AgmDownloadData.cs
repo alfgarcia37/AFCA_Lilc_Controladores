@@ -2,7 +2,7 @@
 {
 
 
-    public partial class AgmDownloadData
-    {
-    }
+   public partial class AgmDownloadData
+   {
+   }
 }

@@ -2,10 +2,10 @@
 {
 
 
-    partial class NacimientoSiluetasQueryData
-    {
-        partial class QueryDataTable
-        {
-        }
-    }
+   partial class NacimientoSiluetasQueryData
+   {
+      partial class QueryDataTable
+      {
+      }
+   }
 }

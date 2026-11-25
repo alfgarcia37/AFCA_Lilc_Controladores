@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,9 +38,15 @@
     <Reference Include="FrameworkForge.Data">
       <HintPath>..\Afca\Lib\FrameworkForge.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics4.Shared.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.UltraWinGrid.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Shared.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\Afca\Infragistics\Infragistics4.Shared.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\Afca\Infragistics\Infragistics4.Win.UltraWinGrid.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>..\Afca\Infragistics\Infragistics4.Win.v18.2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=79610fd68f4422fc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Afca\Lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -76,6 +83,22 @@
     <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
       <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
       <Name>Afca.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Afca.Laboratorio\Afca.Laboratorio.csproj">
+      <Project>{8e873a1c-a712-4f20-8ac0-02b0b590a273}</Project>
+      <Name>Afca.Laboratorio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Afca.Services\Afca.Services.csproj">
+      <Project>{306ef407-3b26-4724-8e24-317697e1384b}</Project>
+      <Name>Afca.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Afca.UI\Afca.UI.csproj">
+      <Project>{95f0380c-45a1-49f5-8fbb-b9ac92634937}</Project>
+      <Name>Afca.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Afca\Afca.csproj">
+      <Project>{c300f42b-21e1-4745-98f9-45871900cd41}</Project>
+      <Name>Afca</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

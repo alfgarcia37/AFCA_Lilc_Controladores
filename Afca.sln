@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36811.4 d17.14
+VisualStudioVersion = 17.14.36811.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afca", "Afca\Afca.csproj", "{C300F42B-21E1-4745-98F9-45871900CD41}"
 EndProject
@@ -106,8 +106,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CLM2", "CLM2", "{0915C363-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afca.Laboratorio", "Afca.Laboratorio\Afca.Laboratorio.csproj", "{8E873A1C-A712-4F20-8AC0-02B0B590A273}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afca.Reports", "Afca.Reports\Afca.Reports.csproj", "{48FEB749-ADAB-4688-B00F-72CE2D1C12C8}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -138,10 +136,6 @@ Global
 		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E873A1C-A712-4F20-8AC0-02B0B590A273}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48FEB749-ADAB-4688-B00F-72CE2D1C12C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48FEB749-ADAB-4688-B00F-72CE2D1C12C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48FEB749-ADAB-4688-B00F-72CE2D1C12C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48FEB749-ADAB-4688-B00F-72CE2D1C12C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

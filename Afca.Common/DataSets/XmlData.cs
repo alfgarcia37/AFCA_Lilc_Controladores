@@ -2,9 +2,9 @@
 {
 
 
-    partial class XmlData
-    {
-    }
+   partial class XmlData
+   {
+   }
 }
 
 

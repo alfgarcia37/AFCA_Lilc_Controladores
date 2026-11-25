@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Afca.Reports;
+
 using Afca.Common.DataReports;
 using System.Data;
-using CrystalDecisions.CrystalReports.Engine;
+
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
-using Afca.UI.Reports;
+
 using Ghostscript.NET.Rasterizer;
 using System.Drawing.Imaging;
 
@@ -18,7 +18,7 @@ namespace Afca.UI
 {
     static class Program
     {
-        static ReportViewer _viewer;
+      
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -154,15 +154,9 @@ namespace Afca.UI
             panelReport.Dock = DockStyle.Fill;
 
 
-            Reports.ReportViewer viewer = new Reports.ReportViewer();
-            _viewer = viewer;
+       
+           
 
-
-            CartaRegistroReport report = new CartaRegistroReport();
-            report.SetDataSource(data);
-            viewer.ReportSource = report;
-
-            panelReport.Controls.Add(viewer);
             panelReport.Controls[0].Dock = DockStyle.Fill;
 
             viewerForm.Controls.Add(panelReport);
@@ -174,7 +168,7 @@ namespace Afca.UI
         private static void Btn_Click(object sender, EventArgs e)
         {
             //_viewer.ExportToTiff((ReportClass)_viewer.ReportSource);
-            _viewer.PrintTiff();
+          
         }
     }
 }

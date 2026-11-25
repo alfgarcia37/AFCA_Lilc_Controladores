@@ -6,9 +6,9 @@ namespace Afca.Common.DataSets
 {
 
 
-    public partial class BuzonLaboratorioTanqueData
-    {
-    }
+   public partial class BuzonLaboratorioTanqueData
+   {
+   }
 }
 namespace Afca.Common.DataSets {
     

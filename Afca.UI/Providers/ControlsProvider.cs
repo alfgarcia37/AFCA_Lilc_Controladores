@@ -702,10 +702,7 @@ namespace Afca.UI
         #region Siluetas
         public static void ShowSiluetasManagerControl(ItemData itContainer)
         {
-            ShowControlInForm(
-                "Cartas Nacimientos"
-                , "IconoExport"
-                , new NacimientoSiluetasControl());
+          
         }
         #endregion
 

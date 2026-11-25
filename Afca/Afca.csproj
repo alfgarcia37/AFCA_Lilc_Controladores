@@ -27,6 +27,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -62,11 +63,21 @@
     <Reference Include="FrameworkForge.UI">
       <HintPath>Lib\FrameworkForge.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics4.Shared.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.Misc.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.UltraWinEditors.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.UltraWinGauge.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Shared.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>Infragistics\Infragistics4.Shared.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>Infragistics\Infragistics4.Win.Misc.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>Infragistics\Infragistics4.Win.UltraWinEditors.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinGauge.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>Infragistics\Infragistics4.Win.UltraWinGauge.v18.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v18.2, Version=18.2.20182.130, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <HintPath>Infragistics\Infragistics4.Win.v18.2.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e44a2bc38ed2c13c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -97,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -129,6 +141,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Afca.Common\Afca.Common.csproj">
+      <Project>{bcc59fcd-b2e3-407b-ad04-99ab3f89e06c}</Project>
+      <Name>Afca.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Afca.Laboratorio\Afca.Laboratorio.csproj">
+      <Project>{8e873a1c-a712-4f20-8ac0-02b0b590a273}</Project>
+      <Name>Afca.Laboratorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,11 +2,11 @@
 {
 
 
-    partial class CartaRegistroReportData
-    {
-        partial class NombreDataTable
-        {
+   partial class CartaRegistroReportData
+   {
+      partial class NombreDataTable
+      {
 
-        }
-    }
+      }
+   }
 }
